@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBS_WINDOWS AttrType="WINDOWS" name="PCK.AUTOMIC_JBOSS_V7.PRV.JOB.START_SERVER@WINDOWS">
+<XHEADER state="1">
+<Title/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<Active>1</Active>
+<OH_SubType/>
+<CustomAttributes KeyListID="0" dataRequestID="0"/>
+</XHEADER>
+<OUTPUTREG state="1">
+<FileReg/>
+</OUTPUTREG>
+<SYNCREF state="1">
+<Syncs/>
+</SYNCREF>
+<ATTR_JOBS state="1">
+<Queue>CLIENT_QUEUE</Queue>
+<StartType/>
+<HostDst>|&lt;WIN&gt;|HOST</HostDst>
+<HostATTR_Type>WINDOWS</HostATTR_Type>
+<CodeName/>
+<Login/>
+<IntAccount/>
+<ExtRepDef>1</ExtRepDef>
+<ExtRepAll>0</ExtRepAll>
+<ExtRepNone>0</ExtRepNone>
+<AutoDeactNo>0</AutoDeactNo>
+<AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
+<AutoDeactErrorFree>1</AutoDeactErrorFree>
+<DeactWhen>ANY_OK</DeactWhen>
+<DeactDelay>0</DeactDelay>
+<AutoDeactAlways>0</AutoDeactAlways>
+<AttDialog>0</AttDialog>
+<ActAtRun>1</ActAtRun>
+<Consumption>0</Consumption>
+<UC4Priority>0</UC4Priority>
+<MaxParallel2>0</MaxParallel2>
+<MpElse1>1</MpElse1>
+<MpElse2>0</MpElse2>
+<TZ/>
+</ATTR_JOBS>
+<ATTR_WINDOWS state="1">
+<OutputDb>1</OutputDb>
+<OutputDbErr>0</OutputDbErr>
+<OutputFile>0</OutputFile>
+<IsGenerated>0</IsGenerated>
+<BAT>0</BAT>
+<COM>0</COM>
+<WinBatch>1</WinBatch>
+<Standard>1</Standard>
+<Minimized>0</Minimized>
+<Maximized>0</Maximized>
+<JObjDefault>0</JObjDefault>
+<JObjYes>0</JObjYes>
+<JObjNo>1</JObjNo>
+<WorkingDirectory>c:\</WorkingDirectory>
+<Command/>
+<LogOn>0</LogOn>
+<ShowJob>0</ShowJob>
+</ATTR_WINDOWS>
+<RUNTIME state="1">
+<MaxRetCode>0</MaxRetCode>
+<MrcExecute/>
+<MrcElseE>0</MrcElseE>
+<FcstStatus>0| |</FcstStatus>
+
+<ErtMethodDef>1</ErtMethodDef>
+<ErtMethodFix>0</ErtMethodFix>
+<ErtFix>0</ErtFix>
+<ErtDynMethod>2|Average</ErtDynMethod>
+<ErtMethodDyn>0</ErtMethodDyn>
+<ErtCnt>0</ErtCnt>
+<ErtCorr>0</ErtCorr>
+<ErtIgn>0</ErtIgn>
+<ErtIgnFlg>0</ErtIgnFlg>
+<ErtMinCnt>0</ErtMinCnt>
+<MrtMethodNone>1</MrtMethodNone>
+<MrtMethodFix>0</MrtMethodFix>
+<MrtFix>0</MrtFix>
+<MrtMethodErt>0</MrtMethodErt>
+<MrtErt>0</MrtErt>
+<MrtMethodDate>0</MrtMethodDate>
+<MrtDays>0</MrtDays>
+<MrtTime>00:00</MrtTime>
+<MrtTZ/>
+<SrtMethodNone>1</SrtMethodNone>
+<SrtMethodFix>0</SrtMethodFix>
+<SrtFix>0</SrtFix>
+<SrtMethodErt>0</SrtMethodErt>
+<SrtErt>0</SrtErt>
+<MrtCancel>0</MrtCancel>
+<MrtExecute>0</MrtExecute>
+<MrtExecuteObj/>
+</RUNTIME>
+<DYNVALUES state="1">
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
+<VALUE state="1">
+<Values>
+<row ERTUsage="0" Name="&amp;AGENT_A#" Value="nothing at all"/>
+<row ERTUsage="0" Name="&amp;VAR1#" Value="&amp;$PHYS_DATE_DD_MM_YYYY_d#"/>
+<row ERTUsage="0" Name="&amp;VAR2#" Value=""/>
+</Values>
+<Mode>0</Mode>
+</VALUE>
+</node>
+</dyntree>
+</DYNVALUES>
+<ROLLBACK state="1">
+<RollbackFlag>0</RollbackFlag>
+<CBackupObj/>
+<CRollbackObj/>
+<FBackupPath/>
+<FDeleteBefore>0</FDeleteBefore>
+<FInclSubDirs>0</FInclSubDirs>
+</ROLLBACK>
+<PRE_SCRIPT mode="1" replacementmode="1" state="1">
+<PSCRI><![CDATA[:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.PREPARE_JOB
+:IF &UC4RB_JBOSS_OPERATING_MODE# <> "Standalone" OR "Managed Domain"
+:  PRINT "&UC4RB_JBOSS_OPERATING_MODE# must be either Standalone or Managed Domain"
+:  EXIT 1
+:ENDIF]]></PSCRI>
+</PRE_SCRIPT>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[:INCLUDE PCK.ITPA_SHARED.PUB.INCLUDE.POWERSHELL_UTILITY
+:INCLUDE PCK.AUTOMIC_JBOSS_V7.PRV.INCLUDE.ATTACH
+:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CHANGE_DIRECTORY_TO_AGENT_BIN
+:SET &UC4RB_CONVERTED_STRING# = &UC4RB_JBOSS_HOME#
+:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CONVERT_SLASHES_WINDOWS_STYLE
+:SET &UC4RB_JBOSS_HOME# = &UC4RB_CONVERTED_STRING#
+
+:INCLUDE PCK.AUTOMIC_JBOSS_V7.PRV.INCLUDE.JBOSS_CLI@WINDOWS
+
+!Escaped jboss-cli.bat
+$env:NOPAUSE="True"
+
+!Used when Host Controller is not defined
+$global:HC=""
+
+function FailIfRunning {
+:  IF  &UC4RB_JBOSS_FAIL_RUNNING#  = "YES"
+    exit 1;
+:  ELSE
+    exit 0;
+:  ENDIF
+}
+
+!----------------------------------------------------------------------------------------------------
+function IsServerRunning {
+    $isServerRunning=""
+    $output=$(&UC4_JBOSS_CLI# --command=`"/host=$HC/server-config=$args`:read-attribute`(name=status`)`")
+    $RC=$?
+    Write-Host ($output | findstr /v "ARATools Version: Date: GmbH" | Out-String)
+    if( $RC -ne 1 ) {
+      if ( $LASTEXITCODE -ne 0 ) {
+        $retcode = $LASTEXITCODE
+      } else {
+        $retcode = 1
+      }
+      __uc_return( $retcode )
+    }
+
+    $output | findstr /C:"\`"success\`"" | Out-Null
+    if ("$?" -eq "True") {
+       $output | findstr /C:"\`"STARTED\`""
+       $isServerRunning=$?
+    } else {
+      Write-Host "Could not get information from $args of host $HC. Aborting ..."
+      exit 1
+    }
+
+    if ("$isServerRunning" -eq "True") {
+      Return 1
+    } else {
+      Return 0
+    }
+}
+
+!----------------------------------------------------------------------------------------------------
+function IsJBossRunning {
+
+  &UC4_JBOSS_CLI# --command=`"quit`" | findstr /C:"Failed to connect to the controller" | Out-Null
+  if("$?" -eq "False") {
+    return 1
+  } else {
+    Write-Host "Failed to connect to the controller. JBoss is not running or host, port are not correct."
+    return 0
+  }
+
+}
+
+!----------------------------------------------------------------------------------------------------
+function StartJBossEAP {
+
+  Write-Host "Checking if JBoss(&UC4RB_JBOSS_OPERATING_MODE#) is running ..."
+  if($(IsJBossRunning) -eq 1) {
+    Write-Host "JBoss Server (&UC4RB_JBOSS_OPERATING_MODE#) is already running. Aborting ..."
+    FailIfRunning
+  }
+
+  Write-Host "JBoss is not running. Starting JBoss EAP 6(&UC4RB_JBOSS_OPERATING_MODE#)..."
+: IF &UC4RB_JBOSS_SERVICE_NAME# EQ ""
+    Write-Host "Trying to start using standalone.bat/domain.bat ..."
+    $arguments = $()
+:   IF &UC4RB_JBOSS_OPERATING_MODE# = "Standalone"
+:     SET &START_JBOSS_COMMAND# = 'Start-Process "&UC4RB_JBOSS_HOME#\bin\standalone.bat"'
+:   ELSE
+:     SET &START_JBOSS_COMMAND# = 'Start-Process "&UC4RB_JBOSS_HOME#\bin\domain.bat"'
+
+:     IF &UC4RB_JBOSS_HOST_CONFIG_FILE# NE ""
+        $arguments += " --host-config=&UC4RB_JBOSS_HOST_CONFIG_FILE#"
+:     ENDIF
+
+:     IF &UC4RB_JBOSS_PC_ADDR# NE ""
+        $arguments += " --pc-address=&UC4RB_JBOSS_PC_ADDR#"
+:     ENDIF
+
+:     IF &UC4RB_JBOSS_PC_PORT# NE ""
+        $arguments += " --pc-port=&UC4RB_JBOSS_PC_PORT#"
+:     ENDIF
+
+:     IF &UC4RB_JBOSS_INTERPROCESS_ADDR# NE ""
+        $arguments += " --interprocess-hc-address=&UC4RB_JBOSS_INTERPROCESS_ADDR#"
+:     ENDIF
+
+:     IF &UC4RB_JBOSS_INTERPROCESS_PORT# NE ""
+        $arguments += " --interprocess-hc-port=&UC4RB_JBOSS_INTERPROCESS_PORT#"
+:     ENDIF
+:   ENDIF
+
+:   IF &UC4RB_JBOSS_SYSTEM_PROPS# NE ""
+:     DEFINE &SYSTEM_PROPS#,string, 100
+:     FILL &SYSTEM_PROPS#[] = STR_SPLIT(&UC4RB_JBOSS_SYSTEM_PROPS#,",")
+:     SET &VAR# = 1
+:     WHILE &SYSTEM_PROPS#[&VAR#] NE ""
+:       SET &SYSTEM_PROP# = STR_TRIM(&SYSTEM_PROPS#[&VAR#])
+        $arguments += " -D&SYSTEM_PROP#"
+:       SET &VAR# = &VAR# + 1
+:     ENDWHILE
+:   ENDIF
+
+:   IF &UC4RB_JBOSS_CONFIG_FILE# NE ""
+      $arguments += " -c=&UC4RB_JBOSS_CONFIG_FILE#"
+:   ENDIF
+
+:   IF &UC4RB_JBOSS_ADMIN_ONLY# EQ "YES"
+      $arguments += " --admin-only"
+:   ENDIF
+
+    if($arguments.Length -gt 0) {
+      &START_JBOSS_COMMAND# -ArgumentList $arguments -Passthru
+    } else {
+      &START_JBOSS_COMMAND# -Passthru
+    }
+
+: ELSE
+    Write-Host "Trying to start service &UC4RB_JBOSS_SERVICE_NAME# ..."
+    net START "&UC4RB_JBOSS_SERVICE_NAME#"
+
+: ENDIF
+: INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CHECK_POWERSHELL_CMD@WINDOWS
+
+  Start-Sleep -s &UC4RB_JBOSS_TIMEOUT#
+: INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CHECK_POWERSHELL_CMD@WINDOWS
+
+  Write-Host "Checking JBoss EAP 6 state ..."
+  if($(IsJBossRunning) -eq 1) {
+    Write-Host "JBoss (&UC4RB_JBOSS_OPERATING_MODE#) has been successfully started."
+    exit 0
+  } else {
+    Write-Host "Failed to start JBoss. Aborting ..."
+    exit 1
+  }
+}
+
+!----------------------------------------------------------------------------------------------------
+
+cd "&UC4RB_JBOSS_HOME#\bin"
+:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CHECK_POWERSHELL_CMD@WINDOWS
+
+:IF &UC4RB_JBOSS_OPERATING_MODE# = "Standalone"
+  StartJBossEAP
+:ELSE
+
+:  IF &UC4RB_JBOSS_SERVER# = ""
+    StartJBossEAP
+:  ELSE
+    if ( $(IsJBossRunning) -eq 0) {
+      Write-Host "JBoss Domain/Host Controller must be running to start servers inside the domain. Aborting ..."
+      exit 1
+    }
+
+:   IF &UC4RB_JBOSS_HOST_CONTROLLER# EQ ""
+!     Find the local host controller (domain controller)
+      $output=$(&UC4_JBOSS_CLI# --command=`":read-attribute`(name=local-host-name`)`")
+      $HC = $($output | findstr /C:"`"result`"").Split('"')[3]
+
+      echo "JBoss host controller is not defined. Use local host controller: $HC"
+:   ELSE
+      $HC="&UC4RB_JBOSS_HOST_CONTROLLER#"
+:   ENDIF
+
+!    Server instances are separated by commas. Only trying to start if all server instances are not running.
+:    DEFINE &SERVERS#, string, 100
+:    FILL &SERVERS#[] = STR_SPLIT(&UC4RB_JBOSS_SERVER#,",")
+
+:    SET &VAR# = 1
+:    WHILE &SERVERS#[&VAR#] NE ""
+:      SET &SERVER# = STR_TRIM(&SERVERS#[&VAR#])
+       Write-Host "Checking server instance: &SERVER# status ..."
+
+       if ($(IsServerRunning &SERVER#) -eq 1) {
+         Write-Host "Server instance: &SERVER# is already running. Aborting ..."
+         FailIfRunning
+       } else {
+         Write-Host "Server instance: &SERVER# is not running."
+       }
+:      SET &VAR# = &VAR# + 1
+:    ENDWHILE
+
+:    SET &VAR# = 1
+:    WHILE &SERVERS#[&VAR#] NE ""
+:      SET &SERVER# = STR_TRIM(&SERVERS#[&VAR#])
+       Write-Host "Starting &SERVER# using JBoss CLI ..."
+
+       $output=$(&UC4_JBOSS_CLI# --command=`"/host=$HC/server-config=&SERVER#:start`")
+       $RC=$?
+       $output | findstr /v "ARATools Version: Date: GmbH"
+       if( $RC -ne 1 ) {
+         if ( $LASTEXITCODE -ne 0 ) {
+           $retcode = $LASTEXITCODE
+         } else {
+           $retcode = 1
+         }
+         __uc_return( $retcode )
+       }
+
+       Start-Sleep -s &UC4RB_JBOSS_TIMEOUT#
+:      INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CHECK_POWERSHELL_CMD@WINDOWS
+
+       Write-Host "Checking server instance: &SERVER# status again ..."
+
+       if ($(IsServerRunning &SERVER#) -eq 0) {
+         Write-Host "Failed to start &SERVER#. Aborting ..."
+         exit 1
+       } else {
+         Write-Host "&SERVER# has been successfully started."
+       }
+:      SET &VAR# = &VAR# + 1
+:    ENDWHILE
+
+:  ENDIF
+:ENDIF
+
+]]></MSCRI>
+</SCRIPT>
+<OUTPUTSCAN state="1">
+<Inherit>N</Inherit>
+<filterobjects/>
+<HostFsc/>
+<LoginFsc/>
+</OUTPUTSCAN>
+<POST_SCRIPT mode="1" replacementmode="1" state="1">
+<OSCRI><![CDATA[:SET &HND# = PREP_PROCESS_REPORT(,,,"* has been successfully started.")
+:PROCESS &HND#
+:   SET &UC4RB_JBOSS_SERVER_STARTED# = "TRUE"
+:   PUBLISH &UC4RB_JBOSS_SERVER_STARTED#,,"WORKFLOW"
+
+:ENDPROCESS
+]]></OSCRI>
+</POST_SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBS_WINDOWS>
+</uc-export>

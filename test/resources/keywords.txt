@@ -8,8 +8,8 @@ Library           OperatingSystem
 *** Key Words ***
 Create Data Test
     Init Target Server
-    Download datatest    /testdata/PCK.AUTOMIC_JBOSS_V6
-    Download datatest for robot    /testdata/PCK.AUTOMIC_JBOSS_V6
+    Download datatest    /testdata/PCK.AUTOMIC_JBOSS_V7
+    Download datatest for robot    /testdata/PCK.AUTOMIC_JBOSS_V7
 
 Download datatest
     [Arguments]    ${path}
@@ -220,7 +220,7 @@ Clean Snapshot
     Init Application Workflow Standalone    ${ACTION_BOND_HOOK_SNAPSHOT_DELETE}
     Add Custom Variable    @snapshot/variables/archivepath    ${archive_path}
     Add Custom Variable    @snapshot/guid    ${guid}
-    Add Custom Variable    @snapshot/snapshotType    PCK.AUTOMIC_JBOSS_V6
+    Add Custom Variable    @snapshot/snapshotType    PCK.AUTOMIC_JBOSS_V7
     Action Execute
     Action Report Should Be Found
 

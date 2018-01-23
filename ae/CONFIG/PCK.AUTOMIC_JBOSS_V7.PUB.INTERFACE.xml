@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<VARA OVD_VRName="FREI" data_type="XML" name="PCK.AUTOMIC_JBOSS_V7.PUB.INTERFACE" replacementmode="2">
+<HEADER state="1">
+<Title/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType>XML</OH_SubType>
+</HEADER>
+<ATTR_VARA state="1">
+<Type>C|Text</Type>
+<lblSource>XML</lblSource>
+<source>XML</source>
+<VRName>FREI|Freely selected</VRName>
+<NotFoundErr>0</NotFoundErr>
+<NotFoundDef>1</NotFoundDef>
+<ShareN>0</ShareN>
+<ShareL>0</ShareL>
+<ShareR>0</ShareR>
+<MaxValue_C>1024</MaxValue_C>
+<CheckMax_C>0</CheckMax_C>
+<uppercase>0</uppercase>
+<sortColumn>0</sortColumn>
+<sortDirection>0</sortDirection>
+<HostType/>
+</ATTR_VARA>
+<VARA state="1">
+<XML>
+<Parameters>
+<row Name="interface" Value="&lt;interface&gt;&lt;snapshot type=&quot;PCK.AUTOMIC_JBOSS_V7&quot;&gt;&lt;hooks&gt;&lt;extend-hook name=&quot;PCK.AUTOMIC_BOND.PRV.COM.SNAPSHOT.COMPARE&quot;&gt;PCK.AUTOMIC_JBOSS_V7.PUB.ACTION.COMPARE_SNAPSHOT&lt;/extend-hook&gt;&lt;extend-hook name=&quot;PCK.AUTOMIC_BOND.PRV.COM.SNAPSHOT.COMPARE_DETAIL&quot;&gt;PCK.AUTOMIC_JBOSS_V7.PUB.ACTION.COMPARE_DETAIL_SNAPSHOT&lt;/extend-hook&gt;&lt;extend-hook name=&quot;PCK.AUTOMIC_BOND.PRV.COM.SNAPSHOT.DELETE&quot;&gt;PCK.AUTOMIC_JBOSS_V7.PUB.ACTION.DELETE_SNAPSHOT&lt;/extend-hook&gt;&lt;extend-hook name=&quot;PCK.AUTOMIC_BOND.PRV.SNAPSHOT.CREATE_LIVE&quot;&gt;PCK.AUTOMIC_JBOSS_V7.PUB.ACTION.SNAPSHOT_LIVE&lt;/extend-hook&gt;&lt;/hooks&gt;&lt;display-name&gt;JBoss_v7&lt;/display-name&gt;&lt;in-contract&gt;PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.CREATE_SNAPSHOT_LIVE&lt;/in-contract&gt;&lt;/snapshot&gt;&lt;/interface&gt;"/>
+</Parameters>
+</XML>
+</VARA>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</VARA>
+</uc-export>

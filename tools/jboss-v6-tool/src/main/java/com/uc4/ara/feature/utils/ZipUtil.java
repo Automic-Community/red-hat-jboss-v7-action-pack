@@ -19,7 +19,7 @@ import java.util.zip.ZipFile;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
 
-import com.esotericsoftware.wildcard.Paths;
+//import com.esotericsoftware.wildcard.Paths;
 import com.uc4.ara.feature.FeatureUtil;
 
 public class ZipUtil {
@@ -173,7 +173,7 @@ public class ZipUtil {
 		archive.close();
 	}
 
-	public static final void zipFileIntoArchive(File directory, String relpathInZip, File zip)
+/*	public static final void zipFileIntoArchive(File directory, String relpathInZip, File zip)
 			throws IOException {
 		Paths paths = new Paths();
 		paths.glob(directory.getPath(), relpathInZip);
@@ -247,7 +247,7 @@ public class ZipUtil {
 		zos.close();
 		temp.delete();
 	}
-
+*/
 	public static String wildcardToRegex(String wildcard){
 		StringBuffer s = new StringBuffer(wildcard.length());
 		s.append('^');

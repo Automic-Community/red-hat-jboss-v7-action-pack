@@ -1,18 +1,18 @@
-name: PCK.AUTOMIC_JBOSS_V6
+name: PCK.AUTOMIC_JBOSS_V7
 source: ae
 binaries: 
-- object: RESOURCES/PCK.AUTOMIC_JBOSS_V6.PRV.CUSTOM_TYPES
+- object: RESOURCES/PCK.AUTOMIC_JBOSS_V7.PRV.CUSTOM_TYPES
   timestamp: disabled
   resources: 
-  - name: DEPLOYMENTTARGET#JBOSS_V6#1
+  - name: DEPLOYMENTTARGET#JBOSS_V7#1
     type: TEXT
-    path: ara/types/deploymenttarget/JBoss v6.xml
+    path: ara/types/deploymenttarget/JBoss V7.xml
     version: 1.0.0
-  - name: COMPONENT#JBOSS_V6#2
+  - name: COMPONENT#JBOSS_V7#2
     type: TEXT
-    path: ara/types/component/JBoss v6.xml
+    path: ara/types/component/JBoss V7.xml
     version: 1.0.0
-- object: RESOURCES/LIBS/PCK.AUTOMIC_JBOSS_V6.PRV.STORE
+- object: RESOURCES/LIBS/PCK.AUTOMIC_JBOSS_V7.PRV.STORE
   resources: 
   - name: JBOSSV6TOOL.JAR
     type: BINARY

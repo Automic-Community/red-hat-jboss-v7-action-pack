@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBS_UNIX AttrType="UNIX" name="PCK.AUTOMIC_JBOSS_V7.PRV.JOB.DEPLOY_APPLICATION@UNIX">
+<XHEADER state="1">
+<Title/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<Active>1</Active>
+<OH_SubType/>
+<CustomAttributes KeyListID="0" dataRequestID="0"/>
+</XHEADER>
+<OUTPUTREG state="1">
+<FileReg/>
+</OUTPUTREG>
+<SYNCREF state="1">
+<Syncs/>
+</SYNCREF>
+<ATTR_JOBS state="1">
+<Queue>CLIENT_QUEUE</Queue>
+<StartType/>
+<HostDst>|&lt;UNIX&gt;|HOST</HostDst>
+<HostATTR_Type>UNIX</HostATTR_Type>
+<CodeName/>
+<Login/>
+<IntAccount/>
+<ExtRepDef>1</ExtRepDef>
+<ExtRepAll>0</ExtRepAll>
+<ExtRepNone>0</ExtRepNone>
+<AutoDeactNo>0</AutoDeactNo>
+<AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
+<AutoDeactErrorFree>1</AutoDeactErrorFree>
+<DeactWhen>ANY_OK</DeactWhen>
+<DeactDelay>0</DeactDelay>
+<AutoDeactAlways>0</AutoDeactAlways>
+<AttDialog>0</AttDialog>
+<ActAtRun>1</ActAtRun>
+<Consumption>0</Consumption>
+<UC4Priority>0</UC4Priority>
+<MaxParallel2>0</MaxParallel2>
+<MpElse1>1</MpElse1>
+<MpElse2>0</MpElse2>
+<TZ/>
+</ATTR_JOBS>
+<ATTR_UNIX state="1">
+<OutputDb>1</OutputDb>
+<OutputDbErr>0</OutputDbErr>
+<OutputFile>0</OutputFile>
+<ShellScript>1</ShellScript>
+<Command>0</Command>
+<Priority>0</Priority>
+<Shell/>
+<ShellOptions/>
+<Com/>
+</ATTR_UNIX>
+<RUNTIME state="1">
+<MaxRetCode>0</MaxRetCode>
+<MrcExecute/>
+<MrcElseE>0</MrcElseE>
+<FcstStatus>0| |</FcstStatus>
+
+<ErtMethodDef>1</ErtMethodDef>
+<ErtMethodFix>0</ErtMethodFix>
+<ErtFix>0</ErtFix>
+<ErtDynMethod>2|Average</ErtDynMethod>
+<ErtMethodDyn>0</ErtMethodDyn>
+<ErtCnt>0</ErtCnt>
+<ErtCorr>0</ErtCorr>
+<ErtIgn>0</ErtIgn>
+<ErtIgnFlg>0</ErtIgnFlg>
+<ErtMinCnt>0</ErtMinCnt>
+<MrtMethodNone>1</MrtMethodNone>
+<MrtMethodFix>0</MrtMethodFix>
+<MrtFix>0</MrtFix>
+<MrtMethodErt>0</MrtMethodErt>
+<MrtErt>0</MrtErt>
+<MrtMethodDate>0</MrtMethodDate>
+<MrtDays>0</MrtDays>
+<MrtTime>00:00</MrtTime>
+<MrtTZ/>
+<SrtMethodNone>1</SrtMethodNone>
+<SrtMethodFix>0</SrtMethodFix>
+<SrtFix>0</SrtFix>
+<SrtMethodErt>0</SrtMethodErt>
+<SrtErt>0</SrtErt>
+<MrtCancel>0</MrtCancel>
+<MrtExecute>0</MrtExecute>
+<MrtExecuteObj/>
+</RUNTIME>
+<DYNVALUES state="1">
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
+<VALUE state="1">
+<Values/>
+<Mode>0</Mode>
+</VALUE>
+</node>
+</dyntree>
+</DYNVALUES>
+<ROLLBACK state="1">
+<RollbackFlag>0</RollbackFlag>
+<CBackupObj/>
+<CRollbackObj/>
+<FBackupPath/>
+<FDeleteBefore>0</FDeleteBefore>
+<FInclSubDirs>0</FInclSubDirs>
+</ROLLBACK>
+<PRE_SCRIPT mode="1" replacementmode="1" state="1">
+<PSCRI><![CDATA[:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.PREPARE_JOB
+:IF &UC4RB_JBOSS_OPERATING_MODE# <> "Standalone" OR "Managed Domain"
+:  PRINT "&UC4RB_JBOSS_OPERATING_MODE# must be either Standalone or Managed Domain"
+:  EXIT 1
+:ENDIF]]></PSCRI>
+</PRE_SCRIPT>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[:INCLUDE PCK.AUTOMIC_JBOSS_V7.PRV.INCLUDE.ATTACH
+:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CHANGE_DIRECTORY_TO_AGENT_BIN
+:SET &UC4RB_CONVERTED_STRING# = &UC4RB_JBOSS_PACKAGE#
+:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CONVERT_SLASHES_UNIX_STYLE
+:SET &UC4RB_JBOSS_PACKAGE# = &UC4RB_CONVERTED_STRING#
+
+:SET &UC4RB_CONVERTED_STRING# = &UC4RB_JBOSS_HOME#
+:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CONVERT_SLASHES_UNIX_STYLE
+:SET &UC4RB_JBOSS_HOME# = &UC4RB_CONVERTED_STRING#
+
+:INCLUDE PCK.AUTOMIC_JBOSS_V7.PRV.INCLUDE.JBOSS_CLI@UNIX
+
+! Validates application name, spaces should not be there
+:SET &UC4RB_JBOSS_APP_NAME# = STR_TRIM(&UC4RB_JBOSS_APP_NAME#)
+:IF &UC4RB_JBOSS_APP_NAME# = ''
+:  PRINT Application name must not be empty. Aborting ...
+:  EXIT 1
+:ENDIF
+:SET &SPACE_CHECK# = STR_FIND(&UC4RB_JBOSS_APP_NAME#, ' ')
+:IF &SPACE_CHECK# > 0
+:  PRINT Application name must not contain space. Aborting ...
+:  EXIT 1
+:ENDIF
+
+!---------------------- Get Package name from path ----------------------
+:SET &FINAL_SLASH# = STR_FIND_REVERSE(&UC4RB_JBOSS_PACKAGE#, "/")
+
+:IF &FINAL_SLASH# > 0
+:  SET &PACKAGE_PARENT_DIR# = STR_CUT(&UC4RB_JBOSS_PACKAGE#, 1, &FINAL_SLASH#)
+:  SET &FINAL_SLASH# = ADD(&FINAL_SLASH#, 1)
+:  SET &PACKAGE_NAME# = STR_CUT(&UC4RB_JBOSS_PACKAGE#, &FINAL_SLASH#)
+:ELSE
+:  PRINT Deployment Package Path is not valid. Aborting ...
+:  EXIT 1
+:ENDIF
+
+!---------------------- Deploy command  ----------------------
+:SET &UC4_JBOSS_CLI_DEPLOY# = '&UC4_JBOSS_CLI# --command="deploy \"&PACKAGE_NAME#\"'
+:SET &UC4_JBOSS_CLI_DEPLOY# = '&UC4_JBOSS_CLI_DEPLOY# --name=&UC4RB_JBOSS_APP_NAME#'
+
+:IF &UC4RB_JBOSS_UPDATE# = "YES"
+:  SET &UC4_JBOSS_CLI_DEPLOY# = '&UC4_JBOSS_CLI_DEPLOY# --force'
+:ELSE
+:  IF &UC4RB_JBOSS_OPERATING_MODE# = "Managed Domain"
+:    IF &UC4RB_JBOSS_SERVER_GROUPS# = ""
+:      SET &UC4_JBOSS_CLI_DEPLOY# = '&UC4_JBOSS_CLI_DEPLOY# --all-server-groups'
+:    ELSE
+:      SET &UC4_JBOSS_CLI_DEPLOY# = '&UC4_JBOSS_CLI_DEPLOY# --server-groups=&UC4RB_JBOSS_SERVER_GROUPS#'
+:    ENDIF
+:  ENDIF
+:ENDIF
+
+:SET &UC4_JBOSS_CLI_DEPLOY# = '&UC4_JBOSS_CLI_DEPLOY#"'
+
+!----------------------
+
+!Escaped jboss-cli.sh
+set NOPAUSE="True"
+
+if [ ! -d "&UC4RB_BACKUP_DIRECTORY#" ] ; then
+  mkdir -p "&UC4RB_BACKUP_DIRECTORY#"
+fi
+
+output=`&UC4_JBOSS_CLI# --command="quit" | grep "Failed to connect to the controller"`
+if [ "$output" ]; then
+  echo "JBoss is not running or cannot connect to JBoss CLI using the given inputs. Aborting ..."
+  exit 1
+fi
+
+echo "Checking deployment information ..."
+
+output=`&UC4_JBOSS_CLI# --command="deployment-info --name=&UC4RB_JBOSS_APP_NAME#"`
+
+echo "$output" | grep -v "ARATools\|Version\:\|Date\:\|GmbH"
+
+if [ -z "`echo "$output" | grep " not found"`" ]; then
+:  IF &UC4RB_JBOSS_FAIL_EXISTING# = "NO"
+:    IF &UC4RB_JBOSS_UPDATE# = "YES"
+      echo "&UC4RB_JBOSS_APP_NAME# already exists. The application will be overwritten."
+:    ELSE
+      echo "&UC4RB_JBOSS_APP_NAME# already exists. Aborting ..."
+      exit 0
+:    ENDIF
+:  ELSE
+    echo "&UC4RB_JBOSS_APP_NAME# already exists. Aborting ..."
+    exit 1
+:  ENDIF
+fi
+
+!---------- Deployment ------------
+echo "Deploying &UC4RB_JBOSS_APP_NAME# on JBoss EAP 6.1 (&UC4RB_JBOSS_OPERATING_MODE#) ..."
+cd "&PACKAGE_PARENT_DIR#"
+:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CHECK_SHELL_CMD@UNIX
+
+output=`&UC4_JBOSS_CLI_DEPLOY#`
+:INC PCK.AUTOMIC_JBOSS_V7.PRV.INCLUDE.CHECK_SHELL_CMD_CUSTOM@UNIX
+
+! --force option can not be used with --server-groups or --all-server-groups. Separate to 2 commands.
+:IF &UC4RB_JBOSS_UPDATE# = "YES"
+:  IF &UC4RB_JBOSS_OPERATING_MODE# = "Managed Domain"
+     output=`&UC4_JBOSS_CLI# --command="undeploy --name=&UC4RB_JBOSS_APP_NAME# --all-relevant-server-groups --keep-content"`
+
+:    IF &UC4RB_JBOSS_SERVER_GROUPS# = ""
+       output=`&UC4_JBOSS_CLI# --command="deploy --name=&UC4RB_JBOSS_APP_NAME# --all-server-groups"`
+:    ELSE
+       output=`&UC4_JBOSS_CLI# --command="deploy --name=&UC4RB_JBOSS_APP_NAME# --server-groups=&UC4RB_JBOSS_SERVER_GROUPS#"`
+:    ENDIF
+:    INC PCK.AUTOMIC_JBOSS_V7.PRV.INCLUDE.CHECK_SHELL_CMD_CUSTOM@UNIX
+:  ENDIF
+:ENDIF
+
+!---------------------------------
+
+echo "Deployment finished. Check if deployment &UC4RB_JBOSS_APP_NAME# exists:"
+
+output=`&UC4_JBOSS_CLI# --command="deployment-info --name=&UC4RB_JBOSS_APP_NAME#"`
+:INC PCK.AUTOMIC_JBOSS_V7.PRV.INCLUDE.CHECK_SHELL_CMD_CUSTOM@UNIX
+
+if [ "`echo "$output" | grep " not found"`" ] ; then
+  exit 1
+fi
+
+! In case of Managed Domain, package must be added to specified server group, unless --force option is available.
+:IF &UC4RB_JBOSS_OPERATING_MODE# = "Managed Domain"
+:  IF &UC4RB_JBOSS_UPDATE# = "NO"
+:    IF &UC4RB_JBOSS_SERVER_GROUPS# = ""
+         if [ "`echo "$output" | grep " not added *$"`" ] ; then
+            echo "&UC4RB_JBOSS_APP_NAME# is not assigned to all server groups. Aborting ..."
+            exit 1
+         fi
+:    ELSE
+:      DEFINE &SERVER_GROUPS#,string, 100
+:      FILL &SERVER_GROUPS#[] = STR_SPLIT(&UC4RB_JBOSS_SERVER_GROUPS#,",")
+:      SET &VAR# = 1
+:      WHILE &SERVER_GROUPS#[&VAR#] NE ""
+         if [ "`echo "$output" | grep "&SERVER_GROUPS#[&VAR#] " | grep " not added *$"`" ] ; then
+            echo "&UC4RB_JBOSS_APP_NAME# is not assigned to &SERVER_GROUPS#[&VAR#]. Aborting ..."
+            exit 1
+         fi
+:        SET &VAR# = &VAR# + 1
+:      ENDWHILE
+:    ENDIF
+:  ENDIF
+:ENDIF
+
+echo "Deploy Application successfully."
+]]></MSCRI>
+</SCRIPT>
+<OUTPUTSCAN state="1">
+<Inherit>N</Inherit>
+<filterobjects/>
+<HostFsc/>
+<LoginFsc/>
+</OUTPUTSCAN>
+<POST_SCRIPT mode="1" replacementmode="1" state="1">
+<OSCRI><![CDATA[:SET &HND# = PREP_PROCESS_REPORT(,,,"Deploy Application successfully.")
+:PROCESS &HND#
+:   SET &UC4RB_JBOSS_APPLN_DEPLOYED# = "TRUE"
+:   PUBLISH &UC4RB_JBOSS_APPLN_DEPLOYED#,,"WORKFLOW"
+:ENDPROCESS]]></OSCRI>
+</POST_SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBS_UNIX>
+</uc-export>

@@ -17,7 +17,7 @@ ${_JBOSS_CONFIG}    standalone.xml
 ${_JBOSS_APP}     sample.war
 ${_MOCKUP_URL}    http://vvnappserver01:9969
 ${_TEMPLATE_DESCRIPTOR}    /
-${_SNAPSHOT_TYPE}    PCK.AUTOMIC_JBOSS_V6
+${_SNAPSHOT_TYPE}    PCK.AUTOMIC_JBOSS_V7
 
 *** Key Words ***
 Init AE And Package
@@ -28,7 +28,7 @@ Init Win Server
     Set Global Variable    ${_AGENT}    VVNJBO01
     Set Global Variable    ${AGENT_DIR}    C:\\automic\\agents\\vvnjbo01\\bin
     Set Global Variable    ${_LOGIN}    VVNSAT.LOGIN_ALL
-    Set Global Variable    ${_WORKING_DIR}    C:\\automic\\testcases\\PCK.AUTOMIC_JBOSS_V6
+    Set Global Variable    ${_WORKING_DIR}    C:\\automic\\testcases\\PCK.AUTOMIC_JBOSS_V7
     Set Global Variable    ${_JBOSS_HOME}    C:\\automic\\software\\jboss-eap-6.3
     Set Global Variable    ${_JBOSS_HOST}    VVNJBO01
     Set Global Variable    ${/}    \\
@@ -38,7 +38,7 @@ Init Unix Server
     Set Global Variable    ${_AGENT}    VVNJBO02
     Set Global Variable    ${AGENT_DIR}    /opt/automic/agents/vvnjbo02/bin
     Set Global Variable    ${_LOGIN}    VVNSAT.LOGIN_ALL
-    Set Global Variable    ${_WORKING_DIR}    /opt/automic/testcases/PCK.AUTOMIC_JBOSS_V6
+    Set Global Variable    ${_WORKING_DIR}    /opt/automic/testcases/PCK.AUTOMIC_JBOSS_V7
     Set Global Variable    ${_JBOSS_HOME}    /opt/automic/software/jboss-eap-6.3
     Set Global Variable    ${_JBOSS_HOST}    VVNJBO02
     Set Global Variable    ${/}    /
