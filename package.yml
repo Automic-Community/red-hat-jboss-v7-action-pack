@@ -6,11 +6,11 @@ binaries:
   resources: 
   - name: DEPLOYMENTTARGET#JBOSS_V7#1
     type: TEXT
-    path: ara/types/deploymenttarget/JBoss V7.xml
+    path: ara/types/deploymenttarget/JBoss v7.xml
     version: 1.0.0
   - name: COMPONENT#JBOSS_V7#2
     type: TEXT
-    path: ara/types/component/JBoss V7.xml
+    path: ara/types/component/JBoss v7.xml
     version: 1.0.0
 - object: RESOURCES/LIBS/PCK.AUTOMIC_JBOSS_V7.PRV.STORE
   resources: 

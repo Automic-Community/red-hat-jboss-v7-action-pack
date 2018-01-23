@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Version: 1.0.0 -->
 <DeploymentTargetType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="Deployment_Target.xsd">
-	<Name>JBoss v6</Name>
+	<Name>JBoss v7</Name>
 	<Properties>
      
 			<!-- STAGING -->
@@ -45,7 +45,7 @@
                 </Property>
 				<Property name="servername" type="SingleLineText" mode="EDITABLE" displayName="Server Name">
 					<Defaultvalue>default</Defaultvalue>
-					<Description>Name of JBossV6 server instances in Domain Mode. Separated by commas. Not required in Standalone mode.</Description>
+					<Description>Name of JBossV7 server instances in Domain Mode. Separated by commas. Not required in Standalone mode.</Description>
                 </Property>
 				<Property name="server_groups" type="SingleLineText" mode="EDITABLE" displayName="Server Groups">
 					<Defaultvalue></Defaultvalue>
