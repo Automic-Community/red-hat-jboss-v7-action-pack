@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<VARA OVD_VRName="FREI" data_type="STATIC" name="PCK.AUTOMIC_JBOSS_V6.PUB.PROMPT_EXTERNAL_MAP" replacementmode="2">
+<HEADER state="1">
+<Title/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType>STATIC</OH_SubType>
+</HEADER>
+<ATTR_VARA state="1">
+<Type>C|Text</Type>
+<lblSource>Static</lblSource>
+<source>STATIC</source>
+<VRName>FREI|Freely selected</VRName>
+<NotFoundErr>0</NotFoundErr>
+<NotFoundDef>1</NotFoundDef>
+<ShareN>0</ShareN>
+<ShareL>0</ShareL>
+<ShareR>0</ShareR>
+<MaxValue_C>1024</MaxValue_C>
+<CheckMax_C>0</CheckMax_C>
+<uppercase>0</uppercase>
+<sortColumn>0</sortColumn>
+<sortDirection>0</sortDirection>
+<HostType/>
+</ATTR_VARA>
+<VARA state="1">
+<Variables>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_MQT/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_MQT/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_MQT/UC4RB_JBOSS_DLA#" Value="EXT:/jboss/jms/dlq" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_MQT/UC4RB_JBOSS_EXPIRY#" Value="EXT:/jboss/jms/expiry_queue" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_MQT/UC4RB_JBOSS_HOME#" Value="EXT:/jboss/server/home_directory" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_MQT/UC4RB_JBOSS_HOST#" Value="EXT:/jboss/host" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_MQT/UC4RB_JBOSS_JNDI_NAME#" Value="EXT:/jboss/jms/jndi_name" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_MQT/UC4RB_JBOSS_MAX_ATTEMPTS#" Value="EXT:/jboss/jms/max_delivery_attempts" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_MQT/UC4RB_JBOSS_NAME#" Value="EXT:/jboss/jms/name" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_MQT/UC4RB_JBOSS_PASSWORD#" Value="EXT:/jboss/password" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_MQT/UC4RB_JBOSS_PORT#" Value="EXT:/jboss/port" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_MQT/UC4RB_JBOSS_PROFILE#" Value="EXT:/jboss/profile" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_MQT/UC4RB_JBOSS_RE_DELAY#" Value="EXT:/jboss/jms/redelivery_delay" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_MQT/UC4RB_JBOSS_REDIS_DELAY#" Value="EXT:/jboss/jms/redistribution_delay" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_MQT/UC4RB_JBOSS_SIZE_MAX#" Value="EXT:/jboss/jms/max_size" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_MQT/UC4RB_JBOSS_SIZE_PAGE#" Value="EXT:/jboss/jms/page_size" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_MQT/UC4RB_JBOSS_SIZE_PAGE_CACHE#" Value="EXT:/jboss/jms/page_max_cache_size" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_MQT/UC4RB_JBOSS_USERNAME#" Value="EXT:/jboss/username" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_SNAPSHOT/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_SNAPSHOT/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_SNAPSHOT/UC4RB_JBOSS_APP_NAME#" Value="EXT:/jboss/application_name" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_SNAPSHOT/UC4RB_JBOSS_HOME#" Value="EXT:/jboss/server/home_directory" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_SNAPSHOT/UC4RB_JBOSS_HOST#" Value="EXT:/jboss/host" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_SNAPSHOT/UC4RB_JBOSS_PASSWORD#" Value="EXT:/jboss/password" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_SNAPSHOT/UC4RB_JBOSS_PORT#" Value="EXT:/jboss/port" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_SNAPSHOT/UC4RB_JBOSS_USERNAME#" Value="EXT:/jboss/username" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_TX_DATASOURCE/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_TX_DATASOURCE/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_TX_DATASOURCE/UC4RB_JBOSS_DRIVER_CLASS#" Value="EXT:/jboss/jdbc/tx/jdbc_driver_class" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_TX_DATASOURCE/UC4RB_JBOSS_DRIVER_NAME#" Value="EXT:/jboss/jdbc/tx/driver_name" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_TX_DATASOURCE/UC4RB_JBOSS_DS_PASSWORD#" Value="EXT:/jboss/jdbc/tx/password" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_TX_DATASOURCE/UC4RB_JBOSS_DS_USERNAME#" Value="EXT:/jboss/jdbc/tx/username" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_TX_DATASOURCE/UC4RB_JBOSS_HOME#" Value="EXT:/jboss/server/home_directory" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_TX_DATASOURCE/UC4RB_JBOSS_HOST#" Value="EXT:/jboss/host" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_TX_DATASOURCE/UC4RB_JBOSS_JNDI_NAME#" Value="EXT:/jboss/jdbc/tx/jndi_name" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_TX_DATASOURCE/UC4RB_JBOSS_MAX_POOL_SIZE#" Value="EXT:/jboss/jdbc/tx/pool_size_max" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_TX_DATASOURCE/UC4RB_JBOSS_MIN_POOL_SIZE#" Value="EXT:/jboss/jdbc/tx/pool_size_min" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_TX_DATASOURCE/UC4RB_JBOSS_NAME#" Value="EXT:/jboss/jdbc/tx/name" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_TX_DATASOURCE/UC4RB_JBOSS_PASSWORD#" Value="EXT:/jboss/password" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_TX_DATASOURCE/UC4RB_JBOSS_PORT#" Value="EXT:/jboss/port" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_TX_DATASOURCE/UC4RB_JBOSS_PROFILE#" Value="EXT:/jboss/profile" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_TX_DATASOURCE/UC4RB_JBOSS_PROPERTIES#" Value="EXT:/jboss/jdbc/tx/connection_properties" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_TX_DATASOURCE/UC4RB_JBOSS_URL#" Value="EXT:/jboss/jdbc/tx/connection_url" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_TX_DATASOURCE/UC4RB_JBOSS_USERNAME#" Value="EXT:/jboss/username" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_XA_DATASOURCE/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_XA_DATASOURCE/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_XA_DATASOURCE/UC4RB_JBOSS_DRIVER_NAME#" Value="EXT:/jboss/jdbc/xa/driver_name" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_XA_DATASOURCE/UC4RB_JBOSS_DS_CLASS#" Value="EXT:/jboss/jdbc/xa/xa_datasource_class" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_XA_DATASOURCE/UC4RB_JBOSS_DS_PASSWORD#" Value="EXT:/jboss/jdbc/xa/password" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_XA_DATASOURCE/UC4RB_JBOSS_DS_USERNAME#" Value="EXT:/jboss/jdbc/xa/username" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_XA_DATASOURCE/UC4RB_JBOSS_HOME#" Value="EXT:/jboss/server/home_directory" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_XA_DATASOURCE/UC4RB_JBOSS_HOST#" Value="EXT:/jboss/host" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_XA_DATASOURCE/UC4RB_JBOSS_JNDI_NAME#" Value="EXT:/jboss/jdbc/xa/jndi_name" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_XA_DATASOURCE/UC4RB_JBOSS_MAX_POOL_SIZE#" Value="EXT:/jboss/jdbc/xa/pool_size_max" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_XA_DATASOURCE/UC4RB_JBOSS_MIN_POOL_SIZE#" Value="EXT:/jboss/jdbc/xa/pool_size_min" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_XA_DATASOURCE/UC4RB_JBOSS_NAME#" Value="EXT:/jboss/jdbc/xa/name" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_XA_DATASOURCE/UC4RB_JBOSS_PASSWORD#" Value="EXT:/jboss/password" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_XA_DATASOURCE/UC4RB_JBOSS_PORT#" Value="EXT:/jboss/port" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_XA_DATASOURCE/UC4RB_JBOSS_PROFILE#" Value="EXT:/jboss/profile" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_XA_DATASOURCE/UC4RB_JBOSS_PROPERTIES#" Value="EXT:/jboss/jdbc/xa/xa_datasource_properties" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.CREATE_XA_DATASOURCE/UC4RB_JBOSS_USERNAME#" Value="EXT:/jboss/username" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DELETE_DATASOURCE/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DELETE_DATASOURCE/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DELETE_DATASOURCE/UC4RB_JBOSS_HOME#" Value="EXT:/jboss/server/home_directory" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DELETE_DATASOURCE/UC4RB_JBOSS_HOST#" Value="EXT:/jboss/host" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DELETE_DATASOURCE/UC4RB_JBOSS_NAME#" Value="EXT:/jboss/jdbc/tx/name" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DELETE_DATASOURCE/UC4RB_JBOSS_PASSWORD#" Value="EXT:/jboss/password" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DELETE_DATASOURCE/UC4RB_JBOSS_PORT#" Value="EXT:/jboss/port" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DELETE_DATASOURCE/UC4RB_JBOSS_PROFILE#" Value="EXT:/jboss/profile" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DELETE_DATASOURCE/UC4RB_JBOSS_USERNAME#" Value="EXT:/jboss/username" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DELETE_MQT/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DELETE_MQT/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DELETE_MQT/UC4RB_JBOSS_HOME#" Value="EXT:/jboss/server/home_directory" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DELETE_MQT/UC4RB_JBOSS_HOST#" Value="EXT:/jboss/host" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DELETE_MQT/UC4RB_JBOSS_NAME#" Value="EXT:/jboss/jms/name" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DELETE_MQT/UC4RB_JBOSS_PASSWORD#" Value="EXT:/jboss/password" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DELETE_MQT/UC4RB_JBOSS_PORT#" Value="EXT:/jboss/port" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DELETE_MQT/UC4RB_JBOSS_PROFILE#" Value="EXT:/jboss/profile" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DELETE_MQT/UC4RB_JBOSS_USERNAME#" Value="EXT:/jboss/username" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DEPLOY_APPLICATION/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DEPLOY_APPLICATION/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DEPLOY_APPLICATION/UC4RB_JBOSS_APP_NAME#" Value="EXT:/jboss/application_name" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DEPLOY_APPLICATION/UC4RB_JBOSS_HOME#" Value="EXT:/jboss/server/home_directory" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DEPLOY_APPLICATION/UC4RB_JBOSS_HOST#" Value="EXT:/jboss/host" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DEPLOY_APPLICATION/UC4RB_JBOSS_OPERATING_MODE#" Value="EXT:/jboss/operating_mode" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DEPLOY_APPLICATION/UC4RB_JBOSS_PACKAGE#" Value="EXT:/jboss/package" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DEPLOY_APPLICATION/UC4RB_JBOSS_PASSWORD#" Value="EXT:/jboss/password" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DEPLOY_APPLICATION/UC4RB_JBOSS_PORT#" Value="EXT:/jboss/port" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DEPLOY_APPLICATION/UC4RB_JBOSS_SERVER_GROUPS#" Value="EXT:/jboss/server/server_groups" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.DEPLOY_APPLICATION/UC4RB_JBOSS_USERNAME#" Value="EXT:/jboss/username" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.START_APPLICATION/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.START_APPLICATION/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.START_APPLICATION/UC4RB_JBOSS_APP_NAME#" Value="EXT:/jboss/application_name" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.START_APPLICATION/UC4RB_JBOSS_HOME#" Value="EXT:/jboss/server/home_directory" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.START_APPLICATION/UC4RB_JBOSS_HOST#" Value="EXT:/jboss/host" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.START_APPLICATION/UC4RB_JBOSS_OPERATING_MODE#" Value="EXT:/jboss/operating_mode" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.START_APPLICATION/UC4RB_JBOSS_PASSWORD#" Value="EXT:/jboss/password" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.START_APPLICATION/UC4RB_JBOSS_PORT#" Value="EXT:/jboss/port" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.START_APPLICATION/UC4RB_JBOSS_SERVER_GROUPS#" Value="EXT:/jboss/server/server_groups" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.START_APPLICATION/UC4RB_JBOSS_USERNAME#" Value="EXT:/jboss/username" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.START_SERVER/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.START_SERVER/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.START_SERVER/UC4RB_JBOSS_HOME#" Value="EXT:/jboss/server/home_directory" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.START_SERVER/UC4RB_JBOSS_HOST#" Value="EXT:/jboss/host" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.START_SERVER/UC4RB_JBOSS_HOST_CONTROLLER#" Value="EXT:/jboss/server/host_controller" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.START_SERVER/UC4RB_JBOSS_OPERATING_MODE#" Value="EXT:/jboss/operating_mode" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.START_SERVER/UC4RB_JBOSS_PASSWORD#" Value="EXT:/jboss/password" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.START_SERVER/UC4RB_JBOSS_PORT#" Value="EXT:/jboss/port" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.START_SERVER/UC4RB_JBOSS_SERVER#" Value="EXT:/jboss/server/servername" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.START_SERVER/UC4RB_JBOSS_USERNAME#" Value="EXT:/jboss/username" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.STOP_APPLICATION/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.STOP_APPLICATION/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.STOP_APPLICATION/UC4RB_JBOSS_APP_NAME#" Value="EXT:/jboss/application_name" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.STOP_APPLICATION/UC4RB_JBOSS_HOME#" Value="EXT:/jboss/server/home_directory" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.STOP_APPLICATION/UC4RB_JBOSS_HOST#" Value="EXT:/jboss/host" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.STOP_APPLICATION/UC4RB_JBOSS_OPERATING_MODE#" Value="EXT:/jboss/operating_mode" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.STOP_APPLICATION/UC4RB_JBOSS_PASSWORD#" Value="EXT:/jboss/password" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.STOP_APPLICATION/UC4RB_JBOSS_PORT#" Value="EXT:/jboss/port" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.STOP_APPLICATION/UC4RB_JBOSS_SERVER_GROUPS#" Value="EXT:/jboss/server/server_groups" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.STOP_APPLICATION/UC4RB_JBOSS_USERNAME#" Value="EXT:/jboss/username" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.STOP_SERVER/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.STOP_SERVER/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.STOP_SERVER/UC4RB_JBOSS_HOME#" Value="EXT:/jboss/server/home_directory" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.STOP_SERVER/UC4RB_JBOSS_HOST#" Value="EXT:/jboss/host" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.STOP_SERVER/UC4RB_JBOSS_HOST_CONTROLLER#" Value="EXT:/jboss/server/host_controller" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.STOP_SERVER/UC4RB_JBOSS_OPERATING_MODE#" Value="EXT:/jboss/operating_mode" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.STOP_SERVER/UC4RB_JBOSS_PASSWORD#" Value="EXT:/jboss/password" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.STOP_SERVER/UC4RB_JBOSS_PORT#" Value="EXT:/jboss/port" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.STOP_SERVER/UC4RB_JBOSS_SERVER#" Value="EXT:/jboss/server/servername" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.STOP_SERVER/UC4RB_JBOSS_USERNAME#" Value="EXT:/jboss/username" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.UNDEPLOY_APPLICATION/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.UNDEPLOY_APPLICATION/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.UNDEPLOY_APPLICATION/UC4RB_JBOSS_APP_NAME#" Value="EXT:/jboss/application_name" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.UNDEPLOY_APPLICATION/UC4RB_JBOSS_HOME#" Value="EXT:/jboss/server/home_directory" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.UNDEPLOY_APPLICATION/UC4RB_JBOSS_HOST#" Value="EXT:/jboss/host" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.UNDEPLOY_APPLICATION/UC4RB_JBOSS_OPERATING_MODE#" Value="EXT:/jboss/operating_mode" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.UNDEPLOY_APPLICATION/UC4RB_JBOSS_PASSWORD#" Value="EXT:/jboss/password" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.UNDEPLOY_APPLICATION/UC4RB_JBOSS_PORT#" Value="EXT:/jboss/port" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.UNDEPLOY_APPLICATION/UC4RB_JBOSS_SERVER_GROUPS#" Value="EXT:/jboss/server/server_groups" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V6.PUB.ACTION.UNDEPLOY_APPLICATION/UC4RB_JBOSS_USERNAME#" Value="EXT:/jboss/username" Value1="" Value2="" Value3="" Value4=""/>
+</Variables>
+</VARA>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</VARA>
+</uc-export>

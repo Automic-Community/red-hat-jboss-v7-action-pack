@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBS_UNIX AttrType="UNIX" name="PCK.AUTOMIC_JBOSS_V6.PRV.JOB.STOP_APPLICATION@UNIX">
+<XHEADER state="1">
+<Title/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<Active>1</Active>
+<OH_SubType/>
+<CustomAttributes KeyListID="0" dataRequestID="0"/>
+</XHEADER>
+<OUTPUTREG state="1">
+<FileReg/>
+</OUTPUTREG>
+<SYNCREF state="1">
+<Syncs/>
+</SYNCREF>
+<ATTR_JOBS state="1">
+<Queue>CLIENT_QUEUE</Queue>
+<StartType/>
+<HostDst>|&lt;UNIX&gt;|HOST</HostDst>
+<HostATTR_Type>UNIX</HostATTR_Type>
+<CodeName/>
+<Login/>
+<IntAccount/>
+<ExtRepDef>1</ExtRepDef>
+<ExtRepAll>0</ExtRepAll>
+<ExtRepNone>0</ExtRepNone>
+<AutoDeactNo>0</AutoDeactNo>
+<AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
+<AutoDeactErrorFree>1</AutoDeactErrorFree>
+<DeactWhen>ANY_OK</DeactWhen>
+<DeactDelay>0</DeactDelay>
+<AutoDeactAlways>0</AutoDeactAlways>
+<AttDialog>0</AttDialog>
+<ActAtRun>1</ActAtRun>
+<Consumption>0</Consumption>
+<UC4Priority>0</UC4Priority>
+<MaxParallel2>0</MaxParallel2>
+<MpElse1>1</MpElse1>
+<MpElse2>0</MpElse2>
+<TZ/>
+</ATTR_JOBS>
+<ATTR_UNIX state="1">
+<OutputDb>1</OutputDb>
+<OutputDbErr>0</OutputDbErr>
+<OutputFile>0</OutputFile>
+<ShellScript>1</ShellScript>
+<Command>0</Command>
+<Priority>0</Priority>
+<Shell/>
+<ShellOptions/>
+<Com/>
+</ATTR_UNIX>
+<RUNTIME state="1">
+<MaxRetCode>0</MaxRetCode>
+<MrcExecute/>
+<MrcElseE>0</MrcElseE>
+<FcstStatus>0| |</FcstStatus>
+
+<ErtMethodDef>1</ErtMethodDef>
+<ErtMethodFix>0</ErtMethodFix>
+<ErtFix>0</ErtFix>
+<ErtDynMethod>2|Average</ErtDynMethod>
+<ErtMethodDyn>0</ErtMethodDyn>
+<ErtCnt>0</ErtCnt>
+<ErtCorr>0</ErtCorr>
+<ErtIgn>0</ErtIgn>
+<ErtIgnFlg>0</ErtIgnFlg>
+<ErtMinCnt>0</ErtMinCnt>
+<MrtMethodNone>1</MrtMethodNone>
+<MrtMethodFix>0</MrtMethodFix>
+<MrtFix>0</MrtFix>
+<MrtMethodErt>0</MrtMethodErt>
+<MrtErt>0</MrtErt>
+<MrtMethodDate>0</MrtMethodDate>
+<MrtDays>0</MrtDays>
+<MrtTime>00:00</MrtTime>
+<MrtTZ/>
+<SrtMethodNone>1</SrtMethodNone>
+<SrtMethodFix>0</SrtMethodFix>
+<SrtFix>0</SrtFix>
+<SrtMethodErt>0</SrtMethodErt>
+<SrtErt>0</SrtErt>
+<MrtCancel>0</MrtCancel>
+<MrtExecute>0</MrtExecute>
+<MrtExecuteObj/>
+</RUNTIME>
+<DYNVALUES state="1">
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
+<VALUE state="1">
+<Values/>
+<Mode>0</Mode>
+</VALUE>
+</node>
+</dyntree>
+</DYNVALUES>
+<ROLLBACK state="1">
+<RollbackFlag>0</RollbackFlag>
+<CBackupObj/>
+<CRollbackObj/>
+<FBackupPath/>
+<FDeleteBefore>0</FDeleteBefore>
+<FInclSubDirs>0</FInclSubDirs>
+</ROLLBACK>
+<PRE_SCRIPT mode="1" replacementmode="1" state="1">
+<PSCRI><![CDATA[:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.PREPARE_JOB]]></PSCRI>
+</PRE_SCRIPT>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[:INCLUDE PCK.AUTOMIC_JBOSS_V6.PRV.INCLUDE.ATTACH
+:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CHANGE_DIRECTORY_TO_AGENT_BIN
+:SET &UC4RB_CONVERTED_STRING# = &UC4RB_JBOSS_HOME#
+:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CONVERT_SLASHES_UNIX_STYLE
+:SET &UC4RB_JBOSS_HOME# = &UC4RB_CONVERTED_STRING#
+
+:INCLUDE PCK.AUTOMIC_JBOSS_V6.PRV.INCLUDE.JBOSS_CLI@UNIX
+
+! Validates application name, spaces should not be there
+:SET &UC4RB_JBOSS_APP_NAME# = STR_TRIM(&UC4RB_JBOSS_APP_NAME#)
+:IF &UC4RB_JBOSS_APP_NAME# = ''
+:  PRINT Application name must not be empty. Aborting ...
+:  EXIT 1
+:ENDIF
+:SET &SPACE_CHECK# = STR_FIND(&UC4RB_JBOSS_APP_NAME#, ' ')
+:IF &SPACE_CHECK# > 0
+:  PRINT Application name must not contain space. Aborting ...
+:  EXIT 1
+:ENDIF
+
+!---------------------- Disable application command  ----------------------
+:SET &UC4_JBOSS_CLI_DISABLE_APP# = '&UC4_JBOSS_CLI# --command="undeploy &UC4RB_JBOSS_APP_NAME# --keep-content'
+
+:IF &UC4RB_JBOSS_OPERATING_MODE# = "Managed Domain"
+:  IF &UC4RB_JBOSS_SERVER_GROUPS# = ""
+:    SET &UC4_JBOSS_CLI_DISABLE_APP# = '&UC4_JBOSS_CLI_DISABLE_APP# --all-relevant-server-groups'
+:  ELSE
+:    SET &UC4_JBOSS_CLI_DISABLE_APP# = '&UC4_JBOSS_CLI_DISABLE_APP# --server-groups=&UC4RB_JBOSS_SERVER_GROUPS#'
+:  ENDIF
+:ENDIF
+
+:SET &UC4_JBOSS_CLI_DISABLE_APP# = '&UC4_JBOSS_CLI_DISABLE_APP#"'
+
+! --------------------------------------
+
+set NOPAUSE="True"
+
+echo "Checking \"&UC4RB_JBOSS_APP_NAME#\" status ..."
+
+output=`&UC4_JBOSS_CLI# --command="deployment-info --name=&UC4RB_JBOSS_APP_NAME#"`
+RC=$?
+echo "$output" | grep -v "ARATools\|Version\:\|Date\:\|GmbH"
+if [ "$RC" -gt "0" ] ;
+  then
+    exit $RC;
+fi
+
+! In Standalone mode, application state can be checked here
+:IF &UC4RB_JBOSS_OPERATING_MODE# = "Standalone"
+  if [ "`echo "$output" | grep "  STOPPED *$"`" ]; then
+    echo "&UC4RB_JBOSS_APP_NAME# is already stopped in JBoss(&UC4RB_JBOSS_OPERATING_MODE#). Aborting ..."
+:     IF &UC4RB_JBOSS_FAIL_IF_STOPPED# = "YES"
+       exit 1
+:     ELSE
+       exit 0
+:     ENDIF
+  fi
+:ELSE
+
+! If application is not assigned to any server group
+  if [ -z "`echo "$output" | grep " enabled *$"`" ]; then
+    if [ -z "`echo "$output" | grep " not added *$" | grep " added *$"`" ]; then
+      echo "&UC4RB_JBOSS_APP_NAME# is not assigned to any server group. Aborting ..."
+:     IF &UC4RB_JBOSS_FAIL_IF_STOPPED# = "YES"
+        exit 1
+:     ELSE
+        exit 0
+:     ENDIF
+    fi
+  fi
+
+!  If application is not assigned to given server groups
+:  IF &UC4RB_JBOSS_SERVER_GROUPS# NE ""
+:    DEFINE &SERVER_GROUPS#,string, 100
+:    FILL &SERVER_GROUPS#[] = STR_SPLIT(&UC4RB_JBOSS_SERVER_GROUPS#,",")
+:    SET &VAR# = 1
+:    WHILE &SERVER_GROUPS#[&VAR#] NE ""
+       if [ -z "`echo "$output" | grep "^&SERVER_GROUPS#[&VAR#] *"`" ]; then
+         echo "Server group: &SERVER_GROUPS#[&VAR#] does not exist. Aborting ..."
+         exit 1
+       fi
+
+      if [ "`echo "$output" | grep "^&SERVER_GROUPS#[&VAR#] * not added *$"`" ] ; then
+        echo "&UC4RB_JBOSS_APP_NAME# is not assigned to server group &SERVER_GROUPS#[&VAR#]. Aborting ..."
+:       IF &UC4RB_JBOSS_FAIL_IF_STOPPED# = "YES"
+          exit 1
+:       ELSE
+          exit 0
+:       ENDIF
+      fi
+:     SET &VAR# = &VAR# + 1
+:    ENDWHILE
+:  ENDIF
+
+:ENDIF
+
+! ------------------- Disable Application -------------------
+
+echo "Stop/Unassign &UC4RB_JBOSS_APP_NAME# on JBoss EAP 6 (&UC4RB_JBOSS_OPERATING_MODE#) ..."
+
+output=`&UC4_JBOSS_CLI_DISABLE_APP#`
+RC=$?
+echo "$output" | grep -v "ARATools\|Version\:\|Date\:\|GmbH"
+if [ "$RC" -gt "0" ] ;
+  then
+    exit $RC;
+fi
+
+if [ "`echo "$output" | grep "Undeploy failed:"`" ]; then
+  echo "Failed to stop/unassigned "&UC4RB_JBOSS_APP_NAME#" in JBoss(&UC4RB_JBOSS_OPERATING_MODE#). Aborting ..."
+  exit 1
+fi
+
+! --------------------------------------
+
+echo -e "\nStop/Unassign process finished. Checking &UC4RB_JBOSS_APP_NAME# status again ..."
+
+output=`&UC4_JBOSS_CLI# --command="deployment-info --name=&UC4RB_JBOSS_APP_NAME#"`
+RC=$?
+echo "$output" | grep -v "ARATools\|Version\:\|Date\:\|GmbH"
+if [ "$RC" -gt "0" ] ;
+  then
+    exit $RC;
+fi
+
+:IF &UC4RB_JBOSS_OPERATING_MODE# = "Managed Domain"
+
+:  IF &UC4RB_JBOSS_SERVER_GROUPS# = ""
+!     Return error if the application is still enabled or added in 1 or more server groups
+      if [ "`echo "output" | grep " enabled *$"`" ] ; then
+        echo "&UC4RB_JBOSS_APP_NAME# is not unassigned from all server groups. Aborting ..."
+        exit 1
+      fi
+
+      if [ "`echo "output" | grep -v " not added *$" | grep " added *$"`" ] ; then
+        echo "&UC4RB_JBOSS_APP_NAME# is not unassigned from all server groups. Aborting ..."
+        exit 1
+      fi
+
+:  ELSE
+:    SET &VAR# = 1
+:    WHILE &SERVER_GROUPS#[&VAR#] NE ""
+       if [ -z "`echo "$output" | grep "&SERVER_GROUPS#[&VAR#] * not added *$"`" ] ; then
+         echo "Failed to unassign &UC4RB_JBOSS_APP_NAME# from server group &SERVER_GROUPS#[&VAR#]. Aborting ..."
+         exit 1
+       fi
+:      SET &VAR# = &VAR# + 1
+:    ENDWHILE
+:  ENDIF
+
+:ELSE
+
+  if [ -z "`echo "$output" | grep " STOPPED *$"`" ] ; then
+    echo "&UC4RB_JBOSS_APP_NAME# is not stopped in JBoss Standalone. Aborting ..."
+    exit 1
+  fi
+:ENDIF
+
+echo "Stop Application successfully."]]></MSCRI>
+</SCRIPT>
+<OUTPUTSCAN state="1">
+<Inherit>N</Inherit>
+<filterobjects/>
+<HostFsc/>
+<LoginFsc/>
+</OUTPUTSCAN>
+<POST_SCRIPT mode="1" replacementmode="1" state="1">
+<OSCRI><![CDATA[:SET &HND# = PREP_PROCESS_REPORT(,,,"Stop Application successfully.")
+:PROCESS &HND#
+:   SET &UC4RB_JBOSS_APPLN_STOPPED# = "TRUE"
+:   PUBLISH &UC4RB_JBOSS_APPLN_STOPPED#,,"WORKFLOW"
+:ENDPROCESS]]></OSCRI>
+</POST_SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBS_UNIX>
+</uc-export>

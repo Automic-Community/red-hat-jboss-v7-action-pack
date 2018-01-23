@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBS_WINDOWS AttrType="WINDOWS" name="PCK.AUTOMIC_JBOSS_V6.PRV.JOB.ROLLBACK_TX_DATASOURCE@WINDOWS">
+<XHEADER state="1">
+<Title/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<Active>1</Active>
+<OH_SubType/>
+<CustomAttributes KeyListID="0" dataRequestID="0"/>
+</XHEADER>
+<OUTPUTREG state="1">
+<FileReg/>
+</OUTPUTREG>
+<SYNCREF state="1">
+<Syncs/>
+</SYNCREF>
+<ATTR_JOBS state="1">
+<Queue>CLIENT_QUEUE</Queue>
+<StartType/>
+<HostDst>|&lt;WIN&gt;|HOST</HostDst>
+<HostATTR_Type>WINDOWS</HostATTR_Type>
+<CodeName/>
+<Login/>
+<IntAccount/>
+<ExtRepDef>1</ExtRepDef>
+<ExtRepAll>0</ExtRepAll>
+<ExtRepNone>0</ExtRepNone>
+<AutoDeactNo>0</AutoDeactNo>
+<AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
+<AutoDeactErrorFree>1</AutoDeactErrorFree>
+<DeactWhen>ANY_OK</DeactWhen>
+<DeactDelay>0</DeactDelay>
+<AutoDeactAlways>0</AutoDeactAlways>
+<AttDialog>0</AttDialog>
+<ActAtRun>1</ActAtRun>
+<Consumption>0</Consumption>
+<UC4Priority>0</UC4Priority>
+<MaxParallel2>0</MaxParallel2>
+<MpElse1>1</MpElse1>
+<MpElse2>0</MpElse2>
+<TZ/>
+</ATTR_JOBS>
+<ATTR_WINDOWS state="1">
+<OutputDb>1</OutputDb>
+<OutputDbErr>0</OutputDbErr>
+<OutputFile>0</OutputFile>
+<IsGenerated>0</IsGenerated>
+<BAT>0</BAT>
+<COM>0</COM>
+<WinBatch>1</WinBatch>
+<Standard>1</Standard>
+<Minimized>0</Minimized>
+<Maximized>0</Maximized>
+<JObjDefault>0</JObjDefault>
+<JObjYes>1</JObjYes>
+<JObjNo>0</JObjNo>
+<WorkingDirectory>c:\</WorkingDirectory>
+<Command/>
+<LogOn>0</LogOn>
+<ShowJob>0</ShowJob>
+</ATTR_WINDOWS>
+<RUNTIME state="1">
+<MaxRetCode>0</MaxRetCode>
+<MrcExecute/>
+<MrcElseE>0</MrcElseE>
+<FcstStatus>0| |</FcstStatus>
+
+<ErtMethodDef>1</ErtMethodDef>
+<ErtMethodFix>0</ErtMethodFix>
+<ErtFix>0</ErtFix>
+<ErtDynMethod>2|Average</ErtDynMethod>
+<ErtMethodDyn>0</ErtMethodDyn>
+<ErtCnt>0</ErtCnt>
+<ErtCorr>0</ErtCorr>
+<ErtIgn>0</ErtIgn>
+<ErtIgnFlg>0</ErtIgnFlg>
+<ErtMinCnt>0</ErtMinCnt>
+<MrtMethodNone>1</MrtMethodNone>
+<MrtMethodFix>0</MrtMethodFix>
+<MrtFix>0</MrtFix>
+<MrtMethodErt>0</MrtMethodErt>
+<MrtErt>0</MrtErt>
+<MrtMethodDate>0</MrtMethodDate>
+<MrtDays>0</MrtDays>
+<MrtTime>00:00</MrtTime>
+<MrtTZ/>
+<SrtMethodNone>1</SrtMethodNone>
+<SrtMethodFix>0</SrtMethodFix>
+<SrtFix>0</SrtFix>
+<SrtMethodErt>0</SrtMethodErt>
+<SrtErt>0</SrtErt>
+<MrtCancel>0</MrtCancel>
+<MrtExecute>0</MrtExecute>
+<MrtExecuteObj/>
+</RUNTIME>
+<DYNVALUES state="1">
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
+<VALUE state="1">
+<Values/>
+<Mode>0</Mode>
+</VALUE>
+</node>
+</dyntree>
+</DYNVALUES>
+<ROLLBACK state="1">
+<RollbackFlag>0</RollbackFlag>
+<CBackupObj/>
+<CRollbackObj/>
+<FBackupPath/>
+<FDeleteBefore>0</FDeleteBefore>
+<FInclSubDirs>0</FInclSubDirs>
+</ROLLBACK>
+<PRE_SCRIPT mode="1" replacementmode="1" state="1">
+<PSCRI><![CDATA[:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.PREPARE_JOB]]></PSCRI>
+</PRE_SCRIPT>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[:INCLUDE PCK.ITPA_SHARED.PUB.INCLUDE.POWERSHELL_UTILITY
+:INCLUDE PCK.AUTOMIC_JBOSS_V6.PRV.INCLUDE.ATTACH
+:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CHANGE_DIRECTORY_TO_AGENT_BIN
+:INCLUDE PCK.AUTOMIC_JBOSS_V6.PRV.INCLUDE.JBOSS_CLI@WINDOWS
+:SET &UC4RB_JBOSS_CLI# = &UC4_JBOSS_CLI#
+$env:NOPAUSE="True"
+
+:IF &UC4RB_JBOSS_OPERATING_MODE# = 'Managed Domain'
+:  IF &UC4RB_JBOSS_PROFILE# = ''
+:    PRINT Profile must not be empty
+:    EXIT 1
+:  ELSE
+:    SET &UC4RB_JBOSS_DS_QUERY_CMD# = '/profile=&UC4RB_JBOSS_PROFILE#/subsystem=datasources'
+:    SET &UC4RB_JBOSS_DS_COMMAND# = 'data-source --profile=&UC4RB_JBOSS_PROFILE#'
+:  ENDIF
+:ELSE
+:  SET &UC4RB_JBOSS_DS_QUERY_CMD# = '/subsystem=datasources'
+:  SET &UC4RB_JBOSS_DS_COMMAND# = 'data-source'
+:ENDIF
+
+$jndi_name=''
+$driver_name=''
+$connection_url=''
+$driver_class=''
+$user_name=''
+$password=''
+$max_pool_size=''
+$min_pool_size=''
+$enabled=''
+$jta=''
+$connection_properties=$false
+$connection_props_keys=@()
+$connection_props_values=@()
+
+ForEach ($line in Get-Content "&UC4RB_BACKUP_REPORT#") {
+!  process connection properties, suppose that this info always at the end of report
+  if ($connection_properties) {
+    $idx=$line.IndexOf("value=")
+    if ($idx -lt 0) {
+!     obtain the properties name
+      $connection_props_keys += $line.Trim()
+    } else {
+!     obtain value
+      $connection_props_values += $line.Substring($idx + 6).Trim()
+    }
+    continue
+  }
+
+  $idx="$line".IndexOf("=")
+  if ($idx -gt 0) {
+    $key="$line".SubString(0, $idx)
+    $val="$line".SubString($idx + 1)
+
+    if ($key -eq "jndi-name") {
+      $jndi_name = $val
+    }
+    if ($key -eq "driver-name") {
+      $driver_name = $val
+    }
+    if ($key -eq "connection-url") {
+      $connection_url = $val
+    }
+    if ($key -eq "driver-class") {
+      $driver_class = $val
+    }
+    if ($key -eq "user-name") {
+      $user_name = $val
+    }
+    if ($key -eq "password") {
+      $enc_passwd = $val
+      $decryption = java -jar "&$AGENT_RESOURCES_CLIENT#jboss-v6-tool.jar" ARB -cmd cipher decrypt "$enc_passwd" | findstr /B "Decrypted: .*"
+      $password = $decryption.Substring(11)
+    }
+    if ($key -eq "max-pool-size") {
+      $max_pool_size = $val
+    }
+    if ($key -eq "min-pool-size") {
+      $min_pool_size = $val
+    }
+    if ($key -eq "enabled") {
+      $enabled = $val
+    }
+    if ($key -eq "jta") {
+      $jta = $val
+    }
+  } else {
+    $line = $line.Trim()
+    if ($line -eq "connection-properties") {
+      $connection_properties=$true
+    }
+  }
+}
+
+! prepare parameters
+$uc4_ds_params=''
+if (($jndi_name -eq '') -or ($jndi_name -eq 'n/a')) {
+  $uc4_ds_params="$uc4_ds_params--jndi-name=undefined "
+} else {
+  $uc4_ds_params="$uc4_ds_params--jndi-name=$jndi_name "
+}
+
+if (($driver_name -eq '') -or ($driver_name -eq 'n/a')) {
+  $uc4_ds_params="$uc4_ds_params--driver-name=undefined "
+} else {
+  $uc4_ds_params="$uc4_ds_params--driver-name=$driver_name "
+}
+
+if (($connection_url -eq '') -or ($connection_url -eq 'n/a')) {
+  $uc4_ds_params="$uc4_ds_params--connection-url=undefined "
+} else {
+  $uc4_ds_params="$uc4_ds_params--connection-url=$connection_url "
+}
+
+if (($driver_class -eq '') -or ($driver_class -eq 'n/a')) {
+  $uc4_ds_params="$uc4_ds_params--driver-class=undefined "
+} else {
+  $uc4_ds_params="$uc4_ds_params--driver-class=$driver_class "
+}
+
+if (($user_name -eq '') -or ($user_name -eq 'n/a')) {
+  $uc4_ds_params="$uc4_ds_params--user-name=undefined "
+} else {
+  $uc4_ds_params="$uc4_ds_params--user-name=$user_name "
+}
+
+if (($password -eq '') -or ($password -eq 'n/a')) {
+  $uc4_ds_params="$uc4_ds_params--password=undefined "
+} else {
+  $uc4_ds_params="$uc4_ds_params--password=$password "
+}
+
+if (($max_pool_size -eq '') -or ($max_pool_size -eq 'n/a')) {
+  $uc4_ds_params="$uc4_ds_params--max-pool-size=undefined "
+} else {
+  $uc4_ds_params="$uc4_ds_params--max-pool-size=$max_pool_size "
+}
+
+if (($min_pool_size -eq '') -or ($min_pool_size -eq 'n/a')) {
+  $uc4_ds_params="$uc4_ds_params--min-pool-size=undefined "
+} else {
+  $uc4_ds_params="$uc4_ds_params--min-pool-size=$min_pool_size "
+}
+
+if (($jta -eq '') -or ($jta -eq 'n/a')) {
+  $uc4_ds_params="$uc4_ds_params--jta=undefined "
+} else {
+  $uc4_ds_params="$uc4_ds_params--jta=$jta "
+}
+
+Write-Host Rollback datasource &UC4RB_JBOSS_NAME#..
+
+&UC4RB_JBOSS_CLI# --command="&UC4RB_JBOSS_DS_COMMAND# --name=&UC4RB_JBOSS_NAME# $uc4_ds_params"
+:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CHECK_POWERSHELL_CMD@WINDOWS
+
+$result = &UC4RB_JBOSS_CLI# --command=":reload"
+
+Write-Host Props Name: $connection_props_keys
+Write-Host Props Value: $connection_props_values
+
+if ($connection_properties) {
+! update connection properties
+  for ($i=0; $i -lt $connection_props_keys.length; $i++) {
+!   add connection properties
+    $key = $connection_props_keys[$i]
+    $value = $connection_props_values[$i]
+    $command = "&UC4RB_JBOSS_DS_QUERY_CMD#/data-source=&UC4RB_JBOSS_NAME#/connection-properties=$key/:add(value=$value)"
+    $result = &UC4RB_JBOSS_CLI# --command="$command"
+  }
+}
+
+Write-Host Successfully rollback datasource &UC4RB_JBOSS_NAME#
+exit 0
+]]></MSCRI>
+</SCRIPT>
+<OUTPUTSCAN state="1">
+<Inherit>N</Inherit>
+<filterobjects/>
+<HostFsc/>
+<LoginFsc/>
+</OUTPUTSCAN>
+<POST_SCRIPT mode="1" replacementmode="1" state="1">
+<OSCRI/>
+</POST_SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBS_WINDOWS>
+</uc-export>

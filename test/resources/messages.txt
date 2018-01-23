@@ -1,0 +1,6 @@
+*** Variables ***
+#---- AE status ---------------------
+${ENDED_JP_ABEND}    ENDED_JP_ABEND \ - not executed due to abnormal Workflow end.
+${ENDED_OK}       ENDED_OK - ended normally
+${ENDED_NOT_OK}    ENDED_NOT_OK - aborted
+${ENDED_JP_CANCEL}    ENDED_JP_CANCEL - Workflow canceled manually.
