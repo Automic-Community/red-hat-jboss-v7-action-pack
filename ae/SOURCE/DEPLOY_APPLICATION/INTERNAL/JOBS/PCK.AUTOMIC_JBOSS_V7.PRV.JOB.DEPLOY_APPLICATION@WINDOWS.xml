@@ -154,23 +154,25 @@
 :ENDIF
 
 !---------------------- Get Package name from path ----------------------
-:SET &FINAL_SLASH# = STR_FIND_REVERSE(&UC4RB_JBOSS_PACKAGE#, "\")
-:SET &FINAL_SLASH# = ADD(&FINAL_SLASH#, 1)
-
-:IF &FINAL_SLASH# > 1
-:  SET &PACKAGE_NAME# = STR_CUT(&UC4RB_JBOSS_PACKAGE#, &FINAL_SLASH#)
-:ELSE
-:  PRINT Deployment Package Path is not valid. Aborting ...
-:  EXIT 1
-:ENDIF
-
-! Escapes spaces for Powershell
-:SET &PACKAGE_NAME# = STR_SUB(&PACKAGE_NAME#, " ", "` ")
+:SET &FILE_PATH# = &UC4RB_JBOSS_PACKAGE#
+!:SET &FINAL_SLASH# = STR_FIND_REVERSE(&UC4RB_JBOSS_PACKAGE#, "\")
+!:SET &FINAL_SLASH# = ADD(&FINAL_SLASH#, 1)
+!
+!:IF &FINAL_SLASH# > 1
+!:  SET &PACKAGE_NAME# = STR_CUT(&UC4RB_JBOSS_PACKAGE#, &FINAL_SLASH#)
+!:ELSE
+!:  PRINT Deployment Package Path is not valid. Aborting ...
+!:  EXIT 1
+!:ENDIF
+!
+!! Escapes spaces for Powershell
+!:SET &PACKAGE_NAME# = STR_SUB(&PACKAGE_NAME#, " ", "` ")
 :SET &UC4RB_JBOSS_SERVER_GROUPS1# = STR_SUB(&UC4RB_JBOSS_SERVER_GROUPS#, ",", "`,")
 
 !---------------------- Deploy command  ----------------------
 ! below escaping lets the command ends up like 'deploy \"<name>\" ...' to java, by this way package name with spaces is applicable
-:SET &UC4_JBOSS_CLI_DEPLOY# = '&UC4_JBOSS_CLI# --command="deploy \\`""&PACKAGE_NAME#\\`""'
+!:SET &UC4_JBOSS_CLI_DEPLOY# = '&UC4_JBOSS_CLI# --command="deploy \\`""&PACKAGE_NAME#\\`""'
+:SET &UC4_JBOSS_CLI_DEPLOY# = '&UC4_JBOSS_CLI# --command="deploy ""&FILE_PATH#""'
 :SET &UC4_JBOSS_CLI_DEPLOY# = '&UC4_JBOSS_CLI_DEPLOY# --name=&UC4RB_JBOSS_APP_NAME#'
 
 :IF &UC4RB_JBOSS_UPDATE# = "YES"
@@ -226,7 +228,7 @@ if ($? -ne 1) {
 }
 
 !---------- Deployment ------------
-Write-Host "Deploying &UC4RB_JBOSS_APP_NAME# on JBoss EAP 6 (&UC4RB_JBOSS_OPERATING_MODE#) ..."
+Write-Host "Deploying &UC4RB_JBOSS_APP_NAME# on JBoss EAP 7 (&UC4RB_JBOSS_OPERATING_MODE#) ..."
 
 cd "&UC4RB_JBOSS_PACKAGE#\.."
 :INC PCK.ITPA_SHARED.PRV.INCLUDE.CHECK_POWERSHELL_CMD@WINDOWS
@@ -236,7 +238,7 @@ $output=$(&UC4_JBOSS_CLI_DEPLOY#)
 
 $output | findstr /I /C:"operation failed" | Out-Null
 if ($? -eq 1) {
-  Write-Host "Failed to deploy &UC4RB_JBOSS_APP_NAME# on JBoss EAP 6 (&UC4RB_JBOSS_OPERATING_MODE#). Aborting ..."
+  Write-Host "Failed to deploy &UC4RB_JBOSS_APP_NAME# on JBoss EAP 7 (&UC4RB_JBOSS_OPERATING_MODE#). Aborting ..."
   exit 1
 }
 
