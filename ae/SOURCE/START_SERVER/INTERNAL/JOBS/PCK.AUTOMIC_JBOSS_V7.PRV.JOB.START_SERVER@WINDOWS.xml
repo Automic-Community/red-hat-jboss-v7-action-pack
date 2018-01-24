@@ -180,7 +180,9 @@ function IsServerRunning {
 !----------------------------------------------------------------------------------------------------
 function IsJBossRunning {
 
-  &UC4_JBOSS_CLI# --command=`"quit`" | findstr /C:"Failed to connect to the controller" | Out-Null
+   $quit_output = &UC4_JBOSS_CLI# --command="quit"
+   $quit_output | findstr /C:"Failed to connect to the controller"
+
   if("$?" -eq "False") {
     return 1
   } else {
