@@ -231,7 +231,54 @@ function UpdateXADatasourceProperties {
 : ENDIF
 }
 
+function addXADatasourceProperties{
+
+! add xa datasource properties
+: IF &UC4RB_JBOSS_PROPERTIES# <> ''
+:   SET &UC4RB_JBOSS_PROPERTIES# = STR_SUB(&UC4RB_JBOSS_PROPERTIES#, '"', '`"')
+!   parse properties
+    $splits = "&UC4RB_JBOSS_PROPERTIES#".split(",")
+    $keys = @()
+    $values = @()
+    for($i=0; $i -lt $splits.length; $i++) {
+      $ele = $splits[$i]
+      $eqlSign = $ele.IndexOf("=")
+      if ($eqlSign -lt 0) {
+        break
+      }
+      $k = $ele.Substring(0, $eqlSign).Trim()
+      if (![bool]$k) {
+        break
+      }
+      $keys += $k
+      $values += $ele.Substring($eqlSign + 1).Trim()
+    }
+
+   $xadsproperties = ""
+
+    for ($i=0; $i -lt $keys.length; $i++) {
+!     add properties, notice that existing properties can not be updated
+      $key = $keys[$i]
+      $value = $values[$i]
+      $xadsproperties+="$key=>$value"
+      if(($i+1) -le $keys.length  ){
+          $xadsproperties+=','
+      }
+    }
+     $xadsproperties = "--xa-datasource-properties={$xadsproperties}"
+     return $xadsproperties
+: ELSE
+!:   STOP MSG, 50, "At least one XA datasource property is required when defining an XA datasource"
+    Write-Host "At least one XA datasource property is required when defining an XA datasource , exiting..."
+    exit 1
+: ENDIF
+
+
+}
+
 Write-Host Checking XA datasource existence..
+
+
 
 ! check if datasource exists
 $result = &UC4RB_JBOSS_CLI# --command="&UC4RB_JBOSS_DS_QUERY_CMD#/xa-data-source=&UC4RB_JBOSS_NAME#:read-resource"
@@ -242,10 +289,13 @@ if ([bool]($result)) {
   FailIfExisting
 }
 
+
+$xadsproperties = addXADatasourceProperties
+
 Write-Host Creating new XA datasource &UC4RB_JBOSS_NAME#..
 
 ! create new data source
-&UC4RB_JBOSS_CLI# --command="&UC4RB_JBOSS_DS_COMMAND# add --name=&UC4RB_JBOSS_NAME# --jndi-name=&UC4RB_JBOSS_JNDI_NAME# --driver-name=&UC4RB_JBOSS_DRIVER_NAME# &UC4RB_JBOSS_XA_DS_PARAMS#"
+&UC4RB_JBOSS_CLI# --command="&UC4RB_JBOSS_DS_COMMAND# add --name=&UC4RB_JBOSS_NAME# --jndi-name=&UC4RB_JBOSS_JNDI_NAME# --driver-name=&UC4RB_JBOSS_DRIVER_NAME# &UC4RB_JBOSS_XA_DS_PARAMS# $xadsproperties"
 :INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CHECK_POWERSHELL_CMD@WINDOWS
 
 $result = &UC4RB_JBOSS_CLI# --command=":reload"
@@ -261,7 +311,7 @@ if (![bool]($result)) {
   exit 1
 }
 
-UpdateXADatasourceProperties
+#UpdateXADatasourceProperties
 
 Write-Host Successfully create XA datasource &UC4RB_JBOSS_NAME#
 :INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CHECK_POWERSHELL_CMD@WINDOWS
