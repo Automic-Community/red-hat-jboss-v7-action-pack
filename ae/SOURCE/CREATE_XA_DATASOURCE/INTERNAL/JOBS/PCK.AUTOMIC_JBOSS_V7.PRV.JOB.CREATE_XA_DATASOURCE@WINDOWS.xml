@@ -268,7 +268,6 @@ function addXADatasourceProperties{
      $xadsproperties = "--xa-datasource-properties={$xadsproperties}"
      return $xadsproperties
 : ELSE
-!:   STOP MSG, 50, "At least one XA datasource property is required when defining an XA datasource"
     Write-Host "At least one XA datasource property is required when defining an XA datasource , exiting..."
     exit 1
 : ENDIF
