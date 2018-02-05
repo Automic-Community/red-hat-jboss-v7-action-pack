@@ -63,7 +63,7 @@ public class ServerSnapshot extends AbstractJBossV6Feature {
         try {
             connect();
             isDomain = cli.getCommandContext().isDomainMode();
-            res = cli.cmd("/:read-resource(include-runtime=true,recursive=true,recursive-depth=0,proxies=true)");            
+            res = cli.cmd("/:read-resource(include-runtime=true,recursive=true,proxies=true)");            
             root = mapper.readTree(res.getResponse().get("result").toJSONString(true));
         } catch (Exception e) {
             Logger.log("Failed to connect to JBoss CLI", "ERROR");

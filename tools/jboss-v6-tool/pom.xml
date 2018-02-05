@@ -39,9 +39,9 @@
 		<dependency>
 			<groupId>org.jboss</groupId>
 			<artifactId>jboss-cli-client</artifactId>
-			<version>7.2.0.Final-redhat-8</version>
+			<version>7.0.0.GA</version>
 			<scope>system</scope>
-			<systemPath>${project.basedir}/unboundid-jboss/jboss-cli-client-7.2.0.Final-redhat-8.jar</systemPath>
+			<systemPath>${project.basedir}/unboundid-jboss/jboss-cli-client-7.0.0.GA.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>com.googlecode.java-diff-utils</groupId>
