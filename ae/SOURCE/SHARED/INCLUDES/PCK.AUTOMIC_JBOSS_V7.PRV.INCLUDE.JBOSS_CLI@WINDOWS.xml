@@ -7,7 +7,7 @@
 <OH_SubType/>
 </HEADER>
 <SCRIPT mode="1" state="1">
-<MSCRI><![CDATA[:SET &UC4_JBOSS_CLI# = 'java -jar "&$AGENT_RESOURCES_CLIENT#jboss-v6-tool.jar" arb -cmd execute "&UC4RB_JBOSS_HOME#\bin\jboss-cli.bat" --connect'
+<MSCRI><![CDATA[:SET &UC4_JBOSS_CLI# = 'java -jar "&$AGENT_RESOURCES_CLIENT#jboss-v7-tool.jar" arb -cmd execute "&UC4RB_JBOSS_HOME#\bin\jboss-cli.bat" --connect'
 
 :IF &UC4RB_JBOSS_HOST# NE ""
 :  SET &UC4_JBOSS_CLI# = "&UC4_JBOSS_CLI# --controller=&UC4RB_JBOSS_HOST#"

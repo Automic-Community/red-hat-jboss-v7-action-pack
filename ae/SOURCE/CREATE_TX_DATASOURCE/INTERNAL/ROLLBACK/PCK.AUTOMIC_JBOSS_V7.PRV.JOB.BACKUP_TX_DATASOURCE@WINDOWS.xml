@@ -160,7 +160,7 @@ if ([bool]($result)) {
   foreach ($line in $properties) {
     if ($line -match "^password=.*") {
       $passwd = "$line".Substring(9)
-      $encryption = java -jar "&$AGENT_RESOURCES_CLIENT#jboss-v6-tool.jar" ARB -cmd cipher encrypt "$passwd" | findstr /B "Encrypted: .*"
+      $encryption = java -jar "&$AGENT_RESOURCES_CLIENT#jboss-v7-tool.jar" ARB -cmd cipher encrypt "$passwd" | findstr /B "Encrypted: .*"
       $encrypted_pwd = $encryption.Substring(11)
       $line="password=$encrypted_pwd"
     }
