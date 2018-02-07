@@ -211,7 +211,7 @@ StopJBossEAP() {
   sleep &UC4RB_JBOSS_TIMEOUT#
 : INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CHECK_SHELL_CMD@UNIX
 
-  echo "Checking JBoss EAP 6.1 state again ..."
+  echo "Checking JBoss EAP 7.1 state again ..."
 
   if [ -z "`IsJBossRunning`" ]; then
     echo "JBoss (&UC4RB_JBOSS_OPERATING_MODE#) has been successfully stopped."

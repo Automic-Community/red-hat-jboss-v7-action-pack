@@ -361,7 +361,7 @@
 <MSCRI><![CDATA[:INC PCK.ITPA_SHARED.PRV.INCLUDE.SET_BACKUP_DIRECTORY]]></MSCRI>
 </SCRIPT>
 <DOCU_Docu state="1" type="text">
-<DOC><![CDATA[Stop JBoss EAP 6.1 Standalone or Managed Domain. If servers have already stopped, return exit code depends on "Fail if not running" flag.
+<DOC><![CDATA[Stop JBoss EAP 7.1 Standalone or Managed Domain. If servers have already stopped, return exit code depends on "Fail if not running" flag.
 
 Standalone mode:
 Stop JBoss using jboss-cli.bat(jboss-cli.sh) (shutdown) in JBOSS_HOME/bin/ directory.

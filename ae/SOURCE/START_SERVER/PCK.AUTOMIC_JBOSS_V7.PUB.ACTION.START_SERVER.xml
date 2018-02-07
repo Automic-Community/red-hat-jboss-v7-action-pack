@@ -395,7 +395,7 @@
 <MSCRI/>
 </SCRIPT>
 <DOCU_Docu state="1" type="text">
-<DOC><![CDATA[Start JBoss EAP 6.1 Standalone or Managed Domain. If servers have already started, return exit code depends on "Fail if running" flag.
+<DOC><![CDATA[Start JBoss EAP 7.1 Standalone or Managed Domain. If servers have already started, return exit code depends on "Fail if running" flag.
 
 Standalone mode:
 Start JBoss using standalone.bat(standalone.sh) in JBOSS_HOME/bin/ directory. All additional options are equivalent.

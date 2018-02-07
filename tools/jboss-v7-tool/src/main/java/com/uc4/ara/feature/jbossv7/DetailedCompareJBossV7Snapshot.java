@@ -81,7 +81,7 @@ public class DetailedCompareJBossV7Snapshot extends  AbstractInternalFeature {
 
         home = parser.addHelp(
                 parser.addStringOption("hm",  "home", true),
-                "Home directory of JBoss. Ex: /root/jboss-eap-6.1/");
+                "Home directory of JBoss. Ex: /root/jboss-eap-7.1/");
 
         host = parser.addHelp(
                 parser.addStringOption("h", "host", false),

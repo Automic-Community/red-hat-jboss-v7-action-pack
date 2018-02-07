@@ -163,14 +163,14 @@ if [ "`echo "$output" | grep " not found"`" ]; then
 fi
 
 !---------- Deployment ------------
-echo "Undeploying &UC4RB_JBOSS_APP_NAME# on JBoss EAP 6.1 (&UC4RB_JBOSS_OPERATING_MODE#) ..."
+echo "Undeploying &UC4RB_JBOSS_APP_NAME# on JBoss EAP 7.1 (&UC4RB_JBOSS_OPERATING_MODE#) ..."
 
 output=`&UC4_JBOSS_CLI_UNDEPLOY#`
 :INC PCK.AUTOMIC_JBOSS_V7.PRV.INCLUDE.CHECK_SHELL_CMD_CUSTOM@UNIX
 
 ! Check if deploy already exist or not
 if [ "`echo "$output" | grep "Undeploy failed:"`" ]; then
-    echo "Failed to undeploy &UC4RB_JBOSS_APP_NAME# on JBoss EAP 6 (&UC4RB_JBOSS_OPERATING_MODE#). Aborting ..."
+    echo "Failed to undeploy &UC4RB_JBOSS_APP_NAME# on JBoss EAP 7 (&UC4RB_JBOSS_OPERATING_MODE#). Aborting ..."
     exit 1
 fi
 

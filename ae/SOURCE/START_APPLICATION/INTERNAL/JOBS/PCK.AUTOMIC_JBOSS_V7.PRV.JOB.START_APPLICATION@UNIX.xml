@@ -209,7 +209,7 @@ fi
 
 ! ------------------- Enable Application -------------------
 
-echo "Starting/Assigning &UC4RB_JBOSS_APP_NAME# on JBoss EAP 6 (&UC4RB_JBOSS_OPERATING_MODE#) ..."
+echo "Starting/Assigning &UC4RB_JBOSS_APP_NAME# on JBoss EAP 7 (&UC4RB_JBOSS_OPERATING_MODE#) ..."
 
 output=`&UC4_JBOSS_CLI_ENABLE_APP#`
 RC=$?
