@@ -10,8 +10,8 @@
 <DOC><![CDATA[Manage your application deployments to a JBoss application server using these actions
 
 =Supported versions=
-
-See http://docs.automic.com/compatibility?len=Package.JBoss.v7&comp=PCK.AUTOMIC_JBOSS_V7&version=1.0.1
+JBoss EAP 7.0 and 7.1
+See http://docs.automic.com/compatibility?len=Package.JBoss.v7&comp=PCK.AUTOMIC_JBOSS_V7&version=1.0.0
 
 =Rollback=
 

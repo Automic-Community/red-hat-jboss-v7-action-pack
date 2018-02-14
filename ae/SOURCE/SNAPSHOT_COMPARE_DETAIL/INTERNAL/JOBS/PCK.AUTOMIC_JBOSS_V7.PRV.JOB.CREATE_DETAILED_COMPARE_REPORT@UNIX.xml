@@ -117,7 +117,7 @@
 :SET &UC4RB_FILE_NAME# = STR_TRIM(&UC4RB_FILE_NAME#)
 
 :JCL_CONCAT_CHAR "?"
-java -jar "&$AGENT_RESOURCES_CLIENT#jboss-v6-tool.jar" jbossv6 DetailedCompareJBossV6Snapshot  --home "&UC4RB_JBOSS_HOME#" --host "&UC4RB_JBOSS_HOST#" ?
+java -jar "&$AGENT_RESOURCES_CLIENT#jboss-v7-tool.jar" jbossv7 DetailedCompareJBossV7Snapshot  --home "&UC4RB_JBOSS_HOME#" --host "&UC4RB_JBOSS_HOST#" ?
 --port &UC4RB_JBOSS_PORT# --username "&UC4RB_JBOSS_USERNAME#" --password "&UC4RB_JBOSS_PASSWORD#" ?
 --archivePath "&UC4RB_ARCHIVE_PATH#/&UC4RB_OUT_TARGET_GUID#" --comparedFile "&UC4RB_FILE_NAME#" ?
 --resultFile "&UC4RB_FILE_NAME#-Result.xml"

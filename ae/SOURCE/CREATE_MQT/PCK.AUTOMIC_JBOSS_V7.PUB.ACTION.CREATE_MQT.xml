@@ -66,7 +66,7 @@
 <UC4RB_JBOSS_MAX_ATTEMPTSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_MAX_ATTEMPTS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
 <UC4RB_JBOSS_NAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_NAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
 <UC4RB_JBOSS_OPERATING_MODEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_OPERATING_MODE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT">Standalone</UC4RB_JBOSS_OPERATING_MODEs.00>
-<UC4RB_JBOSS_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT">--10</UC4RB_JBOSS_PASSWORDs.00>
+<UC4RB_JBOSS_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
 <UC4RB_JBOSS_PORTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
 <UC4RB_JBOSS_PROFILEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_PROFILE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
 <UC4RB_JBOSS_RE_DELAYs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_RE_DELAY#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
@@ -144,7 +144,7 @@
 <UC4RB_JBOSS_MAX_ATTEMPTSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_MAX_ATTEMPTS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
 <UC4RB_JBOSS_NAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_NAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
 <UC4RB_JBOSS_OPERATING_MODEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_OPERATING_MODE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT">Standalone</UC4RB_JBOSS_OPERATING_MODEs.00>
-<UC4RB_JBOSS_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT">--10</UC4RB_JBOSS_PASSWORDs.00>
+<UC4RB_JBOSS_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
 <UC4RB_JBOSS_PORTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
 <UC4RB_JBOSS_PROFILEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_PROFILE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
 <UC4RB_JBOSS_RE_DELAYs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_RE_DELAY#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
@@ -222,7 +222,7 @@
 <UC4RB_JBOSS_MAX_ATTEMPTSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_MAX_ATTEMPTS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
 <UC4RB_JBOSS_NAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_NAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
 <UC4RB_JBOSS_OPERATING_MODEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_OPERATING_MODE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT">Standalone</UC4RB_JBOSS_OPERATING_MODEs.00>
-<UC4RB_JBOSS_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT">--10</UC4RB_JBOSS_PASSWORDs.00>
+<UC4RB_JBOSS_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
 <UC4RB_JBOSS_PORTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
 <UC4RB_JBOSS_PROFILEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_PROFILE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
 <UC4RB_JBOSS_RE_DELAYs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_RE_DELAY#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
@@ -284,7 +284,7 @@
 <UC4RB_JBOSS_MAX_ATTEMPTSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_MAX_ATTEMPTS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
 <UC4RB_JBOSS_NAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_NAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
 <UC4RB_JBOSS_OPERATING_MODEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_OPERATING_MODE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT">Standalone</UC4RB_JBOSS_OPERATING_MODEs.00>
-<UC4RB_JBOSS_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT">--10</UC4RB_JBOSS_PASSWORDs.00>
+<UC4RB_JBOSS_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
 <UC4RB_JBOSS_PORTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
 <UC4RB_JBOSS_PROFILEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_PROFILE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>
 <UC4RB_JBOSS_RE_DELAYs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_JBOSS_RE_DELAY#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT"/>

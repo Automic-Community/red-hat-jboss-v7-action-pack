@@ -52,7 +52,7 @@
 					<Description>Server group(s) for application management. Separated by commas. Not required in Standalone mode.</Description>
                 </Property>
 				<Property name="home_directory" type="SingleLineText" mode="EDITABLE" displayName="Home Directory">
-					<Description>JBoss home directory. Eg: /var/jboss/jboss-eap-6.1</Description>
+					<Description>JBoss home directory. Eg: /var/jboss/jboss-eap-7.1</Description>
                 </Property>
 				<Property name="operating_mode" type="SingleChoice" mode="EDITABLE" displayName="Operating mode">
 					<List>Standalone, Managed Domain</List>

@@ -340,7 +340,7 @@
 
 		<Property name="/jboss/server/home_directory" highlighted="false">
 			<Value>{@target/custom/home_directory}</Value>
-			<Description>JBoss home directory. Eg: /var/jboss/jboss-eap-6.1</Description>
+			<Description>JBoss home directory. Eg: /var/jboss/jboss-eap-7.1</Description>
 		</Property>
 		<Property name="/jboss/server/host_controller" highlighted="false">
 			<Value>{@target/custom/host_controller}</Value>

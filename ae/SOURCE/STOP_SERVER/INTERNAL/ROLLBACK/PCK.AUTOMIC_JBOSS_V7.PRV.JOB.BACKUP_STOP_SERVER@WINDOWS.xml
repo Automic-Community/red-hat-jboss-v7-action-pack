@@ -123,7 +123,7 @@
 function backUpPID {
 : IF &UC4RB_JBOSS_HOST# EQ ""
 !   If host and port is not provided, use values defined in jboss-cli.xml. If this file is not available, use default value (localhost:9999)
-    $output = $(java -jar "&$AGENT_RESOURCES_CLIENT#jboss-v6-tool.jar" xml ExecutePath -xml "&UC4RB_JBOSS_HOME#\bin\jboss-cli.xml" -x "/jboss-cli/default-controller" -filter first)
+    $output = $(java -jar "&$AGENT_RESOURCES_CLIENT#jboss-v7-tool.jar" xml ExecutePath -xml "&UC4RB_JBOSS_HOME#\bin\jboss-cli.xml" -x "/jboss-cli/default-controller" -filter first)
     $output = $($output | findstr XML-Execute-Result:)
 
     if ($output -match "\<host\>(?<host>.*?)\</host\>") {

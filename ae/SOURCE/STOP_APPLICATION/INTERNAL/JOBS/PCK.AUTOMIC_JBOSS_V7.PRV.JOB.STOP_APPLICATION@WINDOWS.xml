@@ -233,7 +233,7 @@ if ($? -eq 1) {
 
 ! ------------------- Disable Application -------------------
 
-Write-Host "Stop/Unassign &UC4RB_JBOSS_APP_NAME# on JBoss EAP 6 (&UC4RB_JBOSS_OPERATING_MODE#) ..."
+Write-Host "Stop/Unassign &UC4RB_JBOSS_APP_NAME# on JBoss EAP 7 (&UC4RB_JBOSS_OPERATING_MODE#) ..."
 
 $output=$(&UC4_JBOSS_CLI_DISABLE_APP#)
 :INC PCK.AUTOMIC_JBOSS_V7.PRV.INCLUDE.CHECK_PS_CMD_CUSTOM@WINDOWS

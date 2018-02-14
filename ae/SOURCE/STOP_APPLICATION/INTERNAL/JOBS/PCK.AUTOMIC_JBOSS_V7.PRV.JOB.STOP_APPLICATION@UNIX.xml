@@ -205,7 +205,7 @@ fi
 
 ! ------------------- Disable Application -------------------
 
-echo "Stop/Unassign &UC4RB_JBOSS_APP_NAME# on JBoss EAP 6 (&UC4RB_JBOSS_OPERATING_MODE#) ..."
+echo "Stop/Unassign &UC4RB_JBOSS_APP_NAME# on JBoss EAP 7 (&UC4RB_JBOSS_OPERATING_MODE#) ..."
 
 output=`&UC4_JBOSS_CLI_DISABLE_APP#`
 RC=$?

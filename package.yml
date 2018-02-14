@@ -14,7 +14,7 @@ binaries:
     version: 1.0.0
 - object: RESOURCES/LIBS/PCK.AUTOMIC_JBOSS_V7.PRV.STORE
   resources: 
-  - name: JBOSSV6TOOL.JAR
+  - name: JBOSSV7TOOL.JAR
     type: BINARY
-    path: tools/jboss-v6-tool/target/jboss-v6-tool.jar
-    version: 1.0.2
+    path: tools/jboss-v7-tool/target/jboss-v7-tool.jar
+    version: 1.0.0

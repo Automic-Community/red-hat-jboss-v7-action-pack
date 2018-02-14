@@ -231,7 +231,7 @@ if ($? -eq 1) {
 
 ! ------------------- Enable Application -------------------
 
-Write-Host "Enabling &UC4RB_JBOSS_APP_NAME# on JBoss EAP 6 (&UC4RB_JBOSS_OPERATING_MODE#) ..."
+Write-Host "Enabling &UC4RB_JBOSS_APP_NAME# on JBoss EAP 7 (&UC4RB_JBOSS_OPERATING_MODE#) ..."
 
 $output = $(&UC4_JBOSS_CLI_ENABLE_APP#)
 :INC PCK.AUTOMIC_JBOSS_V7.PRV.INCLUDE.CHECK_PS_CMD_CUSTOM@WINDOWS

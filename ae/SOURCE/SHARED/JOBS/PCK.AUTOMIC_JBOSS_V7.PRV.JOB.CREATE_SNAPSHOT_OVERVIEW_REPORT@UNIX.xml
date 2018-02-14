@@ -121,7 +121,7 @@
 :ENDIF
 
 :JCL_CONCAT_CHAR "?"
-java -jar "&$AGENT_RESOURCES_CLIENT#jboss-v6-tool.jar" jbossv6 CompareJBossV6Snapshot --home "&UC4RB_JBOSS_HOME#" ?
+java -jar "&$AGENT_RESOURCES_CLIENT#jboss-v7-tool.jar" jbossv7 CompareJBossV7Snapshot --home "&UC4RB_JBOSS_HOME#" ?
 --port &UC4RB_JBOSS_PORT# --username "&UC4RB_JBOSS_USERNAME#" --host "&UC4RB_JBOSS_HOST#" ?
 --password "&UC4RB_JBOSS_PASSWORD#" --archivePath "&UC4RB_ARCHIVE_PATH#" ?
 --exclude "&UC4RB_JBOSS_APP_FILTER_EXCLUDE#" --guid &UC4RB_OUT_TARGET_GUID#

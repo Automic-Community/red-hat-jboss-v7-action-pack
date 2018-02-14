@@ -151,7 +151,7 @@ else
   do
     if [[ "$prop" = password=* ]]; then
       passwd=$(echo ${prop:9})
-      encryption=$(java -jar "&$AGENT_RESOURCES_CLIENT#jboss-v6-tool.jar" ARB -cmd cipher encrypt "$passwd" | grep "^Encrypted: .*")
+      encryption=$(java -jar "&$AGENT_RESOURCES_CLIENT#jboss-v7-tool.jar" ARB -cmd cipher encrypt "$passwd" | grep "^Encrypted: .*")
       encrypted_pwd=$(echo ${encryption:11})
       prop="password=$encrypted_pwd"
     fi

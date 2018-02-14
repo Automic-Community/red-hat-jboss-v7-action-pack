@@ -180,7 +180,9 @@ function IsServerRunning {
 !----------------------------------------------------------------------------------------------------
 function IsJBossRunning {
 
-  &UC4_JBOSS_CLI# --command=`"quit`" | findstr /C:"Failed to connect to the controller" | Out-Null
+   $quit_output = &UC4_JBOSS_CLI# --command="quit"
+   $quit_output | findstr /C:"Failed to connect to the controller"
+
   if("$?" -eq "False") {
     return 1
   } else {
@@ -199,7 +201,7 @@ function StartJBossEAP {
     FailIfRunning
   }
 
-  Write-Host "JBoss is not running. Starting JBoss EAP 6(&UC4RB_JBOSS_OPERATING_MODE#)..."
+  Write-Host "JBoss is not running. Starting JBoss EAP 7(&UC4RB_JBOSS_OPERATING_MODE#)..."
 : IF &UC4RB_JBOSS_SERVICE_NAME# EQ ""
     Write-Host "Trying to start using standalone.bat/domain.bat ..."
     $arguments = $()
@@ -264,7 +266,7 @@ function StartJBossEAP {
   Start-Sleep -s &UC4RB_JBOSS_TIMEOUT#
 : INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CHECK_POWERSHELL_CMD@WINDOWS
 
-  Write-Host "Checking JBoss EAP 6 state ..."
+  Write-Host "Checking JBoss EAP 7 state ..."
   if($(IsJBossRunning) -eq 1) {
     Write-Host "JBoss (&UC4RB_JBOSS_OPERATING_MODE#) has been successfully started."
     exit 0

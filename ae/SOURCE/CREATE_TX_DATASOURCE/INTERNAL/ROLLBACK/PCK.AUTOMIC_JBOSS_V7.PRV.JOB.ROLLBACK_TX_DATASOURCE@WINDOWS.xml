@@ -185,7 +185,7 @@ ForEach ($line in Get-Content "&UC4RB_BACKUP_REPORT#") {
     }
     if ($key -eq "password") {
       $enc_passwd = $val
-      $decryption = java -jar "&$AGENT_RESOURCES_CLIENT#jboss-v6-tool.jar" ARB -cmd cipher decrypt "$enc_passwd" | findstr /B "Decrypted: .*"
+      $decryption = java -jar "&$AGENT_RESOURCES_CLIENT#jboss-v7-tool.jar" ARB -cmd cipher decrypt "$enc_passwd" | findstr /B "Decrypted: .*"
       $password = $decryption.Substring(11)
     }
     if ($key -eq "max-pool-size") {

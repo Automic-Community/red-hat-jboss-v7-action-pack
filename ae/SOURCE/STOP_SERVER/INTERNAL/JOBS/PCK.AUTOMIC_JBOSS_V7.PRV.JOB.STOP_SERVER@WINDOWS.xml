@@ -177,9 +177,12 @@ function IsServerRunning {
 !----------------------------------------------------------------------------------------------------
 function IsJBossRunning {
 
-  &UC4_JBOSS_CLI# --command=`"quit`" | findstr /C:"Failed to connect to the controller" | Out-Null
+  $quit_output =  &UC4_JBOSS_CLI# --command="quit"
+  $quit_output | findstr /C:"Failed to connect to the controller" | Out-Null
+  $RC = -not $?
+  Write-Host "Is Jboss Running :: $RC"
 
-  if($? -ne 1) {
+  if($RC -eq $True) {
     return 1
   } else {
     return 0
@@ -201,7 +204,9 @@ function IsHcRunning {
 !----------------------------------------------------------------------------------------------------
 function StopJBossEAP {
 
-  if($(IsJBossRunning) -eq 0) {
+  $jboss_state = IsJBossRunning
+
+  if( $jboss_state -eq 0) {
     Write-Host "JBoss Server (&UC4RB_JBOSS_OPERATING_MODE#) is not running. Aborting ..."
     FailIfNotRunning
   }
@@ -213,7 +218,7 @@ function StopJBossEAP {
     net STOP "&UC4RB_JBOSS_SERVICE_NAME#"
 : ELSE
 :   IF &UC4RB_JBOSS_OPERATING_MODE# = "Standalone"
-      &UC4_JBOSS_CLI# --command=`"shutdown`" | Out-Null
+      $shutdown_output = &UC4_JBOSS_CLI# --command=`"shutdown`"
 :   ELSE
 :     IF &UC4RB_JBOSS_HOST_CONTROLLER# NE ""
         if ("$HC" -ne "&UC4RB_JBOSS_HOST_CONTROLLER#") {
@@ -235,9 +240,11 @@ function StopJBossEAP {
   Start-Sleep -s &UC4RB_JBOSS_TIMEOUT#
 : INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CHECK_POWERSHELL_CMD@WINDOWS
 
-  Write-Host "Checking JBoss EAP 6.1 state ..."
+  Write-Host "Checking JBoss EAP 7 state ..."
+  $jboss_state = IsJBossRunning
+  Write-Host "Jboss State  $jboss_state"
 
-  if ($(IsJBossRunning) -eq 0) {
+  if ($jboss_state -eq 0) {
     Write-Host "JBoss (&UC4RB_JBOSS_OPERATING_MODE#) has been successfully stopped."
     exit 0
 : IF &UC4RB_JBOSS_OPERATING_MODE# = "Managed Domain"

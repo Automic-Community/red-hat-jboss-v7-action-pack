@@ -184,7 +184,7 @@ do
     fi;
     if [ "${key}" = 'password' ]; then
       enc_passwd="${val}"
-      decryption=$(java -jar "&$AGENT_RESOURCES_CLIENT#jboss-v6-tool.jar" ARB -cmd cipher decrypt "$enc_passwd" | grep "^Decrypted: .*")
+      decryption=$(java -jar "&$AGENT_RESOURCES_CLIENT#jboss-v7-tool.jar" ARB -cmd cipher decrypt "$enc_passwd" | grep "^Decrypted: .*")
       password=$(echo ${decryption:11})
     fi;
     if [ "${key}" = 'max-pool-size' ]; then

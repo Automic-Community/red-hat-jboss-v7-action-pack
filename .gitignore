@@ -1,9 +1,9 @@
 config.yml
-tools/jboss-v6-tool/.classpath
-tools/jboss-v6-tool/.project
-tools/jboss-v6-tool/.settings/org.eclipse.core.resources.prefs
-tools/jboss-v6-tool/.settings/org.eclipse.jdt.core.prefs
-tools/jboss-v6-tool/.settings/org.eclipse.m2e.core.prefs
+tools/jboss-v7-tool/.classpath
+tools/jboss-v7-tool/.project
+tools/jboss-v7-tool/.settings/org.eclipse.core.resources.prefs
+tools/jboss-v7-tool/.settings/org.eclipse.jdt.core.prefs
+tools/jboss-v7-tool/.settings/org.eclipse.m2e.core.prefs
 .project
 .sonar
 .sonar

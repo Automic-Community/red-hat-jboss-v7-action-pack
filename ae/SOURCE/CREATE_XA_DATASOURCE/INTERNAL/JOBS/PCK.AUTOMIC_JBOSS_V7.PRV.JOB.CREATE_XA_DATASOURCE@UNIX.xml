@@ -217,6 +217,42 @@ trim() {
   echo -n "$var"
 }
 
+addXADatasourceProperties() {
+echo "add XA DS func called...."
+: IF &UC4RB_JBOSS_PROPERTIES# <> ''
+:   SET &UC4RB_JBOSS_PROPERTIES# = STR_SUB(&UC4RB_JBOSS_PROPERTIES#, '"', '\"')
+    IFS=',' read -ra ADDR <<< "&UC4RB_JBOSS_PROPERTIES#"
+    arraylength=${#ADDR[@]}
+    for (( i=0; i<${arraylength}; i++ ));
+    do
+
+        dsProperty=${ADDR[$i]}
+        IFS='='
+        set $dsProperty
+        key=$1
+        val=$2
+        key=$(trim $key)
+        val=$(trim $val)
+        unset IFS;
+        prop="${key}=>${val}"
+        xadsproperties+=$prop
+
+        if [ $[$i+1] -lt ${arraylength} ]
+        then
+            xadsproperties+=","
+        fi
+
+    done
+     xadsproperties="--xa-datasource-properties={$xadsproperties}"
+: ELSE
+   echo At least one XA datasource property is required when defining an XA datasource , exiting...
+   exit 1
+: ENDIF
+}
+
+
+
+
 echo Checking XA datasource existence..
 
 ! check if datasource exists
@@ -228,10 +264,12 @@ if [ ! -z "$result" ]; then
   failIfExisting
 fi
 
+xadsproperties=''
+addXADatasourceProperties
 echo Creating new XA datasource &UC4RB_JBOSS_NAME#..
 
 ! create new datasource
-&UC4RB_JBOSS_CLI# --command="&UC4RB_JBOSS_DS_COMMAND# add --name=&UC4RB_JBOSS_NAME# --jndi-name=&UC4RB_JBOSS_JNDI_NAME# --driver-name=&UC4RB_JBOSS_DRIVER_NAME# &UC4RB_JBOSS_XA_DS_PARAMS#"
+&UC4RB_JBOSS_CLI# --command="&UC4RB_JBOSS_DS_COMMAND# add --name=&UC4RB_JBOSS_NAME# --jndi-name=&UC4RB_JBOSS_JNDI_NAME# --driver-name=&UC4RB_JBOSS_DRIVER_NAME# &UC4RB_JBOSS_XA_DS_PARAMS# $xadsproperties"
 :INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CHECK_SHELL_CMD@UNIX
 
 result=$(&UC4RB_JBOSS_CLI# --command=":reload")

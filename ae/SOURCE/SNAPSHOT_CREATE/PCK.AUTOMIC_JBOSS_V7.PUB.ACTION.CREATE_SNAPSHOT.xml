@@ -846,7 +846,7 @@ The snapshot is stored in the local machine containing compressed file of the de
 Application snapshot:
 * Requirement:
 - Application must already be deployed
-- JBoss EAP 6 is currently running. JBoss CLI must be working on the provided host, port.
+- JBoss EAP 7 is currently running. JBoss CLI must be working on the provided host, port.
 - Subsystems information will be extracted if application is enabled by the time of snapshot (and if host controller and server instance name are provided if JBoss is running on Domain Mode)
 
 * Snapshot:

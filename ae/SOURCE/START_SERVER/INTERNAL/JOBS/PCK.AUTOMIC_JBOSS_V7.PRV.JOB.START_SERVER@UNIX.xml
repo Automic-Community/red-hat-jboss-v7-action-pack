@@ -223,7 +223,7 @@ StartJBossEAP() {
     FailIfRunning
   fi
 
-  echo "JBoss is not running. Starting JBoss EAP 6 (&UC4RB_JBOSS_OPERATING_MODE#) ..."
+  echo "JBoss is not running. Starting JBoss EAP 7 (&UC4RB_JBOSS_OPERATING_MODE#) ..."
 : IF &UC4RB_JBOSS_SERVICE_NAME# EQ ""
     echo "Trying to start using standalone.sh/domain.sh ..."
     &START_JBOSS_COMMAND#
@@ -236,7 +236,7 @@ StartJBossEAP() {
   sleep &UC4RB_JBOSS_TIMEOUT#
 : INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CHECK_SHELL_CMD@UNIX
 
-  echo "Checking JBoss EAP 6 state ..."
+  echo "Checking JBoss EAP 7 state ..."
 
   if [ "`IsJBossRunning`" ]; then
     echo "JBoss (&UC4RB_JBOSS_OPERATING_MODE#) has been successfully started."

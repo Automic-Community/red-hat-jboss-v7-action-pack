@@ -201,7 +201,7 @@ if [ -z "`echo "$output" | grep " not found"`" ]; then
 fi
 
 !---------- Deployment ------------
-echo "Deploying &UC4RB_JBOSS_APP_NAME# on JBoss EAP 6.1 (&UC4RB_JBOSS_OPERATING_MODE#) ..."
+echo "Deploying &UC4RB_JBOSS_APP_NAME# on JBoss EAP 7 (&UC4RB_JBOSS_OPERATING_MODE#) ..."
 cd "&PACKAGE_PARENT_DIR#"
 :INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CHECK_SHELL_CMD@UNIX
 
