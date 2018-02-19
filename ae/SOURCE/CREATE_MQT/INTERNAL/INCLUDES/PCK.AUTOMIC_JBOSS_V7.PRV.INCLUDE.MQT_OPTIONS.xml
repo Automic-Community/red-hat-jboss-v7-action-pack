@@ -25,7 +25,7 @@
 :    EXIT 1
 :  ELSE
 !:   SET &UC4RB_JBOSS_JMS_QUERY_CMD# = '/profile=&UC4RB_JBOSS_PROFILE#/subsystem=messaging/hornetq-server=default'
-:    SET &UC4RB_JBOSS_JMS_QUERY_CMD# = '/profile=&UC4RB_JBOSS_PROFILE#/subsystemmessaging-activemq/server=default'
+:    SET &UC4RB_JBOSS_JMS_QUERY_CMD# = '/profile=&UC4RB_JBOSS_PROFILE#/subsystem=messaging-activemq/server=default'
 :    SET &UC4RB_JBOSS_JMS_COMMAND# = '&UC4RB_JBOSS_JMS_TYPE# --profile=&UC4RB_JBOSS_PROFILE#'
 :  ENDIF
 :ELSE
