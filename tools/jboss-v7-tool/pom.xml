@@ -21,6 +21,11 @@
 	</properties>
 
 	<dependencies>
+	    <dependency>
+			<groupId>com.automic.actions</groupId>
+			<artifactId>common-tool</artifactId>
+			<version>1.2.1-SNAPSHOT</version>
+		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>

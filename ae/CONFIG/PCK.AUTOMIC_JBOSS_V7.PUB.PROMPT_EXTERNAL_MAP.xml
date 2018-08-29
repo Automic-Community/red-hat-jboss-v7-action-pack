@@ -115,6 +115,8 @@
 <row Name="PCK.AUTOMIC_JBOSS_V7.PUB.ACTION.DEPLOY_APPLICATION/UC4RB_JBOSS_PORT#" Value="EXT:/jboss/port" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="PCK.AUTOMIC_JBOSS_V7.PUB.ACTION.DEPLOY_APPLICATION/UC4RB_JBOSS_SERVER_GROUPS#" Value="EXT:/jboss/server/server_groups" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="PCK.AUTOMIC_JBOSS_V7.PUB.ACTION.DEPLOY_APPLICATION/UC4RB_JBOSS_USERNAME#" Value="EXT:/jboss/username" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V7.PUB.ACTION.DISCOVER_DEPLOYMENT_TARGET/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
+<row Name="PCK.AUTOMIC_JBOSS_V7.PUB.ACTION.DISCOVER_DEPLOYMENT_TARGET/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="PCK.AUTOMIC_JBOSS_V7.PUB.ACTION.START_APPLICATION/AGENT#" Value="&amp;AGENT#" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="PCK.AUTOMIC_JBOSS_V7.PUB.ACTION.START_APPLICATION/LOGIN#" Value="&amp;LOGIN#" Value1="" Value2="" Value3="" Value4=""/>
 <row Name="PCK.AUTOMIC_JBOSS_V7.PUB.ACTION.START_APPLICATION/UC4RB_JBOSS_APP_NAME#" Value="EXT:/jboss/application_name" Value1="" Value2="" Value3="" Value4=""/>
