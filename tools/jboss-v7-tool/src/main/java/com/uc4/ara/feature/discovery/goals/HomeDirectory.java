@@ -4,7 +4,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.EnumSet;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -22,7 +24,7 @@ import com.automic.actions.shell.windows.WindowsCmdShell;
 
 public class HomeDirectory extends Goal {
 
-	private static final String FILE_PATH_REGEX = "\"?((.*)\\\\bin\\\\(standalone).(bat|sh))";
+	private static final String FILE_PATH_REGEX = "\"?((.*)\\\\bin\\\\(standalone|domain).(bat|sh))";
 	public static final String REG_PATH_SERVICE = "\"?((.*)\\\\bin\\\\(jbosssvc.exe)).*";
 
 	private static final Pattern PATH_PATTERN = Pattern.compile(FILE_PATH_REGEX, Pattern.CASE_INSENSITIVE);
@@ -39,11 +41,11 @@ public class HomeDirectory extends Goal {
 		this.setStrategy(GoalExecutionStrategy.RUN_ALL_PLANS_REQUIRE_ONE_SUCCESS);
 
 		this.addPlan(findService());
-		this.addPlan(findLibrary());
+		this.addPlan(findBatchFile());
 	}
 
-	private Plan findLibrary() {
-		return new Plan("Find library", this, Compatibility.UNISEX) {
+	private Plan findBatchFile() {
+		return new Plan("Find batch file", this, Compatibility.UNISEX) {
 			@Override
 			public long getTimeout() {
 				return 300;
@@ -53,19 +55,27 @@ public class HomeDirectory extends Goal {
 			protected PlanStatus execute() throws Exception {
 				boolean success = false;
 
-				List<Path> paths = SystemUtils.IS_OS_WINDOWS
+				List<Path> standalonePaths = SystemUtils.IS_OS_WINDOWS
 						? WindowsCmdShell.instance().fileSystem().findFile(STANDALONE_BAT)
 						: UnixShell.instance().fileSystem().findFile(STANDALONE_SH);
+				List<Path> domainPaths = SystemUtils.IS_OS_WINDOWS
+						? WindowsCmdShell.instance().fileSystem().findFile(DOMAIN_BAT)
+						: UnixShell.instance().fileSystem().findFile(DOMAIN_SH);
 
-				for (Path path : paths) {
+				Set<Path> totalPaths = new HashSet<>();
+				totalPaths.addAll(standalonePaths);
+				totalPaths.addAll(domainPaths);
+
+				for (Path path : totalPaths) {
 
 					Matcher m = PATH_PATTERN.matcher(path.toString());
 
 					if (m.matches()) {
 						List<FindingValue> jbossHosts = read(Jboss7Finding.HOST);
 						for (FindingValue jbossHost : jbossHosts) {
-							write(Jboss7Finding.HOME_DIRECTORY, path.getParent().getParent().toString(), jbossHost);
-							success = true;
+							String hDir = path.getParent().getParent().toString();
+							write(Jboss7Finding.HOME_DIRECTORY, hDir, jbossHost);
+
 						}
 
 					}

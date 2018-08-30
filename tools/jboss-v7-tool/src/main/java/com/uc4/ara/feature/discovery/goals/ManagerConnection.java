@@ -1,6 +1,6 @@
 package com.uc4.ara.feature.discovery.goals;
 
-import java.nio.file.Files;
+import java.io.File;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
@@ -22,6 +22,7 @@ import com.automic.actions.discovery.models.GoalExecutionStrategy;
 import com.automic.actions.discovery.models.Plan;
 import com.automic.actions.discovery.models.PlanStatus;
 import com.google.common.base.Optional;
+import com.uc4.ara.feature.discovery.JBossOperatingModes;
 
 public class ManagerConnection extends Goal {
 
@@ -42,12 +43,13 @@ public class ManagerConnection extends Goal {
 		this.register(Jboss7Finding.SERVER_NAME);
 		this.register(Jboss7Finding.PORT);
 		this.register(Jboss7Finding.PROTOCOL);
-		this.register(Jboss7Finding.APPBASE_DIRECTORY);
+		this.register(Jboss7Finding.SERVER_GROUP);
+		this.register(Jboss7Finding.OPERATING_MODE);
 
 	}
 
 	private Plan getFromServerConfig() {
-		return new Plan("Read configuration from standalone file(s)", this, Compatibility.UNISEX, Jboss7Goal.HOST) {
+		return new Plan("Read configuration from file(s)", this, Compatibility.UNISEX, Jboss7Goal.HOST) {
 			@Override
 			public long getTimeout() {
 				return 300;
@@ -62,15 +64,39 @@ public class ManagerConnection extends Goal {
 
 					Path configurationDirPath = Paths.get(jboss7Home.getValue().toString(), "standalone",
 							"configuration");
-					Path serverConfigPath = configurationDirPath.resolve("standalone.xml");
+					File stanaloneDir = configurationDirPath.toFile();
 
-					if (Files.exists(serverConfigPath)) {
-						Optional<Document> document = XmlUtility.openDocument(serverConfigPath);
-						if (document.isPresent()) {
-							// findAppBaseDirectory(document, jboss7Home);
-							findProtocolAndPort(document, jboss7Home);
-							success = true;
+					if (stanaloneDir.exists()) {
+						File[] files = stanaloneDir.listFiles();
+						for (File file : files) {
+							if (file.getName().endsWith("xml")) {
+								Optional<Document> document = XmlUtility.openDocument(file.toPath());
+								if (document.isPresent()) {
+									findProtocolAndPortForStandalone(document, jboss7Home);
+									success = true;
+
+								}
+							}
 						}
+
+					}
+
+					configurationDirPath = Paths.get(jboss7Home.getValue().toString(), "standalone", "configuration");
+					File domainDir = configurationDirPath.toFile();
+
+					if (stanaloneDir.exists()) {
+						File[] files = domainDir.listFiles();
+						for (File file : files) {
+							if (file.getName().endsWith("xml")) {
+								Optional<Document> document = XmlUtility.openDocument(file.toPath());
+								if (document.isPresent()) {
+									findProtocolAndPortForDomain(document, jboss7Home);
+									success = true;
+
+								}
+							}
+						}
+
 					}
 
 				}
@@ -78,7 +104,7 @@ public class ManagerConnection extends Goal {
 				return complete(success);
 			}
 
-			private void findProtocolAndPort(Optional<Document> document, FindingValue jboss7Home) {
+			private void findProtocolAndPortForStandalone(Optional<Document> document, FindingValue jboss7Home) {
 				Optional<Node> socketNode = XmlUtility.findNode(document.get(), SOCKET_BIND_GROUP);
 				int portOffsetVal = 0;
 				if (socketNode.isPresent()) {
@@ -89,11 +115,41 @@ public class ManagerConnection extends Goal {
 				Optional<NodeList> nodeList = XmlUtility.findNodeList(document.get(), SOCKET_BIND_REGEX);
 				if (nodeList.isPresent()) {
 					for (int i = 0; i < nodeList.get().getLength(); i++) {
-						String protocol = nodeList.get().item(i).getAttributes().getNamedItem("name").getNodeValue().toLowerCase();
+						String protocol = nodeList.get().item(i).getAttributes().getNamedItem("name").getNodeValue()
+								.toLowerCase();
 						if (protocol.matches("management-http") || protocol.matches("management-https")) {
-							protocol =protocol.substring(protocol.indexOf("-")+1, protocol.length());
-							FindingValue protocolValue = write(Jboss7Finding.PROTOCOL, protocol, jboss7Home);
+							protocol = protocol.substring(protocol.indexOf("-") + 1, protocol.length());
+							FindingValue operatingMode = write(Jboss7Finding.OPERATING_MODE,
+									JBossOperatingModes.STANDALONE_MODE.getMode(), jboss7Home);
+							FindingValue protocolValue = write(Jboss7Finding.PROTOCOL, protocol, operatingMode);
 							readProtocolPort(jboss7Home, protocolValue, nodeList.get().item(i), portOffsetVal);
+
+						}
+					}
+				}
+			}
+
+			private void findProtocolAndPortForDomain(Optional<Document> document, FindingValue jboss7Home) {
+				Optional<Node> socketNode = XmlUtility.findNode(document.get(), SOCKET_BIND_GROUP);
+				int portOffsetVal = 0;
+				if (socketNode.isPresent()) {
+					String portOffset = socketNode.get().getAttributes().getNamedItem("port-offset").getNodeValue();
+					portOffsetVal = getResolvedValue(portOffset);
+
+				}
+				Optional<NodeList> nodeList = XmlUtility.findNodeList(document.get(), SOCKET_BIND_REGEX);
+				if (nodeList.isPresent()) {
+					for (int i = 0; i < nodeList.get().getLength(); i++) {
+						String protocol = nodeList.get().item(i).getAttributes().getNamedItem("name").getNodeValue()
+								.toLowerCase();
+						if (protocol.matches("management-http") || protocol.matches("management-https")) {
+							protocol = protocol.substring(protocol.indexOf("-") + 1, protocol.length());
+
+							FindingValue operatingMode = write(Jboss7Finding.OPERATING_MODE,
+									JBossOperatingModes.DOAMIN_MODE.getMode(), jboss7Home);
+							FindingValue protocolValue = write(Jboss7Finding.PROTOCOL, protocol, operatingMode);
+							readProtocolPort(jboss7Home, protocolValue, nodeList.get().item(i), portOffsetVal);
+							write(Jboss7Finding.OPERATING_MODE, JBossOperatingModes.DOAMIN_MODE.getMode(), jboss7Home);
 						}
 					}
 				}
@@ -134,7 +190,7 @@ public class ManagerConnection extends Goal {
 				if (nodeList.isPresent()) {
 					for (int i = 0; i < nodeList.get().getLength(); i++) {
 						String appBaseName = nodeList.get().item(i).getTextContent();
-						write(Jboss7Finding.APPBASE_DIRECTORY, appBaseName, jboss7Home);
+						write(Jboss7Finding.SERVER_GROUP, appBaseName, jboss7Home);
 					}
 				}
 			}

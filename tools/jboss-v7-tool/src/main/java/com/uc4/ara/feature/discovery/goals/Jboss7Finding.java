@@ -6,11 +6,13 @@ import com.automic.actions.discovery.models.FindingVisibility;
 public enum Jboss7Finding implements Finding {
 	
 	HOST("host"),
-	HOME_DIRECTORY("home_directory"),
-		APPBASE_DIRECTORY("appbase"),
-		PROTOCOL("protocol"),	
-			PORT("port", Integer.class),
-			SERVER_NAME("server_name", FindingVisibility.INTERNAL);
+	HOME_DIRECTORY("home_directory"),		
+	PROTOCOL("protocol"),	
+	PORT("port", Integer.class),
+	SERVER_NAME("server_name", FindingVisibility.INTERNAL),
+	SERVER_GROUP("server_group", FindingVisibility.INTERNAL), //will change 
+	OPERATING_MODE("operating_mode", FindingVisibility.INTERNAL), 
+	PROFILE("profile", FindingVisibility.INTERNAL);//will change 
 	
 	private Class<?> clazz;
 	private String propertyName;
