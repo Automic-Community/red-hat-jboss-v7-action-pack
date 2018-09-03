@@ -38,8 +38,6 @@ public class HomeDirectory extends Goal {
 
 	public HomeDirectory() {
 		super(Jboss7Goal.HOME_DIRECTORY, Compatibility.UNISEX);
-		this.setStrategy(GoalExecutionStrategy.RUN_ALL_PLANS_REQUIRE_ONE_SUCCESS);
-
 		this.addPlan(findService());
 		this.addPlan(findBatchFile());
 	}
