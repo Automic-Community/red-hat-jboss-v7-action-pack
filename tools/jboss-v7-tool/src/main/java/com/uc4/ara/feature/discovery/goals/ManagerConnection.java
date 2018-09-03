@@ -7,9 +7,6 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -30,6 +27,7 @@ public class ManagerConnection extends Goal {
 	private static final String SOCKET_BIND_REGEX = SOCKET_BIND_GROUP + "/socket-binding";
 	private static final String PORT_REGEX = "\\$\\{([0-9a-zA-Z.-]+):([0-9]{1,})\\}";
 	private static final Pattern PORT_PATTERN = Pattern.compile(PORT_REGEX, Pattern.CASE_INSENSITIVE);
+	private static final String DOMAIN_CONTROLLER_NODE = "/host/domain-controller";
 
 	public ManagerConnection() {
 		super(Jboss7Goal.CONNECTION, Compatibility.UNISEX);
@@ -72,7 +70,7 @@ public class ManagerConnection extends Goal {
 							if (file.getName().endsWith("xml")) {
 								Optional<Document> document = XmlUtility.openDocument(file.toPath());
 								if (document.isPresent()) {
-									findProtocolAndPortForStandalone(document, jboss7Home);
+									findManagementProtocolAndPortForStandalone(document, jboss7Home);
 									success = true;
 
 								}
@@ -81,30 +79,30 @@ public class ManagerConnection extends Goal {
 
 					}
 
-					configurationDirPath = Paths.get(jboss7Home.getValue().toString(), "standalone", "configuration");
+				/*	configurationDirPath = Paths.get(jboss7Home.getValue().toString(), "domain", "configuration");
 					File domainDir = configurationDirPath.toFile();
 
-					if (stanaloneDir.exists()) {
+					if (domainDir.exists()) {
 						File[] files = domainDir.listFiles();
 						for (File file : files) {
 							if (file.getName().endsWith("xml")) {
 								Optional<Document> document = XmlUtility.openDocument(file.toPath());
 								if (document.isPresent()) {
-									findProtocolAndPortForDomain(document, jboss7Home);
+									findManagementProtocolAndPortForDomain(document, jboss7Home);
 									success = true;
 
 								}
 							}
 						}
 
-					}
+					}*/
 
 				}
 
 				return complete(success);
 			}
 
-			private void findProtocolAndPortForStandalone(Optional<Document> document, FindingValue jboss7Home) {
+			private void findManagementProtocolAndPortForStandalone(Optional<Document> document, FindingValue jboss7Home) {
 				Optional<Node> socketNode = XmlUtility.findNode(document.get(), SOCKET_BIND_GROUP);
 				int portOffsetVal = 0;
 				if (socketNode.isPresent()) {
@@ -129,12 +127,22 @@ public class ManagerConnection extends Goal {
 				}
 			}
 
-			private void findProtocolAndPortForDomain(Optional<Document> document, FindingValue jboss7Home) {
-				Optional<Node> socketNode = XmlUtility.findNode(document.get(), SOCKET_BIND_GROUP);
-				int portOffsetVal = 0;
-				if (socketNode.isPresent()) {
-					String portOffset = socketNode.get().getAttributes().getNamedItem("port-offset").getNodeValue();
-					portOffsetVal = getResolvedValue(portOffset);
+			/*private void findManagementProtocolAndPortForDomain(Optional<Document> document, FindingValue jboss7Home) {
+				Optional<Node> domainNode = XmlUtility.findNode(document.get(), DOMAIN_CONTROLLER_NODE);
+				
+				if (domainNode.isPresent()) {
+					NodeList childNodes = domainNode.get().getChildNodes();
+					
+					for(int i=0;i<childNodes.getLength();i++){
+						if(childNodes.item(i).getNodeName().equalsIgnoreCase("remote")){
+							Node remoteNode = childNodes.item(i);
+							remoteNode.getAttributes().getNamedItem("");
+							
+							break;
+						}
+						
+					}
+					
 
 				}
 				Optional<NodeList> nodeList = XmlUtility.findNodeList(document.get(), SOCKET_BIND_REGEX);
@@ -153,7 +161,7 @@ public class ManagerConnection extends Goal {
 						}
 					}
 				}
-			}
+			}*/
 
 			private void readProtocolPort(FindingValue jboss7Home, FindingValue protocolValue, Node node,
 					int portOffsetVal) {
@@ -184,36 +192,6 @@ public class ManagerConnection extends Goal {
 				return null;
 			}
 
-			private void findAppBaseDirectory(Optional<Document> document, FindingValue jboss7Home) {
-				Optional<NodeList> nodeList = XmlUtility.findNodeList(document.get(),
-						"/Server/Service/Engine/Host/@appBase");
-				if (nodeList.isPresent()) {
-					for (int i = 0; i < nodeList.get().getLength(); i++) {
-						String appBaseName = nodeList.get().item(i).getTextContent();
-						write(Jboss7Finding.SERVER_GROUP, appBaseName, jboss7Home);
-					}
-				}
-			}
-
-			private Optional<Document> readConfigurationFile(Path serverConfig) {
-
-				Document doc = null;
-				try {
-
-					// File inputFile = new File(fileName);
-					DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-					DocumentBuilder dBuilder;
-
-					dBuilder = dbFactory.newDocumentBuilder();
-
-					doc = dBuilder.parse(serverConfig.toFile());
-					doc.getDocumentElement().normalize();
-
-				} catch (Exception e) {
-
-				}
-				return Optional.of(doc);
-			}
 		};
 	}
 

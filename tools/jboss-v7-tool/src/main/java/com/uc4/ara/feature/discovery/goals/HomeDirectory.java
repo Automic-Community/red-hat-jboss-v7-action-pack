@@ -45,7 +45,7 @@ public class HomeDirectory extends Goal {
 	}
 
 	private Plan findBatchFile() {
-		return new Plan("Find batch file", this, Compatibility.UNISEX) {
+		return new Plan("Find bat/sh file", this, Compatibility.UNISEX) {
 			@Override
 			public long getTimeout() {
 				return 300;
@@ -58,13 +58,13 @@ public class HomeDirectory extends Goal {
 				List<Path> standalonePaths = SystemUtils.IS_OS_WINDOWS
 						? WindowsCmdShell.instance().fileSystem().findFile(STANDALONE_BAT)
 						: UnixShell.instance().fileSystem().findFile(STANDALONE_SH);
-				List<Path> domainPaths = SystemUtils.IS_OS_WINDOWS
+				/*List<Path> domainPaths = SystemUtils.IS_OS_WINDOWS
 						? WindowsCmdShell.instance().fileSystem().findFile(DOMAIN_BAT)
-						: UnixShell.instance().fileSystem().findFile(DOMAIN_SH);
+						: UnixShell.instance().fileSystem().findFile(DOMAIN_SH);*/
 
 				Set<Path> totalPaths = new HashSet<>();
 				totalPaths.addAll(standalonePaths);
-				totalPaths.addAll(domainPaths);
+				//totalPaths.addAll(domainPaths);
 
 				for (Path path : totalPaths) {
 
