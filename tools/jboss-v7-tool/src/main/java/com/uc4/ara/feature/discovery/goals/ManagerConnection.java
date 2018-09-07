@@ -62,10 +62,10 @@ public class ManagerConnection extends Goal {
 
 					Path configurationDirPath = Paths.get(jboss7Home.getValue().toString(), "standalone",
 							"configuration");
-					File stanaloneDir = configurationDirPath.toFile();
+					File standalone = configurationDirPath.toFile();
 
-					if (stanaloneDir.exists()) {
-						File[] files = stanaloneDir.listFiles();
+					if (standalone.exists()) {
+						File[] files = standalone.listFiles();
 						for (File file : files) {
 							if (file.getName().endsWith("xml")) {
 								Optional<Document> document = XmlUtility.openDocument(file.toPath());

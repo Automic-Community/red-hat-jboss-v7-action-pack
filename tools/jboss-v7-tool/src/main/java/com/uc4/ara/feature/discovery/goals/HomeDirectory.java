@@ -15,7 +15,6 @@ import org.apache.commons.lang3.SystemUtils;
 import com.automic.actions.discovery.models.Compatibility;
 import com.automic.actions.discovery.models.FindingValue;
 import com.automic.actions.discovery.models.Goal;
-import com.automic.actions.discovery.models.GoalExecutionStrategy;
 import com.automic.actions.discovery.models.Plan;
 import com.automic.actions.discovery.models.PlanStatus;
 import com.automic.actions.shell.unix.UnixShell;
@@ -69,12 +68,8 @@ public class HomeDirectory extends Goal {
 					Matcher m = PATH_PATTERN.matcher(path.toString());
 
 					if (m.matches()) {
-						List<FindingValue> jbossHosts = read(Jboss7Finding.HOST);
-						for (FindingValue jbossHost : jbossHosts) {
-							String hDir = path.getParent().getParent().toString();
-							write(Jboss7Finding.HOME_DIRECTORY, hDir, jbossHost);
-
-						}
+						String hDir = path.getParent().getParent().toString();
+						write(Jboss7Finding.HOME_DIRECTORY, hDir);
 
 					}
 
