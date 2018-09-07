@@ -15,6 +15,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.automic.actions.common.Feature;
+import com.automic.actions.common.cli.OptionException;
 import com.uc4.ara.feature.FeatureUtil.MsgTypes;
 import com.uc4.ara.feature.cipher.Password;
 import com.uc4.ara.feature.globalcodes.ErrorCodes;
@@ -41,30 +43,26 @@ public class AraFileCmd {
 		FeatureUtil.logMsg("jboss-v7-tool", MsgTypes.GENERAL);
 		FeatureUtil.logMsg("(c) Automic Software GmbH", MsgTypes.GENERAL);
 		try {
-			FeatureUtil.logMsg("Version: "
-					+ FeatureUtil.getCompiledVersion("jboss-v7-tool"), MsgTypes.GENERAL);
+			FeatureUtil.logMsg("Version: " + FeatureUtil.getCompiledVersion("jboss-v7-tool"), MsgTypes.GENERAL);
 
-			FeatureUtil.logMsg("Date: "
-					+ FeatureUtil
-					.getCompiledDate("jboss-v7-tool"), MsgTypes.GENERAL);
+			FeatureUtil.logMsg("Date: " + FeatureUtil.getCompiledDate("jboss-v7-tool"), MsgTypes.GENERAL);
 			FeatureUtil.logMsg("");
 		} catch (IOException ei) {
 			// ignore the exception
 		}
 		try {
-			//print general help message
+			// print general help message
 			String pkg = AraFileCmd.class.getPackage().getName();
 
-			if(args.length == 0)
+			if (args.length == 0)
 				FeatureUtil.printGeneralHelp(pkg);
 			else if (!FeatureUtil.packageExists(pkg, args[0]))
 				FeatureUtil.printGeneralHelp(pkg);
 			else if (args.length == 1)
 				FeatureUtil.printPackageHelp(pkg, args[0]);
-			else
-			{
+			else {
 				if (args[0].toLowerCase().equals("arb")) {
-					if(args.length > 2 && args[2].toLowerCase().equals("execute")) {
+					if (args.length > 2 && args[2].toLowerCase().equals("execute")) {
 						String[] myArgs = new String[args.length - 2];
 						for (int i = 3; i < args.length; i++)
 							myArgs[i - 3] = args[i];
@@ -81,62 +79,86 @@ public class AraFileCmd {
 						FeatureUtil.logMsg("Password: arb -cmd cipher encrypt/decrypt text/password");
 					}
 
-				}else{
+				} else {
 					// package
-					String className = pkg + '.' + args[0].toLowerCase() + '.'
-							+ args[1];
+					String className = pkg + '.' + args[0].toLowerCase() + '.' + args[1];
 					try {
-					Class<?> clazz = Class.forName(className);
-					// strip off first 2 args
-					String[] params = new String[args.length - 2];
-					for (int i = 2, n = args.length; i < n; i++)
-						params[i - 2] = args[i];
+						Class<?> clazz = Class.forName(className);
+						// strip off first 2 args
+						String[] params = new String[args.length - 2];
+						for (int i = 2, n = args.length; i < n; i++)
+							params[i - 2] = args[i];
 
-					if(IFeatureDeprecated.class.isAssignableFrom(clazz))
-					{
-						IFeatureDeprecated instance = (IFeatureDeprecated) clazz.newInstance();
+						if (IFeatureDeprecated.class.isAssignableFrom(clazz)) {
+							IFeatureDeprecated instance = (IFeatureDeprecated) clazz.newInstance();
 
-						// handle password decryption
-						params = handlePasswordDecryption(params);
+							// handle password decryption
+							params = handlePasswordDecryption(params);
 
-						// check the parameters
-						int ret = instance.checkParams(params);
-						if (ret != ErrorCodes.OK) {
-							FeatureUtil.logMsg("Parameter(s) invalid");
-							instance.printUsage();
-							System.exit(ret);
+							// check the parameters
+							int ret = instance.checkParams(params);
+							if (ret != ErrorCodes.OK) {
+								FeatureUtil.logMsg("Parameter(s) invalid");
+								instance.printUsage();
+								System.exit(ret);
+							}
+							// perform the desired command
+							try {
+								ret = instance.run(params);
+								FeatureUtil.logMsg("Return code: " + ret, MsgTypes.INFO);
+								System.exit(ret);
+							} catch (Exception e) {
+								instance.printUsage();
+								FeatureUtil.logMsg(e);
+								instance.cleanupAfterException(e);
+								System.exit(ErrorCodes.EXCEPTION);
+							}
+						} else if (Feature.class.isAssignableFrom(clazz)) {
+							Feature feature = (Feature) clazz.newInstance();
+							int errorCode = ErrorCodes.OK;
+							try {				                        
+							    feature.initialize();
+							    errorCode = feature.run(params);
+
+							} catch (OptionException e) {
+								FeatureUtil.logMsg(e.getMessage(), MsgTypes.ERROR);				            
+							    feature.printUsage();
+							    errorCode = ErrorCodes.ERROR;
+
+							} catch (ClassNotFoundException c) {
+								FeatureUtil.logMsg(c);				            
+							    errorCode = ErrorCodes.ERROR;
+							    
+							} catch (Exception e) {
+								FeatureUtil.logMsg(e);
+							    errorCode = ErrorCodes.ERROR;
+
+							} finally {
+							    if (feature != null) {
+							        feature.finalize(errorCode);
+							    }
+							    System.exit(errorCode);
+							}
+						} else {
+							IFeature feature = (IFeature) clazz.newInstance();
+							int errorCode = ErrorCodes.OK;
+							try {
+								feature.initialize();
+								errorCode = feature.run(params);
+							} catch (Exception e) {
+								if (e.getClass().isAssignableFrom(IllegalStateException.class)
+										&& !AbstractInternalFeature.class.isAssignableFrom(feature.getClass()))
+									feature.printUsage();
+
+								errorCode = ErrorCodes.EXCEPTION;
+
+								Logger.logException(e);
+							} finally {
+								feature.finalize(errorCode);
+								System.exit(errorCode);
+							}
 						}
-						// perform the desired command
-						try {
-							ret = instance.run(params);
-							FeatureUtil.logMsg("Return code: " + ret, MsgTypes.INFO);
-							System.exit(ret);
-						} catch (Exception e) {
-							instance.printUsage();
-							FeatureUtil.logMsg(e);
-							instance.cleanupAfterException(e);
-							System.exit(ErrorCodes.EXCEPTION);
-						}
-					} else {
-						IFeature feature = (IFeature) clazz.newInstance();
-						int errorCode = ErrorCodes.OK;
-						try {
-							feature.initialize();
-							errorCode = feature.run(params);
-						} catch(Exception e) {
-							if(e.getClass().isAssignableFrom(IllegalStateException.class) &&
-									!AbstractInternalFeature.class.isAssignableFrom(feature.getClass()))
-								feature.printUsage();
-
-							errorCode = ErrorCodes.EXCEPTION;
-
-							Logger.logException(e);
-						} finally {
-							feature.finalize(errorCode);
-							System.exit(errorCode);
-						}
-					}
-					} catch(ClassNotFoundException ex) {
+					} catch (ClassNotFoundException ex) {
 						FeatureUtil.logMsg("Could not find specified method: " + args[1]);
 						System.exit(ErrorCodes.EXCEPTION);
 					}
