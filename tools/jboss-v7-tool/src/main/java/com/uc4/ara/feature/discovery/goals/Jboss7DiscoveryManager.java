@@ -9,9 +9,9 @@ public class Jboss7DiscoveryManager {
 	private DiscoveryManager manager;
 
 	public Jboss7DiscoveryManager() {
-		manager = new DiscoveryManager(new Jboss7Result());
-		manager.addGoal(new Host());
-		manager.addGoal(new HomeDirectory());		
+		manager = new DiscoveryManager(new Jboss7Result());		
+		manager.addGoal(new HomeDirectory());	
+		manager.addGoal(new HostAndPortGoal());
 		manager.addGoal(new ManagerConnection());
 	}
 

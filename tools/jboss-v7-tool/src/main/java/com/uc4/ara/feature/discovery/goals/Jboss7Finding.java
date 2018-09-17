@@ -7,12 +7,12 @@ public enum Jboss7Finding implements Finding {
 	
 	HOST("host"),
 	HOME_DIRECTORY("home_directory"),		
-	PROTOCOL("protocol"),	
 	PORT("port", Integer.class),
-	SERVER_NAME("server_name", FindingVisibility.INTERNAL),
-	SERVER_GROUP("server_group", FindingVisibility.INTERNAL), //will change 
-	OPERATING_MODE("operating_mode", FindingVisibility.INTERNAL), 
-	PROFILE("profile", FindingVisibility.INTERNAL);//will change 
+	HOST_CONTROLLER("host_controller"),
+	SERVER_NAME("server_name"),
+	SERVER_GROUP("server_group"),
+	OPERATING_MODE("operating_mode"), 
+	PROFILE("profile");
 	
 	private Class<?> clazz;
 	private String propertyName;

@@ -52,18 +52,15 @@ public class HomeDirectory extends Goal {
 			protected PlanStatus execute() throws Exception {
 				boolean success = false;
 
-				List<Path> standalonePaths = SystemUtils.IS_OS_WINDOWS
+				List<Path> filePath = SystemUtils.IS_OS_WINDOWS
 						? WindowsCmdShell.instance().fileSystem().findFile(STANDALONE_BAT)
 						: UnixShell.instance().fileSystem().findFile(STANDALONE_SH);
-				/*List<Path> domainPaths = SystemUtils.IS_OS_WINDOWS
-						? WindowsCmdShell.instance().fileSystem().findFile(DOMAIN_BAT)
-						: UnixShell.instance().fileSystem().findFile(DOMAIN_SH);*/
+				if (filePath.isEmpty()) {
+					filePath = SystemUtils.IS_OS_WINDOWS ? WindowsCmdShell.instance().fileSystem().findFile(DOMAIN_BAT)
+							: UnixShell.instance().fileSystem().findFile(DOMAIN_SH);
+				}
 
-				Set<Path> totalPaths = new HashSet<>();
-				totalPaths.addAll(standalonePaths);
-				//totalPaths.addAll(domainPaths);
-
-				for (Path path : totalPaths) {
+				for (Path path : filePath) {
 
 					Matcher m = PATH_PATTERN.matcher(path.toString());
 
@@ -90,6 +87,7 @@ public class HomeDirectory extends Goal {
 
 			@Override
 			protected PlanStatus execute() throws Exception {
+
 				List<String> paths = WindowsCmdShell.instance().services().findService("jboss",
 						EnumSet.of(Services.Field.PathName));
 
