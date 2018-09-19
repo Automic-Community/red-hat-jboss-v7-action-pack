@@ -1,14 +1,11 @@
 package com.uc4.ara.feature.discovery.goals;
 
-import java.util.HashMap;
-import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.SystemUtils;
 import org.w3c.dom.Attr;
-import org.w3c.dom.NamedNodeMap;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -17,7 +14,7 @@ import com.automic.actions.shell.unix.UnixShell;
 import com.automic.actions.shell.windows.WindowsCmdShell;
 
 public class JbossConfigHelper {
-	
+
 	private static final String SYSTEM_PROPERTY_REGEX = "\\$\\{([0-9a-zA-Z.-]+):([0-9a-zA-Z.-]+)\\}";
 	private static final Pattern SYSTEM_PROPERTY_PATTERN = Pattern.compile(SYSTEM_PROPERTY_REGEX,
 			Pattern.CASE_INSENSITIVE);
@@ -28,27 +25,9 @@ public class JbossConfigHelper {
 	public static final String MASTER_CONTROLLER_NODE = "/host/domain-controller/local";
 	public static final String MASTER_CONTROLLER_HOST_INTERFACE = "/host/interfaces/interface[@name='management']/inet-address";
 	public static final String MASTER_CONTROLLER_PORT_INTERFACE = "/host/management/management-interfaces/native-interface[@security-realm='ManagementRealm']/socket[@interface='management']";
-	
+
 	public static final String SLAVE_CONTROLLER_NODE = "/host/domain-controller/remote[@security-realm='ManagementRealm']";
-	
-	public static Map<String, String> getNodeAttributeValueMap(Node node) {
-		Map<String, String> attrMap = new HashMap<String, String>();
-		if (node.hasAttributes()) {
-			NamedNodeMap namedMap = node.getAttributes();
-			for (int i = 0; i < namedMap.getLength(); i++) {
-				Attr attr = (Attr) namedMap.item(i);
-				if (attr != null) {
-					attrMap.put(attr.getName(), attr.getValue());
 
-				}
-
-			}
-
-		}
-
-		return attrMap;
-	}
-	
 	public static String getAttributeValue(Node node, String attributeName, boolean checkChildNodes) {
 
 		if (node.hasAttributes()) {
@@ -78,8 +57,7 @@ public class JbossConfigHelper {
 		return "";
 
 	}
-	
-	
+
 	public static String getSystemPropertyResolvedValue(String value) {
 		String resolvedValue = "";
 		Matcher matcher = SYSTEM_PROPERTY_PATTERN.matcher(value);
@@ -96,7 +74,7 @@ public class JbossConfigHelper {
 		String resolvedValue = getSystemPropertyResolvedValue(value);
 		return (resolvedValue != null && !resolvedValue.isEmpty() ? resolvedValue : defaultValue);
 	}
-	
+
 	public static String readHost() {
 		ShellCommandResult result = SystemUtils.IS_OS_WINDOWS ? WindowsCmdShell.instance().execute("hostname")
 				: UnixShell.instance().execute("hostname");

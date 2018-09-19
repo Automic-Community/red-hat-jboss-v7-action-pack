@@ -11,7 +11,6 @@ import com.automic.actions.common.utils.XmlUtility;
 import com.automic.actions.discovery.models.Compatibility;
 import com.automic.actions.discovery.models.FindingValue;
 import com.automic.actions.discovery.models.Goal;
-import com.automic.actions.discovery.models.GoalExecutionStrategy;
 import com.automic.actions.discovery.models.Plan;
 import com.automic.actions.discovery.models.PlanStatus;
 import com.google.common.base.Optional;
@@ -21,7 +20,6 @@ public class HostAndPortGoal extends Goal {
 
 	public HostAndPortGoal() {
 		super(Jboss7Goal.HOST_PORT, Compatibility.UNISEX);
-		this.setStrategy(GoalExecutionStrategy.RUN_ALL_PLANS_REQUIRE_ONE_SUCCESS);
 		this.addPlan(findHost());
 
 	}
@@ -31,6 +29,7 @@ public class HostAndPortGoal extends Goal {
 		this.register(Jboss7Finding.OPERATING_MODE);
 		this.register(Jboss7Finding.HOST);
 		this.register(Jboss7Finding.PORT);
+		this.register(Jboss7Finding.SERVER_NAME);
 
 	}
 
@@ -62,43 +61,33 @@ class JbossHostPlan extends Plan {
 				for (String mode : MODES) {
 					Path configurationDirPath = Paths.get(jboss7Home.getValue().toString(), mode, "configuration");
 					if (configurationDirPath.toFile().exists()) {
-						success = readHostInfoFromConfigFile(jboss7Home, configurationDirPath);
+						if (mode.equalsIgnoreCase("standalone")) {
+							success = readHostAndPortForStandalone(jboss7Home, configurationDirPath);
+						} else {
+							success = readHostAndPortForDomain(jboss7Home, configurationDirPath);
+						}
 
 					}
 				}
 			}
 		} else {
 			write(Jboss7Finding.HOST, JbossConfigHelper.readHost());
-			success = true;
+			success = false;
 
 		}
 
 		return complete(success);
 	}
 
-	private boolean readHostInfoFromConfigFile(FindingValue jboss7Home, Path configurationDirPath) {
-		boolean success = false;
-
-		String mode = configurationDirPath.getParent().getFileName().toString();
-		if (mode.equalsIgnoreCase("standalone")) {
-			success = readHostAndPortForStandalone(jboss7Home, configurationDirPath);
-		} else {
-			success = readHostAndPortForDomain(jboss7Home, configurationDirPath);
-		}
-		return success;
-
-	}
-
 	private boolean readHostAndPortForDomain(FindingValue jboss7Home, Path configurationDirPath) {
 		boolean success = false;
-		
 
 		Path hostXmlFilePath = Paths.get(configurationDirPath.toString(), "host.xml");
 		if (hostXmlFilePath.toFile().exists()) {
 			Optional<Document> document = XmlUtility.openDocument(hostXmlFilePath);
 			if (document.isPresent()) {
-				FindingValue operatingMode = write(Jboss7Finding.OPERATING_MODE, JBossOperatingModes.DOAMIN_MODE.getMode(),
-						jboss7Home);
+				FindingValue operatingMode = write(Jboss7Finding.OPERATING_MODE,
+						JBossOperatingModes.DOAMIN_MODE.getMode(), jboss7Home);
 
 				// check for controller type i.e domain or host controller
 				Optional<Node> domainControllerNodeType = XmlUtility.findNode(document.get(),
@@ -117,10 +106,11 @@ class JbossHostPlan extends Plan {
 						FindingValue standaloneHost = write(Jboss7Finding.HOST, host, operatingMode);
 
 						// read port value
+						String port = null;
 						Optional<Node> socketBindingMgmtHttpNode = XmlUtility.findNode(document.get(),
 								JbossConfigHelper.MASTER_CONTROLLER_PORT_INTERFACE);
 						if (socketBindingMgmtHttpNode.isPresent()) {
-							String port = JbossConfigHelper.getSystemPropertyResolvedValue(
+							port = JbossConfigHelper.getSystemPropertyResolvedValue(
 									JbossConfigHelper.getAttributeValue(socketBindingMgmtHttpNode.get(),
 											JbossConfigHelper.ATTRIBUTE_PORT, false),
 									JbossConfigHelper.DEFAULT_MGMT_PORT);
@@ -131,11 +121,18 @@ class JbossHostPlan extends Plan {
 							write(Jboss7Finding.PORT, JbossConfigHelper.DEFAULT_MGMT_PORT, standaloneHost);
 						}
 
+						String servername = host + " " + port + " " + JBossOperatingModes.DOAMIN_MODE.getMode();
+						write(Jboss7Finding.SERVER_NAME, servername, operatingMode);
+
 					} else {
 						FindingValue standaloneHost = write(Jboss7Finding.HOST, JbossConfigHelper.DEFAULT_MGMT_HOST,
 								operatingMode);
 						write(Jboss7Finding.PORT, JbossConfigHelper.DEFAULT_MGMT_PORT, standaloneHost);
+						String servername = JbossConfigHelper.DEFAULT_MGMT_HOST + " "
+								+ JbossConfigHelper.DEFAULT_MGMT_PORT + " " + JBossOperatingModes.DOAMIN_MODE.getMode();
+						write(Jboss7Finding.SERVER_NAME, servername, operatingMode);
 					}
+					success = true;
 
 				} else {
 					// this is normal host controller
@@ -155,12 +152,18 @@ class JbossHostPlan extends Plan {
 
 						FindingValue domainHost = write(Jboss7Finding.HOST, host, operatingMode);
 						write(Jboss7Finding.PORT, Integer.parseInt(port), domainHost);
+						String servername = host + " " + port + " " + JBossOperatingModes.DOAMIN_MODE.getMode();
+						write(Jboss7Finding.SERVER_NAME, servername, operatingMode);
 
 					} else {
 						FindingValue standaloneHost = write(Jboss7Finding.HOST, JbossConfigHelper.DEFAULT_MGMT_HOST,
 								operatingMode);
 						write(Jboss7Finding.PORT, JbossConfigHelper.DEFAULT_MGMT_PORT, standaloneHost);
+						String servername = JbossConfigHelper.DEFAULT_MGMT_HOST + " "
+								+ JbossConfigHelper.DEFAULT_MGMT_PORT + " " + JBossOperatingModes.DOAMIN_MODE.getMode();
+						write(Jboss7Finding.SERVER_NAME, servername, operatingMode);
 					}
+					success = true;
 				}
 
 			}
@@ -199,26 +202,30 @@ class JbossHostPlan extends Plan {
 
 					}
 					Optional<Node> socketBindingMgmtHttpNode = XmlUtility.findNode(document.get(), SOCKET_BIND_REGEX);
+					String port = null;
 					if (socketBindingMgmtHttpNode.isPresent()) {
-						String port = JbossConfigHelper
+						port = JbossConfigHelper
 								.getSystemPropertyResolvedValue(
 										JbossConfigHelper.getAttributeValue(socketBindingMgmtHttpNode.get(),
 												JbossConfigHelper.ATTRIBUTE_PORT, false),
 										JbossConfigHelper.DEFAULT_MGMT_PORT);
 						int resolvedPort = Integer.parseInt(port) + portOffsetVal;
+						port = String.valueOf(resolvedPort);
 						write(Jboss7Finding.PORT, resolvedPort, standaloneHost);
 
 					} else {
 						write(Jboss7Finding.PORT, JbossConfigHelper.DEFAULT_MGMT_PORT, standaloneHost);
 					}
 
+					String servername = host + " " + port + " " + JBossOperatingModes.STANDALONE_MODE.getMode();
+					write(Jboss7Finding.SERVER_NAME, servername, operatingMode);
 					success = true;
 				}
 
 			}
 		} else {
 			write(Jboss7Finding.HOST, JbossConfigHelper.readHost(), operatingMode);
-			success = true;
+			success = false;
 		}
 
 		return success;

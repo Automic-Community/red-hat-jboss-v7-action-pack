@@ -9,10 +9,11 @@ public enum Jboss7Finding implements Finding {
 	HOME_DIRECTORY("home_directory"),		
 	PORT("port", Integer.class),
 	HOST_CONTROLLER("host_controller"),
-	SERVER_NAME("server_name"),
-	SERVER_GROUP("server_group"),
+	SERVER_INSTANCES("servername"),
+	SERVER_GROUP("server_groups"),
 	OPERATING_MODE("operating_mode"), 
-	PROFILE("profile");
+	PROFILE("profile"),
+	SERVER_NAME("server",FindingVisibility.INTERNAL);
 	
 	private Class<?> clazz;
 	private String propertyName;

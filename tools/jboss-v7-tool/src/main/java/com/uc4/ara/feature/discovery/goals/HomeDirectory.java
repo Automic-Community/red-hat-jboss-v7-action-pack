@@ -4,17 +4,15 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.EnumSet;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import org.apache.commons.lang3.SystemUtils;
 
 import com.automic.actions.discovery.models.Compatibility;
-import com.automic.actions.discovery.models.FindingValue;
 import com.automic.actions.discovery.models.Goal;
+import com.automic.actions.discovery.models.GoalExecutionStrategy;
 import com.automic.actions.discovery.models.Plan;
 import com.automic.actions.discovery.models.PlanStatus;
 import com.automic.actions.shell.unix.UnixShell;
@@ -37,6 +35,7 @@ public class HomeDirectory extends Goal {
 
 	public HomeDirectory() {
 		super(Jboss7Goal.HOME_DIRECTORY, Compatibility.UNISEX);
+		this.setStrategy(GoalExecutionStrategy.RUN_ALL_PLANS_REQUIRE_ONE_SUCCESS);
 		this.addPlan(findService());
 		this.addPlan(findBatchFile());
 	}
@@ -67,6 +66,7 @@ public class HomeDirectory extends Goal {
 					if (m.matches()) {
 						String hDir = path.getParent().getParent().toString();
 						write(Jboss7Finding.HOME_DIRECTORY, hDir);
+						success = true;
 
 					}
 
@@ -101,12 +101,8 @@ public class HomeDirectory extends Goal {
 						Path executablePath = Paths.get(matcher.group(1));
 						if (Files.exists(executablePath)) {
 							Path home = executablePath.getParent().getParent();
-
-							List<FindingValue> jbossHosts = read(Jboss7Finding.HOST);
-							for (FindingValue jbossHost : jbossHosts) {
-								write(Jboss7Finding.HOME_DIRECTORY, home.toFile().getCanonicalPath(), jbossHost);
-								success = true;
-							}
+							write(Jboss7Finding.HOME_DIRECTORY, home.toFile().getCanonicalPath());
+							success = true;
 						}
 					}
 				}

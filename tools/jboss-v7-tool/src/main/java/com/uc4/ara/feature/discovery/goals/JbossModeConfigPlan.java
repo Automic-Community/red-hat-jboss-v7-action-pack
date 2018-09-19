@@ -7,7 +7,6 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 
 import org.w3c.dom.Document;
@@ -40,8 +39,9 @@ public class JbossModeConfigPlan extends Plan {
 	private static final String ATTRIBUTE_NAME = "name";
 
 	private static final String HOST_CONTROLLER_MAIN_NODE = "/host";
-	private static final String SLAVE_SERVER_INSTANCES = "/host/servers";
-	private static final String MASTER_SERVER_GROUPS = "/domain/server-groups";
+	private static final String SLAVE_SERVER_INSTANCES = "/host/servers/server";
+	private static final String MASTER_SERVER_GROUPS = "/domain/server-groups/server-group";
+	private static final String MASTER_PROFILES = "/domain/profiles/profile";
 
 	public JbossModeConfigPlan(String name, Goal goal, Compatibility compatibility) {
 		super(name, goal, compatibility);
@@ -83,52 +83,37 @@ public class JbossModeConfigPlan extends Plan {
 					// check for controller type i.e domain or host controller
 					Optional<Node> domainControllerNodeType = XmlUtility.findNode(document.get(),
 							JbossConfigHelper.MASTER_CONTROLLER_NODE);
+					Set<String> profileSet = new HashSet<String>();
+					Set<String> instanceSet = new HashSet<String>();
+					Set<String> serverGroupSet = new HashSet<String>();
 
 					if (domainControllerNodeType.isPresent()) {
 						// read:server groups,profiles from file domain.xml
-						readServerGroupAndProfileFromConfig(domainConfigDir, operatingMode);
-					} else {
-
-						// read host controller name
-
-						String controllerName = JbossConfigHelper.getAttributeValue(rootNode.get(), ATTRIBUTE_NAME,
-								false);
-						if (controllerName != null) {
-							write(Jboss7Finding.HOST_CONTROLLER, controllerName, operatingMode);
-						}
-
-						// read info : server instances,server groups
-						// server instances(servername) and groups
-						Optional<Node> serverInstancesNodeType = XmlUtility.findNode(document.get(),
-								SLAVE_SERVER_INSTANCES);
-						if (serverInstancesNodeType.isPresent()) {
-
-							StringBuffer servernames = new StringBuffer();
-							StringBuffer servergrps = new StringBuffer();
-							NodeList nodes = serverInstancesNodeType.get().getChildNodes();
-							for (int i = 0; i < nodes.getLength(); i++) {
-								Node childNode = nodes.item(i);
-								if (childNode.getNodeType() == Node.ELEMENT_NODE) {
-
-									Map<String, String> attrMap = JbossConfigHelper
-											.getNodeAttributeValueMap(nodes.item(i));
-									servernames.append(attrMap.get(ATTRIBUTE_NAME));
-									servernames.append(VALUE_SEPARATOR);
-									servergrps.append(attrMap.get("group"));
-									servergrps.append(VALUE_SEPARATOR);
-
-								}
-							}
-
-							write(Jboss7Finding.SERVER_NAME,
-									servernames.subSequence(0, servernames.lastIndexOf(VALUE_SEPARATOR)),
-									operatingMode);
-							write(Jboss7Finding.SERVER_GROUP,
-									servergrps.subSequence(0, servergrps.lastIndexOf(VALUE_SEPARATOR)), operatingMode);
-
-						}
-
+						readServerGroupAndProfileFromConfig(domainConfigDir, operatingMode, profileSet, serverGroupSet);
 					}
+
+					// read host controller name
+
+					String controllerName = JbossConfigHelper.getAttributeValue(rootNode.get(), ATTRIBUTE_NAME, false);
+					if (controllerName != null && !controllerName.isEmpty()) {
+						write(Jboss7Finding.HOST_CONTROLLER, controllerName, operatingMode);
+					}
+
+					// read info : server instances,server groups
+					// server instances(servername) and groups
+					Optional<NodeList> serverInstancesNodeType = XmlUtility.findNodeList(document.get(),
+							SLAVE_SERVER_INSTANCES);
+					if (serverInstancesNodeType.isPresent()) {
+
+						for (int i = 0; i < serverInstancesNodeType.get().getLength(); i++) {
+							Node childNode = serverInstancesNodeType.get().item(i);
+							instanceSet.add(JbossConfigHelper.getAttributeValue(childNode, ATTRIBUTE_NAME, false));
+							serverGroupSet.add(JbossConfigHelper.getAttributeValue(childNode, "group", false));
+
+						}
+					}
+					write(Jboss7Finding.SERVER_INSTANCES, getValueList(instanceSet), operatingMode);
+					write(Jboss7Finding.SERVER_GROUP, getValueList(serverGroupSet), operatingMode);
 
 				}
 
@@ -139,49 +124,52 @@ public class JbossModeConfigPlan extends Plan {
 
 	}
 
-	private void readServerGroupAndProfileFromConfig(Path configurationDirPath, FindingValue operatingMode) {
+	private void readServerGroupAndProfileFromConfig(Path configurationDirPath, FindingValue operatingMode,
+			Set<String> profilesSet, Set<String> serverGroupSet) {
 		Path domainFilePath = Paths.get(configurationDirPath.toString(), "domain.xml");
 
 		if (domainFilePath.toFile().exists()) {
 			Optional<Document> document = XmlUtility.openDocument(domainFilePath);
 
-			StringBuffer servergrps = new StringBuffer();
-			Set<String> profilesSet = new HashSet<String>();
-
 			if (document.isPresent()) {
 
-				Optional<Node> domainServerNode = XmlUtility.findNode(document.get(), MASTER_SERVER_GROUPS);
+				Optional<NodeList> domainServerNode = XmlUtility.findNodeList(document.get(), MASTER_SERVER_GROUPS);
 				if (domainServerNode.isPresent()) {
 
-					NodeList nodes = domainServerNode.get().getChildNodes();
-					for (int i = 0; i < nodes.getLength(); i++) {
-						Node childNode = nodes.item(i);
-						if (childNode.getNodeType() == Node.ELEMENT_NODE) {
+					for (int i = 0; i < domainServerNode.get().getLength(); i++) {
+						Node childNode = domainServerNode.get().item(i);
+						serverGroupSet.add(JbossConfigHelper.getAttributeValue(childNode, ATTRIBUTE_NAME, false));
 
-							Map<String, String> attrMap = JbossConfigHelper.getNodeAttributeValueMap(nodes.item(i));
-							servergrps.append(attrMap.get(ATTRIBUTE_NAME));
-							servergrps.append(VALUE_SEPARATOR);
-							profilesSet.add(attrMap.get("profile"));
-
-						}
 					}
 
-					StringBuffer profiles = new StringBuffer();
-					for (String profile : profilesSet) {
-						profiles.append(profile);
-						profiles.append(VALUE_SEPARATOR);
+				}
+
+				Optional<NodeList> domainProfileNode = XmlUtility.findNodeList(document.get(), MASTER_PROFILES);
+				if (domainProfileNode.isPresent()) {
+
+					for (int i = 0; i < domainProfileNode.get().getLength(); i++) {
+						Node childNode = domainProfileNode.get().item(i);
+						profilesSet.add(JbossConfigHelper.getAttributeValue(childNode, ATTRIBUTE_NAME, false));
+
 					}
-
-					write(Jboss7Finding.PROFILE, profiles.subSequence(0, profiles.lastIndexOf(VALUE_SEPARATOR)),
-							operatingMode);
-					write(Jboss7Finding.SERVER_GROUP,
-							servergrps.subSequence(0, servergrps.lastIndexOf(VALUE_SEPARATOR)), operatingMode);
-
 				}
 			}
 
+			write(Jboss7Finding.SERVER_GROUP, getValueList(serverGroupSet), operatingMode);
+			write(Jboss7Finding.PROFILE, getValueList(profilesSet), operatingMode);
+
 		}
 
+	}
+
+	private String getValueList(Set<String> valueSet) {
+		StringBuilder valueText = new StringBuilder();
+		for (String value : valueSet) {
+			valueText.append(value);
+			valueText.append(VALUE_SEPARATOR);
+		}
+
+		return valueText.subSequence(0, valueText.lastIndexOf(VALUE_SEPARATOR)).toString();
 	}
 
 }

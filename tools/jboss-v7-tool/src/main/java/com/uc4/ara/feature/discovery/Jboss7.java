@@ -4,7 +4,6 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import com.uc4.ara.feature.FeatureUtil;
-import com.uc4.ara.feature.discovery.goals.Jboss7DiscoveryManager;
 import com.uc4.ara.feature.globalcodes.ErrorCodes;
 
 public class Jboss7 extends com.automic.actions.common.AbstractFeature{
