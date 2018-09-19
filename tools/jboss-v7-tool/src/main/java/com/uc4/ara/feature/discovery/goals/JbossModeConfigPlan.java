@@ -169,7 +169,12 @@ public class JbossModeConfigPlan extends Plan {
 			valueText.append(VALUE_SEPARATOR);
 		}
 
-		return valueText.subSequence(0, valueText.lastIndexOf(VALUE_SEPARATOR)).toString();
+		if (valueText.length() > 1) {
+			return valueText.subSequence(0, valueText.lastIndexOf(VALUE_SEPARATOR)).toString();
+		}
+
+		return valueText.toString();
+
 	}
 
 }

@@ -14,7 +14,8 @@ public class Jboss7Result extends DefaultDiscoveryResult {
 		private static final long serialVersionUID = 1L;
 
 		{
-			put(Jboss7Finding.SERVER_NAME, Jboss7Role.SERVER.getRole());
+			put(Jboss7Finding.STANDALONE, Jboss7Role.STANDALONE.getRole());
+			put(Jboss7Finding.MANAGED_DOMAIN, Jboss7Role.MANAGED_DOMAIN.getRole());
 			
 		}
 	};

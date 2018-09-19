@@ -2,7 +2,7 @@ package com.uc4.ara.feature.discovery;
 
 public enum Jboss7Role {
 	
-	SERVER("Server");
+	STANDALONE("Standalone"),MANAGED_DOMAIN("Managed Domain");
 
 	private final String role;
 
