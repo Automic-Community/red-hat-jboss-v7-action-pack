@@ -13,7 +13,9 @@ public enum Jboss7Finding implements Finding {
 	SERVER_GROUP("server_groups"),
 	OPERATING_MODE("operating_mode"), 
 	PROFILE("profile"),
-	SERVER_NAME("server",FindingVisibility.INTERNAL);
+	SERVER_NAME("server",FindingVisibility.INTERNAL),
+	STANDALONE("standalone",FindingVisibility.INTERNAL),
+	MANAGED_DOMAIN("domain",FindingVisibility.INTERNAL);
 	
 	private Class<?> clazz;
 	private String propertyName;
