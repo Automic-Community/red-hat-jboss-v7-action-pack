@@ -1,7 +1,9 @@
-package com.uc4.ara.feature.discovery.goals;
+package com.uc4.ara.feature.discovery;
 
 import com.automic.actions.discovery.DiscoveryManager;
-import com.uc4.ara.feature.discovery.Jboss7Result;
+import com.uc4.ara.feature.discovery.goals.HomeDirectory;
+import com.uc4.ara.feature.discovery.goals.HostAndPortGoal;
+import com.uc4.ara.feature.discovery.goals.ManagerConnection;
 
 
 public class Jboss7DiscoveryManager {
@@ -9,9 +11,9 @@ public class Jboss7DiscoveryManager {
 	private DiscoveryManager manager;
 
 	public Jboss7DiscoveryManager() {
-		manager = new DiscoveryManager(new Jboss7Result());
-		manager.addGoal(new Host());
-		manager.addGoal(new HomeDirectory());		
+		manager = new DiscoveryManager(new Jboss7Result());		
+		manager.addGoal(new HomeDirectory());	
+		manager.addGoal(new HostAndPortGoal());
 		manager.addGoal(new ManagerConnection());
 	}
 
