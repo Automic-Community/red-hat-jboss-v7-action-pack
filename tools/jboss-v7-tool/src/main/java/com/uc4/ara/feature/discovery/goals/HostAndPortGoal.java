@@ -31,7 +31,6 @@ public class HostAndPortGoal extends Goal {
 		this.register(Jboss7Finding.PORT);
 		this.register(Jboss7Finding.SERVER_NAME);
 		this.register(Jboss7Finding.STANDALONE);
-		this.register(Jboss7Finding.MANAGED_DOMAIN);
 
 	}
 
@@ -123,8 +122,8 @@ class JbossHostPlan extends Plan {
 							write(Jboss7Finding.PORT, JbossConfigHelper.DEFAULT_MGMT_PORT, standaloneHost);
 						}
 
-						String servername = host + " " + port ;
-						write(Jboss7Finding.MANAGED_DOMAIN, servername, operatingMode);
+						String servername = host + " " + port;
+						write(Jboss7Finding.SERVER_NAME, servername, operatingMode);
 
 					} else {
 						FindingValue standaloneHost = write(Jboss7Finding.HOST, JbossConfigHelper.DEFAULT_MGMT_HOST,
@@ -132,7 +131,7 @@ class JbossHostPlan extends Plan {
 						write(Jboss7Finding.PORT, JbossConfigHelper.DEFAULT_MGMT_PORT, standaloneHost);
 						String servername = JbossConfigHelper.DEFAULT_MGMT_HOST + " "
 								+ JbossConfigHelper.DEFAULT_MGMT_PORT;
-						write(Jboss7Finding.MANAGED_DOMAIN, servername, operatingMode);
+						write(Jboss7Finding.SERVER_NAME, servername, operatingMode);
 					}
 					success = true;
 
@@ -155,7 +154,7 @@ class JbossHostPlan extends Plan {
 						FindingValue domainHost = write(Jboss7Finding.HOST, host, operatingMode);
 						write(Jboss7Finding.PORT, Integer.parseInt(port), domainHost);
 						String servername = host + " " + port;
-						write(Jboss7Finding.MANAGED_DOMAIN, servername, operatingMode);
+						write(Jboss7Finding.SERVER_NAME, servername, operatingMode);
 
 					} else {
 						FindingValue standaloneHost = write(Jboss7Finding.HOST, JbossConfigHelper.DEFAULT_MGMT_HOST,
@@ -163,7 +162,7 @@ class JbossHostPlan extends Plan {
 						write(Jboss7Finding.PORT, JbossConfigHelper.DEFAULT_MGMT_PORT, standaloneHost);
 						String servername = JbossConfigHelper.DEFAULT_MGMT_HOST + " "
 								+ JbossConfigHelper.DEFAULT_MGMT_PORT;
-						write(Jboss7Finding.MANAGED_DOMAIN, servername, operatingMode);
+						write(Jboss7Finding.SERVER_NAME, servername, operatingMode);
 					}
 					success = true;
 				}
