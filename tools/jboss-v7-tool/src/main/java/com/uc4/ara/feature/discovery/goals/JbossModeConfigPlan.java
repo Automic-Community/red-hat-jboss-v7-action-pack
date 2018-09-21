@@ -50,13 +50,13 @@ public class JbossModeConfigPlan extends Plan {
 	@Override
 	protected PlanStatus execute() throws Exception {
 		boolean success = false;
-
-		List<FindingValue> jboss7Homes = read(Jboss7Finding.HOME_DIRECTORY);
-		for (FindingValue jboss7Home : jboss7Homes) {
-			Path configurationDirPath = Paths.get(jboss7Home.getValue().toString(), "domain", "configuration");
-			if (configurationDirPath.toFile().exists()) {
-				success = readConfigForDomain(jboss7Home, configurationDirPath);
+		List<FindingValue> serverNames = read(Jboss7Finding.SERVER_NAME);
+		for (FindingValue serverName : serverNames) {
+			FindingValue operatingMode = serverName.getParent();
+			if (JBossOperatingModes.DOAMIN_MODE.getMode().equals(operatingMode.getValue())) {
+				success = readConfigForDomain(serverName);
 			}
+
 		}
 
 		return complete(success);
@@ -67,60 +67,93 @@ public class JbossModeConfigPlan extends Plan {
 		return 300;
 	}
 
-	private boolean readConfigForDomain(FindingValue jboss7Home, Path domainConfigDir) {
-		FindingValue operatingMode = write(Jboss7Finding.OPERATING_MODE, JBossOperatingModes.DOAMIN_MODE.getMode(),
-				jboss7Home);
+	private boolean readConfigForDomain(FindingValue serverName) {
+		boolean success = false;
+		FindingValue operatingMode = serverName.getParent();
+		FindingValue jboss7Home = operatingMode.getParent();
 
-		Path hostXmlFilePath = Paths.get(domainConfigDir.toString(), "host.xml");
-		if (hostXmlFilePath.toFile().exists()) {
-			Optional<Document> document = XmlUtility.openDocument(hostXmlFilePath);
-			if (document.isPresent()) {
+		Path configurationDirPath = Paths.get(jboss7Home.getValue().toString(), "domain", "configuration");
+		if (configurationDirPath.toFile().exists()) {
+			Path hostXmlFilePath = Paths.get(configurationDirPath.toString(), "host.xml");
+			if (hostXmlFilePath.toFile().exists()) {
 
-				// read controller name
-				Optional<Node> rootNode = XmlUtility.findNode(document.get(), HOST_CONTROLLER_MAIN_NODE);
-				if (rootNode.isPresent()) {
+				Optional<Document> document = XmlUtility.openDocument(hostXmlFilePath);
+				if (document.isPresent()) {
 
-					// check for controller type i.e domain or host controller
-					Optional<Node> domainControllerNodeType = XmlUtility.findNode(document.get(),
-							JbossConfigHelper.MASTER_CONTROLLER_NODE);
-					Set<String> profileSet = new HashSet<String>();
-					Set<String> instanceSet = new HashSet<String>();
-					Set<String> serverGroupSet = new HashSet<String>();
+					// read controller name
+					Optional<Node> rootNode = XmlUtility.findNode(document.get(), HOST_CONTROLLER_MAIN_NODE);
+					if (rootNode.isPresent()) {
 
-					if (domainControllerNodeType.isPresent()) {
-						// read:server groups,profiles from file domain.xml
-						readServerGroupAndProfileFromConfig(domainConfigDir, operatingMode, profileSet, serverGroupSet);
-					}
+						// check for controller type i.e domain or host
+						// controller
+						Optional<Node> domainControllerNodeType = XmlUtility.findNode(document.get(),
+								JbossConfigHelper.MASTER_CONTROLLER_NODE);
+						Set<String> profileSet = new HashSet<String>();
+						Set<String> instanceSet = new HashSet<String>();
+						Set<String> serverGroupSet = new HashSet<String>();
 
-					// read host controller name
+						if (domainControllerNodeType.isPresent()) {
+							// read:server groups,profiles from file domain.xml
+							readServerGroupAndProfileFromConfig(configurationDirPath, operatingMode, profileSet,
+									serverGroupSet);
+						}
 
-					String controllerName = JbossConfigHelper.getAttributeValue(rootNode.get(), ATTRIBUTE_NAME, false);
-					if (controllerName != null && !controllerName.isEmpty()) {
-						write(Jboss7Finding.HOST_CONTROLLER, controllerName, operatingMode);
-					}
+						// read host controller name
 
-					// read info : server instances,server groups
-					// server instances(servername) and groups
-					Optional<NodeList> serverInstancesNodeType = XmlUtility.findNodeList(document.get(),
-							SLAVE_SERVER_INSTANCES);
-					if (serverInstancesNodeType.isPresent()) {
+						String controllerName = JbossConfigHelper.getAttributeValue(rootNode.get(), ATTRIBUTE_NAME,
+								false);
+						// read info : server instances,server groups
+						// server instances(servername) and groups
+						Optional<NodeList> serverInstancesNodeType = XmlUtility.findNodeList(document.get(),
+								SLAVE_SERVER_INSTANCES);
+						if (serverInstancesNodeType.isPresent()) {
 
-						for (int i = 0; i < serverInstancesNodeType.get().getLength(); i++) {
-							Node childNode = serverInstancesNodeType.get().item(i);
-							instanceSet.add(JbossConfigHelper.getAttributeValue(childNode, ATTRIBUTE_NAME, false));
-							serverGroupSet.add(JbossConfigHelper.getAttributeValue(childNode, "group", false));
+							for (int i = 0; i < serverInstancesNodeType.get().getLength(); i++) {
+								Node childNode = serverInstancesNodeType.get().item(i);
+								instanceSet.add(JbossConfigHelper.getAttributeValue(childNode, ATTRIBUTE_NAME, false));
+								serverGroupSet.add(JbossConfigHelper.getAttributeValue(childNode, "group", false));
+
+							}
+						}
+
+						if (!profileSet.isEmpty()) {
+							List<FindingValue> profileFindingVal = read(Jboss7Finding.PROFILE);
+							for (FindingValue profile : profileFindingVal) {
+								write(Jboss7Finding.SERVER_INSTANCES, getValueList(instanceSet), profile);
+								write(Jboss7Finding.SERVER_GROUP, getValueList(serverGroupSet), profile);
+
+								if (controllerName != null && !controllerName.isEmpty()) {
+									write(Jboss7Finding.HOST_CONTROLLER, controllerName, profile);
+								}
+
+								String serverVal = serverName.getValue() + " " + profile.getValue();
+								write(Jboss7Finding.MANAGED_DOMAIN, serverVal, profile);
+							}
+
+						} else {
+
+							write(Jboss7Finding.SERVER_INSTANCES, getValueList(instanceSet), operatingMode);
+							write(Jboss7Finding.SERVER_GROUP, getValueList(serverGroupSet), operatingMode);
+
+							if (controllerName != null && !controllerName.isEmpty()) {
+								write(Jboss7Finding.HOST_CONTROLLER, controllerName, operatingMode);
+							}
+
+							write(Jboss7Finding.MANAGED_DOMAIN, serverName.getValue(), operatingMode);
 
 						}
+
+						success = true;
+
 					}
-					write(Jboss7Finding.SERVER_INSTANCES, getValueList(instanceSet), operatingMode);
-					write(Jboss7Finding.SERVER_GROUP, getValueList(serverGroupSet), operatingMode);
 
 				}
 
 			}
+
 		}
 
-		return true;
+		return success;
 
 	}
 
@@ -155,8 +188,10 @@ public class JbossModeConfigPlan extends Plan {
 				}
 			}
 
-			write(Jboss7Finding.SERVER_GROUP, getValueList(serverGroupSet), operatingMode);
-			write(Jboss7Finding.PROFILE, getValueList(profilesSet), operatingMode);
+			for (String p : profilesSet) {
+				write(Jboss7Finding.PROFILE, p, operatingMode);
+
+			}
 
 		}
 

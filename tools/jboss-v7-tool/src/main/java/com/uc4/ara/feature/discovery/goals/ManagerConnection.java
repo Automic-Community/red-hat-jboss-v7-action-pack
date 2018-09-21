@@ -19,6 +19,7 @@ public class ManagerConnection extends Goal {
 		this.register(Jboss7Finding.SERVER_INSTANCES);
 		this.register(Jboss7Finding.PROFILE);
 		this.register(Jboss7Finding.HOST_CONTROLLER);
+		this.register(Jboss7Finding.MANAGED_DOMAIN);
 
 	}
 
