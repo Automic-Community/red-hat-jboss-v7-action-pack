@@ -24,7 +24,7 @@ public class JbossConfigHelper {
 	public static final String ATTRIBUTE_PORT = "port";
 	public static final String MASTER_CONTROLLER_NODE = "/host/domain-controller/local";
 	public static final String MASTER_CONTROLLER_HOST_INTERFACE = "/host/interfaces/interface[@name='management']/inet-address";
-	public static final String MASTER_CONTROLLER_PORT_INTERFACE = "/host/management/management-interfaces/native-interface[@security-realm='ManagementRealm']/socket[@interface='management']";
+	public static final String MASTER_CONTROLLER_PORT_INTERFACE = "/host/management/management-interfaces/http-interface[@security-realm='ManagementRealm']/socket[@interface='management']";
 
 	public static final String SLAVE_CONTROLLER_NODE = "/host/domain-controller/remote[@security-realm='ManagementRealm']";
 
