@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBI name="PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.DETECT_OS_TYPE@UNIX">
+<HEADER state="1">
+<Title>Detect OS</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[:   SET &UC4RB_TEMP_FILE_PATH# = STR_CAT(&AGENT_TEMPDIR#,"/cmd-&$RUNID#.txt")
+:   SET &TEMP_FILE_PATH# = &UC4RB_TEMP_FILE_PATH#
+:   SET &FLAG#="0"
+:   SET &UC4RB_SSH_COMMAND# = "ver"
+:   INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.SSH_RUN_COMMAND@UNIX
+]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBI name="PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.CHECK_ERRORSTATUS">
+<HEADER state="1">
+<Title>Check Error Status</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[if($errors -eq 0){
+:INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.INFO
+}else{
+:INC PCK.ITPA_SHARED.PRV.INCLUDE.LOGGING.ERROR
+}
+__uc_return($errors)]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC><![CDATA[It checks whether any error occurred and sets job status based on some known parameters. It considers the following things into account:
+* Any OS command failed or not. (E.g. $? OS variable)
+* Job explicitly sets error code into known variable.
+* AE Script processing error. (E.g. Validation errors)
+It considers any non-zero value as error scenario.
+Further based on job status, it logs the success or failure message into Job report.
+
+This include can be only used in Job's Process tab.
+It can be used for Windows PowerShell environment.
+]]></DOC>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

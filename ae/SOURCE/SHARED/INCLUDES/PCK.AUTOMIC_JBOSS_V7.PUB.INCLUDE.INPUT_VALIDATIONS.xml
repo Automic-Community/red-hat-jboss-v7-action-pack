@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBI name="PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.INPUT_VALIDATIONS">
+<HEADER state="1">
+<Title>Input Validations</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[: SET &FLAG# = 0
+: IF &UC4RB_AIOPS_TOOLS# EQ "SSH"
+:   IF "" EQ &UC4RB_SSH_USERNAME# OR &UC4RB_SSH_HOST#
+:     SET &FLAG# = 1
+:   ENDIF
+:   IF &FLAG# = 1
+:     STOP MSG, 50, "SSH connection details are required when [Connection Tool] is set to 'SSH'."
+:   ENDIF
+!   SSH:Check for password and private key
+:   SET &COUNT# = 0
+
+:   IF &UC4RB_SSH_KEY# NE ""
+:     SET &COUNT# = &COUNT# + 1
+:   ENDIF
+
+:   IF &UC4RB_SSH_PASSWORD# NE "" OR "--10"
+:     SET &COUNT# = &COUNT# + 1
+:    ENDIF
+
+:   IF &COUNT# EQ 0 OR 2
+:          STOP MSG, 50, "SSH: Please provide either private key or password"
+:   ENDIF
+: ENDIF
+
+: IF &UC4RB_AIOPS_TOOLS# EQ "WinRM"
+:   IF &UC4RB_WRM_PASSWORD# EQ "" OR "--10"
+:     SET &FLAG# = 1
+:   ENDIF
+:   IF "" EQ &UC4RB_WRM_USERNAME# OR &UC4RB_WRM_HOST#
+:     SET &FLAG# = 1
+:   ENDIF
+:   IF &FLAG# = 1
+:     STOP MSG, 50, "[Host name], [Domain\Username] and [Password] are required when [Connection Tool] is set to 'WinRM'."
+:   ENDIF
+: ENDIF
+
+
+]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

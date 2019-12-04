@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBI name="PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.SSH_RUN_COMMAND@WIN">
+<HEADER state="1">
+<Title>SSH Run Command</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[: SET &ACTION_NAME# = "RunCommandAction"
+
+! Build java arguments
+: INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.SSH_PREPARE_CMD@WIN
+
+!Append action specific inputs to java args
+! File content
+: SET &UC4RB_FILE_CONTENT# = &UC4RB_SSH_COMMAND#
+: SET &UC4RB_FILE_PATH# = &TEMP_FILE_PATH#
+: INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.CREATE_FILE
+
+: SET &UC4RB_ESCAPED_STRING# =&UC4RB_FILE_PATH#
+: INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.ESCAPE_ARG_VALUE@WIN
+: SET &UC4RB_JAVA_CMD# = STR_CAT(&UC4RB_JAVA_CMD#, " -cmdfile &UC4RB_ESCAPED_STRING#")
+
+: SET &UC4RB_ESCAPED_STRING# =&UC4RB_OUTPUT_LOG#
+: INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.ESCAPE_ARG_VALUE@WIN
+: SET &UC4RB_JAVA_CMD# = STR_CAT(&UC4RB_JAVA_CMD#, " -outfile &UC4RB_ESCAPED_STRING#")
+
+: SET &UC4RB_JAVA_CMD# = STR_CAT(&UC4RB_JAVA_CMD#, " -flg &FLAG#")
+
+: PRINT &UC4RB_JAVA_CMD#
+! Invoking java binar
+&UC4RB_JAVA_CMD#]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

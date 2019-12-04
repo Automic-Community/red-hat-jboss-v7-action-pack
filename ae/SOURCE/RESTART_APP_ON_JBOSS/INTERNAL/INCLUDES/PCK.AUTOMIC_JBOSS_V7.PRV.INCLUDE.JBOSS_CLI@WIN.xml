@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBI name="PCK.AUTOMIC_JBOSS_V7.PRV.INCLUDE.JBOSS_CLI@WIN">
+<HEADER state="1">
+<Title/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[:SET &UC4_AIOPS_JB_HOME_DIR# = STR_TRIM(&UC4RB_AIOPS_JB_HOME_DIR#)
+:SET &SPACE_CHECK# = STR_FIND(&UC4_AIOPS_JB_HOME_DIR#, ' ')
+:IF &SPACE_CHECK# > 0
+:  SET &UC4_JBOSS_CLI# = '"&UC4_AIOPS_JB_HOME_DIR#\bin\jboss-cli.bat" --connect'
+:ELSE
+:  SET &UC4_JBOSS_CLI# = '&UC4_AIOPS_JB_HOME_DIR#\bin\jboss-cli.bat --connect'
+:ENDIF
+
+
+:IF &UC4RB_AIOPS_JB_HOST# NE ""
+:  SET &UC4_JBOSS_CLI# = "&UC4_JBOSS_CLI# --controller=&UC4RB_AIOPS_JB_HOST#"
+:  IF &UC4RB_AIOPS_JB_PORT# NE ""
+:    SET &UC4_JBOSS_CLI# = "&UC4_JBOSS_CLI#:&UC4RB_AIOPS_JB_PORT#"
+:  ENDIF
+:ENDIF
+
+:IF &UC4RB_AIOPS_JB_USERNAME# NE ""
+:  SET &UC4_JBOSS_CLI# = "&UC4_JBOSS_CLI# --user=&UC4RB_AIOPS_JB_USERNAME#"
+:  IF &UC4RB_AIOPS_JB_PASSWORD# <> "" OR "--10"
+:   SET &UC4RB_ENCRYPTED_PASSWORD_TMP# = "&UC4RB_AIOPS_JB_PASSWORD#"
+!   Decrypt passphrase
+:   INC PCK.ITPA_SHARED.PRV.INCLUDE.DECRYPT_PASSWORD
+:   SET &UC4_JBOSS_CLI# = "&UC4_JBOSS_CLI# --password=$UC4_DECRYPTED_JB_PWD"
+:  ENDIF
+:ENDIF
+]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

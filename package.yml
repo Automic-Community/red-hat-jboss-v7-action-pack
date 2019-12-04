@@ -18,3 +18,9 @@ binaries:
     type: BINARY
     path: tools/jboss-v7-tool/target/jboss-v7-tool.jar
     version: 1.0.0
+- object: RESOURCES/LIBS/PCK.AUTOMIC_JBOSS_V7.PRV.STORE
+  resources: 
+  - name: JBOSSSSHTOOL.JAR
+    type: BINARY
+    path: tools/jboss-ssh-tool/target/jboss-ssh-tool.jar
+    version: 1.0.0

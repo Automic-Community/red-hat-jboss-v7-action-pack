@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<FILTER_OUTPUT name="PCK.AUTOMIC_JBOSS_V7.PRV.FILTER.RESTART_JBOSS">
+<HEADER state="1">
+<Title/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<FILTER_OUTPUT state="1">
+<Filters>
+<filter Condition="N" FilterText="Application successfully restarted." Lnr="1" SrcName="REP" SrcType="R"/>
+</Filters>
+<OperatorAND>0</OperatorAND>
+<OperatorOR>1</OperatorOR>
+</FILTER_OUTPUT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</FILTER_OUTPUT>
+</uc-export>

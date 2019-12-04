@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBI name="PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.SSH_COPY_CMD@WIN">
+<HEADER state="1">
+<Title>Copy File To SSH Machine</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[! Define action specific java options and values
+: SET &ACTION_NAME# = "PutFileAction"
+
+
+
+! Build java arguments
+: INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.SSH_PREPARE_CMD@WIN
+
+: SET &UC4RB_ESCAPED_STRING# =&UC4RB_FILE_PATH#
+: INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.ESCAPE_ARG_VALUE@WIN
+: SET &UC4RB_JAVA_CMD# = STR_CAT(&UC4RB_JAVA_CMD#, " -sourcepath &UC4RB_ESCAPED_STRING#")
+
+: SET &UC4RB_ESCAPED_STRING# =&UC4RB_OUTPUT_LOG#
+: INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.ESCAPE_ARG_VALUE@WIN
+: SET &UC4RB_JAVA_CMD# = STR_CAT(&UC4RB_JAVA_CMD#, " -outfile &UC4RB_ESCAPED_STRING#")
+
+: SET &UC4RB_JAVA_CMD# = STR_CAT(&UC4RB_JAVA_CMD#, " -tempdir tempdir-&$RUNID#")
+: SET &UC4RB_JAVA_CMD# = STR_CAT(&UC4RB_JAVA_CMD#, " -command &UC4RB_EXE_FILE_CMD#")
+: SET &UC4RB_JAVA_CMD# = STR_CAT(&UC4RB_JAVA_CMD#, " -flg &FLAG#")
+
+: PRINT &UC4RB_JAVA_CMD#
+! Invoking java binar
+&UC4RB_JAVA_CMD#]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

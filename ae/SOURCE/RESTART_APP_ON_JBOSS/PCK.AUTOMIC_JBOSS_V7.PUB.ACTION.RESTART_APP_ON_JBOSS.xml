@@ -1,0 +1,733 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBP AllowExternal="1" name="PCK.AUTOMIC_JBOSS_V7.PUB.ACTION.RESTART_APP_ON_JBOSS">
+<XHEADER state="1">
+<Title>JBoss v7 Restart Application</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<Active>1</Active>
+<OH_SubType/>
+<CustomAttributes KeyListID="0" dataRequestID="0"/>
+</XHEADER>
+<SYNCREF state="1">
+<Syncs/>
+</SYNCREF>
+<ATTR_JOBP state="1">
+<Queue>CLIENT_QUEUE</Queue>
+<ChildQueue>*OWN</ChildQueue>
+<StartType/>
+<ExtRepDef>1</ExtRepDef>
+<ExtRepAll>0</ExtRepAll>
+<ExtRepNone>0</ExtRepNone>
+<IntAccount/>
+<AutoDeactNo>0</AutoDeactNo>
+<AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
+<AutoDeactErrorFree>1</AutoDeactErrorFree>
+<DeactWhen>ANY_OK</DeactWhen>
+<AutoDeactAlways>0</AutoDeactAlways>
+<DeactDelay>0</DeactDelay>
+<ActAtRun>1</ActAtRun>
+<UC4Priority>0</UC4Priority>
+<PassPriority>0</PassPriority>
+<MaxParallel2>0</MaxParallel2>
+<ReuseHG>1</ReuseHG>
+<MpElse1>1</MpElse1>
+<MpElse2>0</MpElse2>
+<TZ/>
+<RWhen/>
+<RExecute/>
+<JPA_SubType/>
+</ATTR_JOBP>
+<JOBP state="1">
+<JobpStruct mode="design">
+<task Alias="" BranchType="0" Col="1" Lnr="1" OType="&lt;START&gt;" Object="START" ParentAlias="" ParentObject="" Row="2" Text2="">
+<checkpoint RollbackFlag="0" RunPerPatch="0" RunPerTarget="0" TcpADays="0" TcpATime="00:00" TcpATimeTZ="" TcpExecute="" TcpOn="0" promptatgen="0" showprompt="0"/>
+<after ActFlg="1" AtimOn="0" ErlstStDays="0" ErlstStTime="00:00" ErlstStTimeTZ="" HoldFlg="0"/>
+<when ChkWhenExec="0" LtstEnd="0" LtstEndDays="0" LtstEndTime="00:00" LtstSt="0" LtstStDays="0" LtstStTime="00:00" LtstTimeTZ="" WCTypeAND="1" WCTypeOR="0" WElseA="0" WElseH="0" WElseS="1" WElseX="0" WhenExecute="" WtimOn="0"/>
+<preconditions>
+<PreCon>
+<conditions id="CONDITIONS"/>
+</PreCon>
+</preconditions>
+<predecessors/>
+<runtime MrtCancel="0" MrtDays="0" MrtErt="0" MrtExecute="0" MrtExecuteObj="" MrtFix="0" MrtMethodDate="0" MrtMethodErt="0" MrtMethodFix="0" MrtMethodNone="1" MrtOn="1" MrtTZ="" MrtTime="00:00" SrtErt="0" SrtFix="0" SrtMethodErt="0" SrtMethodFix="0" SrtMethodNone="1"/>
+<result ChkRExec="0" RElseHalt="0" RElseIgn="0" RElseJPAbend="0" RExecFlag="0" RExecute="" RRepMTimes="0" RRepOn="0" RRepWait="0" RWhen=""/>
+<dynvalues>
+<dyntree>
+<node content="1" id="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">
+<PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">
+<UC4RB_AIOPS_JB_APP_NAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_APP_NAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_HOME_DIRs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOME_DIR#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_HOSTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOST#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_OPERATING_MODEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_OPERATING_MODE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Standalone</UC4RB_AIOPS_JB_OPERATING_MODEs.00>
+<UC4RB_AIOPS_JB_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">--10A61C94D6737EB659</UC4RB_AIOPS_JB_PASSWORDs.00>
+<UC4RB_AIOPS_JB_PORTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_SERVER_GRPSs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_SERVER_GRPS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_USERNAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_USERNAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_TOOLSs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_TOOLS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Agent</UC4RB_AIOPS_TOOLSs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS" name="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">
+<PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">
+<UC4RB_SSH_CONN_TIMEOUTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_CONN_TIMEOUT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">30</UC4RB_SSH_CONN_TIMEOUTs.00>
+<UC4RB_SSH_HOSTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_HOST#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
+<UC4RB_SSH_HOST_KEY_CHECKs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_HOST_KEY_CHECK#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">NO</UC4RB_SSH_HOST_KEY_CHECKs.00>
+<UC4RB_SSH_KEYs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_KEY#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
+<UC4RB_SSH_PASSPHRASEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PASSPHRASE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10A61C94D6737EB659</UC4RB_SSH_PASSPHRASEs.00>
+<UC4RB_SSH_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10A61C94D6737EB659</UC4RB_SSH_PASSWORDs.00>
+<UC4RB_SSH_PORTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">22</UC4RB_SSH_PORTs.00>
+<UC4RB_SSH_TTYs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_TTY#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">NO</UC4RB_SSH_TTYs.00>
+<UC4RB_SSH_USERNAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_USERNAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
+<UC4RB_SUDO_SSH_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_SSH_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10A61C94D6737EB659</UC4RB_SUDO_SSH_PASSWORDs.00>
+<UC4RB_USE_SSH_SUDOs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SSH_SUDO#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">None</UC4RB_USE_SSH_SUDOs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS" name="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">
+<PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">
+<UC4RB_WRM_AUTH_TYPEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_AUTH_TYPE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
+<UC4RB_WRM_CA_CHECKs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CA_CHECK#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_CA_CHECKs.00>
+<UC4RB_WRM_CN_CHECKs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CN_CHECK#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_CN_CHECKs.00>
+<UC4RB_WRM_CONN_TIMEOUTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CONN_TIMEOUT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">180</UC4RB_WRM_CONN_TIMEOUTs.00>
+<UC4RB_WRM_HOSTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_HOST#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
+<UC4RB_WRM_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">--10A61C94D6737EB659</UC4RB_WRM_PASSWORDs.00>
+<UC4RB_WRM_PORTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">5985</UC4RB_WRM_PORTs.00>
+<UC4RB_WRM_SSLs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_SSL#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_SSLs.00>
+<UC4RB_WRM_USERNAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_USERNAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
+<PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
+<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">--10A61C94D6737EB659</UC4RB_SUDO_PASSWORDs.00>
+<UC4RB_SUDO_USERs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
+<UC4RB_USE_SUDOs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" name="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT">
+<PRPTBOX promptset="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT">
+<AGENTs.00 ReadFromTable="OPUD" altview="1" haslist="0" msginsert="" msgnr="" promptname="AGENT#" promptsetname="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT">&amp;AGENT#</AGENTs.00>
+<LOGINs.00 ReadFromTable="OPUD" altview="1" haslist="0" msginsert="" msgnr="" promptname="LOGIN#" promptsetname="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT">&amp;LOGIN#</LOGINs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+</dyntree>
+</dynvalues>
+<CIT/>
+<calendars CCTypeAll="0" CCTypeExt="0" CCTypeNone="0" CCTypeOne="1" CaleOn="0"/>
+<postconditions>
+<PostCon>
+<conditions id="CONDITIONS"/>
+</PostCon>
+</postconditions>
+</task>
+<task Alias="RESTART_WEB_APP_ON_JBOSS" BranchType="0" Col="2" Lnr="2" OType="JOBS" Object="PCK.AUTOMIC_JBOSS_V7.PRV.JOB.RESTART_APP_ON_JBOSS@WINDOWS" ParentAlias="" ParentObject="" Row="1" Text2="">
+<checkpoint RollbackFlag="0" RunPerPatch="0" RunPerTarget="0" TcpADays="0" TcpATime="00:00" TcpATimeTZ="" TcpExecute="" TcpOn="0" promptatgen="0" showprompt="0"/>
+<after ActFlg="1" AtimOn="0" ErlstStDays="0" ErlstStTime="00:00" ErlstStTimeTZ="" HoldFlg="0"/>
+<when ChkWhenExec="0" LtstEnd="0" LtstEndDays="0" LtstEndTime="00:00" LtstSt="0" LtstStDays="0" LtstStTime="00:00" LtstTimeTZ="" WCTypeAND="1" WCTypeOR="0" WElseA="1" WElseH="0" WElseS="0" WElseX="0" WhenExecute="" WtimOn="0"/>
+<preconditions>
+<PreCon>
+<conditions id="CONDITIONS"/>
+</PreCon>
+</preconditions>
+<predecessors>
+<pre BranchType="0" Lnr="1" PreLnr="1" When="ANY_OK" type="container"/>
+</predecessors>
+<runtime MrtCancel="0" MrtDays="0" MrtErt="0" MrtExecute="0" MrtExecuteObj="" MrtFix="0" MrtMethodDate="0" MrtMethodErt="0" MrtMethodFix="0" MrtMethodNone="1" MrtOn="1" MrtTZ="" MrtTime="00:00" SrtErt="0" SrtFix="0" SrtMethodErt="0" SrtMethodFix="0" SrtMethodNone="1"/>
+<result ChkRExec="0" RElseHalt="0" RElseIgn="0" RElseJPAbend="0" RExecFlag="0" RExecute="" RRepMTimes="0" RRepOn="0" RRepWait="0" RWhen=""/>
+<dynvalues>
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="TASKVALUE">
+<VALUE state="2">
+<Values/>
+<Mode>0</Mode>
+</VALUE>
+</node>
+<node content="1" id="PVALUE" name="Parent Variables" parent="" type="TASKVALUE">
+<VALUE state="2">
+<Values>
+<row ERTUsage="0" Mod="0" Name="&amp;UC4RB_FOLDER_TO_DEL#" Value=""/>
+</Values>
+<Mode>1</Mode>
+</VALUE>
+</node>
+<node content="1" id="PRPTS" name="PromptSets" parent="" pref="1" type="PROMPTSET"/>
+<node content="0" id="PPRPTS" name="Parent PromptSets" parent="" type="PPROMPTSET"/>
+<node content="1" id="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">
+<PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">
+<UC4RB_AIOPS_JB_APP_NAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_APP_NAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_HOME_DIRs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOME_DIR#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_HOSTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOST#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_OPERATING_MODEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_OPERATING_MODE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Standalone</UC4RB_AIOPS_JB_OPERATING_MODEs.00>
+<UC4RB_AIOPS_JB_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">--10A61C94D6737EB659</UC4RB_AIOPS_JB_PASSWORDs.00>
+<UC4RB_AIOPS_JB_PORTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_SERVER_GRPSs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_SERVER_GRPS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_USERNAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_USERNAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_TOOLSs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_TOOLS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Agent</UC4RB_AIOPS_TOOLSs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS" name="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">
+<PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">
+<UC4RB_SSH_CONN_TIMEOUTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_CONN_TIMEOUT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">30</UC4RB_SSH_CONN_TIMEOUTs.00>
+<UC4RB_SSH_HOSTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_HOST#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
+<UC4RB_SSH_HOST_KEY_CHECKs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_HOST_KEY_CHECK#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">NO</UC4RB_SSH_HOST_KEY_CHECKs.00>
+<UC4RB_SSH_KEYs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_KEY#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
+<UC4RB_SSH_PASSPHRASEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PASSPHRASE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10A61C94D6737EB659</UC4RB_SSH_PASSPHRASEs.00>
+<UC4RB_SSH_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10A61C94D6737EB659</UC4RB_SSH_PASSWORDs.00>
+<UC4RB_SSH_PORTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">22</UC4RB_SSH_PORTs.00>
+<UC4RB_SSH_TTYs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_TTY#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">NO</UC4RB_SSH_TTYs.00>
+<UC4RB_SSH_USERNAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_USERNAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
+<UC4RB_SUDO_SSH_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_SSH_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10A61C94D6737EB659</UC4RB_SUDO_SSH_PASSWORDs.00>
+<UC4RB_USE_SSH_SUDOs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SSH_SUDO#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">None</UC4RB_USE_SSH_SUDOs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS" name="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">
+<PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">
+<UC4RB_WRM_AUTH_TYPEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_AUTH_TYPE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
+<UC4RB_WRM_CA_CHECKs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CA_CHECK#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_CA_CHECKs.00>
+<UC4RB_WRM_CN_CHECKs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CN_CHECK#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_CN_CHECKs.00>
+<UC4RB_WRM_CONN_TIMEOUTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CONN_TIMEOUT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">180</UC4RB_WRM_CONN_TIMEOUTs.00>
+<UC4RB_WRM_HOSTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_HOST#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
+<UC4RB_WRM_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">--10A61C94D6737EB659</UC4RB_WRM_PASSWORDs.00>
+<UC4RB_WRM_PORTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">5985</UC4RB_WRM_PORTs.00>
+<UC4RB_WRM_SSLs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_SSL#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_SSLs.00>
+<UC4RB_WRM_USERNAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_USERNAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
+<PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
+<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">--10A61C94D6737EB659</UC4RB_SUDO_PASSWORDs.00>
+<UC4RB_SUDO_USERs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
+<UC4RB_USE_SUDOs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" name="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT">
+<PRPTBOX promptset="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT">
+<AGENTs.00 ReadFromTable="OPUD" altview="1" haslist="0" msginsert="" msgnr="" promptname="AGENT#" promptsetname="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT">&amp;AGENT#</AGENTs.00>
+<LOGINs.00 ReadFromTable="OPUD" altview="1" haslist="0" msginsert="" msgnr="" promptname="LOGIN#" promptsetname="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT">&amp;LOGIN#</LOGINs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+</dyntree>
+</dynvalues>
+<CIT/>
+<calendars CCTypeAll="0" CCTypeExt="0" CCTypeNone="0" CCTypeOne="1" CaleOn="0"/>
+<postconditions>
+<PostCon>
+<conditions id="CONDITIONS">
+<condition active="1" id="USER DEFINED" once="0" type="C" uiinfo="">
+<params>
+<param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_FOLDER_TO_DEL#"/>
+<param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
+<param altview="0" name="XC_P03" type="V" value=""/>
+</params>
+<when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
+<action active="1" id="EXECUTE OBJECT" once="1" type="A" uiinfo="">
+<params>
+<param altview="0" name="XC_P01" type="V" value="PCK.AUTOMIC_FILESYSTEM.PUB.ACTION.DELETE"/>
+<param altview="0" name="XC_P02" type="S" value="&lt;PARAMETERS&gt;"/>
+<param altview="0" name="XC_P03" type="V" value="##911011">
+<param name="AGENTs.00" value="&amp;AGENT#" vname="XC_P03"/>
+<param name="LOGINs.00" value="&amp;LOGIN#" vname="XC_P03"/>
+<param name="UC4RB_DIR_FILE_RM_FAILs.00" value="YES" vname="XC_P03"/>
+<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;UC4RB_FOLDER_TO_DEL#" vname="XC_P03"/>
+</param>
+<param altview="0" name="XC_P04" type="V" value="DELETE_FILE"/>
+</params>
+</action>
+</when>
+</condition>
+</conditions>
+</PostCon>
+</postconditions>
+</task>
+<task Alias="RESTART_WEB_APP_ON_JBOSS" BranchType="0" Col="2" Lnr="3" OType="JOBS" Object="PCK.AUTOMIC_JBOSS_V7.PRV.JOB.RESTART_APP_ON_JBOSS@UNIX" ParentAlias="" ParentObject="" Row="3" Text2="">
+<checkpoint RollbackFlag="0" RunPerPatch="0" RunPerTarget="0" TcpADays="0" TcpATime="00:00" TcpATimeTZ="" TcpExecute="" TcpOn="0" promptatgen="0" showprompt="0"/>
+<after ActFlg="1" AtimOn="0" ErlstStDays="0" ErlstStTime="00:00" ErlstStTimeTZ="" HoldFlg="0"/>
+<when ChkWhenExec="0" LtstEnd="0" LtstEndDays="0" LtstEndTime="00:00" LtstSt="0" LtstStDays="0" LtstStTime="00:00" LtstTimeTZ="" WCTypeAND="1" WCTypeOR="0" WElseA="1" WElseH="0" WElseS="0" WElseX="0" WhenExecute="" WtimOn="0"/>
+<preconditions>
+<PreCon>
+<conditions id="CONDITIONS"/>
+</PreCon>
+</preconditions>
+<predecessors>
+<pre BranchType="0" Lnr="1" PreLnr="1" When="ANY_OK" type="container"/>
+</predecessors>
+<runtime MrtCancel="0" MrtDays="0" MrtErt="0" MrtExecute="0" MrtExecuteObj="" MrtFix="0" MrtMethodDate="0" MrtMethodErt="0" MrtMethodFix="0" MrtMethodNone="1" MrtOn="1" MrtTZ="" MrtTime="00:00" SrtErt="0" SrtFix="0" SrtMethodErt="0" SrtMethodFix="0" SrtMethodNone="1"/>
+<result ChkRExec="0" RElseHalt="0" RElseIgn="0" RElseJPAbend="0" RExecFlag="0" RExecute="" RRepMTimes="0" RRepOn="0" RRepWait="0" RWhen=""/>
+<dynvalues>
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="TASKVALUE">
+<VALUE state="2">
+<Values/>
+<Mode>0</Mode>
+</VALUE>
+</node>
+<node content="1" id="PVALUE" name="Parent Variables" parent="" type="TASKVALUE">
+<VALUE state="2">
+<Values>
+<row ERTUsage="0" Mod="0" Name="&amp;UC4RB_FOLDER_TO_DEL#" Value=""/>
+</Values>
+<Mode>1</Mode>
+</VALUE>
+</node>
+<node content="1" id="PRPTS" name="PromptSets" parent="" pref="1" type="PROMPTSET"/>
+<node content="0" id="PPRPTS" name="Parent PromptSets" parent="" type="PPROMPTSET"/>
+<node content="1" id="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">
+<PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">
+<UC4RB_AIOPS_JB_APP_NAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_APP_NAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_HOME_DIRs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOME_DIR#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_HOSTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOST#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_OPERATING_MODEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_OPERATING_MODE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Standalone</UC4RB_AIOPS_JB_OPERATING_MODEs.00>
+<UC4RB_AIOPS_JB_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">--10A61C94D6737EB659</UC4RB_AIOPS_JB_PASSWORDs.00>
+<UC4RB_AIOPS_JB_PORTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_SERVER_GRPSs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_SERVER_GRPS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_USERNAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_USERNAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_TOOLSs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_TOOLS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Agent</UC4RB_AIOPS_TOOLSs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS" name="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">
+<PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">
+<UC4RB_SSH_CONN_TIMEOUTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_CONN_TIMEOUT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">30</UC4RB_SSH_CONN_TIMEOUTs.00>
+<UC4RB_SSH_HOSTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_HOST#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
+<UC4RB_SSH_HOST_KEY_CHECKs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_HOST_KEY_CHECK#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">NO</UC4RB_SSH_HOST_KEY_CHECKs.00>
+<UC4RB_SSH_KEYs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_KEY#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
+<UC4RB_SSH_PASSPHRASEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PASSPHRASE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10A61C94D6737EB659</UC4RB_SSH_PASSPHRASEs.00>
+<UC4RB_SSH_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10A61C94D6737EB659</UC4RB_SSH_PASSWORDs.00>
+<UC4RB_SSH_PORTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">22</UC4RB_SSH_PORTs.00>
+<UC4RB_SSH_TTYs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_TTY#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">NO</UC4RB_SSH_TTYs.00>
+<UC4RB_SSH_USERNAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_USERNAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
+<UC4RB_SUDO_SSH_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_SSH_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10A61C94D6737EB659</UC4RB_SUDO_SSH_PASSWORDs.00>
+<UC4RB_USE_SSH_SUDOs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SSH_SUDO#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">None</UC4RB_USE_SSH_SUDOs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS" name="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">
+<PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">
+<UC4RB_WRM_AUTH_TYPEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_AUTH_TYPE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
+<UC4RB_WRM_CA_CHECKs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CA_CHECK#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_CA_CHECKs.00>
+<UC4RB_WRM_CN_CHECKs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CN_CHECK#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_CN_CHECKs.00>
+<UC4RB_WRM_CONN_TIMEOUTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CONN_TIMEOUT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">180</UC4RB_WRM_CONN_TIMEOUTs.00>
+<UC4RB_WRM_HOSTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_HOST#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
+<UC4RB_WRM_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">--10A61C94D6737EB659</UC4RB_WRM_PASSWORDs.00>
+<UC4RB_WRM_PORTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">5985</UC4RB_WRM_PORTs.00>
+<UC4RB_WRM_SSLs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_SSL#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_SSLs.00>
+<UC4RB_WRM_USERNAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_USERNAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
+<PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
+<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">--10A61C94D6737EB659</UC4RB_SUDO_PASSWORDs.00>
+<UC4RB_SUDO_USERs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
+<UC4RB_USE_SUDOs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" name="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT">
+<PRPTBOX promptset="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT">
+<AGENTs.00 ReadFromTable="OPUD" altview="1" haslist="0" msginsert="" msgnr="" promptname="AGENT#" promptsetname="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT">&amp;AGENT#</AGENTs.00>
+<LOGINs.00 ReadFromTable="OPUD" altview="1" haslist="0" msginsert="" msgnr="" promptname="LOGIN#" promptsetname="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT">&amp;LOGIN#</LOGINs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+</dyntree>
+</dynvalues>
+<CIT/>
+<calendars CCTypeAll="0" CCTypeExt="0" CCTypeNone="0" CCTypeOne="1" CaleOn="0"/>
+<postconditions>
+<PostCon>
+<conditions id="CONDITIONS">
+<condition active="1" id="USER DEFINED" once="0" type="C" uiinfo="">
+<params>
+<param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_FOLDER_TO_DEL#"/>
+<param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
+<param altview="0" name="XC_P03" type="V" value=""/>
+</params>
+<when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
+<action active="1" id="EXECUTE OBJECT" once="1" type="A" uiinfo="">
+<params>
+<param altview="0" name="XC_P01" type="V" value="PCK.AUTOMIC_FILESYSTEM.PUB.ACTION.DELETE"/>
+<param altview="0" name="XC_P02" type="S" value="&lt;PARAMETERS&gt;"/>
+<param altview="0" name="XC_P03" type="V" value="##911011">
+<param name="AGENTs.00" value="&amp;AGENT#" vname="XC_P03"/>
+<param name="LOGINs.00" value="&amp;LOGIN#" vname="XC_P03"/>
+<param name="UC4RB_DIR_FILE_RM_FAILs.00" value="YES" vname="XC_P03"/>
+<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;UC4RB_FOLDER_TO_DEL#" vname="XC_P03"/>
+</param>
+<param altview="0" name="XC_P04" type="V" value="DELETE_FILE"/>
+</params>
+</action>
+</when>
+</condition>
+</conditions>
+</PostCon>
+</postconditions>
+</task>
+<task Alias="" BranchType="0" Col="3" Lnr="4" OType="&lt;END&gt;" Object="END" ParentAlias="" ParentObject="" Row="2" Text2="">
+<checkpoint RollbackFlag="0" RunPerPatch="0" RunPerTarget="0" TcpADays="0" TcpATime="00:00" TcpATimeTZ="" TcpExecute="" TcpOn="0" promptatgen="0" showprompt="0"/>
+<after ActFlg="1" AtimOn="0" ErlstStDays="0" ErlstStTime="00:00" ErlstStTimeTZ="" HoldFlg="0"/>
+<when ChkWhenExec="0" LtstEnd="0" LtstEndDays="0" LtstEndTime="00:00" LtstSt="0" LtstStDays="0" LtstStTime="00:00" LtstTimeTZ="" WCTypeAND="1" WCTypeOR="0" WElseA="1" WElseH="0" WElseS="0" WElseX="0" WhenExecute="" WtimOn="0"/>
+<preconditions>
+<PreCon>
+<conditions id="CONDITIONS"/>
+</PreCon>
+</preconditions>
+<predecessors>
+<pre BranchType="0" Lnr="1" PreLnr="3" When="ANY_OK" type="container"/>
+<pre BranchType="0" Lnr="2" PreLnr="2" When="ANY_OK" type="container"/>
+</predecessors>
+<runtime MrtCancel="0" MrtDays="0" MrtErt="0" MrtExecute="0" MrtExecuteObj="" MrtFix="0" MrtMethodDate="0" MrtMethodErt="0" MrtMethodFix="0" MrtMethodNone="1" MrtOn="1" MrtTZ="" MrtTime="00:00" SrtErt="0" SrtFix="0" SrtMethodErt="0" SrtMethodFix="0" SrtMethodNone="1"/>
+<result ChkRExec="0" RElseHalt="0" RElseIgn="0" RElseJPAbend="0" RExecFlag="0" RExecute="" RRepMTimes="0" RRepOn="0" RRepWait="0" RWhen=""/>
+<dynvalues>
+<dyntree>
+<node content="1" id="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">
+<PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">
+<UC4RB_AIOPS_JB_APP_NAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_APP_NAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_HOME_DIRs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOME_DIR#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_HOSTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOST#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_OPERATING_MODEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_OPERATING_MODE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Standalone</UC4RB_AIOPS_JB_OPERATING_MODEs.00>
+<UC4RB_AIOPS_JB_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">--10A61C94D6737EB659</UC4RB_AIOPS_JB_PASSWORDs.00>
+<UC4RB_AIOPS_JB_PORTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_SERVER_GRPSs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_SERVER_GRPS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_USERNAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_USERNAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_TOOLSs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_TOOLS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Agent</UC4RB_AIOPS_TOOLSs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS" name="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">
+<PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">
+<UC4RB_SSH_CONN_TIMEOUTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_CONN_TIMEOUT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">30</UC4RB_SSH_CONN_TIMEOUTs.00>
+<UC4RB_SSH_HOSTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_HOST#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
+<UC4RB_SSH_HOST_KEY_CHECKs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_HOST_KEY_CHECK#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">NO</UC4RB_SSH_HOST_KEY_CHECKs.00>
+<UC4RB_SSH_KEYs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_KEY#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
+<UC4RB_SSH_PASSPHRASEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PASSPHRASE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10A61C94D6737EB659</UC4RB_SSH_PASSPHRASEs.00>
+<UC4RB_SSH_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10A61C94D6737EB659</UC4RB_SSH_PASSWORDs.00>
+<UC4RB_SSH_PORTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">22</UC4RB_SSH_PORTs.00>
+<UC4RB_SSH_TTYs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_TTY#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">NO</UC4RB_SSH_TTYs.00>
+<UC4RB_SSH_USERNAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_USERNAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
+<UC4RB_SUDO_SSH_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_SSH_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10A61C94D6737EB659</UC4RB_SUDO_SSH_PASSWORDs.00>
+<UC4RB_USE_SSH_SUDOs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SSH_SUDO#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">None</UC4RB_USE_SSH_SUDOs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS" name="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">
+<PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">
+<UC4RB_WRM_AUTH_TYPEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_AUTH_TYPE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
+<UC4RB_WRM_CA_CHECKs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CA_CHECK#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_CA_CHECKs.00>
+<UC4RB_WRM_CN_CHECKs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CN_CHECK#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_CN_CHECKs.00>
+<UC4RB_WRM_CONN_TIMEOUTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CONN_TIMEOUT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">180</UC4RB_WRM_CONN_TIMEOUTs.00>
+<UC4RB_WRM_HOSTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_HOST#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
+<UC4RB_WRM_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">--10A61C94D6737EB659</UC4RB_WRM_PASSWORDs.00>
+<UC4RB_WRM_PORTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">5985</UC4RB_WRM_PORTs.00>
+<UC4RB_WRM_SSLs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_SSL#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_SSLs.00>
+<UC4RB_WRM_USERNAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_USERNAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
+<PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">
+<UC4RB_SUDO_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">--10A61C94D6737EB659</UC4RB_SUDO_PASSWORDs.00>
+<UC4RB_SUDO_USERs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_USER#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO"/>
+<UC4RB_USE_SUDOs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO">None</UC4RB_USE_SUDOs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" name="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" parent="PPRPTS" type="PPROMPTSET">
+<PROMPTSET name="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT">
+<PRPTBOX promptset="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT">
+<AGENTs.00 ReadFromTable="OPUD" altview="1" haslist="0" msginsert="" msgnr="" promptname="AGENT#" promptsetname="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT">&amp;AGENT#</AGENTs.00>
+<LOGINs.00 ReadFromTable="OPUD" altview="1" haslist="0" msginsert="" msgnr="" promptname="LOGIN#" promptsetname="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT">&amp;LOGIN#</LOGINs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+</dyntree>
+</dynvalues>
+<CIT/>
+<calendars CCTypeAll="0" CCTypeExt="0" CCTypeNone="0" CCTypeOne="1" CaleOn="0"/>
+<postconditions>
+<PostCon>
+<conditions id="CONDITIONS"/>
+</PostCon>
+</postconditions>
+</task>
+<OPTIONS/>
+</JobpStruct>
+</JOBP>
+<RUNTIME state="1">
+<MaxRetCode>0</MaxRetCode>
+<MrcExecute/>
+<MrcElseE>0</MrcElseE>
+<FcstStatus>0| |</FcstStatus>
+
+<ErtMethodDef>1</ErtMethodDef>
+<ErtMethodFix>0</ErtMethodFix>
+<ErtFix>0</ErtFix>
+<ErtDynMethod>2|Average</ErtDynMethod>
+<ErtMethodDyn>0</ErtMethodDyn>
+<ErtCnt>0</ErtCnt>
+<ErtCorr>0</ErtCorr>
+<ErtIgn>0</ErtIgn>
+<ErtIgnFlg>0</ErtIgnFlg>
+<ErtMinCnt>0</ErtMinCnt>
+<MrtMethodNone>1</MrtMethodNone>
+<MrtMethodFix>0</MrtMethodFix>
+<MrtFix>0</MrtFix>
+<MrtMethodErt>0</MrtMethodErt>
+<MrtErt>0</MrtErt>
+<MrtMethodDate>0</MrtMethodDate>
+<MrtDays>0</MrtDays>
+<MrtTime>00:00</MrtTime>
+<MrtTZ/>
+<SrtMethodNone>1</SrtMethodNone>
+<SrtMethodFix>0</SrtMethodFix>
+<SrtFix>0</SrtFix>
+<SrtMethodErt>0</SrtMethodErt>
+<SrtErt>0</SrtErt>
+<MrtCancel>0</MrtCancel>
+<MrtExecute>0</MrtExecute>
+<MrtExecuteObj/>
+</RUNTIME>
+<DYNVALUES state="1">
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
+<VALUE state="1">
+<Values>
+<row ERTUsage="0" Name="&amp;UC4RB_FOLDER_TO_DEL#" Value=""/>
+</Values>
+<Mode>1</Mode>
+</VALUE>
+</node>
+<node content="1" id="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" prptmode="1">
+<UC4RB_AIOPS_JB_OPERATING_MODEs.00 altview="0" haslist="0">Standalone</UC4RB_AIOPS_JB_OPERATING_MODEs.00>
+<UC4RB_AIOPS_JB_HOME_DIRs.00 altview="0" haslist="0"/>
+<UC4RB_AIOPS_JB_HOSTs.00 altview="0" haslist="0"/>
+<UC4RB_AIOPS_JB_PORTs.00 altview="0" haslist="0"/>
+<UC4RB_AIOPS_JB_USERNAMEs.00 altview="0" haslist="0"/>
+<UC4RB_AIOPS_JB_PASSWORDs.00 altview="0" haslist="0">--10A61C94D6737EB659</UC4RB_AIOPS_JB_PASSWORDs.00>
+<UC4RB_AIOPS_JB_SERVER_GRPSs.00 altview="0" haslist="0"/>
+<UC4RB_AIOPS_JB_APP_NAMEs.00 altview="0" haslist="0"/>
+<UC4RB_AIOPS_TOOLSs.00 altview="0" haslist="0">Agent</UC4RB_AIOPS_TOOLSs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS" name="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.SSH_CONNECTION_DETAILS" prptmode="1">
+<UC4RB_SSH_HOSTs.00 altview="0" haslist="0"/>
+<UC4RB_SSH_PORTs.00 altview="0" haslist="0">22</UC4RB_SSH_PORTs.00>
+<UC4RB_SSH_USERNAMEs.00 altview="0" haslist="0"/>
+<UC4RB_SSH_PASSWORDs.00 altview="0" haslist="0">--10A61C94D6737EB659</UC4RB_SSH_PASSWORDs.00>
+<UC4RB_SSH_KEYs.00 altview="0" haslist="0"/>
+<UC4RB_SSH_PASSPHRASEs.00 altview="0" haslist="0">--10A61C94D6737EB659</UC4RB_SSH_PASSPHRASEs.00>
+<UC4RB_SSH_HOST_KEY_CHECKs.00 altview="0" haslist="0">NO</UC4RB_SSH_HOST_KEY_CHECKs.00>
+<UC4RB_SSH_CONN_TIMEOUTs.00 altview="0" haslist="0">30</UC4RB_SSH_CONN_TIMEOUTs.00>
+<UC4RB_SSH_TTYs.00 altview="0" haslist="0">NO</UC4RB_SSH_TTYs.00>
+<UC4RB_USE_SSH_SUDOs.00 altview="0" haslist="0">None</UC4RB_USE_SSH_SUDOs.00>
+<UC4RB_SUDO_SSH_PASSWORDs.00 altview="0" haslist="0">--10A61C94D6737EB659</UC4RB_SUDO_SSH_PASSWORDs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS" name="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS" ontop="1">
+<PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS" prptmode="1">
+<UC4RB_WRM_HOSTs.00 altview="0" haslist="0"/>
+<UC4RB_WRM_PORTs.00 altview="0" haslist="0">5985</UC4RB_WRM_PORTs.00>
+<UC4RB_WRM_USERNAMEs.00 altview="0" haslist="0"/>
+<UC4RB_WRM_PASSWORDs.00 altview="0" haslist="0">--10A61C94D6737EB659</UC4RB_WRM_PASSWORDs.00>
+<UC4RB_WRM_CONN_TIMEOUTs.00 altview="0" haslist="0">180</UC4RB_WRM_CONN_TIMEOUTs.00>
+<UC4RB_WRM_AUTH_TYPEs.00 altview="0" haslist="0"/>
+<UC4RB_WRM_SSLs.00 altview="0" haslist="0">NO</UC4RB_WRM_SSLs.00>
+<UC4RB_WRM_CN_CHECKs.00 altview="0" haslist="0">NO</UC4RB_WRM_CN_CHECKs.00>
+<UC4RB_WRM_CA_CHECKs.00 altview="0" haslist="0">NO</UC4RB_WRM_CA_CHECKs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" ontop="1">
+<PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SUDO" prptmode="1">
+<UC4RB_SUDO_PASSWORDs.00 altview="0" haslist="0">--10A61C94D6737EB659</UC4RB_SUDO_PASSWORDs.00>
+<UC4RB_USE_SUDOs.00 altview="0" haslist="0">None</UC4RB_USE_SUDOs.00>
+<UC4RB_SUDO_USERs.00 altview="0" haslist="0"/>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+<node content="1" id="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" name="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" parent="PRPTS" type="PROMPTSET">
+<PROMPTSET name="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" ontop="1">
+<PRPTBOX promptset="PCK.ITPA_SHARED.PRV.PROMPTSET.OVERWRITE_AGENT" prptmode="1">
+<AGENTs.00 altview="1" haslist="0">&amp;AGENT#</AGENTs.00>
+<LOGINs.00 altview="1" haslist="0">&amp;LOGIN#</LOGINs.00>
+</PRPTBOX>
+</PROMPTSET>
+</node>
+</dyntree>
+</DYNVALUES>
+<DEPLOYMENT state="1">
+<DeploymentFlag>0</DeploymentFlag>
+<WFTypeA>1</WFTypeA>
+<WFTypeC>0</WFTypeC>
+<AppName/>
+<WFName/>
+<ComponentName/>
+</DEPLOYMENT>
+<ROLLBACK state="1">
+<RollbackFlag>0</RollbackFlag>
+<CBackupObj/>
+<CRollbackObj/>
+<FBackupPath/>
+<FDeleteBefore>0</FDeleteBefore>
+<FInclSubDirs>0</FInclSubDirs>
+</ROLLBACK>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[:SET &UC4_JB_APP_NAME# = STR_TRIM(&UC4RB_AIOPS_JB_APP_NAME#)
+:SET &SPACE_CHECK# = STR_FIND(&UC4_JB_APP_NAME#, ' ')
+:IF &SPACE_CHECK# > 0
+:  PRINT Application name must not contain space. Aborting ...
+:  EXIT 1
+:ENDIF]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC><![CDATA[= Action name =
+PCK.AUTOMIC_JBOSS_V7.PUB.ACTION.RESTART_APP_ON_JBOSS
+
+
+= General description =
+This action restarts an Application in JBoss Standalone or Assign Application to Server groups in Managed Domain
+In case of Managed Domain, server groups (separated by commas) should be provided. If not, assigns the application to all server groups
+
+To execute the command on the Windows target systems, it uses Powershell remoting which further requires WinRM to be enabled on the target system.
+
+=Supported versions=
+Powershell 4.0 or later
+JBoss V6 or later
+
+=Setup= 
+* The Microsoft .NET Framework 4.0 or later should be installed on Windows agent OS.
+* For SSH, Enable SSH on the target system.
+* For WinRM, Enable WinRM on the target system. 
+
+In order to enable WinRM, please follow the below steps on the target system.
+
+Configure WinRM with default settings over HTTP
+1. Run the command using command prompt: Winrm quickconfig
+	You must run this command as an administrator.
+
+2. When the tool displays Make these changes [y/n]?, Press y.
+	If the configuration is successful, the following output will be displayed:	
+
+	WinRM has been updated for remote management.
+	WinRM service type changed to delayed auto start.
+	WinRM service started.
+	Created a WinRM listener on HTTP://* to accept WS-Man requests to any IP on this machine.
+
+3. Keep the default settings for client and server components of WinRM, or customize them. For example, you might need to add certain remote computers to the client configuration Trusted Hosts list. A trusted hosts list should be set up when mutual authentication cannot be established. Kerberos allows mutual authentication, but it cannot be used in workgroups, only domains. A best practice for setting up trusted hosts for a workgroup is to make the list should be as restricted as possible.
+OR
+   Configure the remote Windows machine for Basic authentication with custom settings. Run the following commands.
+	setlocal EnableDelayedExpansion EnableExtensions
+	title Configuring Windows Remote Management...
+ 
+	cmd /c net stop winrm
+	cmd /c winrm quickconfig -q
+	cmd /c winrm quickconfig -transport:http
+	cmd /c winrm set winrm/config @{MaxTimeoutms="1800000"}
+	cmd /c winrm set winrm/config/winrs @{MaxMemoryPerShellMB="2048"}
+        cmd /c winrm set winrm/config/service @{AllowUnencrypted="true"}
+	cmd /c winrm set winrm/config/service/auth @{Basic="true"}
+	cmd /c winrm set winrm/config/listener?Address=*+Transport=HTTP @{Port="5985"}
+	cmd /c sc config winrm start= auto
+	cmd /c net start winrm
+
+	cmd /c netsh firewall set service type=remoteadmin mode=enable
+	cmd /c netsh advfirewall firewall set rule group="remote administration" new enable=yes
+	cmd /c netsh advfirewall firewall add rule name="Port 5985" dir=in action=allow protocol=TCP localport=5985
+
+Configure WinRM over HTTPS
+1. Create an HTTPS listener by running the following command.
+        winrm quickconfig -transport:https. 
+              You must open port 5986 for HTTPS transport to work.
+
+2. Next step is to create a certificate on the target machine that has FQDN as the hostname. For that, run a PowerShell cmdlet on that machine.
+        New-SelfSignedCertificate -DnsName ssrmdvm3.southeastasia.cloudapp.azure.com -CertStoreLocation Cert:\LocalMachine\My
+	         Above command will create a self-signed certificate for testing purposes. The output of the command will show a thumbprint of the certificate. That thumbprint 
+                 is a 40 digit number.	
+	OR
+        You can also create a self-signed certificate for the remote host by installing selfssl.exe usinf IIS 6 resource kit
+	(http://www.microsoft.com/download/en/details.aspx?displaylang=en&id=17275) and run the command as mentioned by reference 
+	(http://www.hansolav.net/blog/SelfsignedSSLCertificatesOnIIS7AndCommonNames.aspx).
+
+3. Open a PowerShell window and enter the following command to find the thumbprint for the certificate for the remote host:
+	Get-childItem cert:\LocalMachine\Root\ | Select-String -pattern <HOSTNAME>
+
+5. Delete the existing WinRM listener that is linked to SSL certificate with IP address and create a new listener that is linked to FQDN.
+    To do so, you need to execute two cmdlets in succession:
+	* winrm delete winrm/config/listener?Address=*+Transport=HTTPS
+	* winrm create winrm/config/listener?Address=*+Transport=HTTPS '@{Hostname="vviespartan03.sbb01.spoc.global"; CertificateThumbprint="Copy the thumbprint from earlier cmdlet output";port="5986"}'
+	E.g. winrm create winrm/config/listener?Address=*+Transport=HTTPS             
+                                '@{Hostname="vviespartan03.sbb01.spoc.global";CertificateThumbprint="A588F550237477242C3D91649105CB7DD18AFD46";port="5986"}'
+
+6. You can check the configured listeners of WinRM by running the following command.
+		winrm e winrm/config/listeners
+
+
+= Inputs =
+- Operating Mode:                JBoss can start in Standalone or Managed Domain mode. Default- Standalone
+- Home Directory*:               JBoss home directory. E.g. C:\jboss-eap-7.1
+- Host:                          The default controller host to connect. Default is localhost
+- Port:                          The default controller port to connect. Default is 9999
+- Username:                      Specify the user name if the controller requires user authentication. E.g. jbossuser
+- Password:                      Specifies the password for authentication while connecting to the controller.
+- Server Groups:                 Comma-separated list of server group names the deploy command should apply to. If empty, deploy to all the available server group. Not applicable in Standalone mode.
+- Application Name*:             The unique name of the application. Application name shouldn't contain any whitespace. E.g. HelloWorldApp
+- Connection Tool:               Specify which connection tool to use to execute the action. E.g. Agent/WinRM/SSH. Default- Agent
+
+= Conditional Field =
+Provide SSH parameters if [Connection Tool] is set to 'SSH'.
+Provide WinRM parameters if [Connection Tool] is set to 'WinRM'.
+
+= Behavior =
+The action starts the application if it is already stopped.
+
+=Return Value=
+(none)
+
+= Outputs =
+* Return code is 0 in case of success.
+* Return code is non-zero in case of failure.
+
+= Rollback =
+(none)
+
+= Logging =
+Logs will be displayed in the AE report.
+
+]]></DOC>
+</DOCU_Docu>
+</JOBP>
+</uc-export>

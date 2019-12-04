@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBI name="PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.WINRM_RUN_COMMAND">
+<HEADER state="1">
+<Title>WinRM Run Command</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[! Initialize the error
+$errors = 1
+
+ $command_file =  '&UC4RB_TEMP_FILE_PATH#'
+
+! Creating Session with remote host and save session in $session powershell variable
+: INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.CREATE_WINRM_SESSION
+
+! --- Create a PSCredential Object containing the username and password ---
+!    DECRYPT PASSWORD
+:   INC PCK.ITPA_SHARED.PUB.INCLUDE.ATTACH
+:   SET &UC4RB_ENCRYPTED_PASSWORD_TMP# = &UC4RB_WRM_PASSWORD#
+:   INC PCK.ITPA_SHARED.PRV.INCLUDE.DECRYPT_PASSWORD
+
+
+Try{
+
+
+! Check command file exist
+  $fileExist = (Test-Path  $command_file) -and (!((Get-Item $command_file) -is [System.IO.DirectoryInfo]))
+  if(!$fileExist){
+     throw "ERROR: Temporary file path [$command_file] does not exist."
+  }
+
+! Read the content from file and content should be there.
+  $content=[system.io.file]::ReadAllText($command_file)
+  if($content.trim().length -eq 0){
+    throw "ERROR: Temporary file [$command_file] does not have any command to run."
+  }
+
+! Securing password
+  $secPwd = ConvertTo-SecureString "$UC4_DECRYPTED_PWD" -AsPlainText -Force
+! Genearting credential using username and password
+: P "Credential commandlet: &UC4RB_WRM_CRED_CMDLET#"
+       &UC4RB_WRM_CRED_CMDLET#
+
+!    Session advance option commandlet
+: P "Advance session option commandlet: &UC4RB_WRM_PSO_CMDLET#"
+    $sessionOption = New-PSSessionOption &UC4RB_WRM_PSO_CMDLET#
+
+!    Creation session commandlet
+: P "Creation session commandlet: &UC4RB_WRM_SESSION_CMDLET#"
+     $session = New-PSSession &UC4RB_WRM_SESSION_CMDLET#
+ if(!$session){
+        throw "ERROR: Unable to create session from remote Host"
+  } else {
+        Write-output "INFO: Session has been successfully created with target host."
+  }
+
+!Execute the command on target system as script block and as job
+!   Passing command file content as argument ..
+    $j=Invoke-Command -Session $session -asjob -ScriptBlock {
+!   Passing content as input ..
+    param ($content)
+!   Creating temp file on remote m/c and putting input file content here.
+    $temppath=[System.IO.Path]::GetTempPath()
+    $null=new-item -Path ($temppath+"cmds-&$RUNID#.ps1") -Value $content -force -itemtype file
+!   execute powershell script
+    & ($temppath+"cmds-&$RUNID#.ps1") 2>&1
+
+    if ($lastexitcode -eq $null)
+    {
+    $lastexitcode=0
+    }
+!   Store last exit code.
+    $temp=$lastexitcode
+!   remove the temprary file as its been executed.
+    $null=remove-item ($temppath+"cmds-&$RUNID#.ps1") -force
+  } -Argumentlist $content
+
+if(!$j){
+  throw "ERROR: Unable to execute commands."
+}
+
+!Wait for the job.
+$result=wait-job $j
+
+
+!Stop the job.
+$null=stop-job -job $j
+
+
+write-output `n"******* Command execution output start here *******"
+!Recieve output.
+receive-job $j
+write-output `n"******* Command execution output end here *******"
+!Remove the job
+$null=remove-job $j -force
+
+!Result null means job is not completed with in provided timeframe.
+if ($result -eq $null)
+{
+  throw "ERROR: Command Execution timeout occured. Unable to execute the command within specified time."
+}
+
+! Retrieve the status of lastexit code as set previously.
+$code=Invoke-Command -Session $session -ScriptBlock { $temp }
+
+if ($code -ne 0){
+  throw "ERROR: Command execution failed. Please check the input parameters."
+}
+
+ $errors = 0
+}Catch {
+   $errors = 1
+   Write-output $error.Exception.Message
+}Finally {
+! ----- Close the PSSession session -----
+  if($session){
+    Remove-PSSession -Session $session
+    Write-output "Remote Session with host &UC4RB_WRM_HOST# closed successfully .........."
+  }
+}]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>

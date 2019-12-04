@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBI name="PCK.AUTOMIC_JBOSS_V7.PRV.INCLUDE.JBOSS_RESTART_APP_EXECUTE_COMMAND@UNIX">
+<HEADER state="1">
+<Title>JBoss Restart Web App</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[if grep -iq "Windows" "&UC4RB_OUTPUT_LOG#"
+  then
+:     SET &FLAG#="1"
+:     INC PCK.AUTOMIC_JBOSS_V7.PRV.INCLUDE.JBOSS_RESTART_APP_PREPARE_WIN_CMD
+:     SET &UC4RB_FILE_CONTENT# = "&UC4RB_CMD_WIN#"
+:     SET &UC4RB_FILE_NAME# = "/cmd2-&$RUNID#.ps1"
+:     INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.WRITE_FILE
+:     SET &UC4RB_TEMP_FILE_PATH2#=&UC4RB_FILE_PATH#
+:     PRINT "Command Executed: &UC4RB_CMD_WIN#"
+      sed -i "s/\$UC4_DECRYPTED_JB_PWD/$UC4_DECRYPTED_PWD/" &UC4RB_TEMP_FILE_PATH2#
+:     SET &UC4RB_EXE_FILE_CMD#='"powershell tempdir-&$RUNID#\cmd2-&$RUNID#.ps1"'
+:     INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.SSH_COPY_CMD@UNIX
+else
+:     SET &FLAG#="1"
+:     INC PCK.AUTOMIC_JBOSS_V7.PRV.INCLUDE.JBOSS_RESTART_APP_PREPARE_UNIX_CMD
+:     SET &UC4RB_FILE_CONTENT# = "&UC4RB_CMD_UNX#"
+:     SET &UC4RB_FILE_NAME# = "/cmd3-&$RUNID#.sh"
+:     INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.WRITE_FILE
+:     SET &UC4RB_TEMP_FILE_PATH3#=&UC4RB_FILE_PATH#
+:     PRINT "Command Executed: &UC4RB_CMD_UNX#"
+      sed -i "s/\$UC4_DECRYPTED_JB_PWD/$UC4_DECRYPTED_PWD/" &UC4RB_TEMP_FILE_PATH3#
+:     SET &UC4RB_EXE_FILE_CMD#='"sed -i '
+:     SET &UC4RB_EXE_FILE_CMD#=STR_CAT(&UC4RB_EXE_FILE_CMD#," 's/\r$//' tempdir-&$RUNID#/cmd3-&$RUNID#.sh ; sh tempdir-&$RUNID#/cmd3-&$RUNID#.sh")
+:     SET &UC4RB_EXE_FILE_CMD#=STR_CAT(&UC4RB_EXE_FILE_CMD#,'"')
+:     INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.SSH_COPY_CMD@WIN
+fi]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>
