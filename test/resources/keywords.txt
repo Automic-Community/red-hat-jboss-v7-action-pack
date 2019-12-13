@@ -232,3 +232,22 @@ Delete folder
     Action Execute
     Action Report Should Be Found
     Action Return Status Should Be    ${ENDED_OK}
+
+Connect To Agent/SSH/WinRM
+    Action Set    &UC4RB_SSH_HOST#    ${SSH_HOST}
+    Action Set    &UC4RB_SSH_PORT#    22
+    Action Set    &UC4RB_SSH_USERNAME#    ${SSH_USERNAME}
+    Action Set    &UC4RB_SSH_PASSWORD#    ${SSH_PASSWORD}
+    Action Set    &UC4RB_SSH_KEY#    ${SSH_KEY}
+    Action Set    &UC4RB_SSH_PASSPHRASE#    ${SSH_PASSPHRASE}
+    Action Set    &UC4RB_SSH_HOST_KEY_CHECK#    NO
+    Action Set    &UC4RB_SSH_CONN_TIMEOUT#    30
+    Action Set    &UC4RB_WRM_HOST#    ${WRM_HOST}
+    Action Set    &UC4RB_WRM_PORT#    ${WRM_PORT}
+    Action Set    &UC4RB_WRM_USERNAME#    ${WRM_USERNAME}
+    Action Set    &UC4RB_WRM_PASSWORD#    ${WRM_PASSWORD}
+    Action Set    &UC4RB_WRM_CONN_TIMEOUT#    30
+    Action Set    &UC4RB_WRM_AUTH_TYPE#    ${EMPTY}
+    Action Set    &UC4RB_WRM_SSL#    NO
+    Action Set    &UC4RB_WRM_CN_CHECK#    NO
+    Action Set    &UC4RB_WRM_CA_CHECK#    NO

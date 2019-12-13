@@ -1,0 +1,20 @@
+*** Settings ***
+Resource          ../../../Env/default.txt
+
+*** Variables ***
+#----Global-------------------------------------------------------------------------------------
+${SSH_HOST}       10.108.55.161
+${SSH_PORT}       22
+${SSH_USERNAME}    SBB01\\Administrator
+${SSH_PASSWORD}    Automic@1
+${SSH_KEY}        ${EMPTY}
+${SSH_PASSPHRASE}    ${EMPTY}
+${WRM_HOST}       10.108.54.2
+${WRM_PORT}       5985
+${WRM_USERNAME}    SBB01\\Administrator
+${WRM_PASSWORD}    WRM_PASSWORD
+#---- Restart App Jboss ------------------------------------------------------------------------------------------------
+${JBoss_Home}     C:\\Users\\Administrator\\EAP-7.1.0
+${JBoss_User}     admin
+${JBoss_Password}    Automic@1
+${JBoss_Host}     vviespartan03

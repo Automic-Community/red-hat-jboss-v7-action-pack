@@ -1,0 +1,70 @@
+*** Settings ***
+Suite Setup       Startup
+Suite Teardown    Teardown
+Force Tags        restart_app_jboss_ssh
+Test Template     Restart App Jboss Template
+Library           com.automic.robot.itpa.ItpaLibrary
+Library           String
+Library           DateTime
+Resource          ../../Resources/keywords.txt
+
+*** Test Cases ***    OK_NOK    OperatingMode     HomeDirectory    Host             Port        Username         Password             ServerGroups    ApplicationName    Tools
+Restart existing App on Jboss with tool as SSH
+                      [Tags]    main_scenarios
+                      OK        Standalone        ${JBoss_Home}    ${JBoss_Host}    ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    ${EMPTY}        sample.war         SSH
+
+Restart existing App on Jboss with tool as SSH and providing Server Groups while operating mode is domain. Action should skip Server Groups
+                      OK        Standalone        ${JBoss_Home}    ${JBoss_Host}    ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    localhost       sample.war         SSH
+
+Restart non-existing App on Jboss with tool as SSH
+                      NOK       Standalone        ${JBoss_Home}    ${JBoss_Host}    ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    ${EMPTY}        Invalid            SSH
+
+Restart App on Jboss with tool as SSH while providing invalid Home Directory
+                      NOK       Standalone        Invalid          ${JBoss_Host}    ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    ${EMPTY}        sample.war         SSH
+
+Restart App on Jboss with tool as SSH while providing invalid Host
+                      NOK       Standalone        ${JBoss_Home}    Invalid          ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    ${EMPTY}        sample.war         SSH
+
+*** Keywords ***
+Startup
+    Log    *******Start Test "RESTART APP JBOSS"*******
+    Log    *******Connect to AE*******
+    Connect AE
+
+Restart App Jboss Template
+    [Arguments]    ${OK_NOK}    ${OperatingMode}    ${HomeDirectory}    ${Host}    ${Port}    ${Username}
+    ...    ${Password}    ${ServerGroups}    ${ApplicationName}    ${Tools}
+    [Documentation]    This action tests the feature of Restart App on JBoss.
+    ...    -${OK_NOK}: Boolean value indicate if the action is ENDED_OK or ENDED_NOT_OK. Value of this variable should be OK or NOK.
+    ...    -${OperatingMode}: This field specify Standalone or Managed Domain mode
+    ...    -${HomeDirectory}: This field specify JBoss home directory.
+    ...    -${Host}: This field specify default controller host to connect. Default is localhost
+    ...    -${Port}: This field specify default controller port to connect. Default is 9999
+    ...    -${Username}: This field specify the user name if the controller requires user authentication.
+    ...    -${Password}: This field specify the password for authentication while connecting to the controller
+    ...    -${ServerGroups}: This field specify Comma-separated list of server group names the deploy command should apply to. If empty, deploy to all the available server group. Not applicable in Standalone mode.
+    ...    -${ApplicationName}: This field specify unique name of the application. Application name shouldn't contain any whitespace.
+    ...    -${Tools}: This field specify via which tools user wants to established connection.e.g. Agent/WinRM/SSH
+    Generate String
+    Init Action    ${RESTART_APP_JBOSS_ACTION}
+    Connect To Agent/SSH/WinRM
+    Action Set    &UC4RB_AIOPS_JB_OPERATING_MODE#    ${OperatingMode}
+    Run Keyword If    '${HomeDirectory}' == 'Invalid'    Action Set    &UC4RB_AIOPS_JB_HOME_DIR#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AIOPS_JB_HOME_DIR#    ${HomeDirectory}
+    Run Keyword If    '${Host}' == 'Invalid'    Action Set    &UC4RB_AIOPS_JB_HOST#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AIOPS_JB_HOST#    ${Host}
+    Run Keyword If    '${Port}' == 'Invalid'    Action Set    &UC4RB_AIOPS_JB_PORT#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AIOPS_JB_PORT#    ${Port}
+    Run Keyword If    '${Username}' == 'Invalid'    Action Set    &UC4RB_AIOPS_JB_USERNAME#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AIOPS_JB_USERNAME#    ${Username}
+    Run Keyword If    '${Password}' == 'Invalid'    Action Set    &UC4RB_AIOPS_JB_PASSWORD#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AIOPS_JB_PASSWORD#    ${Password}
+    Action Set    &UC4RB_AIOPS_JB_SERVER_GRPS#    ${ServerGroups}
+    Run Keyword If    '${ApplicationName}' == 'Invalid'    Action Set    &UC4RB_AIOPS_JB_APP_NAME#    ${Generated_Name}_${Time}    ELSE    Action Set
+    ...    &UC4RB_AIOPS_JB_APP_NAME#    ${ApplicationName}
+    Action Set    &UC4RB_AIOPS_TOOLS#    ${Tools}
+    Action Execute
+    Run Keyword If    '${OK_NOK}' == 'OK'    Assert Success    ELSE    Assert Failure
+
+Teardown
+    Log    *******End Test "RESTART APP JBOSS"*******
