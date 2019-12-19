@@ -7,29 +7,31 @@ Library           com.automic.robot.itpa.ItpaLibrary
 Library           String
 Library           DateTime
 Resource          ../../Resources/keywords.txt
+Resource          ../../Resources/variables.txt
+Resource          ../../Resources/context.txt
 
-*** Test Cases ***    OK_NOK    OperatingMode     HomeDirectory    Host             Port        Username         Password             ServerGroups    ApplicationName    Tools
+*** Test Cases ***    OK_NOK    OperatingMode     HomeDirectory        Host                    Port        Username         Password             ServerGroups    ApplicationName    Tools
 Restart existing App on Jboss with tool as Agent
                       [Tags]    main_scenarios
-                      OK        Standalone        ${JBoss_Home}    ${JBoss_Host}    ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    ${EMPTY}        sample.war         Agent
+                      OK        Standalone        ${JBoss_Home_Dir}    ${JBoss_Host_Server}    ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    ${EMPTY}        sample.war         Agent
 
 Restart existing App on Jboss with tool as Agent and providing Server Groups while operating mode is domain. Action should skip Server Groups
-                      OK        Standalone        ${JBoss_Home}    ${JBoss_Host}    ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    localhost       sample.war         Agent
+                      OK        Standalone        ${JBoss_Home_Dir}    ${JBoss_Host_Server}    ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    localhost       sample.war         Agent
 
 Restart non-existing App on Jboss with tool as Agent
-                      NOK       Standalone        ${JBoss_Home}    ${JBoss_Host}    ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    ${EMPTY}        Invalid            Agent
+                      NOK       Standalone        ${JBoss_Home_Dir}    ${JBoss_Host_Server}    ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    ${EMPTY}        Invalid            Agent
 
 Restart App on Jboss with tool as Agent while providing invalid Home Directory
-                      NOK       Standalone        Invalid          ${JBoss_Host}    ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    ${EMPTY}        sample.war         Agent
+                      NOK       Standalone        Invalid              ${JBoss_Host_Server}    ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    ${EMPTY}        sample.war         Agent
 
 Restart App on Jboss with tool as Agent while providing invalid Host
-                      NOK       Standalone        ${JBoss_Home}    Invalid          ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    ${EMPTY}        sample.war         Agent
+                      NOK       Standalone        ${JBoss_Home_Dir}    Invalid                 ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    ${EMPTY}        sample.war         Agent
 
 *** Keywords ***
 Startup
     Log    *******Start Test "RESTART APP JBOSS"*******
     Log    *******Connect to AE*******
-    Connect AE
+    Init AE And Package
 
 Restart App Jboss Template
     [Arguments]    ${OK_NOK}    ${OperatingMode}    ${HomeDirectory}    ${Host}    ${Port}    ${Username}

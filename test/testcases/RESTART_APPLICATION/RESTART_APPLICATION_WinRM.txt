@@ -8,28 +8,28 @@ Library           String
 Library           DateTime
 Resource          ../../Resources/keywords.txt
 
-*** Test Cases ***    OK_NOK    OperatingMode     HomeDirectory    Host             Port        Username         Password             ServerGroups    ApplicationName    Tools
+*** Test Cases ***    OK_NOK    OperatingMode     HomeDirectory        Host                    Port        Username         Password             ServerGroups    ApplicationName    Tools
 Restart existing App on Jboss with tool as WinRM
                       [Tags]    main_scenarios
-                      OK        Standalone        ${JBoss_Home}    ${JBoss_Host}    ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    ${EMPTY}        sample.war         WinRM
+                      OK        Standalone        ${JBoss_Home_Dir}    ${JBoss_Host_Server}    ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    ${EMPTY}        sample.war         WinRM
 
 Restart existing App on Jboss with tool as WinRM and providing Server Groups while operating mode is domain. Action should skip Server Groups
-                      OK        Standalone        ${JBoss_Home}    ${JBoss_Host}    ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    localhost       sample.war         WinRM
+                      OK        Standalone        ${JBoss_Home_Dir}    ${JBoss_Host_Server}    ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    localhost       sample.war         WinRM
 
 Restart non-existing App on Jboss with tool as WinRM
-                      NOK       Standalone        ${JBoss_Home}    ${JBoss_Host}    ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    ${EMPTY}        Invalid            WinRM
+                      NOK       Standalone        ${JBoss_Home_Dir}    ${JBoss_Host_Server}    ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    ${EMPTY}        Invalid            WinRM
 
 Restart App on Jboss with tool as WinRM while providing invalid Home Directory
-                      NOK       Standalone        Invalid          ${JBoss_Host}    ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    ${EMPTY}        sample.war         WinRM
+                      NOK       Standalone        Invalid              ${JBoss_Host_Server}    ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    ${EMPTY}        sample.war         WinRM
 
 Restart App on Jboss with tool as WinRM while providing invalid Host
-                      NOK       Standalone        ${JBoss_Home}    Invalid          ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    ${EMPTY}        sample.war         WinRM
+                      NOK       Standalone        ${JBoss_Home_Dir}    Invalid                 ${EMPTY}    ${JBoss_User}    ${JBoss_Password}    ${EMPTY}        sample.war         WinRM
 
 *** Keywords ***
 Startup
     Log    *******Start Test "RESTART APP JBOSS"*******
     Log    *******Connect to AE*******
-    Connect AE
+    Init AE And Package
 
 Restart App Jboss Template
     [Arguments]    ${OK_NOK}    ${OperatingMode}    ${HomeDirectory}    ${Host}    ${Port}    ${Username}
