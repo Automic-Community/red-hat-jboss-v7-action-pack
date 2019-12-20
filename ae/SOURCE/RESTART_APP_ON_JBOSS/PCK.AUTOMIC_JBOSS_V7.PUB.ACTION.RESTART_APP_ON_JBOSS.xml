@@ -678,28 +678,26 @@ Configure WinRM over HTTPS
 		winrm e winrm/config/listeners
 
 =SSH Inputs=
-* SSH Host			     :  Provide target SSH host name or ip address E.g localhost
-* SSH Port                            : Provide SSH port number
+* Host			     :  Provide target SSH host name or ip address E.g localhost
+* Port                            : Provide SSH port number
 * Username			     : Provide username E.g automic
 * Password			     : Provide password.
 * Private Key File		     : Provide private key path. e.g /home/automic/.ssh/id_rsa.ppk
 * Passphrase                        :  Provide passphrase for private key
 * Connection Timeout           : Connection timeout. Zero means no timeout
-* Options                               : Run using sudo password (and sudo username if specified).
-* Sudo Password                  : The password to be used for the sudo command.
+* SSH Options                               : Select SSH options to parse
+* Sudo Password                  : Provide sudo password if Sudo is selected under SSH options.
+* Execution Timeout				: Specify action execution timeout . Zero means no timeout
 
 =WinRM Input=
--Host name:                    Specify Host name of the remote WinRM server. E.g. vviespartan03.sbb01.spoc.global
+-Host:                    Specify Host name of the remote WinRM server. E.g. vviespartan03.sbb01.spoc.global
 -Port:                                Specify port number of WinRM server on which service is running. Default http\https port is 5985\5986.
--Domain\Username*:       Provide domain and username to connect WinRM server. E.g. SBB01\TESTUSER
--Password*:                     Provide password to connect WinRM server.
--Use SSL:                        If Yes, Secure Sockets Layer (SSL) protocol will be used to establish a connection to the remote computer. By default, SSL is not used.
+-Domain\Username:       Provide domain and username to connect WinRM server. E.g. SBB01\TESTUSER
+-Password:                     Provide password to connect WinRM server.
 -Authentication Type:      Specify the mechanism that is used to authenticate the user's credentials. E.g. Basic
                                         Note: CredSSP authentication is available only in Windows Vista, Windows Server 2008, and later versions of the Windows operating system.
--Skip CA Check:              Specifies that when it connects over HTTPS, the client does not validate that the server certificate is signed by a trusted certification authority (CA).
--Skip CN Check:              Specifies that the certificate common name (CN) of the server does not have to match the host name of the server. This option is used only in remote
-                                        operations that use the HTTPS protocol.
--Connection Timeout:      Connection Timeout (In Seconds). If 0 - no timeout. Default value is 3
+-WinRM Options:              Select WinRM options to parse
+-Connection Timeout:      Connection Timeout (In Seconds). Zero means no timeout.
 
 = Inputs =
 - Operating Mode:                JBoss can start in Standalone or Managed Domain mode. Default- Standalone
