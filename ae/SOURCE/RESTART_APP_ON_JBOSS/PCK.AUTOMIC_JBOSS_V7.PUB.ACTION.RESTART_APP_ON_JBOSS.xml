@@ -73,16 +73,14 @@
 <PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">
 <UC4RB_SSH_CONN_TIMEOUTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_CONN_TIMEOUT#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">30</UC4RB_SSH_CONN_TIMEOUTs.00>
 <UC4RB_SSH_HOSTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_HOST#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
-<UC4RB_SSH_HOST_KEY_CHECKs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_HOST_KEY_CHECK#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">NO</UC4RB_SSH_HOST_KEY_CHECKs.00>
 <UC4RB_SSH_KEYs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_KEY#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
+<UC4RB_SSH_OPTIONSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_OPTIONS#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
 <UC4RB_SSH_PASSPHRASEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PASSPHRASE#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10</UC4RB_SSH_PASSPHRASEs.00>
 <UC4RB_SSH_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10</UC4RB_SSH_PASSWORDs.00>
 <UC4RB_SSH_PORTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PORT#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">22</UC4RB_SSH_PORTs.00>
 <UC4RB_SSH_TIMEOUTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_TIMEOUT#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">300</UC4RB_SSH_TIMEOUTs.00>
-<UC4RB_SSH_TTYs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_TTY#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">NO</UC4RB_SSH_TTYs.00>
 <UC4RB_SSH_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_USERNAME#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
 <UC4RB_SUDO_SSH_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_SSH_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10FBA41CCE80A626FF9F1A8BC87ECEB23E141388E66BC9D730</UC4RB_SUDO_SSH_PASSWORDs.00>
-<UC4RB_USE_SSH_SUDOs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SSH_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">None</UC4RB_USE_SSH_SUDOs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -90,13 +88,11 @@
 <PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">
 <PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">
 <UC4RB_WRM_AUTH_TYPEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_AUTH_TYPE#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
-<UC4RB_WRM_CA_CHECKs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CA_CHECK#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_CA_CHECKs.00>
-<UC4RB_WRM_CN_CHECKs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CN_CHECK#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_CN_CHECKs.00>
 <UC4RB_WRM_CONN_TIMEOUTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CONN_TIMEOUT#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">180</UC4RB_WRM_CONN_TIMEOUTs.00>
 <UC4RB_WRM_HOSTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_HOST#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
+<UC4RB_WRM_OPTIONSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_OPTIONS#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
 <UC4RB_WRM_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">--10</UC4RB_WRM_PASSWORDs.00>
 <UC4RB_WRM_PORTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_PORT#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">5985</UC4RB_WRM_PORTs.00>
-<UC4RB_WRM_SSLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_SSL#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_SSLs.00>
 <UC4RB_WRM_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_USERNAME#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
 </PRPTBOX>
 </PROMPTSET>
@@ -180,16 +176,14 @@
 <PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">
 <UC4RB_SSH_CONN_TIMEOUTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_CONN_TIMEOUT#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">30</UC4RB_SSH_CONN_TIMEOUTs.00>
 <UC4RB_SSH_HOSTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_HOST#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
-<UC4RB_SSH_HOST_KEY_CHECKs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_HOST_KEY_CHECK#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">NO</UC4RB_SSH_HOST_KEY_CHECKs.00>
 <UC4RB_SSH_KEYs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_KEY#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
+<UC4RB_SSH_OPTIONSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_OPTIONS#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
 <UC4RB_SSH_PASSPHRASEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PASSPHRASE#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10</UC4RB_SSH_PASSPHRASEs.00>
 <UC4RB_SSH_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10</UC4RB_SSH_PASSWORDs.00>
 <UC4RB_SSH_PORTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PORT#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">22</UC4RB_SSH_PORTs.00>
 <UC4RB_SSH_TIMEOUTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_TIMEOUT#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">300</UC4RB_SSH_TIMEOUTs.00>
-<UC4RB_SSH_TTYs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_TTY#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">NO</UC4RB_SSH_TTYs.00>
 <UC4RB_SSH_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_USERNAME#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
 <UC4RB_SUDO_SSH_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_SSH_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10FBA41CCE80A626FF9F1A8BC87ECEB23E141388E66BC9D730</UC4RB_SUDO_SSH_PASSWORDs.00>
-<UC4RB_USE_SSH_SUDOs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SSH_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">None</UC4RB_USE_SSH_SUDOs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -197,13 +191,11 @@
 <PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">
 <PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">
 <UC4RB_WRM_AUTH_TYPEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_AUTH_TYPE#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
-<UC4RB_WRM_CA_CHECKs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CA_CHECK#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_CA_CHECKs.00>
-<UC4RB_WRM_CN_CHECKs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CN_CHECK#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_CN_CHECKs.00>
 <UC4RB_WRM_CONN_TIMEOUTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CONN_TIMEOUT#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">180</UC4RB_WRM_CONN_TIMEOUTs.00>
 <UC4RB_WRM_HOSTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_HOST#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
+<UC4RB_WRM_OPTIONSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_OPTIONS#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
 <UC4RB_WRM_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">--10</UC4RB_WRM_PASSWORDs.00>
 <UC4RB_WRM_PORTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_PORT#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">5985</UC4RB_WRM_PORTs.00>
-<UC4RB_WRM_SSLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_SSL#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_SSLs.00>
 <UC4RB_WRM_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_USERNAME#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
 </PRPTBOX>
 </PROMPTSET>
@@ -310,16 +302,14 @@
 <PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">
 <UC4RB_SSH_CONN_TIMEOUTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_CONN_TIMEOUT#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">30</UC4RB_SSH_CONN_TIMEOUTs.00>
 <UC4RB_SSH_HOSTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_HOST#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
-<UC4RB_SSH_HOST_KEY_CHECKs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_HOST_KEY_CHECK#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">NO</UC4RB_SSH_HOST_KEY_CHECKs.00>
 <UC4RB_SSH_KEYs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_KEY#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
+<UC4RB_SSH_OPTIONSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_OPTIONS#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
 <UC4RB_SSH_PASSPHRASEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PASSPHRASE#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10</UC4RB_SSH_PASSPHRASEs.00>
 <UC4RB_SSH_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10</UC4RB_SSH_PASSWORDs.00>
 <UC4RB_SSH_PORTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PORT#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">22</UC4RB_SSH_PORTs.00>
 <UC4RB_SSH_TIMEOUTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_TIMEOUT#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">300</UC4RB_SSH_TIMEOUTs.00>
-<UC4RB_SSH_TTYs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_TTY#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">NO</UC4RB_SSH_TTYs.00>
 <UC4RB_SSH_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_USERNAME#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
 <UC4RB_SUDO_SSH_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_SSH_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10FBA41CCE80A626FF9F1A8BC87ECEB23E141388E66BC9D730</UC4RB_SUDO_SSH_PASSWORDs.00>
-<UC4RB_USE_SSH_SUDOs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SSH_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">None</UC4RB_USE_SSH_SUDOs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -327,13 +317,11 @@
 <PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">
 <PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">
 <UC4RB_WRM_AUTH_TYPEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_AUTH_TYPE#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
-<UC4RB_WRM_CA_CHECKs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CA_CHECK#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_CA_CHECKs.00>
-<UC4RB_WRM_CN_CHECKs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CN_CHECK#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_CN_CHECKs.00>
 <UC4RB_WRM_CONN_TIMEOUTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CONN_TIMEOUT#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">180</UC4RB_WRM_CONN_TIMEOUTs.00>
 <UC4RB_WRM_HOSTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_HOST#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
+<UC4RB_WRM_OPTIONSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_OPTIONS#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
 <UC4RB_WRM_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">--10</UC4RB_WRM_PASSWORDs.00>
 <UC4RB_WRM_PORTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_PORT#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">5985</UC4RB_WRM_PORTs.00>
-<UC4RB_WRM_SSLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_SSL#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_SSLs.00>
 <UC4RB_WRM_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_USERNAME#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
 </PRPTBOX>
 </PROMPTSET>
@@ -425,16 +413,14 @@
 <PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">
 <UC4RB_SSH_CONN_TIMEOUTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_CONN_TIMEOUT#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">30</UC4RB_SSH_CONN_TIMEOUTs.00>
 <UC4RB_SSH_HOSTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_HOST#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
-<UC4RB_SSH_HOST_KEY_CHECKs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_HOST_KEY_CHECK#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">NO</UC4RB_SSH_HOST_KEY_CHECKs.00>
 <UC4RB_SSH_KEYs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_KEY#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
+<UC4RB_SSH_OPTIONSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_OPTIONS#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
 <UC4RB_SSH_PASSPHRASEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PASSPHRASE#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10</UC4RB_SSH_PASSPHRASEs.00>
 <UC4RB_SSH_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10</UC4RB_SSH_PASSWORDs.00>
 <UC4RB_SSH_PORTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_PORT#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">22</UC4RB_SSH_PORTs.00>
 <UC4RB_SSH_TIMEOUTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_TIMEOUT#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">300</UC4RB_SSH_TIMEOUTs.00>
-<UC4RB_SSH_TTYs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_TTY#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">NO</UC4RB_SSH_TTYs.00>
 <UC4RB_SSH_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SSH_USERNAME#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS"/>
 <UC4RB_SUDO_SSH_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_SUDO_SSH_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">--10FBA41CCE80A626FF9F1A8BC87ECEB23E141388E66BC9D730</UC4RB_SUDO_SSH_PASSWORDs.00>
-<UC4RB_USE_SSH_SUDOs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_USE_SSH_SUDO#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS">None</UC4RB_USE_SSH_SUDOs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -442,13 +428,11 @@
 <PROMPTSET name="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">
 <PRPTBOX promptset="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">
 <UC4RB_WRM_AUTH_TYPEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_AUTH_TYPE#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
-<UC4RB_WRM_CA_CHECKs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CA_CHECK#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_CA_CHECKs.00>
-<UC4RB_WRM_CN_CHECKs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CN_CHECK#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_CN_CHECKs.00>
 <UC4RB_WRM_CONN_TIMEOUTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_CONN_TIMEOUT#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">180</UC4RB_WRM_CONN_TIMEOUTs.00>
 <UC4RB_WRM_HOSTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_HOST#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
+<UC4RB_WRM_OPTIONSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_OPTIONS#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
 <UC4RB_WRM_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_PASSWORD#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">--10</UC4RB_WRM_PASSWORDs.00>
 <UC4RB_WRM_PORTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_PORT#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">5985</UC4RB_WRM_PORTs.00>
-<UC4RB_WRM_SSLs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_SSL#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS">NO</UC4RB_WRM_SSLs.00>
 <UC4RB_WRM_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_WRM_USERNAME#" promptsetname="PCK.ITPA_SHARED.PUB.PROMPTSET.WINRM_CONNECTION_DETAILS"/>
 </PRPTBOX>
 </PROMPTSET>

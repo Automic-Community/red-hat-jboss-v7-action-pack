@@ -7,40 +7,41 @@
 <OH_SubType/>
 </HEADER>
 <SCRIPT mode="1" state="1">
-<MSCRI><![CDATA[  if($count -ne 0 ){
+<MSCRI><![CDATA[  $count=@( Get-Content "&UC4RB_OUTPUT_LOG#" | Where-Object { $_.Contains("Windows") } ).Count
+  if($count -ne 0 ){
 :     INC PCK.AUTOMIC_JBOSS_V7.PRV.INCLUDE.JBOSS_RESTART_APP_PREPARE_WIN_CMD
 :     SET &UC4RB_FILE_CONTENT# = "&UC4RB_CMD_WIN#"
-:     SET &UC4RB_FILE_PATH# = "&AGENT_TEMPDIR#\cmd2-&$RUNID#.ps1"
+:     SET &UC4RB_FILE_PATH# = "&AGENT_TEMPDIR#\tempdir-&$RUNID#\cmd2-&$RUNID#.ps1"
 :     INC PCK.ITPA_SHARED.PUB.INCLUDE.WRITE_FILE
-:     SET &UC4RB_SRC_FILE_PATH#=&UC4RB_FILE_PATH#
-      Set-Content '&UC4RB_SRC_FILE_PATH#' ((Get-Content '&UC4RB_SRC_FILE_PATH#') | foreach {$_.replace('$UC4_DECRYPTED_JB_PWD',$UC4_DECRYPTED_PWD)})
+:     SET &UC4RB_SRC_FILE_PATH#="&AGENT_TEMPDIR#\tempdir-&$RUNID#"
+      Set-Content '&UC4RB_FILE_PATH#' ((Get-Content '&UC4RB_FILE_PATH#') | foreach {$_.replace('$UC4_DECRYPTED_JB_PWD',$UC4_DECRYPTED_PWD)})
 :     PRINT "Command Executed: &UC4RB_CMD_WIN#"
 :     SET &UC4RB_FILE_CONTENT# = '"powershell tempdir-&$RUNID#\cmd2-&$RUNID#.ps1"'
 :     SET &UC4RB_FILE_PATH# = "&AGENT_TEMPDIR#\cmd4-&$RUNID#.txt"
 :     INC PCK.ITPA_SHARED.PUB.INCLUDE.WRITE_FILE
-:     SET &UC4RB_PRINTLOG# = ""
+:     SET &UC4RB_OUTPUTMODE# = "0"
 :     SET &UC4RB_CMD_FILE_PATH# = &UC4RB_FILE_PATH#
-:     INC PCK.ITPA_SHARED.PUB.INCLUDE.SSH_RUN_SCRIPT@WIN
+:     INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.SSH_RUN_SCRIPT
       if(!$?) {
         $errors = 1
       }
   }else{
 :     INC PCK.AUTOMIC_JBOSS_V7.PRV.INCLUDE.JBOSS_RESTART_APP_PREPARE_UNIX_CMD
 :     SET &UC4RB_FILE_CONTENT# = "&UC4RB_CMD_UNX#"
-:     SET &UC4RB_FILE_PATH# = "&AGENT_TEMPDIR#\cmd3-&$RUNID#.sh"
+:     SET &UC4RB_FILE_PATH# = "&AGENT_TEMPDIR#\tempdir-&$RUNID#\cmd3-&$RUNID#.sh"
 :     INC PCK.ITPA_SHARED.PUB.INCLUDE.WRITE_FILE
-:     SET &UC4RB_SRC_FILE_PATH#=&UC4RB_FILE_PATH#
+:     SET &UC4RB_SRC_FILE_PATH#="&AGENT_TEMPDIR#\tempdir-&$RUNID#"
 :     PRINT "Command Executed: &UC4RB_CMD_UNX#"
-      Set-Content '&UC4RB_SRC_FILE_PATH#' ((Get-Content '&UC4RB_SRC_FILE_PATH#') | foreach {$_.replace('$UC4_DECRYPTED_JB_PWD',$UC4_DECRYPTED_PWD)})
+      Set-Content '&UC4RB_FILE_PATH#' ((Get-Content '&UC4RB_FILE_PATH#') | foreach {$_.replace('$UC4_DECRYPTED_JB_PWD',$UC4_DECRYPTED_PWD)})
 :     PRINT "Command Executed: &UC4RB_CMD_UNX#"
 :     SET &UC4RB_FILE_CONTENT#='"sed -i '
 :     SET &UC4RB_FILE_CONTENT#=STR_CAT(&UC4RB_FILE_CONTENT#," 's/\r$//' tempdir-&$RUNID#/cmd3-&$RUNID#.sh ; sh tempdir-&$RUNID#/cmd3-&$RUNID#.sh")
 :     SET &UC4RB_FILE_CONTENT#=STR_CAT(&UC4RB_FILE_CONTENT#,'"')
 :     SET &UC4RB_FILE_PATH# = "&AGENT_TEMPDIR#\cmd5-&$RUNID#.txt"
 :     INC PCK.ITPA_SHARED.PUB.INCLUDE.WRITE_FILE
-:     SET &UC4RB_PRINTLOG# = ""
+:     SET &UC4RB_OUTPUTMODE# = "0"
 :     SET &UC4RB_CMD_FILE_PATH# = &UC4RB_FILE_PATH#
-:     INC PCK.ITPA_SHARED.PUB.INCLUDE.SSH_RUN_SCRIPT@WIN
+:     INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.SSH_RUN_SCRIPT
       if(!$?) {
         $errors = 1
       }

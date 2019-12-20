@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBI name="PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.SSH_RUN_COMMAND">
+<HEADER state="1">
+<Title>SSH Run Command</Title>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[: SET &ACTION_NAME# = "RunCommandAction"
+
+: SET &UC4RB_JAVA_CMD# = 'java -jar "&UC4RB_JAR_PATH#"'
+: SET &UC4RB_JAVA_CMD# = STR_CAT(&UC4RB_JAVA_CMD#, " -action &ACTION_NAME#")
+
+! Build java arguments
+: INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.SSH_PREPARE_CMD
+
+! Invoking java binar
+&UC4RB_JAVA_CMD#]]></MSCRI>
+</SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBI>
+</uc-export>
