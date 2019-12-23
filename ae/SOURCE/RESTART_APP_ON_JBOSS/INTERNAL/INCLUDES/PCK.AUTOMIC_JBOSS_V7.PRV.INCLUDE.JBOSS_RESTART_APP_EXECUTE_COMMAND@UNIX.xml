@@ -7,7 +7,7 @@
 <OH_SubType/>
 </HEADER>
 <SCRIPT mode="1" state="1">
-<MSCRI><![CDATA[if grep -iq "Windows" "&UC4RB_OUTPUT_LOG#"
+<MSCRI><![CDATA[if [ $UC4RB_SSH_OSNAME -eq "Windows" ]
   then
 :     INC PCK.AUTOMIC_JBOSS_V7.PRV.INCLUDE.JBOSS_RESTART_APP_PREPARE_WIN_CMD
 :     SET &UC4RB_FILE_CONTENT# = "&UC4RB_CMD_WIN#"
@@ -16,7 +16,7 @@
 :     SET &UC4RB_SRC_FILE_PATH#="&AGENT_TEMPDIR#/tempdir-&$RUNID#"
 :     PRINT "Command Executed: &UC4RB_CMD_WIN#"
       sed -i "s/\$UC4_DECRYPTED_JB_PWD/$UC4_DECRYPTED_PWD/" &UC4RB_FILE_PATH#
-:     SET &UC4RB_FILE_CONTENT# = '"powershell tempdir-&$RUNID#\cmd2-&$RUNID#.ps1"'
+:     SET &UC4RB_FILE_CONTENT# = 'powershell tempdir-&$RUNID#\cmd2-&$RUNID#.ps1'
 :     SET &UC4RB_FILE_PATH# = "&AGENT_TEMPDIR#/cmd4-&$RUNID#.txt"
 :     INC PCK.ITPA_SHARED.PUB.INCLUDE.WRITE_FILE
 :     SET &UC4RB_OUTPUTMODE# = "0"
@@ -30,8 +30,7 @@ else
 :     SET &UC4RB_SRC_FILE_PATH#="&AGENT_TEMPDIR#/tempdir-&$RUNID#"
 :     PRINT "Command Executed: &UC4RB_CMD_UNX#"
       sed -i "s/\$UC4_DECRYPTED_JB_PWD/$UC4_DECRYPTED_PWD/" &UC4RB_FILE_PATH#
-:     SET &UC4RB_FILE_CONTENT#='"sed -i '
-:     SET &UC4RB_FILE_CONTENT#=STR_CAT(&UC4RB_FILE_CONTENT#," 's/\r$//' tempdir-&$RUNID#/cmd3-&$RUNID#.sh ; sh tempdir-&$RUNID#/cmd3-&$RUNID#.sh")
+:     SET &UC4RB_FILE_CONTENT#="sed -i  's/\r$//' tempdir-&$RUNID#/cmd3-&$RUNID#.sh ; sh tempdir-&$RUNID#/cmd3-&$RUNID#.sh"
 :     SET &UC4RB_FILE_CONTENT#=STR_CAT(&UC4RB_FILE_CONTENT#,'"')
 :     SET &UC4RB_FILE_PATH# = "&AGENT_TEMPDIR#/cmd5-&$RUNID#.txt"
 :     INC PCK.ITPA_SHARED.PUB.INCLUDE.WRITE_FILE
