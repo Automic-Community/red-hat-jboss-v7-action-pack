@@ -7,7 +7,7 @@
 <OH_SubType/>
 </HEADER>
 <SCRIPT mode="1" state="1">
-<MSCRI><![CDATA[if [ "$UC4RB_SSH_OSNAME" -eq "WINDOWS" ] ;
+<MSCRI><![CDATA[if [ "$UC4RB_SSH_OSNAME" == "WINDOWS" ] ;
   then
 :     INC PCK.AUTOMIC_JBOSS_V7.PRV.INCLUDE.JBOSS_RESTART_APP_PREPARE_WIN_CMD
 :     SET &UC4RB_FILE_CONTENT# = "&UC4RB_CMD_WIN#"
@@ -16,7 +16,7 @@
 :     SET &UC4RB_SRC_FILE_PATH#="&AGENT_TEMPDIR#/tempdir-&$RUNID#"
 :     PRINT "Command Executed: &UC4RB_CMD_WIN#"
       sed -i "s/\$UC4_DECRYPTED_JB_PWD/$UC4_DECRYPTED_PWD/" &UC4RB_FILE_PATH#
-      export UC4_DECRYPTED_PWD=$TMP_PWD
+!      export UC4_DECRYPTED_PWD=$TMP_PWD
 :     SET &UC4RB_FILE_CONTENT# = 'powershell tempdir-&$RUNID#\cmd2-&$RUNID#.ps1'
 :     SET &UC4RB_FILE_PATH# = "&AGENT_TEMPDIR#/cmd4-&$RUNID#.txt"
 :     INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.WRITE_FILE
@@ -31,7 +31,7 @@ else
 :     SET &UC4RB_SRC_FILE_PATH#="&AGENT_TEMPDIR#/tempdir-&$RUNID#"
 :     PRINT "Command Executed: &UC4RB_CMD_UNX#"
       sed -i "s/\$UC4_DECRYPTED_JB_PWD/$UC4_DECRYPTED_PWD/" &UC4RB_FILE_PATH#
-      export UC4_DECRYPTED_PWD=$TMP_PWD
+!      export UC4_DECRYPTED_PWD=$TMP_PWD
 :     SET &UC4RB_FILE_CONTENT#="sed -i  's/\r$//' tempdir-&$RUNID#/cmd3-&$RUNID#.sh ; sh tempdir-&$RUNID#/cmd3-&$RUNID#.sh"
 :     SET &UC4RB_FILE_PATH# = "&AGENT_TEMPDIR#/cmd5-&$RUNID#.txt"
 :     INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.WRITE_FILE

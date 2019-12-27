@@ -15,7 +15,6 @@
 :     INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.WRITE_FILE
 :     SET &UC4RB_SRC_FILE_PATH#="&AGENT_TEMPDIR#\tempdir-&$RUNID#"
       Set-Content '&UC4RB_FILE_PATH#' ((Get-Content '&UC4RB_FILE_PATH#') | foreach {$_.replace('$UC4_DECRYPTED_JB_PWD',$UC4_DECRYPTED_PWD)})
-      $env:UC4_DECRYPTED_PWD=$TMP_PWD
 :     PRINT "Command Executed: &UC4RB_CMD_WIN#"
 :     SET &UC4RB_FILE_CONTENT# = 'powershell tempdir-&$RUNID#\cmd2-&$RUNID#.ps1'
 :     SET &UC4RB_FILE_PATH# = "&AGENT_TEMPDIR#\cmd4-&$RUNID#.txt"
@@ -33,7 +32,6 @@
 :     INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.WRITE_FILE
 :     SET &UC4RB_SRC_FILE_PATH#="&AGENT_TEMPDIR#\tempdir-&$RUNID#"
       Set-Content '&UC4RB_FILE_PATH#' ((Get-Content '&UC4RB_FILE_PATH#') | foreach {$_.replace('$UC4_DECRYPTED_JB_PWD',$UC4_DECRYPTED_PWD)})
-      $env:UC4_DECRYPTED_PWD=$TMP_PWD
 :     PRINT "Command Executed: &UC4RB_CMD_UNX#"
 :     SET &UC4RB_FILE_CONTENT#="sed -i  's/\r$//' tempdir-&$RUNID#/cmd3-&$RUNID#.sh ; sh tempdir-&$RUNID#/cmd3-&$RUNID#.sh"
 :     SET &UC4RB_FILE_PATH# = "&AGENT_TEMPDIR#\cmd5-&$RUNID#.txt"
