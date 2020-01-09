@@ -148,9 +148,7 @@
 </node>
 <node content="1" id="PVALUE" name="Parent Variables" parent="" type="TASKVALUE">
 <VALUE state="2">
-<Values>
-<row ERTUsage="0" Mod="0" Name="&amp;UC4RB_FOLDER_TO_DEL#" Value=""/>
-</Values>
+<Values/>
 <Mode>1</Mode>
 </VALUE>
 </node>
@@ -223,30 +221,7 @@
 <calendars CCTypeAll="0" CCTypeExt="0" CCTypeNone="0" CCTypeOne="1" CaleOn="0"/>
 <postconditions>
 <PostCon>
-<conditions id="CONDITIONS">
-<condition active="1" id="USER DEFINED" once="0" type="C" uiinfo="">
-<params>
-<param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_FOLDER_TO_DEL#"/>
-<param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
-<param altview="0" name="XC_P03" type="V" value=""/>
-</params>
-<when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
-<action active="1" id="EXECUTE OBJECT" once="1" type="A" uiinfo="">
-<params>
-<param altview="0" name="XC_P01" type="V" value="PCK.AUTOMIC_FILESYSTEM.PUB.ACTION.DELETE"/>
-<param altview="0" name="XC_P02" type="S" value="&lt;PARAMETERS&gt;"/>
-<param altview="0" name="XC_P03" type="V" value="##911011">
-<param name="AGENTs.00" value="&amp;AGENT#" vname="XC_P03"/>
-<param name="LOGINs.00" value="&amp;LOGIN#" vname="XC_P03"/>
-<param name="UC4RB_DIR_FILE_RM_FAILs.00" value="YES" vname="XC_P03"/>
-<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;UC4RB_FOLDER_TO_DEL#" vname="XC_P03"/>
-</param>
-<param altview="0" name="XC_P04" type="V" value="DELETE_FILE"/>
-</params>
-</action>
-</when>
-</condition>
-</conditions>
+<conditions id="CONDITIONS"/>
 </PostCon>
 </postconditions>
 </task>
@@ -274,9 +249,7 @@
 </node>
 <node content="1" id="PVALUE" name="Parent Variables" parent="" type="TASKVALUE">
 <VALUE state="2">
-<Values>
-<row ERTUsage="0" Mod="0" Name="&amp;UC4RB_FOLDER_TO_DEL#" Value=""/>
-</Values>
+<Values/>
 <Mode>1</Mode>
 </VALUE>
 </node>
@@ -349,30 +322,7 @@
 <calendars CCTypeAll="0" CCTypeExt="0" CCTypeNone="0" CCTypeOne="1" CaleOn="0"/>
 <postconditions>
 <PostCon>
-<conditions id="CONDITIONS">
-<condition active="1" id="USER DEFINED" once="0" type="C" uiinfo="">
-<params>
-<param altview="0" name="XC_P01" type="V" value="&amp;UC4RB_FOLDER_TO_DEL#"/>
-<param altview="0" name="XC_P02" type="V" value="&lt;&gt;"/>
-<param altview="0" name="XC_P03" type="V" value=""/>
-</params>
-<when active="1" id="USER DEFINED" once="0" type="W" uiinfo="">
-<action active="1" id="EXECUTE OBJECT" once="1" type="A" uiinfo="">
-<params>
-<param altview="0" name="XC_P01" type="V" value="PCK.AUTOMIC_FILESYSTEM.PUB.ACTION.DELETE"/>
-<param altview="0" name="XC_P02" type="S" value="&lt;PARAMETERS&gt;"/>
-<param altview="0" name="XC_P03" type="V" value="##911011">
-<param name="AGENTs.00" value="&amp;AGENT#" vname="XC_P03"/>
-<param name="LOGINs.00" value="&amp;LOGIN#" vname="XC_P03"/>
-<param name="UC4RB_DIR_FILE_RM_FAILs.00" value="YES" vname="XC_P03"/>
-<param name="UC4RB_DIR_FILE_RM_NAMEs.00" value="&amp;UC4RB_FOLDER_TO_DEL#" vname="XC_P03"/>
-</param>
-<param altview="0" name="XC_P04" type="V" value="DELETE_FILE"/>
-</params>
-</action>
-</when>
-</condition>
-</conditions>
+<conditions id="CONDITIONS"/>
 </PostCon>
 </postconditions>
 </task>
@@ -505,9 +455,7 @@
 <dyntree>
 <node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
 <VALUE state="1">
-<Values>
-<row ERTUsage="0" Name="&amp;UC4RB_FOLDER_TO_DEL#" Value=""/>
-</Values>
+<Values/>
 <Mode>1</Mode>
 </VALUE>
 </node>
