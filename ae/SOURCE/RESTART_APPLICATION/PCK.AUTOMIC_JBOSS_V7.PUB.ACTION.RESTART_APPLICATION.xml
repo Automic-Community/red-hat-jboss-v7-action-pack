@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
-<JOBP AllowExternal="1" name="PCK.AUTOMIC_JBOSS_V7.PUB.ACTION.RESTART_APP_ON_JBOSS">
+<JOBP AllowExternal="1" name="PCK.AUTOMIC_JBOSS_V7.PUB.ACTION.RESTART_APPLICATION">
 <XHEADER state="1">
 <Title>JBoss v7 Restart Application</Title>
 <ArchiveKey1/>
@@ -519,8 +519,7 @@
 </SCRIPT>
 <DOCU_Docu state="1" type="text">
 <DOC><![CDATA[= Action name =
-PCK.AUTOMIC_JBOSS_V7.PUB.ACTION.RESTART_APP_ON_JBOSS
-
+PCK.AUTOMIC_JBOSS_V7.PUB.ACTION.RESTART_APPLICATION
 
 = General description =
 This action restarts an Application in JBoss Standalone or Assign Application to Server groups in Managed Domain
