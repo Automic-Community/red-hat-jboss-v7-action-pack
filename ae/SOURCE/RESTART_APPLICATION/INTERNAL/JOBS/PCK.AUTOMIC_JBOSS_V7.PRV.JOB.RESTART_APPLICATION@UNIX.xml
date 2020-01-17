@@ -183,7 +183,7 @@
 
     if [ "$UC4RB_SSH_OSNAME" == "WINDOWS" ] ;
       then
-        sed -i "s/\$UC4_DECRYPTED_JB_PWD/$UC4_DECRYPTED_JB_PWD/" "&TEMP_WIN"
+        sed -i "s/\$UC4_DECRYPTED_JB_PWD/$UC4_DECRYPTED_JB_PWD/" "&TEMP_WIN#"
         cmdFile='&TEMP_WIN#'
         java -jar "&UC4RB_SSH_JARPATH#" -action RunScriptAction &UC4RB_SSH_WIN_ARGS# -cmdfile "$cmdFile" -sourcepath " &$AGENT_RESOURCES_TASK# "
     else

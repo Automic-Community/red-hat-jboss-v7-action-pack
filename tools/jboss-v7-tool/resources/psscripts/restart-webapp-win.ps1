@@ -8,7 +8,8 @@ $jb_app_name=$args[6]
 $jb_pwd=$args[7]
 
 
-WRITE-HOST "INFO: Restarting process [$process_id] ...."
+WRITE-HOST "INFO: Restarting application [$jb_app_name] ...."
+WRITE-HOST "INFO: Mode [$jb_mode], HomeDir [$jb_home], Host [$jb_host], Port [$jb_port], User [$jb_user], Server Groups [$jb_srvr_grps]"
 <# Retrieving process details #>
 $jb_cli="`"$jb_home\bin\jboss-cli.bat`" --connect"
 if($jb_host) {
@@ -36,7 +37,7 @@ if("$jb_mode" -eq "Managed Domain") {
 }
 $enable_app=$enable_app + "`""
 
-$fileExist=((Test-Path  $jb_home)) 
+$fileExist=((Test-Path  $jb_home -PathType "Container")) 
 if (!$fileExist) { 
   Write-Host "ERROR: Cannot find the JBoss path. Aborting ..." 
   exit 1 

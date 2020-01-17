@@ -1,3 +1,4 @@
+#!/bin/bash
 jb_mode=$1
 jb_home=$2
 jb_host=$3
@@ -6,6 +7,9 @@ jb_user=$5
 jb_srvr_grps=$6
 jb_app_name=$7
 jb_pwd=$8
+
+echo "INFO: Restarting application [$jb_app_name] ...."
+echo "INFO: Mode [$jb_mode], HomeDir [$jb_home], Host [$jb_host], Port [$jb_port], User [$jb_user], Server Groups [$jb_srvr_grps]"
 
 jb_cli="--connect"
 
