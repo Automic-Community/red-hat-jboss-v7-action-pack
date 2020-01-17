@@ -56,15 +56,15 @@
 <node content="1" id="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">
 <PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">
-<UC4RB_AIOPS_JB_APP_NAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_APP_NAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_JB_HOME_DIRs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOME_DIR#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_JB_HOSTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOST#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_JB_OPERATING_MODEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_OPERATING_MODE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Standalone</UC4RB_AIOPS_JB_OPERATING_MODEs.00>
-<UC4RB_AIOPS_JB_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">--10A61C94D6737EB659</UC4RB_AIOPS_JB_PASSWORDs.00>
-<UC4RB_AIOPS_JB_PORTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_JB_SERVER_GRPSs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_SERVER_GRPS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_JB_USERNAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_USERNAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_TOOLSs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_TOOLS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Agent</UC4RB_AIOPS_TOOLSs.00>
+<UC4RB_AIOPS_JB_APP_NAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_APP_NAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_HOME_DIRs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOME_DIR#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_HOSTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOST#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_OPERATING_MODEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_OPERATING_MODE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Standalone</UC4RB_AIOPS_JB_OPERATING_MODEs.00>
+<UC4RB_AIOPS_JB_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">--10</UC4RB_AIOPS_JB_PASSWORDs.00>
+<UC4RB_AIOPS_JB_PORTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_SERVER_GRPSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_SERVER_GRPS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_USERNAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_TOOLSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_TOOLS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Agent</UC4RB_AIOPS_TOOLSs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -157,15 +157,15 @@
 <node content="1" id="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">
 <PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">
-<UC4RB_AIOPS_JB_APP_NAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_APP_NAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_JB_HOME_DIRs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOME_DIR#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_JB_HOSTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOST#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_JB_OPERATING_MODEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_OPERATING_MODE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Standalone</UC4RB_AIOPS_JB_OPERATING_MODEs.00>
-<UC4RB_AIOPS_JB_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">--10A61C94D6737EB659</UC4RB_AIOPS_JB_PASSWORDs.00>
-<UC4RB_AIOPS_JB_PORTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_JB_SERVER_GRPSs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_SERVER_GRPS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_JB_USERNAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_USERNAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_TOOLSs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_TOOLS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Agent</UC4RB_AIOPS_TOOLSs.00>
+<UC4RB_AIOPS_JB_APP_NAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_APP_NAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_HOME_DIRs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOME_DIR#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_HOSTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOST#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_OPERATING_MODEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_OPERATING_MODE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Standalone</UC4RB_AIOPS_JB_OPERATING_MODEs.00>
+<UC4RB_AIOPS_JB_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">--10</UC4RB_AIOPS_JB_PASSWORDs.00>
+<UC4RB_AIOPS_JB_PORTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_SERVER_GRPSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_SERVER_GRPS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_USERNAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_TOOLSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_TOOLS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Agent</UC4RB_AIOPS_TOOLSs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -258,15 +258,15 @@
 <node content="1" id="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">
 <PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">
-<UC4RB_AIOPS_JB_APP_NAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_APP_NAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_JB_HOME_DIRs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOME_DIR#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_JB_HOSTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOST#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_JB_OPERATING_MODEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_OPERATING_MODE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Standalone</UC4RB_AIOPS_JB_OPERATING_MODEs.00>
-<UC4RB_AIOPS_JB_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">--10A61C94D6737EB659</UC4RB_AIOPS_JB_PASSWORDs.00>
-<UC4RB_AIOPS_JB_PORTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_JB_SERVER_GRPSs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_SERVER_GRPS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_JB_USERNAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_USERNAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_TOOLSs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_TOOLS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Agent</UC4RB_AIOPS_TOOLSs.00>
+<UC4RB_AIOPS_JB_APP_NAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_APP_NAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_HOME_DIRs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOME_DIR#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_HOSTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOST#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_OPERATING_MODEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_OPERATING_MODE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Standalone</UC4RB_AIOPS_JB_OPERATING_MODEs.00>
+<UC4RB_AIOPS_JB_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">--10</UC4RB_AIOPS_JB_PASSWORDs.00>
+<UC4RB_AIOPS_JB_PORTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_SERVER_GRPSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_SERVER_GRPS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_USERNAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_TOOLSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_TOOLS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Agent</UC4RB_AIOPS_TOOLSs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -346,15 +346,15 @@
 <node content="1" id="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" parent="PPRPTS" type="PPROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">
 <PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">
-<UC4RB_AIOPS_JB_APP_NAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_APP_NAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_JB_HOME_DIRs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOME_DIR#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_JB_HOSTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOST#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_JB_OPERATING_MODEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_OPERATING_MODE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Standalone</UC4RB_AIOPS_JB_OPERATING_MODEs.00>
-<UC4RB_AIOPS_JB_PASSWORDs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">--10A61C94D6737EB659</UC4RB_AIOPS_JB_PASSWORDs.00>
-<UC4RB_AIOPS_JB_PORTs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_JB_SERVER_GRPSs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_SERVER_GRPS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_JB_USERNAMEs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_USERNAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
-<UC4RB_AIOPS_TOOLSs.00 ReadFromTable="OPUD" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_TOOLS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Agent</UC4RB_AIOPS_TOOLSs.00>
+<UC4RB_AIOPS_JB_APP_NAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_APP_NAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_HOME_DIRs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOME_DIR#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_HOSTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_HOST#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_OPERATING_MODEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_OPERATING_MODE#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Standalone</UC4RB_AIOPS_JB_OPERATING_MODEs.00>
+<UC4RB_AIOPS_JB_PASSWORDs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PASSWORD#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">--10</UC4RB_AIOPS_JB_PASSWORDs.00>
+<UC4RB_AIOPS_JB_PORTs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_PORT#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_SERVER_GRPSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_SERVER_GRPS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_JB_USERNAMEs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_JB_USERNAME#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS"/>
+<UC4RB_AIOPS_TOOLSs.00 ReadFromTable="OPSE" altview="0" haslist="0" msginsert="" msgnr="" promptname="UC4RB_AIOPS_TOOLS#" promptsetname="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">Agent</UC4RB_AIOPS_TOOLSs.00>
 </PRPTBOX>
 </PROMPTSET>
 </node>
@@ -461,17 +461,7 @@
 </node>
 <node content="1" id="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" parent="PRPTS" type="PROMPTSET">
 <PROMPTSET name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" ontop="1">
-<PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" prptmode="1">
-<UC4RB_AIOPS_JB_OPERATING_MODEs.00 altview="0" haslist="0">Standalone</UC4RB_AIOPS_JB_OPERATING_MODEs.00>
-<UC4RB_AIOPS_JB_HOME_DIRs.00 altview="0" haslist="0"/>
-<UC4RB_AIOPS_JB_HOSTs.00 altview="0" haslist="0"/>
-<UC4RB_AIOPS_JB_PORTs.00 altview="0" haslist="0"/>
-<UC4RB_AIOPS_JB_USERNAMEs.00 altview="0" haslist="0"/>
-<UC4RB_AIOPS_JB_PASSWORDs.00 altview="0" haslist="0">--10A61C94D6737EB659</UC4RB_AIOPS_JB_PASSWORDs.00>
-<UC4RB_AIOPS_JB_SERVER_GRPSs.00 altview="0" haslist="0"/>
-<UC4RB_AIOPS_JB_APP_NAMEs.00 altview="0" haslist="0"/>
-<UC4RB_AIOPS_TOOLSs.00 altview="0" haslist="0">Agent</UC4RB_AIOPS_TOOLSs.00>
-</PRPTBOX>
+<PRPTBOX promptset="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS" prptmode="1"/>
 </PROMPTSET>
 </node>
 <node content="1" id="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS" name="PCK.ITPA_SHARED.PUB.PROMPTSET.SSH_CONNECTION_DETAILS" parent="PRPTS" type="PROMPTSET">

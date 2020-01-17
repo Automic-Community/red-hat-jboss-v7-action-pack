@@ -195,7 +195,6 @@
 :   SET &TEMP_WIN#="&$AGENT_RESOURCES_TASK#cmd_win.txt"
 :   SET &UC4RB_FILE_PATH# = &TEMP_WIN#
 :   INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.WRITE_FILE
-    Set-Content '&UC4RB_FILE_PATH#' ((Get-Content '&UC4RB_FILE_PATH#') | foreach {$_.replace('$UC4_DECRYPTED_JB_PWD',$UC4_DECRYPTED_JB_PWD)})
 
 :   ATTACH_RES "PCK.AUTOMIC_JBOSS_V7.PRV.STORE", "RESTART-WEBAPP-UNIX", T, N
 :   SET &UC4RB_SH_SCR_NAME# = "restart-webapp-unix.sh"
@@ -222,17 +221,19 @@
 :   SET &TEMP_UNIX#="&$AGENT_RESOURCES_TASK#cmd_unix.txt"
 :   SET &UC4RB_FILE_PATH# = &TEMP_UNIX#
 :   INC PCK.AUTOMIC_JBOSS_V7.PUB.INCLUDE.WRITE_FILE
-    Set-Content '&UC4RB_FILE_PATH#' ((Get-Content '&UC4RB_FILE_PATH#') | foreach {$_.replace('$UC4_DECRYPTED_JB_PWD',$UC4_DECRYPTED_JB_PWD)})
 
 :   INC PCK.ITPA_SHARED.PUB.INCLUDE.ATTACH_SSH_RESOURCE
 :   INC PCK.ITPA_SHARED.PUB.INCLUDE.SSH_PREPARE_ARGS
 :   INC PCK.ITPA_SHARED.PUB.INCLUDE.SSH_DETECT_OSNAME
     if($UC4RB_SSH_OSNAME -eq "WINDOWS" ) {
+        Set-Content '&TEMP_WIN#' ((Get-Content '&TEMP_WIN#') | foreach {$_.replace('$UC4_DECRYPTED_JB_PWD',$UC4_DECRYPTED_JB_PWD)})
         $cmdFile='&TEMP_WIN#'
+        java -jar "&UC4RB_SSH_JARPATH#" -action RunScriptAction &UC4RB_SSH_WIN_ARGS# -cmdfile $cmdFile -sourcepath " &$AGENT_RESOURCES_TASK# "
     } else {
+        Set-Content '&TEMP_UNIX#' ((Get-Content '&TEMP_UNIX#') | foreach {$_.replace('$UC4_DECRYPTED_JB_PWD',$UC4_DECRYPTED_JB_PWD)})
         $cmdFile='&TEMP_UNIX#'
+        java -jar "&UC4RB_SSH_JARPATH#" -action RunScriptAction &UC4RB_SSH_ARGS# -cmdfile $cmdFile -sourcepath " &$AGENT_RESOURCES_TASK# "
     }
-    java -jar "&UC4RB_SSH_JARPATH#" -action RunScriptAction &UC4RB_SSH_ARGS# -cmdfile $cmdFile -sourcepath " &$AGENT_RESOURCES_TASK# "
 : CASE "Agent"
 :   SET &JB_HOME_DIR# = &UC4RB_AIOPS_JB_HOME_DIR#
 :   INC PCK.ITPA_SHARED.PRV.INCLUDE.ESCAPE_CHARS@POWERSHELL &UC4RB_ESCAPED_STRING# = &JB_HOME_DIR#
