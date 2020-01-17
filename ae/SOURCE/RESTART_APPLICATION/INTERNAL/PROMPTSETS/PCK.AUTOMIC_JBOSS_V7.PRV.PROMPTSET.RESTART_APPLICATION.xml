@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
-<PRPT name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APP_ON_JBOSS">
+<PRPT name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APPLICATION">
 <HEADER state="1">
 <Title>Restart Web App on JBoss</Title>
 <ArchiveKey1/>
