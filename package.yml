@@ -14,6 +14,14 @@ binaries:
     version: 1.0.0
 - object: RESOURCES/LIBS/PCK.AUTOMIC_JBOSS_V7.PRV.STORE
   resources: 
+  - name: RESTART-WEBAPP-UNIX
+    type: TEXT
+    path: tools/jboss-v7-tool/resources/shellscripts/restart-webapp-unix.sh
+    version: 1.0.0
+  - name: RESTART-WEBAPP-WIN
+    type: TEXT
+    path: tools/jboss-v7-tool/resources/psscripts/restart-webapp-win.ps1
+    version: 1.0.0
   - name: JBOSSV7TOOL.JAR
     type: BINARY
     path: tools/jboss-v7-tool/target/jboss-v7-tool.jar

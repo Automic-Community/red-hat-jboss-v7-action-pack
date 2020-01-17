@@ -232,3 +232,28 @@ Delete folder
     Action Execute
     Action Report Should Be Found
     Action Return Status Should Be    ${ENDED_OK}
+
+Connect To Agent/SSH/WinRM
+    Action Set    &UC4RB_SSH_HOST#    ${SSH_HOST}
+    Action Set    &UC4RB_SSH_PORT#    22
+    Action Set    &UC4RB_SSH_USERNAME#    ${SSH_USERNAME}
+    Action Set    &UC4RB_SSH_PASSWORD#    ${SSH_PASSWORD}
+    Action Set    &UC4RB_SSH_KEY#    ${SSH_KEY}
+    Action Set    &UC4RB_SSH_PASSPHRASE#    ${SSH_PASSPHRASE}
+    Action Set    &UC4RB_SSH_CONN_TIMEOUT#    30
+    Action Set    &UC4RB_SSH_OPTIONS#    ${SSH_OPT}
+    Action Set    &UC4RB_SUDO_SSH_PASSWORD#    ${SUDO_PWD}
+    Action Set    &UC4RB_SSH_TIMEOUT#    300
+    Action Set    &UC4RB_WRM_HOST#    ${WRM_HOST}
+    Action Set    &UC4RB_WRM_PORT#    ${WRM_PORT}
+    Action Set    &UC4RB_WRM_USERNAME#    ${WRM_USERNAME}
+    Action Set    &UC4RB_WRM_PASSWORD#    ${WRM_PASSWORD}
+    Action Set    &UC4RB_WRM_CONN_TIMEOUT#    30
+    Action Set    &UC4RB_WRM_AUTH_TYPE#    ${EMPTY}
+    Action Set    &UC4RB_WRM_OPTIONS#    ${WRM_OPT}
+
+Generate String
+    ${Generated_Name}    Generate Random String    8    [LETTERS]
+    ${Time}    Get Time
+    Set Global Variable    ${Generated_Name}
+    Set Global Variable    ${Time}

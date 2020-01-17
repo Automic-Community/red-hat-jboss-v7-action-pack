@@ -1,0 +1,24 @@
+*** Settings ***
+Resource          ../env/default.txt
+
+*** Variables ***
+#----Global-------------------------------------------------------------------------------------
+${SSH_HOST}       10.108.55.161
+${SSH_PORT}       22
+${SSH_USERNAME}    Administrator
+${SSH_PASSWORD}    Automic@1
+${SSH_KEY}        ${EMPTY}
+${SSH_PASSPHRASE}    ${EMPTY}
+${SSH_OPT}        ${EMPTY}
+${SUDO_PWD}       ${EMPTY}
+${WRM_HOST}       10.108.54.2
+${WRM_PORT}       5985
+${WRM_USERNAME}    SBB01\\Administrator
+${WRM_PASSWORD}    WRM_PASSWORD
+${WRM_OPT}        ${EMPTY}
+# WRM_OPT contains values Use SSL, Skip CA Check, Skip CN Check and SSH_OPT contain values Strict Host Key Check, Allocate TTY, Sudo
+#---- Restart App Jboss ------------------------------------------------------------------------------------------------
+${JBoss_Home_Dir}    C:\\Users\\Administrator\\EAP-7.1.0
+${JBoss_User}     admin
+${JBoss_Password}    Automic@1
+${JBoss_Host_Server}    vviespartan03

@@ -5,7 +5,7 @@
 			<id>nexus</id>
 			<mirrorOf>*,!ignite-repos,!ignite-repos-snapshots,!automic-actions-snapshots,!automic-actions,!thirdparty
 			</mirrorOf>
-			<url>http://vvnfibotool01:8081/nexus/content/groups/public</url>
+			<url>https://nexusvie.automic.com/nexus/content/groups/public</url>
 		</mirror>
 	</mirrors>
 	<profiles>
@@ -15,7 +15,7 @@
 				<repository>
 					<id>thirdparty</id>
 					<url>
-						http://vvnfibotool01:8081/nexus/content/repositories/thirdparty/
+						https://nexusvie.automic.com/nexus/content/repositories/thirdparty/
 					</url>
 					<releases>
 						<enabled>true</enabled>
@@ -27,7 +27,7 @@
 				<repository>
 					<id>ignite-repos</id>
 					<url>
-						http://vvnfibotool01:8081/nexus/content/repositories/ignite-repos/
+						https://nexusvie.automic.com/nexus/content/repositories/ignite-repos/
 					</url>
 					<releases>
 						<enabled>true</enabled>
@@ -39,7 +39,7 @@
 				<repository>
 					<id>ignite-repos-snapshots</id>
 					<url>
-						http://vvnfibotool01:8081/nexus/content/repositories/ignite-repos-snapshots/
+						https://nexusvie.automic.com/nexus/content/repositories/ignite-repos-snapshots/
 					</url>
 					<releases>
 						<enabled>false</enabled>
@@ -51,7 +51,7 @@
 				<repository>
 					<id>automic-actions-snapshots</id>
 					<url>
-						http://vvnfibotool01:8081/nexus/content/repositories/automic-actions-snapshots/
+						https://nexusvie.automic.com/nexus/content/repositories/automic-actions-snapshots/
 					</url>
 					<releases>
 						<enabled>false</enabled>
@@ -63,7 +63,7 @@
 				<repository>
 					<id>automic-actions</id>
 					<url>
-						http://vvnfibotool01:8081/nexus/content/repositories/automic-actions/
+						https://nexusvie.automic.com/nexus/content/repositories/automic-actions/
 					</url>
 					<releases>
 						<enabled>true</enabled>
