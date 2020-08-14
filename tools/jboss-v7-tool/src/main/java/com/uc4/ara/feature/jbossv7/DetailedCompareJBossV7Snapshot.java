@@ -33,10 +33,10 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+
 import com.uc4.ara.feature.AbstractInternalFeature;
 import com.uc4.ara.feature.FeatureUtil;
 import com.uc4.ara.feature.globalcodes.ErrorCodes;
-import com.uc4.ara.feature.utils.ClasspathHacker;
 import com.uc4.ara.feature.utils.CmdLineParser;
 import com.uc4.ara.feature.utils.FileUtil;
 import com.uc4.ara.feature.utils.Maxim;
@@ -150,7 +150,7 @@ public class DetailedCompareJBossV7Snapshot extends  AbstractInternalFeature {
             return ErrorCodes.ERROR;
         }
 
-        ClasspathHacker.addFile(new File(homeValue , "bin/client/jboss-cli-client.jar"));
+       
 
         File snapDirectory = new File(archiveValue);
         if ((! new File(snapDirectory, "snap.xml").exists())

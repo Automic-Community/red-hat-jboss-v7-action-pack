@@ -16,7 +16,6 @@ import com.uc4.ara.feature.globalcodes.ErrorCodes;
 import com.uc4.ara.feature.jbossv7.schemas.ApplicationType;
 import com.uc4.ara.feature.jbossv7.schemas.JBossV7SnapshotType;
 import com.uc4.ara.feature.jbossv7.schemas.ServerSnapshotType;
-import com.uc4.ara.feature.utils.ClasspathHacker;
 import com.uc4.ara.feature.utils.CmdLineParser;
 import com.uc4.ara.feature.utils.Maxim;
 import com.uc4.ara.util.Logger;
@@ -136,8 +135,7 @@ public class CreateJBossV7Snapshot extends AbstractInternalFeature  {
             return ErrorCodes.ERROR;
         }
 
-        // Load jar file during runtime. Used for jboss cli.
-        ClasspathHacker.addFile(new File(jbossHome , "/bin/client/jboss-cli-client.jar"));
+        
 
         // Directory used to contain snap.zip and snap.xml
         File snapDirectory = new File(archiveValue, guidValue);
