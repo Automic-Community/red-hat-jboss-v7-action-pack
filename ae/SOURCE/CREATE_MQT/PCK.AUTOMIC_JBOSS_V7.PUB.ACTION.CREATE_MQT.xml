@@ -405,6 +405,10 @@
 
 In case of an update, the JMS address setting has to be removed and recreated.
 
+= Troubleshoot =
+* If action is giving error of 'jms-queue add' command not found.
+root cause: Activemq is not enabled.
+
 Rollback
 - If the message queue/topic should did not exist before: Use the RF 'Delete Message Queue/Topic' as custom rollback function. The rollback counterpart 'Delete Message Queue/Topic' gets all necessary parameters ('JBoss Home', 'Host', 'Port', 'Username', 'Password', 'Name') from this roll forward function.
 - If the message queue/topic has to be updated: create a backup of the message queue/topic information before updating. In case of a rollback, restore the previous message queue/topic.]]></DOC>

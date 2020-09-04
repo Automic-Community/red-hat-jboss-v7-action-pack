@@ -360,6 +360,10 @@
 
 Address-settings that bound to Message Queue/Topic would be deleted too.
 
+= Troubleshoot =
+* If action is giving error of 'jms-queue remove' command not found.
+root cause: Activemq is not enabled.
+
 Rollback
 The 'Delete Datasource' performs the following steps
 
