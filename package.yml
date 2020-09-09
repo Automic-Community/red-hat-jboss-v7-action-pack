@@ -11,7 +11,7 @@ binaries:
   - name: COMPONENT#JBOSS_V7#2
     type: TEXT
     path: ara/types/component/JBoss v7.xml
-    version: 1.0.0
+    version: 1.1.0
 - object: RESOURCES/LIBS/PCK.AUTOMIC_JBOSS_V7.PRV.STORE
   resources: 
   - name: RESTART-WEBAPP-UNIX
