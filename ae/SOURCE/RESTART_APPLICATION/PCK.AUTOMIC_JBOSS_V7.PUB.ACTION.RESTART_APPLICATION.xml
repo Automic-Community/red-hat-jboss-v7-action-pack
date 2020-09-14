@@ -149,7 +149,7 @@
 <node content="1" id="PVALUE" name="Parent Variables" parent="" type="TASKVALUE">
 <VALUE state="2">
 <Values/>
-<Mode>1</Mode>
+<Mode>0</Mode>
 </VALUE>
 </node>
 <node content="1" id="PRPTS" name="PromptSets" parent="" pref="1" type="PROMPTSET"/>
@@ -250,7 +250,7 @@
 <node content="1" id="PVALUE" name="Parent Variables" parent="" type="TASKVALUE">
 <VALUE state="2">
 <Values/>
-<Mode>1</Mode>
+<Mode>0</Mode>
 </VALUE>
 </node>
 <node content="1" id="PRPTS" name="PromptSets" parent="" pref="1" type="PROMPTSET"/>
@@ -456,7 +456,7 @@
 <node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
 <VALUE state="1">
 <Values/>
-<Mode>1</Mode>
+<Mode>0</Mode>
 </VALUE>
 </node>
 <node content="1" id="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APPLICATION" name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.RESTART_APPLICATION" parent="PRPTS" type="PROMPTSET">

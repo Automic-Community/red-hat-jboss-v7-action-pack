@@ -5,12 +5,12 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Iterator;
 
-import org.codehaus.jackson.JsonNode;
-import org.codehaus.jackson.JsonProcessingException;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.jboss.as.cli.scriptsupport.CLI;
 import org.jboss.as.cli.scriptsupport.CLI.Result;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.uc4.ara.feature.jbossv7.schemas.ObjectFactory;
 import com.uc4.ara.util.Logger;
 
@@ -111,13 +111,13 @@ abstract class AbstractJBossV7Feature  {
 
             mapper = new ObjectMapper();
             resultNode = mapper.readTree(jsonResult);
-            Iterator<String> iter = resultNode.getFieldNames();
+            Iterator<String> iter = resultNode.fieldNames();
 
             while (iter.hasNext()) {
                 String sysProp = iter.next();
                 if (sysProp.equals(jbBaseDir))
                 {
-                    jbBaseDir = resultNode.get(sysProp).getTextValue();
+                    jbBaseDir = resultNode.get(sysProp).textValue();
                     break;
                 }
             }
@@ -139,7 +139,7 @@ abstract class AbstractJBossV7Feature  {
             if (resultNode != null)
             {
                 appHash = "";
-                for (byte b : resultNode.getBinaryValue()) {
+                for (byte b : resultNode.binaryValue()) {
                     String s = Integer.toHexString(b & 0xff);
                     while (s.length() < 2)
                         s = "0" + s;

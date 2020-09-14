@@ -128,7 +128,7 @@
 :ENDIF
 
 :JCL_CONCAT_CHAR "?"
-java -jar "&$AGENT_RESOURCES_CLIENT#jboss-v7-tool.jar:&UC4RB_JBOSS_HOME#/bin/client/jboss-cli-client.jar" com.uc4.ara.feature.AraFileCmd jbossv7 CreateJBossV7Snapshot --home "&UC4RB_JBOSS_HOME#" --host "&UC4RB_JBOSS_HOST#" ?
+java -cp "&$AGENT_RESOURCES_CLIENT#jboss-v7-tool.jar";"&UC4RB_JBOSS_HOME#\bin\client\jboss-cli-client.jar" com.uc4.ara.feature.AraFileCmd jbossv7 CreateJBossV7Snapshot --home "&UC4RB_JBOSS_HOME#" --host "&UC4RB_JBOSS_HOST#" ?
 --port &UC4RB_JBOSS_PORT# --username "&UC4RB_JBOSS_USERNAME#" --password "&UC4RB_JBOSS_PASSWORD#" ?
 --mode &UC4RB_SNAPSHOT_MODE# --archivePath "&UC4RB_ARCHIVE_PATH#" --guid "&UC4RB_OUT_TARGET_GUID#" ?
 --name "&UC4RB_JBOSS_APP_NAME#" --exclude "&UC4RB_APP_FILTER_EXCLUDE#" --hostController "&UC4RB_JBOSS_HOST_CONTROLLER#" ?

@@ -19,9 +19,6 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
-import org.codehaus.jackson.JsonNode;
-import org.codehaus.jackson.JsonProcessingException;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.jboss.as.cli.scriptsupport.CLI.Result;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -30,6 +27,9 @@ import org.w3c.dom.NodeList;
 import org.w3c.dom.Text;
 import org.xml.sax.SAXException;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.uc4.ara.feature.FeatureUtil;
 import com.uc4.ara.feature.jbossv7.schemas.ApplicationRuntimeType;
 import com.uc4.ara.feature.jbossv7.schemas.ApplicationType;
@@ -219,7 +219,7 @@ public class ApplicationSnapshot extends AbstractJBossV7Feature {
             ObjectMapper mapper = new ObjectMapper();
             JsonNode resultNode = mapper.readTree(jsonResult);
 
-            Iterator<String> iter = resultNode.getFieldNames();
+            Iterator<String> iter = resultNode.fieldNames();
 
             while(iter.hasNext()) {
                 String subSystem = iter.next();
@@ -263,7 +263,7 @@ public class ApplicationSnapshot extends AbstractJBossV7Feature {
     }
 
     private DsSubsystemType createDsSubsystemType(JsonNode node) {
-        Iterator<String> iter = node.getFieldNames();
+        Iterator<String> iter = node.fieldNames();
         DsSubsystemType ds = objectFactory.createDsSubsystemType();
 
         while (iter.hasNext())
@@ -271,7 +271,7 @@ public class ApplicationSnapshot extends AbstractJBossV7Feature {
             String dsType = iter.next(); // data-source, xa-data-source
             if (! node.get(dsType).toString().equals("null"))
             {
-                Iterator<String> iter2 = node.get(dsType).getFieldNames();
+                Iterator<String> iter2 = node.get(dsType).fieldNames();
                 while(iter2.hasNext())
                 {
                     String jndiName = iter2.next();
@@ -298,7 +298,7 @@ public class ApplicationSnapshot extends AbstractJBossV7Feature {
      */
     private Ejb3SubsystemType createEjb3SubsystemType(JsonNode node) {
 
-        Iterator<String> iter = node.getFieldNames();
+        Iterator<String> iter = node.fieldNames();
         Ejb3SubsystemType ejb3 = objectFactory.createEjb3SubsystemType();
 
         while (iter.hasNext())
@@ -307,7 +307,7 @@ public class ApplicationSnapshot extends AbstractJBossV7Feature {
 
             if (! node.get(beanType).toString().equals("null"))
             {
-                Iterator<String> iter2 = node.get(beanType).getFieldNames();
+                Iterator<String> iter2 = node.get(beanType).fieldNames();
 
                 while(iter2.hasNext())
                 {
@@ -335,14 +335,14 @@ public class ApplicationSnapshot extends AbstractJBossV7Feature {
         WebSubsystemType web = objectFactory.createWebSubsystemType();
 
         node = node.get("servlet");
-        Iterator<String> iter = node.getFieldNames();
+        Iterator<String> iter = node.fieldNames();
 
         while (iter.hasNext())
         {
             String svlName = iter.next();
             JsonNode svlInfo = node.get(svlName);
 
-            String svlClass = svlInfo.get("servlet-class").getTextValue();
+            String svlClass = svlInfo.get("servlet-class").textValue();
 
             WebSubsystemType.Servlet s = objectFactory.createWebSubsystemTypeServlet();
             s.setServletClass(svlClass);
@@ -361,7 +361,7 @@ public class ApplicationSnapshot extends AbstractJBossV7Feature {
 
         List<JsonNode> resourceAdapterNodeList = node.findValues("resource-adapter");
         for (JsonNode raNode : resourceAdapterNodeList) {
-            Iterator<String> iter = raNode.getFieldNames();
+            Iterator<String> iter = raNode.fieldNames();
             // loops through all resource adapters
             while (iter.hasNext()) {
                 ResourceAdapterType resourceAdapter = objectFactory.createResourceAdapterType();
@@ -372,25 +372,25 @@ public class ApplicationSnapshot extends AbstractJBossV7Feature {
 
                 JsonNode adtNode = raNode.get(raName);
                 JsonNode connectionDefinitions = adtNode.get("connection-definitions");
-                Iterator<String> cdNameIter = connectionDefinitions.getFieldNames();
+                Iterator<String> cdNameIter = connectionDefinitions.fieldNames();
                 while (cdNameIter.hasNext()) {
                     String cdName = cdNameIter.next();
                     JsonNode conDefNode = connectionDefinitions.get(cdName);
                     ConnectionDefinition conDef = objectFactory.createResourceAdapterTypeConnectionDefinitionsConnectionDefinition();
-                    conDef.setClassName(conDefNode.get("class-name").getTextValue());
-                    conDef.setJndiName(conDefNode.get("jndi-name").getTextValue());
+                    conDef.setClassName(conDefNode.get("class-name").textValue());
+                    conDef.setJndiName(conDefNode.get("jndi-name").textValue());
                     resourceAdapter.getConnectionDefinitions().getConnectionDefinition().add(conDef);
                 }
 
                 JsonNode configProperties = adtNode.get("config-properties");
-                Iterator<String> cpNameIter = configProperties.getFieldNames();
+                Iterator<String> cpNameIter = configProperties.fieldNames();
                 while (cpNameIter.hasNext()) {
                     String cpName = cpNameIter.next();
                     JsonNode configPropNode = configProperties.get(cpName);
                     ConfigProperty configProp = objectFactory.createResourceAdapterTypeConfigPropertiesConfigProperty();
-                    configProp.setConfigPropertyName(configPropNode.get("config-property-name").getTextValue());
-                    configProp.setConfigPropertyType(configPropNode.get("config-property-type").getTextValue());
-                    configProp.setConfigPropertyValue(configPropNode.get("config-propery-value").getTextValue());
+                    configProp.setConfigPropertyName(configPropNode.get("config-property-name").textValue());
+                    configProp.setConfigPropertyType(configPropNode.get("config-property-type").textValue());
+                    configProp.setConfigPropertyValue(configPropNode.get("config-propery-value").textValue());
                     resourceAdapter.getConfigProperties().getConfigProperty().add(configProp);
                 }
 
@@ -1034,7 +1034,7 @@ public class ApplicationSnapshot extends AbstractJBossV7Feature {
      */
     private void setObjectFields(JsonNode node, Object obj)  {
 
-        Iterator<String> iter = node.getFieldNames();
+        Iterator<String> iter = node.fieldNames();
         Class<?> clazz = obj.getClass();
 
         while (iter.hasNext())

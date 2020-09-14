@@ -11,18 +11,15 @@
 = Libraries =
 =================
 commons-lang3 version 3.1 Apache 2.0 Copyright (C) 2012 The Apache Software Foundation
-wildcard version 1.0
 diffutils version 1.2.1 Apache License Version 2.0, January 2004
 jackson-core-asl version 1.8.1 The Apache Software License, Version 2.0
 jackson-mapper-asl version 1.8.1 The Apache Software License, Version 2.0
+JAXB Runtime version 2.3.3 Eclipse Distribution License - version 1.0
 
 ==================
 = Licenses =
 ==================
 
-Wildcard library - v 1.0
-=====================================
-Wildcard is a small Java library that performs efficient pattern matching of files and directories. Paths can be matched with wildcards or regular expressions. Matched files can be easily copied, deleted, zipped, etc.
 
 /* ====================================================================
  * The Apache Software License, Version 1.1

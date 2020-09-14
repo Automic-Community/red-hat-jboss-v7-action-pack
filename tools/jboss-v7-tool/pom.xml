@@ -25,7 +25,7 @@
 		<dependency>
 			<groupId>com.automic.actions</groupId>
 			<artifactId>common-tool</artifactId>
-			<version>1.3.0-SNAPSHOT</version>
+			<version>1.3.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -33,14 +33,9 @@
 			<version>3.1</version>
 		</dependency>
 		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-core-asl</artifactId>
-			<version>1.8.1</version>
-		</dependency>
-		<dependency>
-			<groupId>org.codehaus.jackson</groupId>
-			<artifactId>jackson-mapper-asl</artifactId>
-			<version>1.8.1</version>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.11.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss</groupId>
@@ -55,22 +50,10 @@
 			<version>1.2.1</version>
 		</dependency>
 		<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-core</artifactId>
-			<version>2.3.0.1</version>
+			<groupId>org.glassfish.jaxb</groupId>
+			<artifactId>jaxb-runtime</artifactId>
+			<version>2.3.3</version>
 		</dependency>
-		<dependency>
-			<groupId>javax.xml.bind</groupId>
-			<artifactId>jaxb-api</artifactId>
-			<version>2.3.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.sun.xml.bind</groupId>
-			<artifactId>jaxb-impl</artifactId>
-			<version>2.3.1</version>
-		</dependency>
-		<!-- <dependency> <groupId>com.esotericsoftware</groupId> <artifactId>wildcard</artifactId> 
-			<version>1.0</version> </dependency> -->
 	</dependencies>
 
 	<build>
@@ -150,7 +133,7 @@
 					<!-- staging will remain open to publish the full action pack bundle 
 						into the repository -->
 					<!-- beaware: staging repository needs to be closed within the buildsteps -->
-					<skipStagingRepositoryClose>true</skipStagingRepositoryClose>
+					<skipStagingRepositoryClose>false</skipStagingRepositoryClose>
 					<!-- will keep the deployed artifact even in case of errors for further 
 						debugging -->
 					<keepStagingRepositoryOnCloseRuleFailure>true</keepStagingRepositoryOnCloseRuleFailure>

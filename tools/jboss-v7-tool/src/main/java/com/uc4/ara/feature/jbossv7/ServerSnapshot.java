@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
-import org.codehaus.jackson.JsonNode;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.jboss.as.cli.scriptsupport.CLI.Result;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.uc4.ara.feature.FeatureUtil;
 import com.uc4.ara.feature.FeatureUtil.MsgTypes;
 import com.uc4.ara.feature.jbossv7.schemas.Datasources;
@@ -115,23 +115,23 @@ public class ServerSnapshot extends AbstractJBossV7Feature {
 
         if (isDomain) {
             serverInfo = objectFactory.createDomainServerInfo();
-            ((DomainServerInfo) serverInfo).setLocalHostName(root.get("local-host-name").getTextValue());
-            ((DomainServerInfo) serverInfo).setLaunchType(root.get("launch-type").getTextValue());
+            ((DomainServerInfo) serverInfo).setLocalHostName(root.get("local-host-name").textValue());
+            ((DomainServerInfo) serverInfo).setLaunchType(root.get("launch-type").textValue());
         } else {
             serverInfo = objectFactory.createStandaloneServerInfo();
-            ((StandaloneServerInfo) serverInfo).setServerState(root.get("server-state").getTextValue());
+            ((StandaloneServerInfo) serverInfo).setServerState(root.get("server-state").textValue());
         }
 
         serverInfo.setName("Server Information");
-        serverInfo.setServerName(root.get("name").getValueAsText());
-        serverInfo.setLaunchType(root.get("launch-type").getValueAsText());
-        serverInfo.setProductName(root.get("product-name").getValueAsText());
-        serverInfo.setProductVersion(root.get("product-version").getValueAsText());
-        serverInfo.setReleaseCodename(root.get("release-codename").getValueAsText());
-        serverInfo.setReleaseVersion(root.get("release-version").getValueAsText());
-        serverInfo.setManagementMajorVersion(root.get("management-major-version").getValueAsText());
-        serverInfo.setManagementMinorVersion(root.get("management-minor-version").getValueAsText());
-        serverInfo.setManagementMicroVersion(root.get("management-micro-version").getValueAsText());
+        serverInfo.setServerName(root.get("name").asText());
+        serverInfo.setLaunchType(root.get("launch-type").asText());
+        serverInfo.setProductName(root.get("product-name").asText());
+        serverInfo.setProductVersion(root.get("product-version").asText());
+        serverInfo.setReleaseCodename(root.get("release-codename").asText());
+        serverInfo.setReleaseVersion(root.get("release-version").asText());
+        serverInfo.setManagementMajorVersion(root.get("management-major-version").asText());
+        serverInfo.setManagementMinorVersion(root.get("management-minor-version").asText());
+        serverInfo.setManagementMicroVersion(root.get("management-micro-version").asText());
 
         return serverInfo;
     }
@@ -143,7 +143,7 @@ public class ServerSnapshot extends AbstractJBossV7Feature {
      */
     public Object getDeployments(JsonNode root) {
         JsonNode deploymentsNode = root.get("deployment");
-        Iterator<String> iter = deploymentsNode.getFieldNames();
+        Iterator<String> iter = deploymentsNode.fieldNames();
         Object deployments = null;
         if (isDomain) {
             deployments = objectFactory.createDomainServerSnapshotDeployments();
@@ -153,7 +153,7 @@ public class ServerSnapshot extends AbstractJBossV7Feature {
                 ((DomainServerSnapshot.Deployments) deployments).setName("Deployments");
                 Deployment dep = objectFactory.createDomainServerSnapshotDeploymentsDeployment();
                 dep.setName(depName);
-                dep.setRuntimeName(depNode.get("runtime-name").getValueAsText());
+                dep.setRuntimeName(depNode.get("runtime-name").asText());
                 ((DomainServerSnapshot.Deployments) deployments).getDeployment().add(dep);
             }
         } else {
@@ -164,9 +164,9 @@ public class ServerSnapshot extends AbstractJBossV7Feature {
                 ((StandaloneServerSnapshot.Deployments) deployments).setName("Deployments");
                 StandaloneDeployment dep = objectFactory.createStandaloneDeployment();
                 dep.setName(depName);
-                dep.setEnabled(depNode.get("enabled").getTextValue());
-                dep.setRuntimeName(depNode.get("runtime-name").getValueAsText());
-                dep.setStatus(depNode.get("status").getValueAsText());
+                dep.setEnabled(depNode.get("enabled").textValue());
+                dep.setRuntimeName(depNode.get("runtime-name").asText());
+                dep.setStatus(depNode.get("status").asText());
                 ((StandaloneServerSnapshot.Deployments) deployments).getDeployment().add(dep);
             }
 
@@ -184,10 +184,10 @@ public class ServerSnapshot extends AbstractJBossV7Feature {
         SystemProperties sysProps = objectFactory.createSystemProperties();
         sysProps.setName("System Properties");
         JsonNode sysPropsNode = root.get("system-property");
-        Iterator<String> iter = sysPropsNode.getFieldNames();
+        Iterator<String> iter = sysPropsNode.fieldNames();
         while (iter.hasNext()) {
             String propName = iter.next();
-            String value = sysPropsNode.get(propName).get("value").getValueAsText();
+            String value = sysPropsNode.get(propName).get("value").asText();
             SystemProperty prop = objectFactory.createSystemPropertiesSystemProperty();
             prop.setName(propName);
             prop.setValue(value);
@@ -221,61 +221,61 @@ public class ServerSnapshot extends AbstractJBossV7Feature {
 
         if (driversNode == null) {
             driversNode = dsRootNode.get("jdbc-driver");
-            Iterator<String> iter = driversNode.getFieldNames();
+            Iterator<String> iter = driversNode.fieldNames();
             while (iter.hasNext()) {
                 String drvName = iter.next();
                 JsonNode drvNode = driversNode.get(drvName);
                 JdbcDriver driver = objectFactory.createJdbcDriver();
                 driver.setName(drvName);
-                driver.setDriverName(drvNode.get("driver-name").getValueAsText());
-                if (drvNode.has("driver-module-name")) driver.setDriverModuleName(drvNode.get("driver-module-name").getValueAsText());
-                if (drvNode.has("driver-class-name")) driver.setDriverClassName(drvNode.get("driver-class-name").getValueAsText());
-                if (drvNode.has("driver-major-version")) driver.setDriverMajorVersion(drvNode.get("driver-major-version").getValueAsText());
-                if (drvNode.has("driver-minor-version")) driver.setDriverMinorVersion(drvNode.get("driver-minor-version").getValueAsText());
-                if (drvNode.has("jdbc-compliant")) driver.setJdbcCompliant(drvNode.get("jdbc-compliant").getValueAsText());
+                driver.setDriverName(drvNode.get("driver-name").asText());
+                if (drvNode.has("driver-module-name")) driver.setDriverModuleName(drvNode.get("driver-module-name").asText());
+                if (drvNode.has("driver-class-name")) driver.setDriverClassName(drvNode.get("driver-class-name").asText());
+                if (drvNode.has("driver-major-version")) driver.setDriverMajorVersion(drvNode.get("driver-major-version").asText());
+                if (drvNode.has("driver-minor-version")) driver.setDriverMinorVersion(drvNode.get("driver-minor-version").asText());
+                if (drvNode.has("jdbc-compliant")) driver.setJdbcCompliant(drvNode.get("jdbc-compliant").asText());
                 datasources.getJdbcDrivers().getJdbcDriver().add(driver);
             }
         } else {
             for (int i = 0; i < driversNode.size(); i++) {
                 JsonNode driverNode = driversNode.get(i);
                 JdbcDriver driver = objectFactory.createJdbcDriver();
-                String name = driverNode.get("driver-name").getValueAsText();
+                String name = driverNode.get("driver-name").asText();
                 driver.setName(name);
                 driver.setDriverName(name);
-                if (driverNode.has("driver-class-name")) driver.setDriverClassName(driverNode.get("driver-class-name").getValueAsText());
-                if (driverNode.has("driver-major-version")) driver.setDriverMajorVersion(driverNode.get("driver-major-version").getValueAsText());
-                if (driverNode.has("driver-minor-version")) driver.setDriverMinorVersion(driverNode.get("driver-minor-version").getValueAsText());
-                if (driverNode.has("jdbc-compliant")) driver.setJdbcCompliant(driverNode.get("jdbc-compliant").getValueAsText());
-                if (driverNode.has("driver-module-name")) driver.setDriverModuleName(driverNode.get("driver-module-name").getValueAsText());
+                if (driverNode.has("driver-class-name")) driver.setDriverClassName(driverNode.get("driver-class-name").asText());
+                if (driverNode.has("driver-major-version")) driver.setDriverMajorVersion(driverNode.get("driver-major-version").asText());
+                if (driverNode.has("driver-minor-version")) driver.setDriverMinorVersion(driverNode.get("driver-minor-version").asText());
+                if (driverNode.has("jdbc-compliant")) driver.setJdbcCompliant(driverNode.get("jdbc-compliant").asText());
+                if (driverNode.has("driver-module-name")) driver.setDriverModuleName(driverNode.get("driver-module-name").asText());
                 datasources.getJdbcDrivers().getJdbcDriver().add(driver);
             }
         }
 
-        Iterator<String> iter = dataSourceNode.getFieldNames();
+        Iterator<String> iter = dataSourceNode.fieldNames();
         while (iter.hasNext()) {
             String dsName = iter.next();
             JsonNode dsNode = dataSourceNode.get(dsName);
             GeneralDataSource ds = objectFactory.createGeneralDataSource();
             ds.setName(dsName);
-            ds.setDriverName(dsNode.get("driver-name").getValueAsText());
-            ds.setDriverClass(dsNode.get("driver-class").getValueAsText());
-            ds.setEnabled(dsNode.get("enabled").getValueAsText());
-            ds.setJndiName(dsNode.get("jndi-name").getValueAsText());
-            ds.setDatasourceClass(dsNode.get("datasource-class").getValueAsText());
-            ds.setConnectionUrl(dsNode.get("connection-url").getValueAsText());
+            ds.setDriverName(dsNode.get("driver-name").asText());
+            ds.setDriverClass(dsNode.get("driver-class").asText());
+            ds.setEnabled(dsNode.get("enabled").asText());
+            ds.setJndiName(dsNode.get("jndi-name").asText());
+            ds.setDatasourceClass(dsNode.get("datasource-class").asText());
+            ds.setConnectionUrl(dsNode.get("connection-url").asText());
             datasources.getDataSources().getDataSource().add(ds);
         }
 
-        iter = xaDataSourceNode.getFieldNames();
+        iter = xaDataSourceNode.fieldNames();
         while (iter.hasNext()) {
             String dsName = iter.next();
             JsonNode dsNode = xaDataSourceNode.get(dsName);
             XaDataSource ds = objectFactory.createXaDataSource();
             ds.setName(dsName);
-            ds.setDriverName(dsNode.get("driver-name").getValueAsText());
-            ds.setEnabled(dsNode.get("enabled").getValueAsText());
-            ds.setJndiName(dsNode.get("jndi-name").getValueAsText());
-            ds.setXaDatasourceClass(dsNode.get("xa-datasource-class").getValueAsText());
+            ds.setDriverName(dsNode.get("driver-name").asText());
+            ds.setEnabled(dsNode.get("enabled").asText());
+            ds.setJndiName(dsNode.get("jndi-name").asText());
+            ds.setXaDatasourceClass(dsNode.get("xa-datasource-class").asText());
             datasources.getXaDataSources().getXaDataSource().add(ds);
         }
 
@@ -293,16 +293,16 @@ public class ServerSnapshot extends AbstractJBossV7Feature {
         JsonNode messagingNode = root.get("subsystem").get("messaging");
         if (messagingNode == null) return messaging;
         JsonNode hornetQNode = messagingNode.get("hornetq-server");
-        Iterator<String> iter = hornetQNode.getFieldNames();
+        Iterator<String> iter = hornetQNode.fieldNames();
         while (iter.hasNext()) {
             String hornetQName = iter.next();
             JsonNode hornetQServerNode = hornetQNode.get(hornetQName);
             HornetqServer hornetQ = objectFactory.createMessagingHornetqServer();
             hornetQ.setName(hornetQName);
-            hornetQ.setClustered(hornetQServerNode.get("clustered").getValueAsText());
-            hornetQ.setJmxDomain(hornetQServerNode.get("jmx-domain").getValueAsText());
-            hornetQ.setManagementAddress(hornetQServerNode.get("management-address").getValueAsText());
-            if (hornetQServerNode.has("version")) hornetQ.setVersion(hornetQServerNode.get("version").getValueAsText());
+            hornetQ.setClustered(hornetQServerNode.get("clustered").asText());
+            hornetQ.setJmxDomain(hornetQServerNode.get("jmx-domain").asText());
+            hornetQ.setManagementAddress(hornetQServerNode.get("management-address").asText());
+            if (hornetQServerNode.has("version")) hornetQ.setVersion(hornetQServerNode.get("version").asText());
 
             hornetQ.setJmsQueues(objectFactory.createMessagingHornetqServerJmsQueues());
             hornetQ.setJmsTopics(objectFactory.createMessagingHornetqServerJmsTopics());
@@ -310,25 +310,25 @@ public class ServerSnapshot extends AbstractJBossV7Feature {
             JsonNode queuesNode = hornetQServerNode.get("jms-queue");
             JsonNode topicsNode = hornetQServerNode.get("jms-topic");
 
-            Iterator<String> iter1 = queuesNode.getFieldNames();
+            Iterator<String> iter1 = queuesNode.fieldNames();
             while (iter1.hasNext()) {
                 String queueName = iter1.next();
                 JmsQueue queue = objectFactory.createJmsQueue();
                 JsonNode queueNode = queuesNode.get(queueName);
                 queue.setName(queueName);
-                if (queueNode.get("entries").size() > 0) queue.setEntries(queueNode.get("entries").get(0).getValueAsText());
-                if (queueNode.has("queue-address")) queue.setQueueAddress(queueNode.get("queue-address").getValueAsText());
+                if (queueNode.get("entries").size() > 0) queue.setEntries(queueNode.get("entries").get(0).asText());
+                if (queueNode.has("queue-address")) queue.setQueueAddress(queueNode.get("queue-address").asText());
                 hornetQ.getJmsQueues().getJmsQueue().add(queue);
             }
 
-            iter1 = topicsNode.getFieldNames();
+            iter1 = topicsNode.fieldNames();
             while (iter1.hasNext()) {
                 String topicName = iter1.next();
                 JmsTopic topic = objectFactory.createJmsTopic();
                 JsonNode topicNode = topicsNode.get(topicName);
                 topic.setName(topicName);
-                if (topicNode.get("entries").size() > 0) topic.setEntries(topicNode.get("entries").get(0).getValueAsText());
-                if (topicNode.has("topic-address")) topic.setTopicAddress(topicNode.get("topic-address").getValueAsText());
+                if (topicNode.get("entries").size() > 0) topic.setEntries(topicNode.get("entries").get(0).asText());
+                if (topicNode.has("topic-address")) topic.setTopicAddress(topicNode.get("topic-address").asText());
                 hornetQ.getJmsTopics().getJmsTopic().add(topic);
             }
 
@@ -346,7 +346,7 @@ public class ServerSnapshot extends AbstractJBossV7Feature {
     public SubSystems getSubSystems(JsonNode root) {
         SubSystems subsystems = objectFactory.createSubSystems();
         subsystems.setName("Subsystems");
-        Iterator<String> iter = root.get("subsystem").getFieldNames();
+        Iterator<String> iter = root.get("subsystem").fieldNames();
         while (iter.hasNext()) {
             String ssName = iter.next();
             Subsystem ss = objectFactory.createSubSystemsSubsystem();
@@ -364,7 +364,7 @@ public class ServerSnapshot extends AbstractJBossV7Feature {
     public Extensions getExtentions(JsonNode root) {
         Extensions extensions = objectFactory.createExtensions();
         extensions.setName("Extensions");
-        Iterator<String> iter = root.get("extension").getFieldNames();
+        Iterator<String> iter = root.get("extension").fieldNames();
         while (iter.hasNext()) {
             String exName = iter.next();
             Extension ex = objectFactory.createExtensionsExtension();
@@ -384,7 +384,7 @@ public class ServerSnapshot extends AbstractJBossV7Feature {
         profiles.setName("Profiles");
         JsonNode profilesNode = root.get("profile");
         if (profilesNode == null) return profiles;
-        Iterator<String> iter = profilesNode.getFieldNames();
+        Iterator<String> iter = profilesNode.fieldNames();
         while (iter.hasNext()) {
             String pName = iter.next();
             Profile profile = objectFactory.createProfile();
@@ -411,7 +411,7 @@ public class ServerSnapshot extends AbstractJBossV7Feature {
             }
 
             // get list of subsystems
-            Iterator<String> iter1 = ssNode.getFieldNames();
+            Iterator<String> iter1 = ssNode.fieldNames();
             while (iter1.hasNext()) {
                 String ssName = iter1.next();
                 Subsystem ss = objectFactory.createSubSystemsSubsystem();
@@ -433,7 +433,7 @@ public class ServerSnapshot extends AbstractJBossV7Feature {
         interfaces.setName("Interfaces");
         JsonNode interfacesNode = root.get("interface");
         if (interfacesNode == null) return null;
-        Iterator<String> iter = interfacesNode.getFieldNames();
+        Iterator<String> iter = interfacesNode.fieldNames();
         while (iter.hasNext()) {
             String iName = iter.next();
             JsonNode iNode = interfacesNode.get(iName);
@@ -442,11 +442,11 @@ public class ServerSnapshot extends AbstractJBossV7Feature {
             String inetAddr = "";
             if (iNode.get("inet-address").isObject()) {
                 try {
-                    inetAddr = iNode.get("inet-address").get("EXPRESSION_VALUE").getValueAsText();
+                    inetAddr = iNode.get("inet-address").get("EXPRESSION_VALUE").asText();
                 } catch (Exception e) {
                     inetAddr = iNode.get("inet-address").toString();
                 }
-            } else inetAddr = iNode.get("inet-address").getValueAsText();
+            } else inetAddr = iNode.get("inet-address").asText();
             interfake.setInetAddress(inetAddr);
             interfaces.getInterface().add(interfake);
         }
@@ -463,23 +463,23 @@ public class ServerSnapshot extends AbstractJBossV7Feature {
         SocketBindingGroups sbgs = objectFactory.createSocketBindingGroups();
         sbgs.setName("Socket Binding Groups");
         JsonNode sbgsNode = root.get("socket-binding-group");
-        Iterator<String> iter = sbgsNode.getFieldNames();
+        Iterator<String> iter = sbgsNode.fieldNames();
         while (iter.hasNext()) {
             String sbgName = iter.next();
             SocketBindingGroup sbg = objectFactory.createSocketBindingGroup();
             JsonNode sbgNode = sbgsNode.get(sbgName);
             sbg.setName(sbgName);
-            sbg.setDefaultInterface(sbgNode.get("default-interface").getValueAsText());
+            sbg.setDefaultInterface(sbgNode.get("default-interface").asText());
             sbg.setSocketBindings(objectFactory.createSocketBindingGroupSocketBindings());
             sbg.getSocketBindings().setName("Socket Bindings");
             JsonNode sbsNode = sbgNode.get("socket-binding");
-            Iterator<String> iter1 = sbsNode.getFieldNames();
+            Iterator<String> iter1 = sbsNode.fieldNames();
             while (iter1.hasNext()) {
                 String sbName = iter1.next();
                 JsonNode sbNode = sbsNode.get(sbName);
                 SocketBinding sb = objectFactory.createSocketBindingGroupSocketBindingsSocketBinding();
                 sb.setName(sbName);
-                sb.setPort(sbNode.get("port").getValueAsText());
+                sb.setPort(sbNode.get("port").asText());
                 sbg.getSocketBindings().getSocketBinding().add(sb);
             }
 
@@ -500,20 +500,20 @@ public class ServerSnapshot extends AbstractJBossV7Feature {
         hosts.setName("Domain Hosts");
         JsonNode hostsNode = root.get("host");
         if (hostsNode == null) return hosts;
-        Iterator<String> iter = hostsNode.getFieldNames();
+        Iterator<String> iter = hostsNode.fieldNames();
         while (iter.hasNext()) {
             String hostName = iter.next();
             JsonNode hostNode = hostsNode.get(hostName);
 
             Host host = objectFactory.createHost();
             host.setName(hostName);
-            host.setProductName(hostNode.get("product-name").getValueAsText());
-            host.setProductVersion(hostNode.get("product-version").getValueAsText());
-            host.setReleaseVersion(hostNode.get("release-version").getValueAsText());
-            host.setRunningMode(hostNode.get("running-mode").getValueAsText());
-            host.setMaster(hostNode.get("master").getValueAsText());
-            host.setHostState(hostNode.get("host-state").getValueAsText());
-            host.setDirectoryGrouping(hostNode.get("directory-grouping").getValueAsText());
+            host.setProductName(hostNode.get("product-name").asText());
+            host.setProductVersion(hostNode.get("product-version").asText());
+            host.setReleaseVersion(hostNode.get("release-version").asText());
+            host.setRunningMode(hostNode.get("running-mode").asText());
+            host.setMaster(hostNode.get("master").asText());
+            host.setHostState(hostNode.get("host-state").asText());
+            host.setDirectoryGrouping(hostNode.get("directory-grouping").asText());
             hosts.getHost().add(host);
 
             host.setInterfaces(getInterfaces(hostNode));
@@ -550,7 +550,7 @@ public class ServerSnapshot extends AbstractJBossV7Feature {
                 return null;
             }
             List<Server> servers = new ArrayList<Server>();
-            Iterator<String> iter = serversNode.getFieldNames();
+            Iterator<String> iter = serversNode.fieldNames();
             while (iter.hasNext()) {
                 String serverName = iter.next();
                 res = cli.cmd("/host=" + hostname + "/server=" + serverName + "/:read-resource(include-runtime=true)");
@@ -558,17 +558,17 @@ public class ServerSnapshot extends AbstractJBossV7Feature {
                 if (serverNode == null) continue;
                 Server server = objectFactory.createServer();
                 server.setName(serverName);
-                server.setServerState(serverNode.get("server-state").getValueAsText());
-                server.setRunningMode(serverNode.get("running-mode").getValueAsText());
+                server.setServerState(serverNode.get("server-state").asText());
+                server.setRunningMode(serverNode.get("running-mode").asText());
 
                 if (hostNode.get("server-config") != null) {
                     res = cli.cmd("/host=" + hostname + "/server-config=" + serverName + "/:read-resource(include-runtime=true)");
                     JsonNode serverConfigNode = mapper.readTree(res.getResponse().get("result").toJSONString(true));
                     if (serverConfigNode != null) {
-                        server.setAutoStart(serverConfigNode.get("auto-start").getValueAsText());
-                        server.setGroup(serverConfigNode.get("group").getValueAsText());
-                        server.setSocketBindingGroup(serverConfigNode.get("socket-binding-group").getValueAsText());
-                        server.setSocketBindingPortOffset(serverConfigNode.get("socket-binding-port-offset").getValueAsText());
+                        server.setAutoStart(serverConfigNode.get("auto-start").asText());
+                        server.setGroup(serverConfigNode.get("group").asText());
+                        server.setSocketBindingGroup(serverConfigNode.get("socket-binding-group").asText());
+                        server.setSocketBindingPortOffset(serverConfigNode.get("socket-binding-port-offset").asText());
                     }
                 }
                 servers.add(server);
@@ -589,29 +589,29 @@ public class ServerSnapshot extends AbstractJBossV7Feature {
         sgs.setName("Server Groups");
         JsonNode sgsNode = root.get("server-group");
         if (sgsNode == null) return sgs;
-        Iterator<String> iter = sgsNode.getFieldNames();
+        Iterator<String> iter = sgsNode.fieldNames();
         while (iter.hasNext()) {
             String sgName = iter.next();
             ServerGroup sg = objectFactory.createServerGroup();
             JsonNode sgNode = sgsNode.get(sgName);
             sg.setName(sgName);
-            sg.setProfile(sgNode.get("profile").getValueAsText());
-            sg.setSocketBindingGroup(sgNode.get("socket-binding-group").getValueAsText());
-            sg.setSocketBindingPortOffset(sgNode.get("socket-binding-port-offset").getValueAsText());
+            sg.setProfile(sgNode.get("profile").asText());
+            sg.setSocketBindingGroup(sgNode.get("socket-binding-group").asText());
+            sg.setSocketBindingPortOffset(sgNode.get("socket-binding-port-offset").asText());
 
             sg.setDeployments(objectFactory.createServerGroupDeployments());
 
             JsonNode deploymentsNode = sgNode.get("deployment");
             if (deploymentsNode != null) {
-                Iterator<String> iter1 = deploymentsNode.getFieldNames();
+                Iterator<String> iter1 = deploymentsNode.fieldNames();
                 while (iter1.hasNext()) {
                     String depName = iter1.next();
                     JsonNode depNode = deploymentsNode.get(depName);
                     ServerGroupDeployment sgd = objectFactory.createServerGroupDeployment();
                     sgd.setName("Server Group Deployments");
                     sgd.setName(depName);
-                    sgd.setEnabled(depNode.get("enabled").getValueAsText());
-                    sgd.setRuntimeName(depNode.get("runtime-name").getValueAsText());
+                    sgd.setEnabled(depNode.get("enabled").asText());
+                    sgd.setRuntimeName(depNode.get("runtime-name").asText());
                     sg.getDeployments().getDeployment().add(sgd);
                 }
             }

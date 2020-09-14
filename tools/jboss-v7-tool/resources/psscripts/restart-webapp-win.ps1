@@ -11,7 +11,7 @@ $jb_pwd=$args[7]
 WRITE-HOST "INFO: Restarting application [$jb_app_name] ...."
 WRITE-HOST "INFO: Mode [$jb_mode], HomeDir [$jb_home], Host [$jb_host], Port [$jb_port], User [$jb_user], Server Groups [$jb_srvr_grps]"
 <# Retrieving process details #>
-$jb_cli="`"$jb_home\bin\jboss-cli.bat`" --connect"
+$jb_cli=" `"$jb_home\bin\jboss-cli.bat`" --connect"
 if($jb_host) {
 	$jb_cli=$jb_cli + " --controller=$jb_host"
 	if($jb_port) {
