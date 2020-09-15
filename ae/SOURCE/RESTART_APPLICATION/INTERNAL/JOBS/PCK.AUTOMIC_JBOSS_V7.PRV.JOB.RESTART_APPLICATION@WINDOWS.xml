@@ -130,6 +130,18 @@
 : INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CONVERT_SLASHES_WINDOWS_STYLE
 : SET &UC4RB_AIOPS_JB_HOME_DIR# = &UC4RB_CONVERTED_STRING#
 
+! Validates application name, spaces should not be there
+:SET &UC4RB_AIOPS_JB_APP_NAME# = STR_TRIM(&UC4RB_AIOPS_JB_APP_NAME#)
+:IF &UC4RB_AIOPS_JB_APP_NAME# = ''
+:  PRINT Application name must not be empty. Aborting ...
+:  EXIT 1
+:ENDIF
+:SET &SPACE_CHECK# = STR_FIND(&UC4RB_AIOPS_JB_APP_NAME#, ' ')
+:IF &SPACE_CHECK# > 0
+:  PRINT Application name must not contain space. Aborting ...
+:  EXIT 1
+:ENDIF
+
 : IF &UC4RB_AIOPS_JB_USERNAME# NE ""
 :   IF &UC4RB_AIOPS_JB_PASSWORD# <> "" OR "--10"
 :    SET &UC4RB_ENCRYPTED_PASSWORD_TMP# = &UC4RB_AIOPS_JB_PASSWORD#
