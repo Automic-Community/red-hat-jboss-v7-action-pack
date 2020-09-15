@@ -11,9 +11,11 @@
 = Libraries =
 =================
 commons-lang3 version 3.1 Apache 2.0 Copyright (C) 2012 The Apache Software Foundation
-com.google.code.gson:gson : 2.8.0 Apache 2.0 Copyright (C) 2004 The Apache Software Foundation
+com.google.code.gson:gson : 2.8.5	 Apache 2.0 Copyright (C) 2004 The Apache Software Foundation
 com.google.guava:guava : 15.0 Apache 2.0 Copyright (C) 2004 The Apache Software Foundation
 com.googlecode.java-diff-utils:diffutils 1.2.1 Apache 2.0 Copyright (C) 2006 The Apache Software Foundation
+org.apache.logging.log4j:log4j-core: 2.8.2 Apache 2.0 Copyright (C) 2006 The Apache Software Foundation
+org.apache.logging.log4j:log4j-api: 2.8.2 Apache 2.0 Copyright (C) 2006 The Apache Software Foundation
 commons-beanutils:commons-beanutils 1.9.3 Apache 2.0 Copyright (C) 2004 The Apache Software Foundation
 commons-codec:commons-codec 1.10 Apache 2.0 Copyright (C) 2004 The Apache Software Foundation
 commons-collections:commons-collections 3.2.2 Apache 2.0 Copyright (C) 2004 The Apache Software Foundation
@@ -26,10 +28,8 @@ com.googlecode.java-diff-utils:diffutils: 1.2.1 Apache 2.0 Copyright (C) 2004 Th
 org.glassfish.jaxb:jaxb-runtime: 2.3.3 Eclipse Distribution License Copyright (c) 2007, Eclipse Foundation, Inc. and its licensors.
 jakarta.xml.bind:jakarta.xml.bind-api: 2.3.3 Eclipse Distribution License Copyright (c) 2007, Eclipse Foundation, Inc. and its licensors.
 org.glassfish.jaxb:txw2: 2.3.3 Eclipse Distribution License Copyright (c) 2007, Eclipse Foundation, Inc. and its licensors.
-org.glassfish.jaxb:txw2: 2.3.3 Eclipse Distribution License Copyright (c) 2007, Eclipse Foundation, Inc. and its licensors.
 com.sun.istack:istack-commons-runtime: 3.0.11 Eclipse Distribution License Copyright (c) 2007, Eclipse Foundation, Inc. and its licensors.
 com.sun.activation:jakarta.activation: 1.2.2 Eclipse Distribution License Copyright (c) 2007, Eclipse Foundation, Inc. and its licensors.
-
 ==================
 = Licenses =
 ==================
