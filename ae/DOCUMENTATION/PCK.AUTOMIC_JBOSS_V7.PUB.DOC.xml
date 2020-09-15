@@ -9,26 +9,23 @@
 <DOCU_Docu state="1" type="text">
 <DOC><![CDATA[Manage your application deployments to a JBoss application server using these actions
 
-=Supported versions=
-JBoss EAP 7.0 and 7.1
-See http://docs.automic.com/compatibility?len=Package.JBoss.v7&comp=PCK.AUTOMIC_JBOSS_V7&version=1.0.0
 
 =Rollback=
 
 The JBoss actions support rollback. The rollbacks are implemented as follows:
 
-* CREATE_MQT: first the original state is backed up. The rollback restores the orginal state. If the Message Queue/Topic has not existed before, it will not exist after the rollback. It the Message Queue/Topic existed before, it is intouched by the rollback.
+* CREATE_MQT: first the original state is backed up. The rollback restores the original state. If the Message Queue/Topic has not existed before, it will not exist after the rollback. It the Message Queue/Topic existed before, it is intouched by the rollback.
 
-* CREATE_TX_DATASOURCE: first the original state is backed up. The rollback restores the orginal state. If the TX datasource has not existed before, it will not exist after the rollback. It the TX datasource existed before, it is intouched by the rollback.
+* CREATE_TX_DATASOURCE: first the original state is backed up. The rollback restores the original state. If the TX datasource has not existed before, it will not exist after the rollback. It the TX datasource existed before, it is intouched by the rollback.
 
-* CREATE_XA_DATASOURCE: first the original state is backed up. The rollback restores the orginal state. If the XA datasource has not existed before, it will not exist after the rollback. It the XA datasource existed before, it is intouched by the rollback.
+* CREATE_XA_DATASOURCE: first the original state is backed up. The rollback restores the original state. If the XA datasource has not existed before, it will not exist after the rollback. It the XA datasource existed before, it is intouched by the rollback.
 
 * DELETE_DATASOURCE: Before deleting the datasource,  a backup of the datasource <JNDI NAME>-ds.xml is created. In case of rollback the <JNDI NAME>-ds.xml file is
 redeployed.
 
 * DELETE_MQT: Before deleting the Message Queue/Topic, a backup of the Message Queue/Topic <JNDI NAME>-ds.xml is created. In case of rollback the <JNDI NAME>-ds.xml file is redeployed.
 
-* DEPLOY_APPLICATION: first the original state is backed up. The rollback restores the orginal state. If the application was not deployed before, it will not exist after the rollback. It the application was deployed before, it is intouched by the rollback.
+* DEPLOY_APPLICATION: first the original state is backed up. The rollback restores the original state. If the application was not deployed before, it will not exist after the rollback. It the application was deployed before, it is intouched by the rollback.
 
 * DEPLOY_FILE: Before executing the roll forward function, the file is backed up. In case of a rollback, the file is redeployed to the application server.
 
