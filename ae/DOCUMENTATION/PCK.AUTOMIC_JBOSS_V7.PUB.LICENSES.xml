@@ -12,8 +12,7 @@
 =================
 commons-lang3 version 3.1 Apache 2.0 Copyright (C) 2012 The Apache Software Foundation
 diffutils version 1.2.1 Apache License Version 2.0, January 2004
-jackson-core-asl version 1.8.1 The Apache Software License, Version 2.0
-jackson-mapper-asl version 1.8.1 The Apache Software License, Version 2.0
+jackson-databind version 2.11.0 The Apache Software License, Version 2.0
 JAXB Runtime version 2.3.3 Eclipse Distribution License - version 1.0
 
 ==================
