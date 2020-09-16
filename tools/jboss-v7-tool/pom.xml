@@ -27,13 +27,13 @@
 			<artifactId>common-tool</artifactId>
 			<version>1.2.1-SNAPSHOT</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.1</version>
 		</dependency>
-	
+
 		<dependency>
 			<groupId>com.fasterxml.jackson.core</groupId>
 			<artifactId>jackson-databind</artifactId>
@@ -135,17 +135,12 @@
 					<!-- staging will remain open to publish the full action pack bundle 
 						into the repository -->
 					<!-- beaware: staging repository needs to be closed within the buildsteps -->
-					<skipStagingRepositoryClose>false</skipStagingRepositoryClose>
+					<skipStagingRepositoryClose>true</skipStagingRepositoryClose>
 					<!-- will keep the deployed artifact even in case of errors for further 
 						debugging -->
 					<keepStagingRepositoryOnCloseRuleFailure>true</keepStagingRepositoryOnCloseRuleFailure>
 				</configuration>
 			</plugin>
-			<!-- <plugin> <artifactId>maven-resources-plugin</artifactId> <version>2.7</version> 
-				<executions> <execution> <id>copy-resources</id> <phase>validate</phase> 
-				<goals> <goal>copy-resources</goal> </goals> <configuration> <outputDirectory>${basedir}/target/samples</outputDirectory> 
-				<resources> <resource> <directory>src/main/resources/sample</directory> <filtering>true</filtering> 
-				</resource> </resources> </configuration> </execution> </executions> </plugin> -->
 		</plugins>
 	</build>
 </project>
