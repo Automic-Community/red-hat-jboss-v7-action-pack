@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<PRPT name="PCK.AUTOMIC_JBOSS_V7.PRV.PROMPTSET.CREATE_MQT">
+<HEADER state="1">
+<Title/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<OH_SubType/>
+</HEADER>
+<PROMPTDESIGNER state="1">
+<DESIGNER/>
+</PROMPTDESIGNER>
+<PROMPTSETXUI state="1">
+<XUIEDITOR><![CDATA[<dialog height="742" icon="PRPT" id="PRPTS" left="0" top="0" width="952"><readpanel fill="b" id="PRPTBOX" nl="1" scroll="v" text="Parameters"><properties><entry name="text">Parameters</entry><entry name="modifiable">0</entry></properties><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_JBOSS_HOMEs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Home Directory" tooltip="Path to the JBoss home directory on the executing machine" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+      <properties>
+        <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+        <entry name="text">Home Directory</entry>
+        <entry name="multiselect">0</entry>
+        <entry name="separator">;</entry>
+        <entry name="len"/>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_HOMEs.00</entry>
+        <entry name="regex"/>
+        <entry name="inputassistance">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="required">1</entry>
+        <entry name="upper">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="showaspassword">0</entry>
+        <entry name="tooltip">Path to the JBoss home directory on the executing machine</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+            <entry name="multiline">0</entry>
+            <entry name="multilineIcon">0</entry>
+            <entry name="onchangereset"/>
+            <entry name="resetable">1</entry>
+         </properties>
+    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_JBOSS_HOSTs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Host" tooltip="Host to which the application should be deployed to. If no value is given, localhost is assumed" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+      <properties>
+        <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+        <entry name="text">Host</entry>
+        <entry name="multiselect">0</entry>
+        <entry name="separator">;</entry>
+        <entry name="len"/>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_HOSTs.00</entry>
+        <entry name="regex"/>
+        <entry name="inputassistance">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="required">0</entry>
+        <entry name="upper">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="showaspassword">0</entry>
+        <entry name="tooltip">Host to which the application should be deployed to. If no value is given, localhost is assumed</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+            <entry name="multiline">0</entry>
+            <entry name="multilineIcon">0</entry>
+            <entry name="onchangereset"/>
+            <entry name="resetable">1</entry>
+         </properties>
+    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_JBOSS_PORTs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Port" tooltip="Port of the JBoss naming service. If no value is given, the default port (9999) will be used" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+      <properties>
+        <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+        <entry name="text">Port</entry>
+        <entry name="multiselect">0</entry>
+        <entry name="separator">;</entry>
+        <entry name="len"/>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_PORTs.00</entry>
+        <entry name="regex"/>
+        <entry name="inputassistance">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="required">0</entry>
+        <entry name="upper">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="showaspassword">0</entry>
+        <entry name="tooltip">Port of the JBoss naming service. If no value is given, the default port (9999) will be used</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+            <entry name="multiline">0</entry>
+            <entry name="multilineIcon">0</entry>
+            <entry name="onchangereset"/>
+            <entry name="resetable">1</entry>
+         </properties>
+    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_JBOSS_USERNAMEs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Username" tooltip="Username used to authenticate with JBoss" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+      <properties>
+        <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+        <entry name="text">Username</entry>
+        <entry name="multiselect">0</entry>
+        <entry name="separator">;</entry>
+        <entry name="len"/>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_USERNAMEs.00</entry>
+        <entry name="regex"/>
+        <entry name="inputassistance">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="required">1</entry>
+        <entry name="upper">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="showaspassword">0</entry>
+        <entry name="tooltip">Username used to authenticate with JBoss</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+            <entry name="multiline">0</entry>
+            <entry name="multilineIcon">0</entry>
+            <entry name="onchangereset"/>
+            <entry name="resetable">1</entry>
+         </properties>
+    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_JBOSS_PASSWORDs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="1" text="Password" tooltip="Password used to authenticate with JBoss" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+      <properties>
+        <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+        <entry name="text">Password</entry>
+        <entry name="multiselect">0</entry>
+        <entry name="separator">;</entry>
+        <entry name="len"/>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_PASSWORDs.00</entry>
+        <entry name="regex"/>
+        <entry name="inputassistance">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="required">1</entry>
+        <entry name="upper">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="showaspassword">1</entry>
+        <entry name="tooltip">Password used to authenticate with JBoss</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+            <entry name="multiline">0</entry>
+            <entry name="multilineIcon">0</entry>
+            <entry name="onchangereset"/>
+            <entry name="resetable">1</entry>
+         </properties>
+    </text><dynradiogroup alt="1" enabled="1" fill="b" focus="" id="UC4RB_JBOSS_OPERATING_MODEs.00" nl="1" text="Operating mode" tooltip="Standalone or domain mode" required="0">
+      <properties>
+        <entry listparam="C,N" name="reference" reftype="STATIC">PCK.AUTOMIC_JBOSS_V7.PRV.VARA.OPERATING_MODES</entry>
+        <entry name="text">Operating mode</entry>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_OPERATING_MODEs.00</entry>
+        <entry name="enabled">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="tooltip">Standalone or domain mode</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+         </properties>
+    </dynradiogroup><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_JBOSS_PROFILEs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Profile" tooltip="Specifies profile in domain mode" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+      <properties>
+        <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+        <entry name="text">Profile</entry>
+        <entry name="multiselect">0</entry>
+        <entry name="separator">;</entry>
+        <entry name="len"/>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_PROFILEs.00</entry>
+        <entry name="regex"/>
+        <entry name="inputassistance">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="required">0</entry>
+        <entry name="upper">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="showaspassword">0</entry>
+        <entry name="tooltip">Specifies profile in domain mode</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+            <entry name="multiline">0</entry>
+            <entry name="multilineIcon">0</entry>
+            <entry name="onchangereset"/>
+            <entry name="resetable">1</entry>
+         </properties>
+    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_JBOSS_NAMEs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Name" tooltip="Queue or Topic name" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+      <properties>
+        <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+        <entry name="text">Name</entry>
+        <entry name="multiselect">0</entry>
+        <entry name="separator">;</entry>
+        <entry name="len"/>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_NAMEs.00</entry>
+        <entry name="regex"/>
+        <entry name="inputassistance">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="required">1</entry>
+        <entry name="upper">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="showaspassword">0</entry>
+        <entry name="tooltip">Queue or Topic name</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+            <entry name="multiline">0</entry>
+            <entry name="multilineIcon">0</entry>
+            <entry name="onchangereset"/>
+            <entry name="resetable">1</entry>
+         </properties>
+    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_JBOSS_JNDI_NAMEs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="JNDI Name" tooltip="Queue or Topic JNDI name" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+      <properties>
+        <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+        <entry name="text">JNDI Name</entry>
+        <entry name="multiselect">0</entry>
+        <entry name="separator">;</entry>
+        <entry name="len"/>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_JNDI_NAMEs.00</entry>
+        <entry name="regex"/>
+        <entry name="inputassistance">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="required">1</entry>
+        <entry name="upper">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="showaspassword">0</entry>
+        <entry name="tooltip">Queue or Topic JNDI name</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+            <entry name="multiline">0</entry>
+            <entry name="multilineIcon">0</entry>
+            <entry name="onchangereset"/>
+            <entry name="resetable">1</entry>
+         </properties>
+    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_JBOSS_MAX_ATTEMPTSs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Max Delivery Attemps" tooltip="The number of delivery attempts before a message to a subscriber of this queue is moved to the DLQ" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+      <properties>
+        <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+        <entry name="text">Max Delivery Attemps</entry>
+        <entry name="multiselect">0</entry>
+        <entry name="separator">;</entry>
+        <entry name="len"/>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_MAX_ATTEMPTSs.00</entry>
+        <entry name="regex"/>
+        <entry name="inputassistance">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="required">0</entry>
+        <entry name="upper">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="showaspassword">0</entry>
+        <entry name="tooltip">The number of delivery attempts before a message to a subscriber of this queue is moved to the DLQ</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+            <entry name="multiline">0</entry>
+            <entry name="multilineIcon">0</entry>
+            <entry name="onchangereset"/>
+            <entry name="resetable">1</entry>
+         </properties>
+    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_JBOSS_RE_DELAYs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Redelivery Delay" tooltip="The delay in milliseconds before a rolled back or recovered message is redelivered. Set to 0 to disable redelivery. The default value is 0" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+      <properties>
+        <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+        <entry name="text">Redelivery Delay</entry>
+        <entry name="multiselect">0</entry>
+        <entry name="separator">;</entry>
+        <entry name="len"/>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_RE_DELAYs.00</entry>
+        <entry name="regex"/>
+        <entry name="inputassistance">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="required">0</entry>
+        <entry name="upper">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="showaspassword">0</entry>
+        <entry name="tooltip">The delay in milliseconds before a rolled back or recovered message is redelivered. Set to 0 to disable redelivery. The default value is 0</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+            <entry name="multiline">0</entry>
+            <entry name="multilineIcon">0</entry>
+            <entry name="onchangereset"/>
+            <entry name="resetable">1</entry>
+         </properties>
+    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_JBOSS_DLAs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Dead Letter Address" tooltip="Dead letter queue" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+      <properties>
+        <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+        <entry name="text">Dead Letter Address</entry>
+        <entry name="multiselect">0</entry>
+        <entry name="separator">;</entry>
+        <entry name="len"/>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_DLAs.00</entry>
+        <entry name="regex"/>
+        <entry name="inputassistance">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="required">0</entry>
+        <entry name="upper">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="showaspassword">0</entry>
+        <entry name="tooltip">Dead letter queue</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+            <entry name="multiline">0</entry>
+            <entry name="multilineIcon">0</entry>
+            <entry name="onchangereset"/>
+            <entry name="resetable">1</entry>
+         </properties>
+    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_JBOSS_EXPIRYs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Expiry Address" tooltip="Defines where to send a message that has expired" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+      <properties>
+        <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+        <entry name="text">Expiry Address</entry>
+        <entry name="multiselect">0</entry>
+        <entry name="separator">;</entry>
+        <entry name="len"/>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_EXPIRYs.00</entry>
+        <entry name="regex"/>
+        <entry name="inputassistance">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="required">0</entry>
+        <entry name="upper">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="showaspassword">0</entry>
+        <entry name="tooltip">Defines where to send a message that has expired</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+            <entry name="multiline">0</entry>
+            <entry name="multilineIcon">0</entry>
+            <entry name="onchangereset"/>
+            <entry name="resetable">1</entry>
+         </properties>
+    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_JBOSS_SIZE_MAXs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Max Size Bytes" tooltip="The maximum number of messages this queue can hold before they are dropped" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+      <properties>
+        <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+        <entry name="text">Max Size Bytes</entry>
+        <entry name="multiselect">0</entry>
+        <entry name="separator">;</entry>
+        <entry name="len"/>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_SIZE_MAXs.00</entry>
+        <entry name="regex"/>
+        <entry name="inputassistance">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="required">0</entry>
+        <entry name="upper">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="showaspassword">0</entry>
+        <entry name="tooltip">The maximum number of messages this queue can hold before they are dropped</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+            <entry name="multiline">0</entry>
+            <entry name="multilineIcon">0</entry>
+            <entry name="onchangereset"/>
+            <entry name="resetable">1</entry>
+         </properties>
+    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_JBOSS_SIZE_PAGEs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Page Size Bytes" tooltip="The size of each page file used on the paging system" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+      <properties>
+        <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+        <entry name="text">Page Size Bytes</entry>
+        <entry name="multiselect">0</entry>
+        <entry name="separator">;</entry>
+        <entry name="len"/>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_SIZE_PAGEs.00</entry>
+        <entry name="regex"/>
+        <entry name="inputassistance">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="required">0</entry>
+        <entry name="upper">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="showaspassword">0</entry>
+        <entry name="tooltip">The size of each page file used on the paging system</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+            <entry name="multiline">0</entry>
+            <entry name="multilineIcon">0</entry>
+            <entry name="onchangereset"/>
+            <entry name="resetable">1</entry>
+         </properties>
+    </text><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_JBOSS_SIZE_PAGE_CACHEs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Page Max Cache Size" tooltip="The number of page files to keep in memory to optimize IO during paging navigation." upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+      <properties>
+        <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+        <entry name="text">Page Max Cache Size</entry>
+        <entry name="multiselect">0</entry>
+        <entry name="separator">;</entry>
+        <entry name="len"/>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_SIZE_PAGE_CACHEs.00</entry>
+        <entry name="regex"/>
+        <entry name="inputassistance">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="required">0</entry>
+        <entry name="upper">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="showaspassword">0</entry>
+        <entry name="tooltip">The number of page files to keep in memory to optimize IO during paging navigation.</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+            <entry name="multiline">0</entry>
+            <entry name="multilineIcon">0</entry>
+            <entry name="onchangereset"/>
+            <entry name="resetable">1</entry>
+         </properties>
+    </text><combo alt="1" dynamic="0" enabled="1" fill="b" filter="0" focus="0" id="UC4RB_JBOSS_ADDR_FULL_POLICYs.00" nl="1" strict="1" text="Address Full Policy" tooltip="This attribute determines what happens when an address where max-size-bytes is specified becomes full" vtype="i"><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command owner="_self" owneraction="setsource" ownerparam="src|_dialog@src"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptcombolist" target="_self" targetaction="setlist" wait="0"/>
+         
+      <properties>
+        <entry listparam="" name="reference" reftype="STATIC">PCK.AUTOMIC_JBOSS_V7.PRV.VARA.JMS_FULL_POLICY</entry>
+        <entry name="text">Address Full Policy</entry>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_ADDR_FULL_POLICYs.00</entry>
+        <entry name="dynamic">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="tooltip">This attribute determines what happens when an address where max-size-bytes is specified becomes full</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+            <entry name="onchangereset"/>
+            <entry name="resetable">1</entry>
+         </properties>
+    </combo><text alt="1" enabled="1" fill="b" focus="0" id="UC4RB_JBOSS_REDIS_DELAYs.00" inputassistance="0" len="" multiline="0" multilineIcon="0" nl="1" regex="" required="0" separator=";" showaspassword="0" text="Redistribution Delay" tooltip="Defines how long to wait when the last consumer is closed on a queue before redistributing any messages" upper="0"><oninputassistant><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptname|@id"/><command request="_internal" target="_view" targetaction="setAttribute" targetparam="promptvalue|@value"/><command owner="_promptsetcontainer" owneraction="getData" request="getpromptinputassistance" target="_chainwindow"/></oninputassistant>
+         
+      <properties>
+        <entry listparam="C,N" name="reference" reftype="STATIC">UC_DATATYPE_STRING</entry>
+        <entry name="text">Redistribution Delay</entry>
+        <entry name="multiselect">0</entry>
+        <entry name="separator">;</entry>
+        <entry name="len"/>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_REDIS_DELAYs.00</entry>
+        <entry name="regex"/>
+        <entry name="inputassistance">0</entry>
+        <entry name="enabled">0</entry>
+        <entry name="required">0</entry>
+        <entry name="upper">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="showaspassword">0</entry>
+        <entry name="tooltip">Defines how long to wait when the last consumer is closed on a queue before redistributing any messages</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+            <entry name="multiline">0</entry>
+            <entry name="multilineIcon">0</entry>
+            <entry name="onchangereset"/>
+            <entry name="resetable">1</entry>
+         </properties>
+    </text><dynradiogroup alt="1" enabled="1" fill="b" focus="" id="UC4RB_JBOSS_TYPEs.00" nl="1" text="Resource Type" tooltip="Queue or Topic" required="0">
+      <properties>
+        <entry listparam="C,N" name="reference" reftype="STATIC">PCK.AUTOMIC_JBOSS_V7.PRV.VARA.JMS_RS_TYPE</entry>
+        <entry name="text">Resource Type</entry>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_TYPEs.00</entry>
+        <entry name="enabled">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="tooltip">Queue or Topic</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+         </properties>
+    </dynradiogroup><dynradiogroup alt="1" enabled="1" fill="b" focus="" id="UC4RB_JBOSS_FAIL_EXISTINGs.00" nl="1" text="Fail if existing" tooltip="Yes = If a queue/topic with the same name exists, job will fail" required="0">
+      <properties>
+        <entry listparam="C,N" name="reference" reftype="STATIC">PCK.ITPA_SHARED.PRV.VARA.YES_NO</entry>
+        <entry name="text">Fail if existing</entry>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_FAIL_EXISTINGs.00</entry>
+        <entry name="enabled">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="tooltip">Yes = If a queue/topic with the same name exists, job will fail</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+         </properties>
+    </dynradiogroup><dynradiogroup alt="1" enabled="1" fill="b" focus="" id="UC4RB_JBOSS_UPDATE_EXISTINGs.00" nl="1" text="Update if existing" tooltip="Specifies whether an existing resource should be updated" required="0">
+      <properties>
+        <entry listparam="C,N" name="reference" reftype="STATIC">PCK.ITPA_SHARED.PRV.VARA.YES_NO</entry>
+        <entry name="text">Update if existing</entry>
+        <entry name="quotes"/>
+        <entry name="id">UC4RB_JBOSS_UPDATE_EXISTINGs.00</entry>
+        <entry name="enabled">0</entry>
+        <entry name="focus">0</entry>
+        <entry name="tooltip">Specifies whether an existing resource should be updated</entry>
+        <entry name="modifiable">1</entry>
+        <entry name="customfield"/>
+      <entry name="initvalue"/>
+         <entry name="xmlkey"/>
+            <entry name="xmlpath"/>
+         </properties>
+    </dynradiogroup></readpanel></dialog>]]></XUIEDITOR>
+</PROMPTSETXUI>
+<PROMPTSETDATA state="1">
+<DATAEDITOR><![CDATA[<PRPTS ontop="1"><PRPTBOX><UC4RB_JBOSS_HOMEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_HOME#" ReadFromTable="OPSE"></UC4RB_JBOSS_HOMEs.00><UC4RB_JBOSS_HOSTs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_HOST#" ReadFromTable="OPSE"></UC4RB_JBOSS_HOSTs.00><UC4RB_JBOSS_PORTs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_PORT#" ReadFromTable="OPSE"></UC4RB_JBOSS_PORTs.00><UC4RB_JBOSS_USERNAMEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_USERNAME#" ReadFromTable="OPSE"></UC4RB_JBOSS_USERNAMEs.00><UC4RB_JBOSS_PASSWORDs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_PASSWORD#" ReadFromTable="OPSE"></UC4RB_JBOSS_PASSWORDs.00><UC4RB_JBOSS_OPERATING_MODEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_OPERATING_MODE#" ReadFromTable="OPSE">Standalone</UC4RB_JBOSS_OPERATING_MODEs.00><UC4RB_JBOSS_PROFILEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_PROFILE#" ReadFromTable="OPSE"></UC4RB_JBOSS_PROFILEs.00><UC4RB_JBOSS_NAMEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_NAME#" ReadFromTable="OPSE"></UC4RB_JBOSS_NAMEs.00><UC4RB_JBOSS_JNDI_NAMEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_JNDI_NAME#" ReadFromTable="OPSE"></UC4RB_JBOSS_JNDI_NAMEs.00><UC4RB_JBOSS_MAX_ATTEMPTSs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_MAX_ATTEMPTS#" ReadFromTable="OPSE"></UC4RB_JBOSS_MAX_ATTEMPTSs.00><UC4RB_JBOSS_RE_DELAYs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_RE_DELAY#" ReadFromTable="OPSE"></UC4RB_JBOSS_RE_DELAYs.00><UC4RB_JBOSS_DLAs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_DLA#" ReadFromTable="OPSE"></UC4RB_JBOSS_DLAs.00><UC4RB_JBOSS_EXPIRYs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_EXPIRY#" ReadFromTable="OPSE"></UC4RB_JBOSS_EXPIRYs.00><UC4RB_JBOSS_SIZE_MAXs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_SIZE_MAX#" ReadFromTable="OPSE"></UC4RB_JBOSS_SIZE_MAXs.00><UC4RB_JBOSS_SIZE_PAGEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_SIZE_PAGE#" ReadFromTable="OPSE"></UC4RB_JBOSS_SIZE_PAGEs.00><UC4RB_JBOSS_SIZE_PAGE_CACHEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_SIZE_PAGE_CACHE#" ReadFromTable="OPSE"></UC4RB_JBOSS_SIZE_PAGE_CACHEs.00><UC4RB_JBOSS_ADDR_FULL_POLICYs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_ADDR_FULL_POLICY#" ReadFromTable="OPSE">PAGE</UC4RB_JBOSS_ADDR_FULL_POLICYs.00><UC4RB_JBOSS_REDIS_DELAYs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_REDIS_DELAY#" ReadFromTable="OPSE"></UC4RB_JBOSS_REDIS_DELAYs.00><UC4RB_JBOSS_TYPEs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_TYPE#" ReadFromTable="OPSE">Queue</UC4RB_JBOSS_TYPEs.00><UC4RB_JBOSS_FAIL_EXISTINGs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_FAIL_EXISTING#" ReadFromTable="OPSE">YES</UC4RB_JBOSS_FAIL_EXISTINGs.00><UC4RB_JBOSS_UPDATE_EXISTINGs.00 haslist="0" msgnr="-1" msginsert="" altview="0" promptname="UC4RB_JBOSS_UPDATE_EXISTING#" ReadFromTable="OPSE">YES</UC4RB_JBOSS_UPDATE_EXISTINGs.00></PRPTBOX></PRPTS>]]></DATAEDITOR>
+</PROMPTSETDATA>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</PRPT>
+</uc-export>

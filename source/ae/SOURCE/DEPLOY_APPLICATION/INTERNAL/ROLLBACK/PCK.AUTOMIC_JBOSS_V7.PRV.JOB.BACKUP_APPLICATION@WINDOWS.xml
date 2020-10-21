@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="ISO-8859-15" standalone="no"?><uc-export clientvers="11.0.0">
+<JOBS_WINDOWS AttrType="WINDOWS" name="PCK.AUTOMIC_JBOSS_V7.PRV.JOB.BACKUP_APPLICATION@WINDOWS">
+<XHEADER state="1">
+<Title/>
+<ArchiveKey1/>
+<ArchiveKey2/>
+<Active>1</Active>
+<OH_SubType/>
+<CustomAttributes KeyListID="0" dataRequestID="0"/>
+</XHEADER>
+<OUTPUTREG state="1">
+<FileReg/>
+</OUTPUTREG>
+<SYNCREF state="1">
+<Syncs/>
+</SYNCREF>
+<ATTR_JOBS state="1">
+<Queue>CLIENT_QUEUE</Queue>
+<StartType/>
+<HostDst>|&lt;WIN&gt;|HOST</HostDst>
+<HostATTR_Type>WINDOWS</HostATTR_Type>
+<CodeName/>
+<Login/>
+<IntAccount/>
+<ExtRepDef>1</ExtRepDef>
+<ExtRepAll>0</ExtRepAll>
+<ExtRepNone>0</ExtRepNone>
+<AutoDeactNo>0</AutoDeactNo>
+<AutoDeact1ErrorFree>0</AutoDeact1ErrorFree>
+<AutoDeactErrorFree>1</AutoDeactErrorFree>
+<DeactWhen>ANY_OK</DeactWhen>
+<DeactDelay>0</DeactDelay>
+<AutoDeactAlways>0</AutoDeactAlways>
+<AttDialog>0</AttDialog>
+<ActAtRun>1</ActAtRun>
+<Consumption>0</Consumption>
+<UC4Priority>0</UC4Priority>
+<MaxParallel2>0</MaxParallel2>
+<MpElse1>1</MpElse1>
+<MpElse2>0</MpElse2>
+<TZ/>
+</ATTR_JOBS>
+<ATTR_WINDOWS state="1">
+<OutputDb>1</OutputDb>
+<OutputDbErr>0</OutputDbErr>
+<OutputFile>0</OutputFile>
+<IsGenerated>0</IsGenerated>
+<BAT>1</BAT>
+<COM>0</COM>
+<WinBatch>0</WinBatch>
+<Standard>1</Standard>
+<Minimized>0</Minimized>
+<Maximized>0</Maximized>
+<JObjDefault>1</JObjDefault>
+<JObjYes>0</JObjYes>
+<JObjNo>0</JObjNo>
+<WorkingDirectory>c:\</WorkingDirectory>
+<Command/>
+<LogOn>0</LogOn>
+<ShowJob>0</ShowJob>
+</ATTR_WINDOWS>
+<RUNTIME state="1">
+<MaxRetCode>0</MaxRetCode>
+<MrcExecute/>
+<MrcElseE>0</MrcElseE>
+<FcstStatus>0| |</FcstStatus>
+
+<ErtMethodDef>1</ErtMethodDef>
+<ErtMethodFix>0</ErtMethodFix>
+<ErtFix>0</ErtFix>
+<ErtDynMethod>2|Average</ErtDynMethod>
+<ErtMethodDyn>0</ErtMethodDyn>
+<ErtCnt>0</ErtCnt>
+<ErtCorr>0</ErtCorr>
+<ErtIgn>0</ErtIgn>
+<ErtIgnFlg>0</ErtIgnFlg>
+<ErtMinCnt>0</ErtMinCnt>
+<MrtMethodNone>1</MrtMethodNone>
+<MrtMethodFix>0</MrtMethodFix>
+<MrtFix>0</MrtFix>
+<MrtMethodErt>0</MrtMethodErt>
+<MrtErt>0</MrtErt>
+<MrtMethodDate>0</MrtMethodDate>
+<MrtDays>0</MrtDays>
+<MrtTime>00:00</MrtTime>
+<MrtTZ/>
+<SrtMethodNone>1</SrtMethodNone>
+<SrtMethodFix>0</SrtMethodFix>
+<SrtFix>0</SrtFix>
+<SrtMethodErt>0</SrtMethodErt>
+<SrtErt>0</SrtErt>
+<MrtCancel>0</MrtCancel>
+<MrtExecute>0</MrtExecute>
+<MrtExecuteObj/>
+</RUNTIME>
+<DYNVALUES state="1">
+<dyntree>
+<node content="1" id="VALUE" name="Variables" parent="" type="VALUE">
+<VALUE state="1">
+<Values/>
+<Mode>0</Mode>
+</VALUE>
+</node>
+</dyntree>
+</DYNVALUES>
+<ROLLBACK state="1">
+<RollbackFlag>0</RollbackFlag>
+<CBackupObj/>
+<CRollbackObj/>
+<FBackupPath/>
+<FDeleteBefore>0</FDeleteBefore>
+<FInclSubDirs>0</FInclSubDirs>
+</ROLLBACK>
+<PRE_SCRIPT mode="1" replacementmode="1" state="1">
+<PSCRI><![CDATA[:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.PREPARE_JOB
+:IF &UC4RB_JBOSS_OPERATING_MODE# <> "Standalone" OR "Managed Domain"
+:  PRINT "&UC4RB_JBOSS_OPERATING_MODE# must be either Standalone or Managed Domain"
+:  EXIT 1
+:ENDIF]]></PSCRI>
+</PRE_SCRIPT>
+<SCRIPT mode="1" state="1">
+<MSCRI><![CDATA[:INCLUDE PCK.AUTOMIC_JBOSS_V7.PRV.INCLUDE.ATTACH
+:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.CHANGE_DIRECTORY_TO_AGENT_BIN
+:INCLUDE PCK.AUTOMIC_JBOSS_V7.PRV.INCLUDE.JBOSS_CLI@WINDOWS
+
+:SET &APP_NAME# = STR_SUB(&UC4RB_JBOSS_APP_NAME#, " ", "\ ")
+
+:SET &UC4RB_ESCAPED_STRING# = &APP_NAME#
+:INCLUDE PCK.ITPA_SHARED.PRV.INCLUDE.ESCAPE_CHARS@WINDOWS
+:SET &APP_NAME# = &UC4RB_ESCAPED_STRING#
+
+:SET &TEMP_FILE1# = "&UC4RB_BACKUP_DIRECTORY#\temp1.txt"
+:SET &TEMP_FILE2# = "&UC4RB_BACKUP_DIRECTORY#\temp2.txt"
+
+@echo off
+setlocal EnableDelayedExpansion
+
+set NOPAUSE=true
+
+if not exist "&UC4RB_BACKUP_DIRECTORY#" (
+  mkdir "&UC4RB_BACKUP_DIRECTORY#"
+)
+
+&UC4_JBOSS_CLI# --command=^"deployment-info --name=&APP_NAME#^" > "&TEMP_FILE1#"
+
+type "&TEMP_FILE1#" | findstr /C:" not found" > nul
+if %errorlevel% == 0 (
+  echo The application does not exist. Backup will not be done.
+  exit 0
+)
+
+!Backup the server groups of the applicaton in Managed Domain
+:IF &UC4RB_JBOSS_OPERATING_MODE# = "Managed Domain"
+  type "&TEMP_FILE1#" | more | findstr /v /C:" not added" | findstr /C:" added" > "&TEMP_FILE2#"
+  type "&TEMP_FILE1#" | more | findstr /C:" enabled" >> "&TEMP_FILE2#"
+  for /f "tokens=1,2 delims=/ " %%a in ('type "&TEMP_FILE2#"') do (
+    set "GROUP=!GROUP!,%%a"
+  )
+  if not "x%GROUP%" == "x" (
+    set GROUP=%GROUP:~1%
+  )
+  echo SERVER_GROUP:%GROUP%
+:ENDIF
+
+:IF &UC4RB_JBOSS_OPERATING_MODE# = "Managed Domain"
+! Get local host controller, where application file is stored.
+  &UC4_JBOSS_CLI# --command=^":read-attribute(name=local-host-name)^" | findstr /R /C:"\"result\" => " > "&TEMP_FILE1#"
+  for /f "tokens=1,2 delims=>" %%a in ('type "&TEMP_FILE1#"') do (
+    set HC= %%b
+!   Remove first and last double quote
+    set HC=!HC:"=!
+  )
+
+  &UC4_JBOSS_CLI# --command=^"/host=%HC%/core-service=platform-mbean/type=runtime:read-attribute(name=system-properties)^"  > "&TEMP_FILE1#"
+  type "&TEMP_FILE1#" | findstr /R /C:"\"jboss.domain.base.dir\" => " > "&TEMP_FILE2#"
+:ELSE
+  &UC4_JBOSS_CLI# --command=^"/core-service=platform-mbean/type=runtime:read-attribute(name=system-properties)^"  > "&TEMP_FILE1#"
+  type "&TEMP_FILE1#" | findstr /R /C:"\"jboss.server.base.dir\" => " > "&TEMP_FILE2#"
+:ENDIF
+
+if not %errorlevel% == 0 (
+  echo Failed to get property: jboss.server.base.dir ^(jboss.domain.base.dir^). Rollback will not be available.
+  exit 0
+)
+
+! Get jboss.server.data.dir. (C:\jboss\standalone\data)
+for /f "tokens=1,2 delims=>" %%a in ('type "&TEMP_FILE2#"') do (
+  set BASE_DIR=%%b
+  set BASE_DIR=!BASE_DIR:~1!
+  set BASE_DIR=!BASE_DIR:,=!
+)
+
+echo BASE_DIRECTORY:%BASE_DIR%
+
+!In case deployment was done by deployment scanner
+:IF &UC4RB_JBOSS_OPERATING_MODE# = "Standalone"
+  if exist "%BASE_DIR%\deployments\&UC4RB_JBOSS_APP_NAME#.deployed" (
+    echo &UC4RB_JBOSS_APP_NAME# was deployed using Deployment Scanner.
+    echo MARKER_FILE:%BASE_DIR%\deployments\&UC4RB_JBOSS_APP_NAME#.dodeploy  > "&UC4RB_BACKUP_REPORT#"
+    exit 0
+  )
+:ENDIF
+
+! Get SHA of the deployment, which also indicate the deployment directory
+&UC4_JBOSS_CLI# --command=^"/deployment=&APP_NAME#:read-attribute(name=content)^" > "&TEMP_FILE1#"
+
+type "&TEMP_FILE1#" | findstr /R /C:"=> \"success\"" > nul
+if not %errorlevel% == 0 (
+  echo Failed to get information of &UC4RB_JBOSS_APP_NAME#. Rollback will not be available.
+  exit 0
+)
+
+type "&TEMP_FILE1#" | findstr 0x > "&TEMP_FILE2#"
+
+set SHA=
+for /f "delims=" %%x in ('type "&TEMP_FILE2#"') do (
+  set "SHA=!SHA!%%x"
+)
+! 0x01, 0x02 ... -> Remove whitespace, comma, 0x .
+set SHA=%SHA: =%
+set SHA=%SHA:,=%
+set SHA=%SHA:0x=%
+
+echo SHA1: %SHA%
+! Split the string. The deployment should be placed in SHA1\SHA2
+set SHA1=%SHA:~0,2%
+set SHA2=%SHA:~2%
+
+! Copy deployment package to BACKUP directory
+cd /d "%BASE_DIR%\data\content\%SHA1%\%SHA2%"
+if not %errorlevel% == 0 (
+  echo Directory %BASE_DIR%\content\%SHA1%\%SHA2% is not available. Cannot backup deployment. Rollback will not be available.
+  exit 0
+)
+copy %BASE_DIR%\data\content\%SHA1%\%SHA2%\content "&UC4RB_BACKUP_DIRECTORY#\content"
+if %errorlevel% == 0 (
+  echo Deployment is backed up to "&UC4RB_BACKUP_DIRECTORY#" successfully.
+  echo SERVER_GROUP:%GROUP%  > "&UC4RB_BACKUP_REPORT#"
+) else (
+  echo Backup process failed. Rollback will not be available.
+  exit 0
+)
+
+]]></MSCRI>
+</SCRIPT>
+<OUTPUTSCAN state="1">
+<Inherit>N</Inherit>
+<filterobjects/>
+<HostFsc/>
+<LoginFsc/>
+</OUTPUTSCAN>
+<POST_SCRIPT mode="1" replacementmode="1" state="1">
+<OSCRI/>
+</POST_SCRIPT>
+<DOCU_Docu state="1" type="text">
+<DOC/>
+</DOCU_Docu>
+</JOBS_WINDOWS>
+</uc-export>

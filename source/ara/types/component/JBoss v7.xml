@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Version: 1.0.0 -->
+<ComponentType xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="component.xsd">
+  <Name>JBoss v7</Name>
+  <DefaultDeploymentTargetType>JBoss v7</DefaultDeploymentTargetType>
+   
+	<Properties>
+	
+		<Group name="package_group" displayName="Package">
+			<Property name="package" type="SingleLineText" mode="EDITABLE" displayName="Package Name">
+				<Defaultvalue>myPackage.war</Defaultvalue>
+				<Description>Application package file, eg: myWebApplication.war</Description>
+			</Property>
+			<Property name="application_name" type="SingleLineText" mode="EDITABLE" displayName="Application Name">
+				<Defaultvalue></Defaultvalue>
+				<Description>Name of the application to be deployed. If not used, package name will be used. WARNING: JBoss requires to have application names with the proper extension, eg: myApplication.war</Description>
+			</Property>			
+		</Group>
+		
+		<Group name="jdbc_tx_group" displayName="JDBC - TX">
+			<Property name="jdbc_tx_name" type="SingleLineText" mode="EDITABLE" displayName="Tx Datasource Name">
+				<Description>Name of the Tx datasource</Description>
+			</Property>
+			<Property name="jdbc_tx_jndi_name" type="SingleLineText" mode="EDITABLE" displayName="JNDI Name">
+				<Description>JNDI name of the datasource</Description>
+			</Property>				
+ 			<Property name="jdbc_tx_jdbc_driver_name" type="SingleLineText" mode="EDITABLE" displayName="Driver Name">
+				<Defaultvalue>h2</Defaultvalue>
+				<Description>Specify the JDBC driver name the Tx datasource shoud use. It is a symbolic name matching the name of the installed driver. Default value: h2</Description>
+			</Property>
+			<Property name="jdbc_tx_jdbc_driver_class" type="SingleLineText" mode="EDITABLE" displayName="Driver Class">
+				<Description>The fully qualified name of the JDBC driver class</Description>
+			</Property>
+			<Property name="jdbc_tx_connection_url" type="SingleLineText" mode="EDITABLE" displayName="Connection URL">
+				<Description>The JDBC driver URL string. Eg: jdbc:oracle:thin:@server:port:sid</Description>
+			</Property>			
+			<Property name="jdbc_tx_username" type="SingleLineText" mode="EDITABLE" displayName="Username">
+				<Description>The default username when creating a new connection</Description>
+			</Property>			
+			<Property name="jdbc_tx_password" type="Protected" mode="EDITABLE" displayName="Password">
+				<Description>The default password when creating a new connection</Description>
+			</Property>			
+			<Property name="jdbc_tx_pool_size_max" type="Integer" mode="EDITABLE" displayName="Maximum pool size">
+				<Defaultvalue>10</Defaultvalue>
+				<Description>The maximum number of connections the pool should hold. The default is 10</Description>
+			</Property>			
+			<Property name="jdbc_tx_pool_size_min" type="Integer" mode="EDITABLE" displayName="Minimum pool size">
+				<Defaultvalue>0</Defaultvalue>
+				<Description>The minimum number of connections the pool should hold. The default is 0</Description>
+			</Property>			
+			<Property name="jdbc_tx_connection_properties" type="SingleLineText" mode="EDITABLE" displayName="Additional JDBC properties">
+				<Description>Arbitrary connection properties that should be passed to the java.sql.Driver.connect(url, props) method. Additional driver properties using '=' as seperator between name and value. Multiple properties can be given using ',' as seperator. Eg: 'var1=value1,var2=value2'.</Description>
+			</Property>	
+			<Property name="jdbc_tx_jta" type="SingleChoice" mode="EDITABLE" displayName="Use JTA">
+				<List>Yes, No</List>
+				<Defaultvalue>No</Defaultvalue>
+				<Description>Enable JTA Integration? Options: Yes/No. Default value is No.</Description>
+			</Property>
+		</Group>
+   
+		<Group name="jdbc_xa_group" displayName="JDBC - XA">
+			<Property name="jdbc_xa_name" type="SingleLineText" mode="EDITABLE" displayName="XA Datasource Name">
+				<Description>Name of the XA datasource</Description>
+			</Property>
+			<Property name="jdbc_xa_jndi_name" type="SingleLineText" mode="EDITABLE" displayName="JNDI name">
+				<Description>JNDI name of the datasource</Description>
+			</Property>
+			<Property name="jdbc_xa_driver_name" type="SingleLineText" mode="EDITABLE" displayName="Driver Name">
+			<Defaultvalue>h2</Defaultvalue>
+				<Description>Specify the JDBC driver name the XA datasource shoud use. It is a symbolic name matching the name of installed driver. Default value: h2</Description>
+			</Property>
+			<Property name="jdbc_xa_datasource_class" type="SingleLineText" mode="EDITABLE" displayName="XA datasource class">
+				<Description>The fully qualified name of the javax.sql.XADataSource implementation class.</Description>
+			</Property>	
+			<Property name="jdbc_xa_username" type="SingleLineText" mode="EDITABLE" displayName="Username">
+				<Description>The default username when creating a new connection</Description>
+			</Property>			
+			<Property name="jdbc_xa_password" type="Protected" mode="EDITABLE" displayName="Password">
+				<Description>The default password when creating a new connection</Description>
+			</Property>			
+			<Property name="jdbc_xa_pool_size_max" type="Integer" mode="EDITABLE" displayName="Maximum pool size">
+				<Defaultvalue>10</Defaultvalue>
+				<Description>The maximum number of connections the pool should hold. The default is 10</Description>
+			</Property>			
+			<Property name="jdbc_xa_pool_size_min" type="Integer" mode="EDITABLE" displayName="Minimum pool size">
+				<Defaultvalue>0</Defaultvalue>
+				<Description>The minimum number of connections the pool should hold. The default is 0</Description>
+			</Property>			
+			<Property name="jdbc_xa_datasource_properties" type="SingleLineText" mode="EDITABLE" displayName="Additional JDBC properties">
+				<Description>Arbitrary connection properties that should be passed to the java.sql.Driver.connect(url, props) method. Additional driver properties using '=' as seperator between name and value. Multiple properties can be given using ',' as seperator. Eg: 'var1=value1,var2=value2'.</Description>
+			</Property>			
+			<Property name="jdbc_xa_jta" type="SingleChoice" mode="EDITABLE" displayName="Use JTA">
+				<List>Yes, No</List>
+				<Defaultvalue>No</Defaultvalue>
+				<Description>Enable JTA Integration? Options: Yes/No. Default value is No.</Description>
+			</Property>		
+		</Group>
+
+		<Group name="jms_group" displayName="JMS">
+			<Property name="jms_name" type="SingleLineText" mode="EDITABLE" displayName="Queue or Topic name">
+				<Description>Queue or Topic name</Description>
+			</Property>			
+			<Property name="jms_jndi_name" type="SingleLineText" mode="EDITABLE" displayName="Queue or Topic JNDI name">
+				<Description>Queue or Topic JNDI name</Description>
+			</Property>			
+			<Property name="jms_ressource_type" type="SingleChoice" mode="EDITABLE" displayName="Ressource type">
+				<List>Queue, Topic</List>
+				<Description>JMS resource type used for JMS resource creation</Description>
+			</Property>				
+			<Property name="jms_max_delivery_attempts" type="Integer" mode="EDITABLE" displayName="Maximum number of delivery attempts">
+				<Defaultvalue>10</Defaultvalue>
+				<Description>Defines how many time a cancelled message can be redelivered before sending to the dead-letter-address. Default value is 10. A value of -1 for infinite redeliveries.</Description>
+			</Property>			
+			<Property name="jms_max_size" type="Integer" mode="EDITABLE" displayName="Maximum Size (bytes)">
+				<Defaultvalue>-1</Defaultvalue>
+				<Description>The maximum number of messages this queue can hold before they are dropped. A value of -1 means there is no maximum. The default value is -1.</Description>
+			</Property>			
+			<Property name="jms_page_size" type="Integer" mode="EDITABLE" displayName="Paging size (bytes)">
+				<Defaultvalue>10485760</Defaultvalue>
+				<Description>The page size (in bytes) to use in paging on an address. Default value: 10MiB (10 * 1024 * 1024 bytes)</Description>
+			</Property>
+			<Property name="jms_page_max_cache_size" type="Integer" mode="EDITABLE" displayName="Page max cache size">
+				<Defaultvalue>5</Defaultvalue>
+				<Description>The number of page files to keep in memory to optimize IO during paging navigation. Default value: 5.</Description>
+			</Property>				
+			<Property name="jms_redelivery_delay" type="Integer" mode="EDITABLE" displayName="Redelivery delay (ms)">
+				<Defaultvalue>0</Defaultvalue>
+				<Description>The delay in milliseconds before a rolled back or recovered message is redelivered. Set to 0 to disable redelivery. The default value is 0. A value of -1 indicates the default value should be used.</Description>
+			</Property>			
+			<Property name="jms_dlq" type="SingleLineText" mode="EDITABLE" displayName="Dead Letter Address">
+				<Defaultvalue>jms.queue.DLQ</Defaultvalue>
+				<Description>The address to send dead message to (e.g. "jms.queue.DLQ").</Description>
+			</Property>			
+			<Property name="jms_expiry_queue" type="SingleLineText" mode="EDITABLE" displayName="Expiry Address">
+				<Defaultvalue>jms.queue.ExpiryQueue</Defaultvalue>
+				<Description>The address to send expired messages to (e.g. "jms.queue.ExpiryQueue").</Description>
+			</Property>				
+			<Property name="jms_redistribution_delay" type="Integer" mode="EDITABLE" displayName="Redistribution Delay (ms)">
+				<Defaultvalue>-1</Defaultvalue>
+				<Description>The time (in ms) to wait after the last consumer is closed on a queue before redistributing messages. A delay of zero means the messages will be immediately redistributed. A value of -1 signifies that messages will never be redistributed. The default value is -1.</Description>
+			</Property>
+			<Property name="jms_address_full_policy" type="SingleChoice" mode="EDITABLE" displayName="Address Full Policy">
+				<List>PAGE, DROP, BLOCK</List>
+				<Defaultvalue>PAGE</Defaultvalue>
+				<Description>Determines what happens when an address where max-size-bytes is specified becomes full. Default value: PAGE then further messages will be paged to disk.</Description>
+			</Property>
+		</Group>
+  </Properties>
+
+  <DynamicProperties>
+
+		<!-- SNAPSHOTS -->
+		<Property name="/snapshot/archive_path" highlighted="false">
+			<Value></Value>
+			<Description>The path where all snapshots will be stored.</Description>
+		</Property>
+		<Property name="/snapshot/source_path" highlighted="false">
+			<Value></Value>
+			<Description>The path to the directory, that the snapshot will be taken of.</Description>
+		</Property>
+		<Property name="/snapshot/snapshot_filter_include" highlighted="false">
+			<Value></Value>
+			<Description>Filter the snapshot by filename. Multiple filters can be given using , as seperator. Eg: dir1/*,*.txt</Description>
+		</Property>
+		<Property name="/snapshot/snapshot_filter_exclude" highlighted="false">
+			<Value></Value>
+			<Description>Filter the snapshot by filename. Multiple filters can be given using , as seperator. Eg: dir1/*,*.txt</Description>
+		</Property>
+		
+		<!-- GENERAL -->
+		<Property name="/jboss/application_name" highlighted="false">
+			<Value>{/custom/application_name}</Value>
+			<Description>Name of the application which will be used for install and uninstall actions among others. WARNING: JBoss requires to have application names with the proper extension, eg: myApplication.war</Description>
+		</Property>
+		<Property name="/jboss/host" highlighted="false">
+			<Value>{@target/custom/host}</Value>
+			<Description>Hostname or IP address where the JBoss server is accessible.</Description>
+		</Property>
+		<Property name="/jboss/port" highlighted="false">
+			<Value>{@target/custom/port}</Value>
+			<Description>Port of the JBoss naming service</Description>
+		</Property>
+		<Property name="/jboss/username" highlighted="false">
+			<Value>{@target/custom/username}</Value>
+			<Description>Username used to authenticate with JBoss</Description>
+		</Property>
+		<Property name="/jboss/password" highlighted="false">
+			<Value>{@target/custom/password}</Value>
+			<Description>Password used to authenticate with JBoss</Description>
+		</Property>
+		<Property name="/jboss/operating_mode" highlighted="false">
+			<Value>{@target/custom/operating_mode}</Value>
+			<Description>Operating mode used to specify JBoss Application Server working as "domain mode" or "standalone mode". Options: Managed Domain/Standalone.</Description>
+		</Property>
+		<Property name="/jboss/profile" highlighted="false">
+			<Value>{@target/custom/profile}</Value>
+			<Description>Specifies the used profile in case JBoss Application Server is working in domain mode</Description>
+		</Property>
+		<Property name="/jboss/package" highlighted="false">
+			<Value>{/target/target_files_dirs}/{/custom/package}</Value>
+			<Description>Path of the application directory, archive file, or root of the exploded archive directory to be deployed</Description>
+		</Property>
+		
+		<!-- JDBC -->
+		<Property name="/jboss/jdbc/tx/jndi_name" highlighted="false">
+			<Value>{/custom/jdbc_tx_jndi_name}</Value>
+			<Description>JNDI name of the datasource</Description>
+		</Property>
+		<Property name="/jboss/jdbc/tx/name" highlighted="false">
+			<Value>{/custom/jdbc_tx_name}</Value>
+			<Description>Name of the Tx datasource</Description>
+		</Property>
+		<Property name="/jboss/jdbc/tx/driver_name" highlighted="false">
+			<Value>{/custom/jdbc_tx_jdbc_driver_name}</Value>
+			<Description>JDBC driver name the Tx datasource shoud use.</Description>
+		</Property>
+		<Property name="/jboss/jdbc/tx/jdbc_driver_class" highlighted="false">
+			<Value>{/custom/jdbc_tx_jdbc_driver_class}</Value>
+			<Description>The fully qualified name of the JDBC driver class.</Description>
+		</Property>
+		<Property name="/jboss/jdbc/tx/connection_url" highlighted="false">
+			<Value>{/custom/jdbc_tx_connection_url}</Value>
+			<Description>The JDBC driver URL string. Eg: jdbc:oracle:thin:@server:port:sid</Description>
+		</Property>
+		<Property name="/jboss/jdbc/tx/username" highlighted="false">
+			<Value>{/custom/jdbc_tx_username}</Value>
+			<Description>The default username when creating a new connection.</Description>
+		</Property>
+		<Property name="/jboss/jdbc/tx/password" highlighted="false">
+			<Value>{/custom/jdbc_tx_password}</Value>
+			<Description>The default password when creating a new connection.</Description>
+		</Property>
+		<Property name="/jboss/jdbc/tx/pool_size_max" highlighted="false">
+			<Value>{/custom/jdbc_tx_pool_size_max}</Value>
+			<Description>The maximum number of connections the pool should hold. The default is 10.</Description>
+		</Property>
+		<Property name="/jboss/jdbc/tx/pool_size_min" highlighted="false">
+			<Value>{/custom/jdbc_tx_pool_size_min}</Value>
+			<Description>The minimum number of connections the pool should hold. The default is 0.</Description>
+		</Property>
+		<Property name="/jboss/jdbc/tx/connection_properties" highlighted="false">
+			<Value>{/custom/jdbc_tx_connection_properties}</Value>
+			<Description>Arbitrary connection properties that should be passed to the java.sql.Driver.connect(url, props) method. Additional driver properties using '=' as seperator between name and value. Multiple properties can be given using ',' as seperator. Eg: 'var1=value1,var2=value2'.</Description>
+		</Property>
+		<Property name="/jboss/jdbc/tx/jta" highlighted="false">
+			<Value>{/custom/jdbc_tx_jta}</Value>
+			<Description>Enable JTA Integration. Options: Yes/No. Default value is No.</Description>
+		</Property>
+
+		<Property name="/jboss/jdbc/xa/name" highlighted="false">
+			<Value>{/custom/jdbc_xa_name}</Value>
+			<Description>Name of the XA datasource</Description>
+		</Property>
+		<Property name="/jboss/jdbc/xa/jndi_name" highlighted="false">
+			<Value>{/custom/jdbc_xa_jndi_name}</Value>
+			<Description>JNDI name of the datasource</Description>
+		</Property>
+		<Property name="/jboss/jdbc/xa/driver_name" highlighted="false">
+			<Value>{/custom/jdbc_xa_driver_name}</Value>
+			<Description>JDBC driver name the XA datasource shoud use.</Description>
+		</Property>
+		<Property name="/jboss/jdbc/xa/xa_datasource_class" highlighted="false">
+			<Value>{/custom/jdbc_xa_datasource_class}</Value>
+			<Description>The fully qualified name of the javax.sql.XADataSource implementation class.</Description>
+		</Property>
+		<Property name="/jboss/jdbc/xa/username" highlighted="false">
+			<Value>{/custom/jdbc_xa_username}</Value>
+			<Description>The default username when creating a new connection.</Description>
+		</Property>
+		<Property name="/jboss/jdbc/xa/password" highlighted="false">
+			<Value>{/custom/jdbc_xa_password}</Value>
+			<Description>The default password when creating a new connection.</Description>
+		</Property>
+		<Property name="/jboss/jdbc/xa/pool_size_max" highlighted="false">
+			<Value>{/custom/jdbc_xa_pool_size_max}</Value>
+			<Description>The maximum number of connections the pool should hold. The default is 10.</Description>
+		</Property>
+		<Property name="/jboss/jdbc/xa/pool_size_min" highlighted="false">
+			<Value>{/custom/jdbc_xa_pool_size_min}</Value>
+			<Description>The minimum number of connections the pool should hold. The default is 0.</Description>
+		</Property>
+		<Property name="/jboss/jdbc/xa/xa_datasource_properties" highlighted="false">
+			<Value>{/custom/jdbc_xa_datasource_properties}</Value>
+			<Description>Arbitrary connection properties that should be passed to the java.sql.Driver.connect(url, props) method. Additional driver properties using '=' as seperator between name and value. Multiple properties can be given using ',' as seperator. Eg: 'var1=value1,var2=value2'.</Description>
+		</Property>
+		<Property name="/jboss/jdbc/xa/jta" highlighted="false">
+			<Value>{/custom/jdbc_xa_jta}</Value>
+			<Description>Enable JTA Integration. Options: Yes/No. Default value is No.</Description>
+		</Property>
+   
+		<!-- JMS -->
+		<Property name="/jboss/jms/name" highlighted="false">
+			<Value>{/custom/jms_name}</Value>
+			<Description>Queue or Topic name</Description>
+		</Property>
+		<Property name="/jboss/jms/jndi_name" highlighted="false">
+			<Value>{/custom/jms_jndi_name}</Value>
+			<Description>Queue or Topic JNDI name</Description>
+		</Property>
+		<Property name="/jboss/jms/ressource_type" highlighted="false">
+			<Value>{/custom/jms_ressource_type}</Value>
+			<Description>Options: Queue/Topic</Description>
+		</Property>
+		<Property name="/jboss/jms/max_delivery_attempts" highlighted="false">
+			<Value>{/custom/jms_max_delivery_attempts}</Value>
+			<Description>The number of delivery attempts before a message to a subscriber of this queue is moved to the dead-letter-address. Default value is 10. A value of -1 for infinite redeliveries.</Description>
+		</Property>
+		<Property name="/jboss/jms/max_size" highlighted="false">
+			<Value>{/custom/jms_max_size}</Value>
+			<Description>The maximum size (in bytes) to use in paging on an address. Default value: -1 (disabled).</Description>
+		</Property>
+		<Property name="/jboss/jms/page_size" highlighted="false">
+			<Value>{/custom/jms_page_size}</Value>
+			<Description>The page size (in bytes) to use in paging on an address. Default value: 10MiB (10 * 1024 * 1024 bytes)</Description>
+		</Property>
+		<Property name="/jboss/jms/page_max_cache_size" highlighted="false">
+			<Value>{/custom/jms_page_max_cache_size}</Value>
+			<Description>The number of page files to keep in memory to optimize IO during paging navigation. Default value: 5.</Description>
+		</Property>
+		<Property name="/jboss/jms/redelivery_delay" highlighted="false">
+			<Value>{/custom/jms_redelivery_delay}</Value>
+			<Description>The time (in ms) to wait before redelivering a cancelled message. Default value: 0 (ms) - there is no redelivery delay.</Description>
+		</Property>
+		<Property name="/jboss/jms/dlq" highlighted="false">
+			<Value>{/custom/jms_dlq}</Value>
+			<Description>The address to send dead message to (e.g. "jms.queue.DLQ").</Description>
+		</Property>
+		<Property name="/jboss/jms/expiry_queue" highlighted="false">
+			<Value>{/custom/jms_expiry_queue}</Value>
+			<Description>The address to send expired message to (e.g. "jms.queue.ExpiryQueue").</Description>
+		</Property>
+	   	<Property name="/jboss/jms/redistribution_delay" highlighted="false">
+			<Value>{/custom/jms_redistribution_delay}</Value>
+			<Description>The time (in ms) to wait after the last consumer is closed on a queue before redistributing messages. A delay of zero means the messages will be immediately redistributed. A value of-1 signifies that messages will never be redistributed. The default value is -1.</Description>
+		</Property>
+		<Property name="/jboss/jms/address_full_policy" highlighted="false">
+			<Value>{/custom/jms_address_full_policy}</Value>
+			<Description>Determines what happens when an address where max-size-bytes is specified becomes full. Choice list: PAGE, DROP or BLOCK. Default value: PAGE then further messages will be paged to disk.</Description>
+		</Property>
+
+		<Property name="/jboss/server/home_directory" highlighted="false">
+			<Value>{@target/custom/home_directory}</Value>
+			<Description>JBoss home directory. Eg: /var/jboss/jboss-eap-7.1</Description>
+		</Property>
+		<Property name="/jboss/server/host_controller" highlighted="false">
+			<Value>{@target/custom/host_controller}</Value>
+			<Description>Host controller to manage the server instances. Not required in Standalone mode. Ex: master, slave,...</Description>
+		</Property>
+		<Property name="/jboss/server/servername" highlighted="false">
+			<Value>{@target/custom/servername}</Value>
+			<Description>Name of the JBoss server. Eg: all, default, web. Equals the -c argument.</Description>
+		</Property>
+		<Property name="/jboss/server/server_groups" highlighted="false">
+			<Value>{@target/custom/server_groups}</Value>
+			<Description>Server group(s) for application management. Separated by commas. Not required in Standalone mode.</Description>
+		</Property>
+   
+		<!-- SOURCE -->
+		<Property name="/source/source_files_dirs" highlighted="false">		
+			<Description>Remote file/directory to be downloaded.</Description>
+		</Property>
+		<Property name="/target/target_files_dirs" highlighted="false">
+			<Value>{@target/custom/staging_base_directory}/{@application/system/name}/{/system/name}/{@deployment_package/system/name}</Value>
+			<Description>Name of a local file/directory.</Description>
+		</Property>
+		<Property name="/target/overwrite_target" highlighted="false" type="SingleChoice">
+			<Value>Yes</Value>
+			<Description>Overwrite local files/directory if exist.</Description>
+			<List>Yes#;#No</List>
+		</Property>
+
+
+		<!-- STAGING -->
+		<Property name="/staging/working_files_dirs" highlighted="false">
+			<Value>{/staging/working_base_dir}/{@application/system/name}/{/system/name}</Value>
+			<Description>Files/Directory on the staging server.</Description>
+		</Property>
+		<Property name="/staging/agent" highlighted="false">
+			<Value>{@target/custom/staging_remote_agent}</Value>
+			<Description>Agent which will be used for staging.</Description>
+		</Property>	
+		<Property name="/staging/working_base_dir" highlighted="false">
+			<Value>{@target/custom/staging_remote_directory}</Value>
+			<Description>Base directory on the staging server where package should be downloaded to.</Description>
+		</Property>	
+
+		</DynamicProperties>
+</ComponentType>
