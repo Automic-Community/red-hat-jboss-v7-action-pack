@@ -1,3 +1,0 @@
-*** Settings ***
-Suite Setup       Create data test
-Resource          ../resources/keywords.txt
